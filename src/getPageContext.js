@@ -19,6 +19,19 @@ const theme = createMuiTheme({
       main: green[500],
       dark: green[700],
     },
+    typography:{
+      fontFamily: [
+        '"Flama"',
+        '"Roboto"',
+        '"Helvetica"',
+        '"Arial"',
+        'sans-serif'
+      ].join(',')
+    },
+    root: {
+      minWidth: 320
+      },
+    
   },
 });
 

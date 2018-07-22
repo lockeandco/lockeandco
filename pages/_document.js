@@ -10,7 +10,7 @@ class MyDocument extends Document {
     return (
       <html lang="en" dir="ltr">
         <Head>
-          <title>My page</title>
+          <title>Locke & Co Distillery</title>
           <meta charSet="utf-8" />
           {/* Use minimum-scale=1 to enable GPU rasterization */}
           <meta
@@ -26,6 +26,13 @@ class MyDocument extends Document {
             rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"
           />
+          <link
+          rel="stylesheet"
+          href="/static/app.css"
+        />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+          <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous"/>
+  
         </Head>
         <body>
           <Main />

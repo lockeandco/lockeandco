@@ -26,36 +26,21 @@ const styles = {
     position: 'fixed',
     backgroundPosition: 'center center',
     backgroundSize: 'contain, cover',
-    backgroundImage: `url(/static/hearFromYou.png)`
+    backgroundImage: `url(/static/hearFromYou.png)`,
+    background: `rgb(226, 222, 213)`
   },
-  bullet: {
-    display: 'inline-block',
-    margin: '0 2px',
-    transform: 'scale(0.8)',
-  },
-  title: {
-    marginBottom: 16,
-    fontSize: 14,
-  },
-  pos: {
-    marginBottom: 12,
-  },
-
 };
 
 function SimpleCard(props) {
   const { classes } = props;
-  const bull = <span className={classes.bullet}>•</span>;
 
   return (
-    <div>
       <Card className={classes.card}>
         <CardContent>
         </CardContent>
         <CardActions>
         </CardActions>
       </Card>
-    </div>
   );
 }
 

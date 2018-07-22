@@ -7,7 +7,6 @@ import Paper from '@material-ui/core/Paper'
 import IconButton from '@material-ui/core/IconButton'
 import Icon from '@material-ui/core/Icon'
 import classNames from 'classnames'
-import SocialButtons from './SocialButtons'
 
 const styles = theme => ({
   button: {
@@ -15,14 +14,13 @@ const styles = theme => ({
     color: '#E2DED5',
     fontFamily: 'OldGrowth',
     fontWeight: 'bold',
-    textTransform: 'unset',
-    fontSize: '0.65em'
   },
   paper: {
     borderRadius: 'unset',
     boxShadow: 'unset',
     backgroundColor: 'transparent',
     textAlign: 'center',
+    minWidth: 200,
   },
   paperActive: {
     borderRadius: 'unset',
@@ -30,7 +28,11 @@ const styles = theme => ({
     backgroundColor: '#C36D15',
     textAlign: 'center',
   },
-
+  buttonActive: {
+    margin: theme.spacing.unit,
+    color: '#E2DED5',
+    fontFamily: 'Flama',
+  },
   socialIcons: {
     float: 'left',
     margin: theme.spacing.unit * 2,
@@ -43,45 +45,19 @@ const styles = theme => ({
   },
 })
 
-
+const socialIcons = ['fab fa-facebook', 'fab fa-twitter', 'fab fa-instagram']
 
 function TextButtons(props) {
   const { classes, goToSlide, page } = props
   console.log(props)
   return (
-    <React.Fragment>
-      <Grid
-        container
-        spacing={0}
-        alignItems="center"
-        direction="row"
-        justify="space-around"
-      >
-        <Grid item xs>
-<SocialButtons />
-        </Grid>
-        <Grid item xs>
-          <Paper className={page === 4 ? classes.paperActive : classes.paper}>
-            <Button
-              className={classes.button}
-              onClick={() => goToSlide(4)}
-            >
-              merchandise
-            </Button>
-          </Paper>
-        </Grid>
-        <Grid item xs>
-          <Paper className={page === 5 ? classes.paperActive : classes.paper}>
-            <Button
-              className={classes.button}
-              onClick={() => goToSlide(5)}
-            >
-              stay connected
-            </Button>
-          </Paper>
-        </Grid>
-      </Grid>
-    </React.Fragment>
+    <Paper className={classes.paper}>
+      {socialIcons.map(ico => (
+        <IconButton key={ico}>
+          <Icon className={classNames(classes.socialIcons, ico)} />
+        </IconButton>
+      ))}
+    </Paper>
   )
 }
 
@@ -90,4 +66,3 @@ TextButtons.propTypes = {
 }
 
 export default withStyles(styles)(TextButtons)
-

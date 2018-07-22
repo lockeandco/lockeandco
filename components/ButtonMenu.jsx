@@ -5,18 +5,13 @@ import Button from '@material-ui/core/Button'
 import Grid from '@material-ui/core/Grid'
 import Paper from '@material-ui/core/Paper'
 import IconButton from '@material-ui/core/IconButton'
-import Icon from '@material-ui/core/Icon'
-import classNames from 'classnames'
-import SocialButtons from './SocialButtons'
 
 const styles = theme => ({
   button: {
     margin: theme.spacing.unit,
     color: '#E2DED5',
-    fontFamily: 'OldGrowth',
+    fontFamily: 'Flama',
     fontWeight: 'bold',
-    textTransform: 'unset',
-    fontSize: '0.65em'
   },
   paper: {
     borderRadius: 'unset',
@@ -30,20 +25,22 @@ const styles = theme => ({
     backgroundColor: '#C36D15',
     textAlign: 'center',
   },
-
+  buttonActive: {
+    margin: theme.spacing.unit,
+    color: '#E2DED5',
+    fontFamily: 'Flama',
+  },
   socialIcons: {
     float: 'left',
-    margin: theme.spacing.unit * 2,
+    margin: theme.spacing.unit,
     color: '#E2DED5',
     fontWeight: 'bold',
     position: 'relative',
     fontSize: '20px !important',
-    //paddingLeft: 75,
+    paddingLeft: 75,
     marginRight: '15px',
   },
 })
-
-
 
 function TextButtons(props) {
   const { classes, goToSlide, page } = props
@@ -58,25 +55,29 @@ function TextButtons(props) {
         justify="space-around"
       >
         <Grid item xs>
-<SocialButtons />
+          <Paper className={classes.paper}>
+            <i className={classes.socialIcons + ' fab fa-facebook'} />
+            <i className={classes.socialIcons + ' fab fa-twitter'} />
+            <i className={classes.socialIcons + ' fab fa-instagram'} />
+          </Paper>
         </Grid>
         <Grid item xs>
           <Paper className={page === 4 ? classes.paperActive : classes.paper}>
             <Button
-              className={classes.button}
+              className={page === 4 ? classes.buttonActive : classes.button}
               onClick={() => goToSlide(4)}
             >
-              merchandise
+              Merchandise
             </Button>
           </Paper>
         </Grid>
         <Grid item xs>
           <Paper className={page === 5 ? classes.paperActive : classes.paper}>
             <Button
-              className={classes.button}
+              className={page === 5 ? classes.buttonActive : classes.button}
               onClick={() => goToSlide(5)}
             >
-              stay connected
+              Stay Connected
             </Button>
           </Paper>
         </Grid>
@@ -90,4 +91,3 @@ TextButtons.propTypes = {
 }
 
 export default withStyles(styles)(TextButtons)
-

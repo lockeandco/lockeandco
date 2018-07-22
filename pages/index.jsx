@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
 import { Fullpage, HorizontalSlider, Slide } from 'fullpage-react'
 import Menu from '../components/Menu'
 import Bottom from '../components/BottomMenu'
+import SplitGrid from '../components/SplitGrid'
+
+
 const { changeFullpageSlide, changeHorizontalSlide } = Fullpage
 
 
@@ -89,6 +92,7 @@ class FullpageReact extends React.Component {
 
   render() {
     const { active } = this.state;
+    
 
     const currentActive = active.Fullpage;
     const prevSlide = changeFullpageSlide.bind(null, currentActive - 1);
@@ -136,22 +140,29 @@ class FullpageReact extends React.Component {
 
     const verticalSlides = [
       <Slide style={{backgroundColor: 'blue'}}>
-        <p>Slide 1</p>
+      <SplitGrid />
       </Slide>,
       horizontalSlider,
-      <Slide style={{backgroundColor: 'pink'}}><p>Slide 3</p></Slide>,
+      <Slide><SplitGrid /></Slide>,
       <Slide style={{backgroundColor: 'white'}}><p>Slide 4</p></Slide>,
       <Slide style={{backgroundColor: 'black'}}><p>Slide 5</p></Slide>,
+      <Slide style={{backgroundColor: 'pink'}}><p>Slide 6</p></Slide>,
+      <Slide style={{backgroundColor: 'white'}}><p>Slide 7</p></Slide>,
+      <Slide style={{backgroundColor: 'black'}}><p>Slide 8</p></Slide>,
     ];
     fullPageOptions.slides = verticalSlides;
 
     return (
-      <Fullpage onSlideChangeStart={this.onSlideChangeStart} onSlideChangeEnd={this.onSlideChangeEnd} {...fullPageOptions}>
-      {topNav}
-       <Menu  prevSlide={prevSlide} nextSlide={nextSlide} goToTop={goToTop} goToSlide={goToSlide}/>
-       <Bottom />
+      <Fragment>
+      <Menu  prevSlide={prevSlide} nextSlide={nextSlide} goToTop={goToTop} goToSlide={goToSlide} page={active.Fullpage}/>
+      <Fullpage onSlideChangeStart={this.onSlideChangeStart} onSlideChangeEnd={this.onSlideChangeEnd} {...fullPageOptions} >
+
+
+
 
       </Fullpage>
+      <Bottom prevSlide={prevSlide} nextSlide={nextSlide} goToTop={goToTop} goToSlide={goToSlide} page={active.Fullpage}/>
+      </Fragment>
     );
   }
 }

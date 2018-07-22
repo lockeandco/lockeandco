@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -7,21 +7,21 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
+import Hidden from '@material-ui/core/Hidden'
 import CustomCard from './BottomCard'
 import MenuButtons from './BottomTextButtons'
-import BottomNavigation from './BottomNavigation'
+import SocialButtons from './SocialButtons'
+import Grid from '@material-ui/core/Grid'
+
 const styles = {
   root: {
     flexGrow: 1,
     bottom: 0,
-    position: 'absolute'
+    position: 'absolute',
+    
   },
   flex: {
     flex: 1,
-  },
-  menuButton: {
-    marginLeft: -12,
-    marginRight: 20,
   },
   appBar: {
     top: 'unset',
@@ -49,22 +49,48 @@ const styles = {
       minHeight: 45,
       justifyContent: 'flex-end'
 
-  }
+  },
 };
 
+
+
 function ButtonAppBar(props) {
-  const { classes } = props;
+  const { classes, goToSlide, page } = props;
+  console.log(classes.appBar)
   return (
+    <Fragment>
+    <Hidden smDown>
     <div className={classes.root}>
     <CustomCard />
-      <AppBar className={classes.appBar}>
+      <AppBar position="fixed" className={classes.appBar}>
 
-        <Toolbar className={classes.toolBar} disableGutters={true}>
-            <MenuButtons />
+        <Toolbar className={classes.toolBar} disableGutters={true} >
+            <MenuButtons goToSlide={goToSlide} page={page}/>
         </Toolbar>
       </AppBar>
-
     </div>
+</Hidden>
+<Hidden mdUp>
+    <div className={classes.root}>
+      <AppBar position="fixed" className={classes.appBar} style={{width: '100%', marginRight: 'unset'}}>
+
+        <Toolbar className={classes.toolBar} disableGutters={true} >
+        <Grid
+        container
+        spacing={0}
+        alignItems="center"
+        direction="row"
+        justify="space-around"
+      >
+        <Grid item xs>
+        <SocialButtons />
+        </Grid>
+        </Grid>
+        </Toolbar>
+      </AppBar>
+    </div>
+</Hidden>
+    </Fragment>
   );
 }
 

@@ -26,21 +26,10 @@ const styles = {
     position: 'fixed',
     backgroundPosition: 'center center',
     backgroundSize: 'cover',
-    backgroundImage: `url(/static/lockelogo.png)`
+    backgroundImage: `url(/static/leftCorner.png)`,
+    background: `#D6D1C4`,
+    boxShadow: `0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)`
   },
-  bullet: {
-    display: 'inline-block',
-    margin: '0 2px',
-    transform: 'scale(0.8)',
-  },
-  title: {
-    marginBottom: 16,
-    fontSize: 14,
-  },
-  pos: {
-    marginBottom: 12,
-  },
-
 };
 
 function SimpleCard(props) {

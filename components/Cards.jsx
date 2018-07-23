@@ -33,12 +33,11 @@ const styles = {
 };
 
 function SimpleCard(props) {
-  const { classes } = props;
-  const bull = <span className={classes.bullet}>•</span>;
+  const { classes, goToSlide } = props; 
 
   return (
     <div>
-      <Card className={classes.card}>
+      <Card className={classes.card} onClick={() => goToSlide(0)}>
         <CardContent>
         </CardContent>
         <CardActions>

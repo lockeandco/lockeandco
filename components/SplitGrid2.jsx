@@ -21,7 +21,7 @@ const styles = theme => ({
     height: '100%',
     color: theme.palette.text.secondary,
     flexGrow: 1,
-    borderRadius: 'unset'
+    borderRadius: 'unset',
   },
 })
 
@@ -43,65 +43,52 @@ class InteractiveGrid extends React.Component {
     const { classes } = this.props
     const { alignItems, direction, justify, alignContent } = this.state
     return (
-        <Grid container className={classes.root}> 
-          <Grid item xs={12}>
-            <Grid
+      <Grid container className={classes.root}>
+        <Grid item xs={12}>
+          <Grid
             container
             spacing={16}
             className={classes.demo}
             alignItems={alignItems}
             direction={'row'}
             justify={justify}
-          alignContent={alignContent}
+            alignContent={alignContent}
           >
-          <Grid
-          item
-xs={6}
-style={{padding: 'unset'}}
-        >
-
-                  <Paper
-                    className={classes.paper}
-                    style={{ backgroundPosition: 'center',
-                    backgroundSize: 'cover',
-                    backgroundImage: `url(/static/AxeBottle.jpg)`,
-                    backgroundRepeat: 'no-repeat'}}
-                  >
-                    {`1`}
-                  </Paper>
-                  </Grid>
-            <Grid item xs={6} style={{padding: 'unset'}}>
-                <Paper
-                  className={classes.paper}
-                  style={{ height: '50%', backgroundPosition: 'center',
-                  backgroundSize: 'cover',
-                  backgroundImage: `url(/static/Bottle_Handrail.jpg)`,
-                  backgroundRepeat: 'no-repeat'}}
-                >
-                  {`2`}
-                </Paper>
+            <Grid item xs={6} style={{ padding: 'unset' }}>
               <Paper
                 className={classes.paper}
-                style={{ height: '50%',backgroundPosition: 'center',
-                backgroundSize: 'cover',
-                backgroundImage: `url(/static/Bottle_Creek.jpg)`,
-                backgroundRepeat: 'no-repeat'}}
+                style={{
+                  backgroundPosition: 'center',
+                  backgroundSize: 'cover',
+                  backgroundImage: `url(/static/Bottle_Flyfishing.jpg)`,
+                  backgroundRepeat: 'no-repeat',
+                }}
               >
-                {`3`}
+                {`1`}
               </Paper>
-              </Grid>
-      
+            </Grid>
+            <Grid item xs={6} style={{ padding: 'unset' }}>
+              <Paper
+                className={classes.paper}
+                style={{
+                  backgroundPosition: 'center',
+                  backgroundSize: 'cover',
+                  backgroundImage: `url(/static/Bottle_Cheersing.jpg)`,
+                  backgroundRepeat: 'no-repeat',
+                }}
+              >
+                {`2`}
+              </Paper>
             </Grid>
           </Grid>
-
-          
         </Grid>
-      );
-    }
+      </Grid>
+    )
   }
-  
-  InteractiveGrid.propTypes = {
-    classes: PropTypes.object.isRequired,
-  };
-  
-  export default withStyles(styles)(InteractiveGrid);
+}
+
+InteractiveGrid.propTypes = {
+  classes: PropTypes.object.isRequired,
+}
+
+export default withStyles(styles)(InteractiveGrid)

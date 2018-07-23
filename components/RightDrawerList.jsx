@@ -11,6 +11,15 @@ import DraftsIcon from '@material-ui/icons/Drafts'
 import IconButton from '@material-ui/core/IconButton'
 import Icon from '@material-ui/core/Icon'
 import classNames from 'classnames'
+import {
+  MapSearch,
+  BookOpenPageVariant,
+  AccountMultiple,
+  Keg,
+  At,
+  Cart,
+  Email,
+} from 'mdi-material-ui'
 import { compose } from 'ramda'
 
 const styles = theme => ({
@@ -54,81 +63,66 @@ const styles = theme => ({
 const linkList = [
   {
     name: 'co-founders',
-    page: '1',
+    page: 0,
+    icon: <AccountMultiple style={{ color: '#C36D15' }} />,
   },
   {
     name: 'our story',
-    page: '2',
-    icon: 'fas fa-book-open',
+    page: 1,
+    icon: <BookOpenPageVariant style={{ color: '#C36D15' }} />,
   },
   {
     name: 'spirits',
-    page: '3',
+    page: 2,
+    icon: <Keg style={{ color: '#C36D15' }} />,
   },
   {
     name: 'find us',
-    page: '4',
+    page: 3,
+    icon: <MapSearch style={{ color: '#C36D15' }} />,
   },
   {
     name: 'contact us',
-    page: '5',
+    page: 4,
+    icon: <Email style={{ color: '#C36D15' }} />,
   },
   {
     name: 'stay connected',
-    page: '6',
+    page: 5,
+    icon: <At style={{ color: '#C36D15' }} />,
   },
   {
     name: 'merchandise',
-    page: '7',
+    page: 6,
+    icon: <Cart style={{ color: '#C36D15' }} />,
   },
 ]
 
 function RightDrawerList(props) {
   const { classes, page, goToSlide, toggleDrawer } = props
+  console.log('RDL', props)
+  console.log('Page', page)
   return (
     <div className={classes.root}>
       <List component="nav">
-        <ListItem
-          button
-          onClick={() =>
-            compose(
-              toggleDrawer(false),
-              goToSlide
-            )(1)
-          }
-          className={page === 1 ? classes.buttonActive : classes.button}
-        >
-          <ListItemIcon>
-            <PeopleIcon className={classes.iconColor} />
-          </ListItemIcon>
-          <ListItemText disableTypography primary="co-founders" />
-        </ListItem>
-        <ListItem
-          button
-          onClick={() =>
-            compose(
-              toggleDrawer(false),
-              goToSlide
-            )(2)
-          }
-          className={page === 2 ? classes.buttonActive : classes.button}
-        >
-          <ListItemIcon>
-            <Icon
-              className={classNames(classes.iconColor, 'fas fa-book-open')}
-            />
-          </ListItemIcon>
-          <ListItemText disableTypography primary="our story" />
-        </ListItem>
-      </List>
-      <Divider />
-      <List component="nav">
-        <ListItem button>
-          <ListItemText primary="Trash" />
-        </ListItem>
-        <ListItem button component="a" href="#simple-list">
-          <ListItemText primary="Spam" />
-        </ListItem>
+        {linkList.map(item => (
+          <ListItem
+            key={item.name}
+            button
+            onClick={() =>
+              compose(
+                toggleDrawer(false),
+                goToSlide
+              )(item.page)
+            }
+            className={
+              page === item.page ? classes.buttonActive : classes.button
+            }
+          >
+            <ListItemIcon>{item.icon}</ListItemIcon>
+            <ListItemText disableTypography primary={item.name} />
+          </ListItem>
+        ))}
       </List>
     </div>
   )
@@ -139,3 +133,30 @@ RightDrawerList.propTypes = {
 }
 
 export default withStyles(styles)(RightDrawerList)
+
+// <ListItem
+// button
+// onClick={() =>
+//   compose(
+//     toggleDrawer(false),
+//     goToSlide
+//   )(2)
+// }
+// className={page === 2 ? classes.buttonActive : classes.button}
+// >
+// <ListItemIcon>
+//   <Icon
+//     className={classNames(classes.iconColor, 'fas fa-book-open')}
+//   />
+// </ListItemIcon>
+// <ListItemText disableTypography primary="our story" />
+// </ListItem>
+// </List>
+// <Divider />
+// <List component="nav">
+// <ListItem button>
+// <ListItemText primary="Trash" />
+// </ListItem>
+// <ListItem button component="a" href="#simple-list">
+// <ListItemText primary="Spam" />
+// </ListItem>

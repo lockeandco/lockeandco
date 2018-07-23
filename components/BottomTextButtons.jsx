@@ -61,20 +61,20 @@ function TextButtons(props) {
 <SocialButtons />
         </Grid>
         <Grid item xs>
-          <Paper className={page === 4 ? classes.paperActive : classes.paper}>
+          <Paper className={page === 5 ? classes.paperActive : classes.paper}>
             <Button
               className={classes.button}
-              onClick={() => goToSlide(4)}
+              onClick={() => goToSlide(5)}
             >
               merchandise
             </Button>
           </Paper>
         </Grid>
         <Grid item xs>
-          <Paper className={page === 5 ? classes.paperActive : classes.paper}>
+          <Paper className={page === 6 ? classes.paperActive : classes.paper}>
             <Button
               className={classes.button}
-              onClick={() => goToSlide(5)}
+              onClick={() => goToSlide(6)}
             >
               stay connected
             </Button>

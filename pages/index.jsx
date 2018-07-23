@@ -1,9 +1,12 @@
 import React, { Fragment } from 'react';
 
 import { Fullpage, HorizontalSlider, Slide } from 'fullpage-react'
+import createHistory from 'history/createBrowserHistory'
 import Menu from '../components/Menu'
 import Bottom from '../components/BottomMenu'
 import SplitGrid from '../components/SplitGrid'
+import Cofounders from '../components/Cofounders'
+import SplitGrid2 from '../components/SplitGrid2'
 
 
 const { changeFullpageSlide, changeHorizontalSlide } = Fullpage
@@ -17,7 +20,7 @@ const fullPageOptions = {
   // for touchStart/touchEnd/mobile scrolling
   // represents the level of force required to generate a slide change on mobile, 0 is default
   touchSensitivity: 2,
-  scrollSpeed: 300,
+  scrollSpeed: 500,
   resetSlides: true,
   hideScrollBars: true,
   enableArrowKeys: true,
@@ -55,7 +58,8 @@ class FullpageReact extends React.Component {
       active: {
         Fullpage: 0,
         horizontalSlider1: 0
-      }
+      },
+      history: {}
     };
 
     this.onSlideChangeStart = this.onSlideChangeStart.bind(this);
@@ -87,11 +91,15 @@ class FullpageReact extends React.Component {
   }
 
   componentDidMount() {
-
-  }
+    const history = createHistory()
+this.setState({
+  history: history
+})
+  } 
 
   render() {
-    const { active } = this.state;
+    const { active, history} = this.state;
+    console.log(history)
     
 
     const currentActive = active.Fullpage;
@@ -140,12 +148,12 @@ class FullpageReact extends React.Component {
 
     const verticalSlides = [
       <Slide style={{backgroundColor: 'blue'}}>
-      <SplitGrid />
+      <Cofounders />
       </Slide>,
-      horizontalSlider,
       <Slide><SplitGrid /></Slide>,
-      <Slide style={{backgroundColor: 'white'}}><p>Slide 4</p></Slide>,
+      <Slide style={{backgroundColor: 'white'}}><SplitGrid2 /></Slide>,
       <Slide style={{backgroundColor: 'black'}}><p>Slide 5</p></Slide>,
+      horizontalSlider,
       <Slide style={{backgroundColor: 'pink'}}><p>Slide 6</p></Slide>,
       <Slide style={{backgroundColor: 'white'}}><p>Slide 7</p></Slide>,
       <Slide style={{backgroundColor: 'black'}}><p>Slide 8</p></Slide>,

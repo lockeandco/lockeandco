@@ -30,11 +30,11 @@ const styles = {
   }
 }
 
-function ButtonAppBar(props) {
+function TopMenu(props) {
   const { classes, goToSlide, page } = props;
   return (
     <div className={classes.root}>
-    <CustomCard />
+    <CustomCard goToSlide={goToSlide} />
       <AppBar position="fixed" className={classes.appBar}>
 
         <Toolbar className={classes.toolBar} disableGutters={true} >
@@ -51,8 +51,8 @@ function ButtonAppBar(props) {
   );
 }
 
-ButtonAppBar.propTypes = {
+TopMenu.propTypes = {
   classes: PropTypes.object.isRequired,
 }
 
-export default withStyles(styles)(ButtonAppBar)
+export default withStyles(styles)(TopMenu)

@@ -8,6 +8,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel'
 import RadioGroup from '@material-ui/core/RadioGroup'
 import Radio from '@material-ui/core/Radio'
 import Paper from '@material-ui/core/Paper'
+import Hidden from '@material-ui/core/Hidden'
 
 const styles = theme => ({
   root: {
@@ -56,7 +57,7 @@ class InteractiveGrid extends React.Component {
           >
           <Grid
           item
-xs={6}
+          xs={12} sm={6}
 style={{padding: 'unset'}}
         >
 
@@ -70,7 +71,8 @@ style={{padding: 'unset'}}
                     {`1`}
                   </Paper>
                   </Grid>
-            <Grid item xs={6} style={{padding: 'unset'}}>
+                  <Hidden xsDown>
+            <Grid item  xs={12} sm={6} style={{padding: 'unset'}}>
                 <Paper
                   className={classes.paper}
                   style={{ height: '50%', backgroundPosition: 'center',
@@ -90,7 +92,7 @@ style={{padding: 'unset'}}
                 {`3`}
               </Paper>
               </Grid>
-      
+      </Hidden>
             </Grid>
           </Grid>
 

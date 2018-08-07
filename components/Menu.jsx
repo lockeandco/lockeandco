@@ -9,6 +9,7 @@ import Hidden from '@material-ui/core/Hidden'
 import CustomCard from './Cards'
 import MenuButtons from './TextButtons'
 import RightDrawer from './RightDrawer'
+import Router from 'next/router'
 const styles = {
   root: {
     flexGrow: 1,
@@ -32,6 +33,7 @@ const styles = {
 
 function TopMenu(props) {
   const { classes, goToSlide, page } = props;
+
   return (
     <div className={classes.root}>
     <CustomCard goToSlide={goToSlide} />

@@ -1,10 +1,13 @@
 import React from 'react';
+import Link from 'next/link'
+import Router from 'next/router'
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid'
 import Paper from '@material-ui/core/Paper'
-
+import { compose } from 'ramda'
+import { title } from 'change-case'
 
 const styles = theme => ({
   button: {
@@ -30,24 +33,25 @@ const styles = theme => ({
   },
 })
 
-const TopMenu = [
+const links = [
 {
     name: 'co-founders',
-    order: '1',
+    order: 0,
 },
 {
   name: 'our story',
-  order: '2',
+  order: 1,
 },
 {
   name: 'spirits',
-  order: '3',
+  order: 2,
 },{
   name: 'find us',
-  order: '4',
+  order: 3,
 }
 ]
 
+const addDash = str => str.split(' ').length > 1 ? str.split(' ').join('-') : str
 function TextButtons(props) {
   const { classes, goToSlide, page } = props;
   console.log(props)
@@ -55,34 +59,18 @@ function TextButtons(props) {
 <React.Fragment>
 <Grid container spacing={0} alignItems='center' direction='row' justify='space-around' >
 
-<Grid item xs>
-<Paper className={page === 0 ? classes.paperActive : classes.paper}>
-<Button className={page === 0 ? classes.button : classes.button} onClick={() => goToSlide(0)} >
-co-founders
+{links.map(item => {
+console.log(item, page, page === item.order)
+  return(
+<Grid  key={item.name} item xs>
+<Paper className={page === item.order ? classes.paperActive : classes.paper}>
+<Button className={classes.button} onClick={() => Router.push(`/`.concat(addDash(item.name)))} >
+{item.name}
 </Button>
 </Paper>
-</Grid>
-<Grid item xs>
-<Paper className={page === 1 ? classes.paperActive : classes.paper}>
-<Button className={page === 1 ? classes.button : classes.button} onClick={() => goToSlide(1)} >
-our story
-</Button>
-</Paper>
-</Grid>
-<Grid item xs>
-<Paper className={page === 2 ? classes.paperActive : classes.paper}>
-<Button className={page === 2 ? classes.button : classes.button} onClick={() => goToSlide(2)}>
-spirits
-</Button>
-</Paper>
-</Grid>
-<Grid item xs>
-<Paper className={page === 3 ? classes.paperActive : classes.paper}>
-<Button className={page === 3 ? classes.button : classes.button} onClick={() => goToSlide(3)}>
-find us
-</Button>
-</Paper>
-</Grid>
+</Grid>)
+  })}
+
 
 </Grid>
 

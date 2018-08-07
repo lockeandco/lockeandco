@@ -40,7 +40,7 @@ class InteractiveGrid extends React.Component {
   }
 
   render() {
-    const { classes } = this.props
+    const { classes, children } = this.props
     const { alignItems, direction, justify, alignContent } = this.state
     return (
       <Grid container className={classes.root}>
@@ -54,20 +54,20 @@ class InteractiveGrid extends React.Component {
             justify={justify}
             alignContent={alignContent}
           >
-            <Grid item xs={6} style={{ padding: 'unset' }}>
+            <Grid item xs={12} sm={6} style={{ padding: 'unset' }}>
               <Paper
                 className={classes.paper}
-                style={{
+                style={{ 
                   backgroundPosition: 'center',
                   backgroundSize: 'cover',
                   backgroundImage: `url(/static/Bottle_Flyfishing.jpg)`,
                   backgroundRepeat: 'no-repeat',
                 }}
               >
-                {`1`}
+                {children}
               </Paper>
             </Grid>
-            <Grid item xs={6} style={{ padding: 'unset' }}>
+            <Grid item  xs={12} sm={6} style={{ padding: 'unset' }}>
               <Paper
                 className={classes.paper}
                 style={{

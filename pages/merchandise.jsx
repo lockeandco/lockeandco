@@ -2,7 +2,7 @@ import React from 'react'
 import Page from '../components/Page1x26040'
 import Paper from '@material-ui/core/Paper'
 
-const OurStory = props => (
+const Merchandise = props => (
   <div
     style={{
       // height: height,
@@ -24,12 +24,21 @@ const OurStory = props => (
     <Page
       {...props}
       pictures={{
-        left: `/static/Ski_Goggles_Close_up.jpg`,
-        rightTop60: `/static/Moonshine_Jars.jpg`,
-        rightBottom40: `/static/Hats.jpg`,
+        left: {
+          url: `/static/Ski_Goggles_Close_up.jpg`,
+          size: '100%',
+        },
+        rightTop: {
+          url: `/static/Moonshine_Jars.jpg`,
+          size: '60%',
+        },
+        rightBottom: {
+          url: `/static/Hats.jpg`,
+          size: '40%',
+        },
       }}
     />
   </div>
 )
 
-export default OurStory
+export default Merchandise

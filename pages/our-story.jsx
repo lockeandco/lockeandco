@@ -13,11 +13,11 @@ const OurStory = props => (
         },
         rightTop: {
           url: `/static/Moonshine_Jars.jpg`,
-          size: '40%',
+          size: '60%',
         },
         rightBottom: {
           url: `/static/Group_with_Sparklers.jpg`,
-          size: '60%',
+          size: '40%',
         },
       }}
     />

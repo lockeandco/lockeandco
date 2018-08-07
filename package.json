@@ -11,18 +11,26 @@
   "dependencies": {
     "@material-ui/core": "^1.4.1",
     "@material-ui/icons": "^2.0.0",
+    "change-case": "^3.0.2",
     "fullpage-react": "^3.0.33",
     "history": "^4.7.2",
+    "hoist-non-react-statics": "^3.0.1",
     "jss": "^9.8.7",
     "mdi-material-ui": "^5.2.0",
     "next": "^6.1.1",
+    "next-page-transitions": "^1.0.0-alpha.4",
     "prop-types": "^15.6.2",
     "ramda": "^0.25.0",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
+    "react-easy-swipe": "^0.0.16",
+    "react-fns": "^1.4.0",
     "react-jss": "^8.6.1",
-    "recompose": "^0.27.1",
-    "rxjs": "^6.2.2"
+    "react-pose": "^2.2.0",
+    "react-swipeable": "^4.3.0",
+    "recompose": "^0.28.1",
+    "rxjs": "^6.2.2",
+    "scroll-swipe": "^0.0.17"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.3",

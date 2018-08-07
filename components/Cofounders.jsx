@@ -47,7 +47,7 @@ class InteractiveGrid extends React.Component {
   }
 
   render() {
-    const { classes } = this.props
+    const { classes, children } = this.props
     const { alignItems, direction, justify } = this.state
     return (
       <Grid
@@ -55,7 +55,9 @@ class InteractiveGrid extends React.Component {
         className={classes.root}
         style={{ paddingTop: 100 }}
         alignItems="stretch"
-      />
+      >
+      {children}
+      </Grid>
     )
   }
 }

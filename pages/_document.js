@@ -1,11 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Document, { Head, Main, NextScript } from 'next/document';
-import flush from 'styled-jsx/server';
+import React from 'react'
+import PropTypes from 'prop-types'
+import Document, { Head, Main, NextScript } from 'next/document'
+import flush from 'styled-jsx/server'
 
 class MyDocument extends Document {
   render() {
-    const { pageContext } = this.props;
+    const { pageContext } = this.props
 
     return (
       <html lang="en" dir="ltr">
@@ -21,25 +21,32 @@ class MyDocument extends Document {
             }
           />
           {/* PWA primary color */}
-          <meta name="theme-color" content={pageContext.theme.palette.primary.main} />
+          <meta
+            name="theme-color"
+            content={pageContext.theme.palette.primary.main}
+          />
           <link
             rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"
           />
+          <link rel="stylesheet" href="/static/app.css" />
           <link
-          rel="stylesheet"
-          href="/static/app.css"
-        />
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
-          <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous"/>
-  
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          />
+          <link
+            rel="stylesheet"
+            href="https://use.fontawesome.com/releases/v5.1.1/css/all.css"
+            integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ"
+            crossOrigin="anonymous"
+          />
         </Head>
         <body>
           <Main />
           <NextScript />
         </body>
       </html>
-    );
+    )
   }
 }
 
@@ -67,20 +74,19 @@ MyDocument.getInitialProps = ctx => {
   // 4. page.render
 
   // Render app and page and get the context of the page with collected side effects.
-  let pageContext;
+  let pageContext
   const page = ctx.renderPage(Component => {
     const WrappedComponent = props => {
-      pageContext = props.pageContext;
-      return <Component {...props} />;
-    };
+      pageContext = props.pageContext
+      return <Component {...props} />
+    }
 
     WrappedComponent.propTypes = {
       pageContext: PropTypes.object.isRequired,
-    };
+    }
 
-    return WrappedComponent;
-  });
-
+    return WrappedComponent
+  })
   return {
     ...page,
     pageContext,
@@ -90,12 +96,14 @@ MyDocument.getInitialProps = ctx => {
         <style
           id="jss-server-side"
           // eslint-disable-next-line react/no-danger
-          dangerouslySetInnerHTML={{ __html: pageContext.sheetsRegistry.toString() }}
+          dangerouslySetInnerHTML={{
+            __html: pageContext.sheetsRegistry.toString(),
+          }}
         />
         {flush() || null}
       </React.Fragment>
     ),
-  };
-};
+  }
+}
 
-export default MyDocument;
+export default MyDocument

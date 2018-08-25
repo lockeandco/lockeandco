@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react'
-import Page from '../components/Page1x15050'
-const AgeVerification = props => (
+import Page from '../components/Page1x100'
+import HomeText from '../markdown/homepage.mdx'
+const Homepage = props => (
   <Fragment>
     <div
       style={{
@@ -26,11 +27,14 @@ const AgeVerification = props => (
     <Page
       {...props}
       pictures={{
-        left: `/static/Golden_Aspen_Tree_Grove.jpg`,
-        right: `/static/tools.jpg`,
+        left: `/static/Snow_Hikers.jpg`,
       }}
-    />
+    >
+      <div style={{ textAlign: 'center', paddingTop: '15%' }}>
+        <HomeText />
+      </div>
+    </Page>
   </Fragment>
 )
 
-export default AgeVerification
+export default Homepage

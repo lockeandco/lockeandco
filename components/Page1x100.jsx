@@ -9,8 +9,6 @@ import compose from 'ramda/src/compose'
 import { withWindowSize } from 'react-fns'
 import withTransition from './withTransition'
 import Typography from '@material-ui/core/Typography'
-import AgeVerification from './AgeVerification'
-import Test from '../markdown/about-us.mdx'
 
 const styles = theme => ({
   root: {},
@@ -69,7 +67,7 @@ const styles = theme => ({
   },
 })
 
-const PageLayout1x26040 = props => {
+const PageLayout1x100 = props => {
   const { classes, pictures } = props
   return (
     <Grid
@@ -81,79 +79,29 @@ const PageLayout1x26040 = props => {
       justify={'center'}
       wrap="nowrap"
     >
-      <Grid item xs={12} sm={6}>
-        <Grid
-          container
-          spacing={0}
-          className={classes.demo}
-          direction="column"
-          alignItems={'stretch'}
-          // direction={'column'}
-          //wrap="nowrap"
-        >
-          <Grid
-            item
-            xs={12}
-            sm={12}
-            style={{
-              // height: height,
-              paddingTop: 60,
-              backgroundPosition: 'center',
-              backgroundSize: 'cover',
-              backgroundImage: `url(${pictures.left})`,
-              backgroundRepeat: 'no-repeat',
-              textAlign: 'center',
-            }}
-          >
-            <div className={classes.paper}>
-              <Test />
-              <Typography variant="display3" className={classes.typoHeader}>
-                locke + cO
-              </Typography>
-              <Typography variant="title" className={classes.typosubHeader}>
-                welcome you are in good company here
-              </Typography>
-            </div>
-            <AgeVerification />
-          </Grid>
-        </Grid>
+      <Grid
+        item
+        xs={12}
+        style={{
+          // height: height,
+          paddingTop: 60,
+          backgroundPosition: 'center',
+          backgroundSize: 'cover',
+          backgroundImage: `url(${pictures.left})`,
+          backgroundRepeat: 'no-repeat',
+        }}
+      >
+        {props.children}
       </Grid>
-      <Hidden xsDown>
-        <Grid item xs={12} xs={6}>
-          <Grid
-            container
-            spacing={0}
-            className={classes.demo}
-            alignItems={'stretch'}
-            direction={'row'}
-            // justify={'center'}
-            //wrap="nowrap"
-          >
-            <Grid
-              item
-              xs={12}
-              sm={12}
-              style={{
-                padding: 'unset',
-                //height: '100%',
-                backgroundPosition: 'center',
-                backgroundSize: 'cover',
-                backgroundImage: `url(${pictures.right})`,
-                backgroundRepeat: 'no-repeat',
-              }}
-            />
-          </Grid>
-        </Grid>
-      </Hidden>
     </Grid>
   )
 }
 
-PageLayout1x26040.propTypes = {
+PageLayout1x100.propTypes = {
   classes: PropTypes.object.isRequired,
 }
 
 export default compose(
   withStyles(styles),
   withTransition
-)(PageLayout1x26040)
+)(PageLayout1x100)

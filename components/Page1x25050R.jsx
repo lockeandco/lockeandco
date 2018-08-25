@@ -137,7 +137,7 @@ const PageLayout1x26040 = props => {
             style={{
               height: '60%',
               padding: 'unset',
-              backgroundPosition: '-400 300',
+              backgroundPosition: 'center',
               backgroundSize: 'cover',
               backgroundImage: `url(${pictures.rightBottom50})`,
               backgroundRepeat: 'no-repeat',

@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
-import Page from '../components/Page1x15050'
-const AgeVerification = props => (
+import Page from '../components/Page1x16040'
+const FindUs = props => (
   <Fragment>
     <div
       style={{
@@ -11,7 +11,7 @@ const AgeVerification = props => (
         height: '100%',
         width: '100%',
         top: 0,
-        left: 0,
+        left:0,
         position: 'absolute',
         justifyContent: 'center',
         alignItems: 'center',
@@ -23,14 +23,14 @@ const AgeVerification = props => (
         zIndex: -1000,
       }}
     />
+
     <Page
       {...props}
       pictures={{
-        left: `/static/Golden_Aspen_Tree_Grove.jpg`,
-        right: `/static/tools.jpg`,
+        left: `/static/Truck.jpg`,
       }}
     />
   </Fragment>
 )
 
-export default AgeVerification
+export default FindUs

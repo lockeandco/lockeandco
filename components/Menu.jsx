@@ -21,36 +21,33 @@ const styles = {
     width: `calc(100% - 275px)`,
     marginLeft: '275px',
     maxHeight: 45,
-    backgroundColor: 'rgb(36, 55, 70)'
-
+    backgroundColor: 'rgb(36, 55, 70)',
   },
   toolBar: {
-      minHeight: 45,
-      justifyContent: 'space-around'
-
-  }
+    minHeight: 45,
+    justifyContent: 'space-around',
+  },
 }
 
 function TopMenu(props) {
-  const { classes, goToSlide, page } = props;
+  const { classes, goToSlide, page } = props
 
   return (
     <div className={classes.root}>
-    <CustomCard goToSlide={goToSlide} />
+      <CustomCard goToSlide={goToSlide} />
       <AppBar position="fixed" className={classes.appBar}>
-
-        <Toolbar className={classes.toolBar} disableGutters={true} >
-        <Hidden smDown>
-            <MenuButtons goToSlide={goToSlide} page={page}/>
-        </Hidden>
-        <Hidden mdUp>
-        <CustomCard />
-        <RightDrawer goToSlide={goToSlide} page={page} />
-      </Hidden>
+        <Toolbar className={classes.toolBar} disableGutters={true}>
+          <Hidden smDown>
+            <MenuButtons goToSlide={goToSlide} page={page} />
+          </Hidden>
+          <Hidden mdUp>
+            <CustomCard />
+            <RightDrawer goToSlide={goToSlide} page={page} />
+          </Hidden>
         </Toolbar>
       </AppBar>
     </div>
-  );
+  )
 }
 
 TopMenu.propTypes = {

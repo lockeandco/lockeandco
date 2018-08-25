@@ -17,7 +17,7 @@ const Background = () => (
       backgroundColor: 'transparent',
       backgroundPosition: 'center',
       backgroundSize: 'cover',
-      backgroundImage: `url(/static/Seal_Blue.png)`,
+      backgroundImage: `url(/static/Seal_Blue.jpg)`,
       backgroundRepeat: 'no-repeat',
       zIndex: -1000,
     }}

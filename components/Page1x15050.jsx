@@ -9,6 +9,8 @@ import compose from 'ramda/src/compose'
 import { withWindowSize } from 'react-fns'
 import withTransition from './withTransition'
 import Typography from '@material-ui/core/Typography'
+import AgeVerification from './AgeVerification'
+import Test from '../markdown/about-us.mdx'
 
 const styles = theme => ({
   root: {},
@@ -26,29 +28,44 @@ const styles = theme => ({
     flexGrow: 1,
     borderRadius: 'unset',
     backgroundColor: 'transparent',
-    overflow: 'auto',
-    marginBottom: `calc(20% + 90px)`,
-    marginTop: `calc(15% + 90px)`,
-    marginRight: `calc((100% - 300px)/2)`,
-    marginLeft: `calc((100% - 300px)/2)`,
+    // overflow: 'auto',
+    // marginBottom: `calc(20% + 90px)`,
+    // marginTop: `calc(15% + 90px)`,
+    // marginRight: `calc((100% - 300px)/2)`,
+    // marginLeft: `calc((100% - 300px)/2)`,
     //overflow: 'auto'
-    minWidth: 300,
+    // minWidth: 300,
     //display: 'flex',
-    backgroundColor: 'rgba(0,0,0,.9)',
+    backgroundColor: 'transparent',
     borderRadius: 0,
-    opacity: 0.7,
-    padding: '1em',
+    //opacity: 0.7,
+    paddingTop: '40%',
     //flexGrow: 1,
     //flexDirection: 'column',
-    boxShadow: `0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)`,
+    //boxShadow: `0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)`,
     //margin: theme.spacing.unit,
-    color: '#E2DED5',
-    fontFamily: 'Flama',
+    //color: '#E2DED5',
+    //fontFamily: 'Flama',
     overflow: 'auto',
   },
   typo: {
     color: '#E2DED5',
     fontFamily: 'Flama',
+  },
+  typoHeader: {
+    color: '#E2DED5',
+    fontFamily: 'OldGrowth',
+    fontSize: '3rem',
+    overflow: 'hidden',
+    textShadow: '2px 2px #ff0000',
+    margin: 5,
+  },
+  typosubHeader: {
+    color: '#E2DED5',
+    fontFamily: 'OldGrowth',
+    fontSize: '1.1rem',
+    overflow: 'hidden',
+    // margin: 5,
   },
 })
 
@@ -69,9 +86,9 @@ const PageLayout1x26040 = props => {
           container
           spacing={0}
           className={classes.demo}
-          //   alignItems={'stretch'}
+          direction="column"
+          alignItems={'stretch'}
           // direction={'column'}
-          //   justify={'center'}
           //wrap="nowrap"
         >
           <Grid
@@ -85,26 +102,19 @@ const PageLayout1x26040 = props => {
               backgroundSize: 'cover',
               backgroundImage: `url(${pictures.left})`,
               backgroundRepeat: 'no-repeat',
+              textAlign: 'center',
             }}
           >
-            <Paper className={classes.paper}>
-              <Typography variant="body2" className={classes.typo} paragraph>
-                Locke + Co. was born out of lasting, trusted friend- ships,
-                proven industry expertise and classic moonshiner innovation.
+            <div className={classes.paper}>
+              <Test />
+              <Typography variant="display3" className={classes.typoHeader}>
+                locke + cO
               </Typography>
-              <Typography variant="body2" className={classes.typo} paragraph>
-                The western spirit of exploration and invention drives us and
-                shapes our approach to being a premium, small-batch Colorado
-                distiller.
+              <Typography variant="title" className={classes.typosubHeader}>
+                welcome you are in good company here
               </Typography>
-              <Typography variant="body2" className={classes.typo} paragraph>
-                We create innovative, seasonal products and traditional whiskey
-                varieties, employing unique aging, ingredients, and water to
-                deliver flavorfully crafted, superior artisan whiskeys and
-                moonshines. We are proud to bring them to market and hope you
-                enjoy them with your friends.
-              </Typography>
-            </Paper>
+            </div>
+            <AgeVerification />
           </Grid>
         </Grid>
       </Grid>

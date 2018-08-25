@@ -86,26 +86,7 @@ const PageLayout1x26040 = props => {
               backgroundImage: `url(${pictures.left})`,
               backgroundRepeat: 'no-repeat',
             }}
-          >
-            <Paper className={classes.paper}>
-              <Typography variant="body2" className={classes.typo} paragraph>
-                Locke + Co. was born out of lasting, trusted friend- ships,
-                proven industry expertise and classic moonshiner innovation.
-              </Typography>
-              <Typography variant="body2" className={classes.typo} paragraph>
-                The western spirit of exploration and invention drives us and
-                shapes our approach to being a premium, small-batch Colorado
-                distiller.
-              </Typography>
-              <Typography variant="body2" className={classes.typo} paragraph>
-                We create innovative, seasonal products and traditional whiskey
-                varieties, employing unique aging, ingredients, and water to
-                deliver flavorfully crafted, superior artisan whiskeys and
-                moonshines. We are proud to bring them to market and hope you
-                enjoy them with your friends.
-              </Typography>
-            </Paper>
-          </Grid>
+          />
         </Grid>
       </Grid>
       <Hidden xsDown>

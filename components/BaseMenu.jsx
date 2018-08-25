@@ -14,10 +14,9 @@ const BaseMenu = ({ classes, goToSlide, page, children }) => (
     <CustomCard />
     <AppBar position="fixed" className={classes.appBar}>
       <Toolbar className={classes.toolBar} disableGutters={true}>
-        {' '}
-        {children}{' '}
-      </Toolbar>{' '}
-    </AppBar>{' '}
+        {children}
+      </Toolbar>
+    </AppBar>
   </div>
 )
 

@@ -11,7 +11,7 @@ const AgeVerification = props => (
         height: '100%',
         width: '100%',
         top: 0,
-        left:0,
+        left: 0,
         position: 'absolute',
         justifyContent: 'center',
         alignItems: 'center',
@@ -23,7 +23,6 @@ const AgeVerification = props => (
         zIndex: -1000,
       }}
     />
-
     <Page
       {...props}
       pictures={{

@@ -61,41 +61,4 @@ function App() {
   )
 }
 
-/*
- *
- *
- * Below here are irrelevant
- * implementation details...
- *
- *
- */
-
-function Switch({ on, className = '', ...props }) {
-  return (
-    <div className="toggle">
-      <input className="toggle-input" type="checkbox" />
-      <button
-        className={`${className} toggle-btn ${
-          on ? 'toggle-btn-on' : 'toggle-btn-off'
-        }`}
-        aria-expanded={on}
-        {...props}
-      />
-    </div>
-  )
-}
-
-ReactDOM.render(
-  <div
-    style={{
-      marginTop: 40,
-      display: 'flex',
-      justifyContent: 'center',
-      flexDirection: 'column',
-      textAlign: 'center',
-    }}
-  >
-    <App />
-  </div>,
-  document.getElementById('root')
-)
+*-9

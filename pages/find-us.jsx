@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react'
-import Page from '../components/Page1x16040'
-const FindUs = props => (
+import Page from '../components/Page1x100'
+import HomeText from '../markdown/homepage.mdx'
+const Homepage = props => (
   <Fragment>
     <div
       style={{
@@ -11,7 +12,7 @@ const FindUs = props => (
         height: '100%',
         width: '100%',
         top: 0,
-        left:0,
+        left: 0,
         position: 'absolute',
         justifyContent: 'center',
         alignItems: 'center',
@@ -23,14 +24,13 @@ const FindUs = props => (
         zIndex: -1000,
       }}
     />
-
     <Page
       {...props}
       pictures={{
-        left: `/static/Truck.jpg`,
+        left: `/static/Ski_Boots1.jpg`,
       }}
     />
   </Fragment>
 )
 
-export default FindUs
+export default Homepage

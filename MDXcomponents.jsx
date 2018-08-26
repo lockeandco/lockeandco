@@ -29,6 +29,13 @@ const style = theme => ({
     //overflow: 'hidden',
     margin: 50,
   },
+  typoH3HeaderSmallDevice: {
+    color: 'rgb(36, 55, 70)',
+    fontFamily: 'OldGrowth',
+    fontSize: '1.5rem',
+    //overflow: 'hidden',
+    margin: 50,
+  },
   typoBigHeader: {
     color: '#E2DED5',
     fontFamily: 'OldGrowth',
@@ -49,66 +56,81 @@ const style = theme => ({
 
 const H1 = withStyles(style)(props => {
   const { classes, ...other } = props
+  console.log('h1')
   return (
     <React.Fragment>
+      <br style={{ display: 'none' }} />
       <MediaQuery maxDeviceWidth={400}>
         <Typography
           variant="display1"
-          className={classes.typoBigHeader}
-          paragraph
+          className={classes.typoBigHeaderSmallDevice}
           noWrap
-          component="h1"
           {...other}
         />
       </MediaQuery>
-      <MediaQuery minDeviceWidth={400}>
+      <br style={{ display: 'none' }} />
+      <MediaQuery minDeviceWidth={401}>
         <Typography
           variant="display3"
           className={classes.typoBigHeader}
-          paragraph
           noWrap
-          component="h1"
           {...other}
         />
       </MediaQuery>
+      <br style={{ display: 'none' }} />
     </React.Fragment>
   )
 })
 const H2 = withStyles(style)(props => {
   const { classes, ...other } = props
+  console.log('h2')
   return (
     <React.Fragment>
+      <br style={{ display: 'none' }} />
       <MediaQuery maxDeviceWidth={400}>
         <Typography
           variant="title"
           className={classes.typoHeaderSmallDevice}
-          paragraph
-          component="h3"
+          // component="h3"
           {...other}
         />
       </MediaQuery>
-      <MediaQuery minDeviceWidth={400}>
+      <br style={{ display: 'none' }} />
+      <MediaQuery minDeviceWidth={401}>
         <Typography
-          variant="title"
+          variant="subheading"
           className={classes.typoHeader}
-          paragraph
-          component="h3"
+          // component="h3"
           {...other}
         />
       </MediaQuery>
+      <br style={{ display: 'none' }} />
     </React.Fragment>
   )
 })
 const H3 = withStyles(style)(props => {
   const { classes, ...other } = props
+  console.log('h3')
   return (
-    <Typography
-      variant="title"
-      className={classes.typoH3Header}
-      paragraph
-      component="h3"
-      {...other}
-    />
+    <React.Fragment>
+      <br style={{ display: 'none' }} />
+      <MediaQuery maxDeviceWidth={400}>
+        <Typography
+          className={classes.typoH3HeaderSmallDevice}
+          //variant="title"
+          {...other}
+        />
+      </MediaQuery>
+      <br style={{ display: 'none' }} />
+      <MediaQuery minDeviceWidth={401}>
+        <Typography
+          className={classes.typoH3Header}
+          variant="subheading"
+          {...other}
+        />
+      </MediaQuery>
+      <br style={{ display: 'none' }} />
+    </React.Fragment>
   )
 })
 const Paragraph = withStyles(style)(props => {

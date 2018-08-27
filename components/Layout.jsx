@@ -3,7 +3,7 @@ import Menu from './Menu'
 import Bottom from '../components/BottomMenu'
 
 const Layout = props => {
-  console.log(props)
+  //console.log(props)
   return (
     <Fragment>
       <Menu />

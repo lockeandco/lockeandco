@@ -57,7 +57,7 @@ const styles = theme => ({
     fontFamily: 'OldGrowth',
     fontWeight: 'bold',
     textTransform: 'unset',
-    fontSize: '0.6em',
+    fontSize: '0.7em',
   },
 })
 

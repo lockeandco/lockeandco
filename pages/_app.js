@@ -11,12 +11,17 @@ import { MDXProvider } from '@mdx-js/tag'
 import { withCookies, Cookies } from 'react-cookie'
 import { instanceOf } from 'prop-types'
 import components from '../MDXcomponents'
-//use react-responsive!
+
 
 class MyApp extends App {
   constructor(props) {
     super(props)
     this.pageContext = getPageContext()
+    const { cookies } = props
+    this.state = {
+      isVerified: cookies.get('isVerified') || false,
+      rememberme: cookies.get('rememberme') || false,
+    }
   }
 
   static propTypes = {
@@ -24,15 +29,26 @@ class MyApp extends App {
   }
   pageContext = null
 
+  handleVerified(verified) {
+    const { cookies } = this.props
+
+    cookies.set('isVerified', verified, { path: '/' })
+    this.setState({ isVerified })
+  }
+
+  handleRemember(remember) {
+    const { cookies } = this.props
+
+    cookies.set('rememberme', remember, { path: '/' })
+    this.setState({ remember })
+  }
   componentDidMount() {
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector('#jss-server-side')
     if (jssStyles && jssStyles.parentNode) {
       jssStyles.parentNode.removeChild(jssStyles)
     }
-    this.props.cookies.set('rememberme', true, { path: '/' })
-    this.props.cookies.set('isVerified', false, { path: '/' })
-    localStorage.setItem('isVerified', 'true')
+
     // Router.beforePopState(({ url, as, options }) => {
     //   // I only want to allow these two routes!
     //   console.log('BPS', url, as, options)

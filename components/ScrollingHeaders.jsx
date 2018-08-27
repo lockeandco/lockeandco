@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react'
 import ReactDOM from 'react-dom'
 import { Keyframes, animated, config } from 'react-spring'
-import { TimingAnimation, Easing } from 'react-spring/dist/addons'
+import { TimingAnimation, Easing } from 'react-spring/dist/addons.cjs'
 import delay from 'delay'
 import Typography from '@material-ui/core/Typography'
 import { withStyles } from '@material-ui/core/styles'

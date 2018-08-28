@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react'
 import Page from '../components/Page1x100'
-import HomeText from '../markdown/homepage.mdx'
 import checkCookie from '../components/NoCookie'
 import cookie from 'cookie'
 import Check from '../components/NoCookie'

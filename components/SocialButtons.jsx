@@ -76,7 +76,7 @@ const styles = theme => ({
 const socialIcons = [
   {
     icon: c => <Facebook className={c} />,
-    href: 'https://www.facebook.com/LockeandCoDistillery/',
+    href: 'https://www.facebook.com/LockeandCoDistilling/',
     name: 'Facebook',
   },
   {

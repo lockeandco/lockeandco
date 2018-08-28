@@ -23,31 +23,53 @@ const style = theme => ({
   },
 })
 
-const Content2 = Keyframes.Spring({
-  peek: [
-    // { delay: 2000, from: { x: 0, opacity: 0 },
-    // to: { x: 1, opacity: 1 }, config: config.slow },
-    {
-      delay: 2000,
-      from: { x: 0, opacity: 1 },
-      to: { x: -400, opacity: 1 },
-      config: { ...config.molasses, duration: 9000 },
-    },
-    {
-      from: { x: 100, opacity: 1 },
-      to: { x: -300, opacity: 1 },
-      config: { ...config.molasses, duration: 9000 },
-    },
-    {
-      from: { x: 100, opacity: 0 },
-      to: { x: 0, opacity: 1 },
-      config: { ...config.molasses, duration: 5000 },
-    },
-  ],
-})
+// const Content2 = Keyframes.Spring({
+//   peek: [
+//     {
+//       delay: 2000,
+//       from: { x: 0, opacity: 1 },
+//       to: { x: -350, opacity: 1 },
+//       config: { ...config.molasses, duration: 9000 },
+//     },
+//     {
+//       from: { x: 100, opacity: 1 },
+//       to: { x: -300, opacity: 1 },
+//       config: { ...config.molasses, duration: 9000 },
+//     },
+//     {
+//       from: { x: 100, opacity: 0 },
+//       to: { x: 0, opacity: 1 },
+//       config: { ...config.molasses, duration: 5000 },
+//     },
+//   ],
+// })
 
 const Animation = props => {
-  const { classes, text } = props
+  const { classes, text, springConfig } = props
+
+  const Content2 = springConfig
+    ? Keyframes.Spring(springConfig)
+    : Keyframes.Spring({
+        peek: [
+          {
+            delay: 2000,
+            from: { x: 0, opacity: 1 },
+            to: { x: -350, opacity: 1 },
+            config: { ...config.molasses, duration: 9000 },
+          },
+          {
+            from: { x: 100, opacity: 1 },
+            to: { x: -300, opacity: 1 },
+            config: { ...config.molasses, duration: 9000 },
+          },
+          {
+            from: { x: 100, opacity: 0 },
+            to: { x: 0, opacity: 1 },
+            config: { ...config.molasses, duration: 5000 },
+          },
+        ],
+      })
+
   return (
     <Content2 reset native state="peek" impl={TimingAnimation}>
       {({ x, ...other }) => {

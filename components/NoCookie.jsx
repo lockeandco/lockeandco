@@ -22,7 +22,16 @@ const styles = theme => ({
     fontFamily: 'OldGrowth',
     fontSize: '1.1rem',
     overflow: 'hidden',
+    textShadow: '1px 1px black',
     margin: '10px 5px 25px 5px',
+  },
+  typoTitle: {
+    color: '#E2DED5',
+    fontFamily: 'Flama',
+    fontSize: '1.0rem',
+    overflow: 'hidden',
+    textShadow: '1px 1px black',
+    margin: '25px 5px 25px 5px',
   },
 })
 
@@ -67,6 +76,9 @@ const CheckAge = withStyles(styles)(props => {
         </Typography>
         <Typography variant="title" className={classes.typosubHeader}>
           you are in good company here
+        </Typography>
+        <Typography variant="title" className={classes.typoTitle}>
+          Are you 21 years of age?
         </Typography>
         <AgeVerification {...other} />
       </Page>

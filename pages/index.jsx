@@ -7,6 +7,8 @@ import Typography from '@material-ui/core/Typography'
 import { withStyles } from '@material-ui/core/styles'
 import Background from '../components/TransitionBackground'
 import compose from 'ramda/src/compose'
+import Hidden from '@material-ui/core/Hidden'
+import { config } from 'react-spring'
 
 const styles = theme => ({
   typo: {
@@ -31,11 +33,11 @@ const styles = theme => ({
     //fontSize: '6rem',
     //overflow: 'hidden',
     margin: 50,
-    marginBottom:  100,
+    marginBottom: 100,
     [theme.breakpoints.down('xs')]: {
       fontSize: '1.1rem',
       marginTop: 50,
-      marginBottom:  0,
+      marginBottom: 0,
     },
   },
   typoBigHeader: {
@@ -55,7 +57,7 @@ const styles = theme => ({
     paddingTop: '15%',
     overflow: 'hidden',
     [theme.breakpoints.up('sm')]: {
-      paddingTop: 150
+      paddingTop: 150,
     },
   },
 })
@@ -71,9 +73,7 @@ const Homepage = props => {
           left: `/static/Snow_Hikers.jpg`,
         }}
       >
-        <div
-          className={classes.container}
-        >
+        <div className={classes.container}>
           <Typography variant="title" className={classes.typoHeader}>
             we believe great spirits bring people together to share
           </Typography>
@@ -84,8 +84,35 @@ const Homepage = props => {
           <Typography className={classes.typoH3Header} variant="title">
             you're welcome here.
           </Typography>
-          <div style={{marginTop: '-50px'}}>
-          <Headers text="welcome everyone everyone welcome" />
+          <div style={{ marginTop: '-50px' }}>
+            <Hidden mdUp>
+              <Headers text="welcome everyone everyone welcome" />
+            </Hidden>
+            <Hidden smDown>
+              <Headers
+                text="welcome everyone everyone welcome"
+                springConfig={{
+                  peek: [
+                    {
+                      delay: 2000,
+                      from: { x: 0, opacity: 1 },
+                      to: { x: -150, opacity: 1 },
+                      config: { ...config.molasses, duration: 10000 },
+                    },
+                    {
+                      from: { x: 100, opacity: 1 },
+                      to: { x: -150, opacity: 1 },
+                      config: { ...config.molasses, duration: 10000 },
+                    },
+                    {
+                      from: { x: 100, opacity: 0 },
+                      to: { x: 0, opacity: 1 },
+                      config: { ...config.molasses, duration: 5000 },
+                    },
+                  ],
+                }}
+              />
+            </Hidden>
           </div>
         </div>
       </Page>

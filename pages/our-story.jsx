@@ -94,7 +94,7 @@ const styles = theme => ({
     color: '#E2DED5',
     fontFamily: 'Flama',
     [theme.breakpoints.up('sm')]: {
-  fontSize: '1.2rem',
+      fontSize: '1.1rem',
     },
   },
 })

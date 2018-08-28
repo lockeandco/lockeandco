@@ -21,7 +21,7 @@ const styles = theme => ({
   demo: {
     height: `100%`,
     flexGrow: 1,
-    overflow: 'auto',
+  //  overflow: 'auto',
     minHeight: '100vh',
   },
   // demo: {
@@ -145,7 +145,7 @@ const Page = props => {
               }}
             >
               <Grid container spacing={16}>
-                <Grid item xs zeroMinWidth>
+                <Grid item xs zeroMinWidth style={{overflow: 'hidden'}}>
                   <Headers text="offical sponsors of a good time" />
                 </Grid>
               </Grid>
@@ -178,7 +178,7 @@ const Page = props => {
               }}
             >
               <Grid container spacing={16}>
-                <Grid item xs zeroMinWidth>
+                <Grid item xs zeroMinWidth style={{overflow: 'hidden'}}>
                   <Headers text="offical sponsors of a good time" />
                 </Grid>
               </Grid>

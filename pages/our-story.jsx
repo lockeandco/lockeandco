@@ -12,6 +12,9 @@ const styles = theme => ({
   demo: {
     height: '100vh',
     flexGrow: 1,
+    minWidth: '100vw',
+    minHeight: '100vh',
+    width: '100%',
     //  overflow: 'hidden',
   },
   paper1: {

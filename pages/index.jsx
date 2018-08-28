@@ -61,7 +61,7 @@ const Homepage = props => {
           left: `/static/Snow_Hikers.jpg`,
         }}
       >
-        <div style={{ textAlign: 'center', paddingTop: '15%' }}>
+        <div style={{ textAlign: 'center', paddingTop: '15%', overflow: 'hidden' }}>
           <Typography variant="title" className={classes.typoHeader}>
             we believe great spirits bring people together to share
           </Typography>
@@ -72,7 +72,6 @@ const Homepage = props => {
           <Typography className={classes.typoH3Header} variant="title">
             you're welcome here.
           </Typography>
-
           <Headers text="welcome everyone everyone welcome" />
         </div>
       </Page>

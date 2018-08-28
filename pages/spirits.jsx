@@ -118,7 +118,7 @@ const Spirits = props => {
         }}
       >
         <Grid container spacing={16}>
-          <Grid item xs zeroMinWidth>
+          <Grid item xs zeroMinWidth style={{overflow: 'hidden'}}>
             <Headers text="a taste like none other" />
           </Grid>
         </Grid>

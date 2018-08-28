@@ -16,7 +16,7 @@ const styles = theme => ({
   demo: {
     height: `100%`,
     flexGrow: 1,
-    overflow: 'auto',
+   //overflow: 'auto',
     minHeight: '100vh',
   },
   paper: {
@@ -83,9 +83,9 @@ const Page = props => {
             container
             spacing={0}
             className={classes.demo}
-            //   alignItems={'stretch'}
-            // direction={'column'}
-            //   justify={'center'}
+            //alignItems={'stretch'}
+            //direction={'column'}
+            //justify={'center'}
             //wrap="nowrap"
           >
             <Grid
@@ -133,9 +133,10 @@ const Page = props => {
               xs={12}
               sm={12}
               //style={{ padding: 'unset' }}
-              className={classes.demo}
+              //className={classes.demo}
               style={{
                 height: '60%',
+                overflow: 'auto',
                 padding: 'unset',
                 backgroundPosition: 'center',
                 backgroundSize: 'cover',
@@ -144,7 +145,7 @@ const Page = props => {
               }}
             >
               <Grid container spacing={16}>
-                <Grid item xs zeroMinWidth>
+                <Grid item xs zeroMinWidth style={{marginLeft: 0, overflow: 'hidden'}}>
                   <Headers text="a taste like none other" />
                 </Grid>
               </Grid>

@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react'
 import Page from '../components/Page1x25050R'
+
 const Spirits = props => (
   <Fragment>
     <div

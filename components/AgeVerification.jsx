@@ -25,23 +25,47 @@ const styles = theme => ({
     color: 'rgb(195, 109, 21)',
     fontWeight: 600,
   },
+
+  label: { color: '#E2DED5', fontWeight: 700 },
 })
 
 function ContainedButtons(props) {
-  const { classes } = props
+  const { classes, rememberMe, handleRememberMe, handleVerified } = props
+
   return (
     <React.Fragment>
       <div>
-        <Button variant="contained" className={classes.yesButton}>
+        <Button
+          variant="contained"
+          className={classes.yesButton}
+          onClick={handleVerified}
+        >
           Heck Yes!
         </Button>
-        <Button variant="contained" className={classes.noButton}>
+        <Button
+          variant="contained"
+          className={classes.noButton}
+          onClick={() =>
+            window
+              ? window.location.assign('https://www.responsibility.org/')
+              : null
+          }
+        >
           Not Yet
         </Button>
       </div>
-      <FormGroup row style={{ alignContent: 'center' }}>
+      <FormGroup row style={{ justifyContent: 'center', marginTop: 10 }}>
         <FormControlLabel
-          control={<Checkbox checked={true} value="checkedA" />}
+          control={
+            <Checkbox
+              checked={rememberMe}
+              value="rememberMe"
+              onChange={() => handleRememberMe(rememberMe)}
+            />
+          }
+          classes={{
+            label: classes.label,
+          }}
           label="Remember Me"
         />
       </FormGroup>

@@ -12,7 +12,6 @@ import { withCookies, Cookies } from 'react-cookie'
 import { instanceOf } from 'prop-types'
 import components from '../MDXcomponents'
 
-
 class MyApp extends App {
   constructor(props) {
     super(props)
@@ -23,6 +22,13 @@ class MyApp extends App {
       rememberme: cookies.get('rememberme') || false,
     }
   }
+  // static async getInitialProps(x, y, z) {
+  //   console.log(Object.keys(x))
+  //   console.log(x.ctx)
+  //   // const { isVerified, rememberme } = await cookie.parse(req.headers.cookie)
+  //   // if (!rememberme) redirect({ res, req }, '/spirits')
+  //   return { isVerified: false, rememberme: true }
+  // }
 
   static propTypes = {
     cookies: instanceOf(Cookies).isRequired,
@@ -62,10 +68,10 @@ class MyApp extends App {
     // })
   }
   render() {
-    const { Component, pageProps, router } = this.props
+    const { Component, pageProps, router, cookies } = this.props
 
     // console.log('PCX', this.pageContext)
-    // console.log(this)
+
     return (
       <Container>
         <CookiesProvider>
@@ -94,6 +100,7 @@ class MyApp extends App {
                     pageContext={this.pageContext}
                     {...pageProps}
                     {...router}
+                    cookies={cookies}
                   />
                 </Layout>
               </MDXProvider>

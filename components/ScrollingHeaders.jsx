@@ -34,7 +34,7 @@ const Content2 = Keyframes.Spring({
       config: { ...config.molasses, duration: 9000 },
     },
     {
-      from: { x: 200, opacity: 1 },
+      from: { x: 100, opacity: 1 },
       to: { x: -300, opacity: 1 },
       config: { ...config.molasses, duration: 9000 },
     },

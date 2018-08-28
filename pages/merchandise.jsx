@@ -1,5 +1,5 @@
 import React from 'react'
-import Page from '../components/Page1x26040'
+import Page from '../components/Page1x26040M'
 import Paper from '@material-ui/core/Paper'
 import Headers from '../components/ScrollingHeaders'
 import Typography from '@material-ui/core/Typography'
@@ -42,11 +42,13 @@ const Merchandise = props => {
             size: '40%',
           },
         }}
-      >
-        <div style={{ textAlign: 'center', paddingTop: '25%' }}>
-          <Headers text="new arrivals. shop now" />
-        </div>
-      </Page>
+      />
+      <div style={{ 
+        textAlign: 'center', 
+      top: '40%', 
+      position: 'fixed' }}>
+        <Headers text="new arrivals. shop now" />
+      </div>
     </React.Fragment>
   )
 }

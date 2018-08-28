@@ -49,6 +49,7 @@ const styles = theme => ({
     //display: 'flex',
     //backgroundColor: 'rgba(0,0,0,.9)',
     borderRadius: 0,
+    paddingBottom: 200, 
     //opacity: 0.7,
     padding: '1em',
     //flexGrow: 1,
@@ -70,7 +71,7 @@ const styles = theme => ({
       // //  transform: 'translateY(-50%)',
       // paddingBottom: `calc(15% + 90px)`,
       // paddingTop: `calc(15% + 90px)`,
-      paddingBottom: 200, 
+
       paddingRight: `10%`,
       paddingLeft: `10%`,
       paddingTop: 150,

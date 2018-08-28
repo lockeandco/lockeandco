@@ -67,6 +67,7 @@ const styles = theme => ({
       // //  transform: 'translateY(-50%)',
       // paddingBottom: `calc(15% + 90px)`,
       // paddingTop: `calc(15% + 90px)`,
+      paddingBottom: 200, 
       paddingRight: `10%`,
       paddingLeft: `10%`,
       paddingTop: 150,

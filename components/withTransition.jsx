@@ -71,7 +71,7 @@ class Index extends React.Component {
       scrollSensitivity: 4,
       touchSensitivity: 4,
       scrollPreventDefault: false,
-      touchPreventDefault: true,
+      touchPreventDefault: false,
       scrollCb: this.onScrollAction,
       touchCb: this.onScrollAction,
     })

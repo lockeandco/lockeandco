@@ -90,8 +90,8 @@ function withCookie(Component) {
       const { cookies } = props
 
       this.state = {
-        isVerified: cookies.get('isVerified') === 'true' ? true : false,
-        remember: cookies.get('rememberme') === 'true' ? true : false,
+        isVerified: false,
+        remember: false,
       }
     }
     async check() {
@@ -107,7 +107,6 @@ function withCookie(Component) {
 
     handleVerified(verified) {
       const { cookies } = this.props
-
 
       cookies.set('isVerified', true, {
         path: '/',
@@ -127,13 +126,21 @@ function withCookie(Component) {
     render() {
       console.log('STATE', this.state)
       return this.state.isVerified ? (
-        <Component {...this.props} />
+        <Component
+          {...this.props}
+          style={{
+            visibility: this.state.isVerifed ? 'visibile' : 'hidden',
+          }}
+        />
       ) : (
         <CheckAge
           {...this.props}
           handleVerified={this.handleVerified.bind(this)}
           handleRememberMe={this.handleRemember.bind(this)}
           rememberMe={this.state.remember}
+          style={{
+            visibility: !this.state.isVerified ? 'visibile' : 'collapse',
+          }}
         />
       )
     }

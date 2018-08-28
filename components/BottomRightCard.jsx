@@ -37,7 +37,7 @@ const styles = {
 }
 
 function SimpleCard(props) {
-  const { classes, goToSlide, page } = props
+  const { classes, route, Router } = props
 
   return (
     <Card className={classes.card}>
@@ -47,7 +47,7 @@ function SimpleCard(props) {
           onClick={() =>
             compose(
               toggleDrawer(false),
-              goToSlide
+              Router.push('/contact-us')
             )(page)
           }
         >

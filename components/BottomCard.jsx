@@ -39,8 +39,8 @@ const styles = theme => ({
     justifyContent: 'center',
     direction: 'row',
     '&:lastChild': {
-      padding: 'unset'
-    }
+      padding: 'unset',
+    },
   },
   button: {
     color: 'rgb(36, 55, 70)',
@@ -64,29 +64,36 @@ const styles = theme => ({
   content: {
     padding: 'unset',
     '&:last-child': {
-      padding: 'unset'
-    }
+      padding: 'unset',
+    },
   },
   itemText: {
-    padding: 'unset', marginRight: 2, marginLeft: 2
-  }
+    padding: 'unset',
+    marginRight: 2,
+    marginLeft: 2,
+  },
 })
 function SimpleCard(props) {
-  const { classes, goToSlide, page } = props
+  const { classes, Router, route } = props
 
   return (
-    <Card className={classes.card} style={{ backgroundColor: page === 4 && '#C36D15'}}>
-      <CardContent className={classes.content} >
-          <ListItem
-            button
-            onClick={() =>
-                goToSlide(4)
-            }
-            className={classes.button}
-          >
-            <Avatar src="/static/leaf.png" />
-            <ListItemText disableTypography primary="we'd love to hear from you"  className={classes.itemText}/>
-          </ListItem>
+    <Card
+      className={classes.card}
+      style={{ backgroundColor: route === 'contact-us' && '#C36D15' }}
+    >
+      <CardContent className={classes.content}>
+        <ListItem
+          button
+          onClick={() => Router.push('/contact-us')}
+          className={classes.button}
+        >
+          <Avatar src="/static/leaf.png" />
+          <ListItemText
+            disableTypography
+            primary="we'd love to hear from you"
+            className={classes.itemText}
+          />
+        </ListItem>
       </CardContent>
     </Card>
   )

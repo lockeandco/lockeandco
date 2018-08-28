@@ -12,6 +12,7 @@ import CustomCard from './BottomCard'
 import MenuButtons from './BottomTextButtons'
 import SocialButtons from './SocialButtons'
 import Grid from '@material-ui/core/Grid'
+import Router from 'next/router'
 
 const styles = {
   root: {
@@ -56,7 +57,7 @@ function ButtonAppBar(props) {
     <Fragment>
       <Hidden smDown>
         <footer className={classes.root}>
-          <CustomCard route={route} />
+          <CustomCard Router={Router} route={route} />
           <AppBar position="fixed" className={classes.appBar}>
             <Toolbar className={classes.toolBar} disableGutters={true}>
               <MenuButtons route={route} />

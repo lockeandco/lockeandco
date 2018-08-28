@@ -6,6 +6,7 @@ import { withStyles } from '@material-ui/core/styles'
 import Background from '../components/TransitionBackground'
 import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
+import Headers from '../components/ScrollingHeaders'
 
 const styles = theme => ({
   root: {},
@@ -14,7 +15,7 @@ const styles = theme => ({
     flexGrow: 1,
     //  overflow: 'hidden',
   },
-  paper: {
+  paper1: {
     //padding: theme.spacing.unit * 2,
     height: '100%',
     //color: theme.palette.text.secondary,
@@ -22,10 +23,54 @@ const styles = theme => ({
     borderRadius: 'unset',
     backgroundColor: 'transparent',
     overflow: 'auto',
-    paddingBottom: `calc(10% + 90px)`,
-    paddingTop: `calc(10% + 90px)`,
+    paddingBottom: ``,
+    paddingTop: `calc(15% + 90px)`,
     paddingRight: `calc((100% - 300px)/2)`,
     paddingLeft: `calc((100% - 300px)/2)`,
+  },
+  paper: {
+    //  display: 'flex',
+    //padding: theme.spacing.unit * 2,
+    //height: '100%',
+    //color: theme.palette.text.secondary,
+    flexGrow: 1,
+    borderRadius: 'unset',
+    backgroundColor: 'transparent',
+    overflow: 'auto',
+    // marginBottom: `calc(20% + 90px)`,
+    // marginTop: `calc(15% + 90px)`,
+    // marginRight: `calc((100% - 300px)/2)`,
+    // marginLeft: `calc((100% - 300px)/2)`,
+    margin: 10,
+    //overflow: 'auto'
+    // minWidth: 300,
+    //display: 'flex',
+    //backgroundColor: 'rgba(0,0,0,.9)',
+    borderRadius: 0,
+    //opacity: 0.7,
+    padding: '1em',
+    //flexGrow: 1,
+    //flexDirection: 'column',
+    //boxShadow: `0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)`,
+    boxShadow: 'unset',
+    //margin: theme.spacing.unit,
+    color: '#E2DED5',
+    fontFamily: 'Flama',
+    overflow: 'auto',
+    [theme.breakpoints.up('sm')]: {
+      height: '100%',
+      //color: theme.palette.text.secondary,
+      flexGrow: 1,
+      borderRadius: 'unset',
+      backgroundColor: 'transparent',
+      overflow: 'auto',
+      //   top: '50%',
+      // //  transform: 'translateY(-50%)',
+      // paddingBottom: `calc(15% + 90px)`,
+      // paddingTop: `calc(15% + 90px)`,
+      paddingRight: `10%`,
+      paddingLeft: `10%`,
+    },
   },
   card: {
     // marginTop: `calc(15% + 90px)`,
@@ -35,18 +80,22 @@ const styles = theme => ({
     //display: 'flex',
     backgroundColor: 'rgba(0,0,0,.7)',
     borderRadius: 0,
-    //opacity: 0.7,
+    // opacity: 0.7,
     padding: '1em',
     //flexGrow: 1,
     //flexDirection: 'column',
     boxShadow: `0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)`,
     //margin: theme.spacing.unit,
+    [theme.breakpoints.up('sm')]: {
+      transform: 'translateY(50%)',
+    },
   },
   typo: {
     color: '#E2DED5',
     fontFamily: 'Flama',
   },
 })
+
 const CoFounders = props => {
   const { classes, ...other } = props
   return (

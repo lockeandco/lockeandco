@@ -9,13 +9,20 @@ import compose from 'ramda/src/compose'
 import { withWindowSize } from 'react-fns'
 import withTransition from './withTransition'
 import Typography from '@material-ui/core/Typography'
+import Headers from '../components/ScrollingHeaders'
 
 const styles = theme => ({
   root: {},
+  // demo: {
+  //   height: '100vh',
+  //   flexGrow: 1,
+  //   //  overflow: 'hidden',
+  // },
   demo: {
-    height: '100vh',
+    height: `100%`,
     flexGrow: 1,
-    //  overflow: 'hidden',
+    overflow: 'auto',
+    minHeight: '100vh',
   },
   // demo: {
   //   height: `100%`,
@@ -69,34 +76,35 @@ const Page = props => {
       justify={'center'}
       wrap="nowrap"
     >
-      <Grid item xs={12} sm={6}>
-        <Grid
-          container
-          spacing={0}
-          className={classes.demo}
-          //   alignItems={'stretch'}
-          // direction={'column'}
-          //   justify={'center'}
-          //wrap="nowrap"
-        >
+      <Hidden xsDown>
+        <Grid item xs={12} sm={6}>
           <Grid
-            item
-            xs={12}
-            sm={12}
-            style={{
-              // height: height,
-              //paddingTop: 60,
-              backgroundPosition: 'center',
-              backgroundSize: 'cover',
-              backgroundImage: `url(${pictures.left})`,
-              backgroundRepeat: 'no-repeat',
-            }}
+            container
+            spacing={0}
+            className={classes.demo}
+            //   alignItems={'stretch'}
+            // direction={'column'}
+            //   justify={'center'}
+            //wrap="nowrap"
           >
-            {props.children}
+            <Grid
+              item
+              xs={12}
+              sm={12}
+              style={{
+                // height: height,
+                //paddingTop: 60,
+                backgroundPosition: 'center',
+                backgroundSize: 'cover',
+                backgroundImage: `url(${pictures.left})`,
+                backgroundRepeat: 'no-repeat',
+              }}
+            >
+              {props.children}
+            </Grid>
           </Grid>
         </Grid>
-      </Grid>
-      <Hidden xsDown>
+
         <Grid item xs={12} xs={6}>
           <Grid
             container
@@ -126,7 +134,7 @@ const Page = props => {
               xs={12}
               sm={12}
               //style={{ padding: 'unset' }}
-              //className={classes.paper}
+              className={classes.bottomdemo}
               style={{
                 height: '60%',
                 padding: 'unset',
@@ -135,7 +143,47 @@ const Page = props => {
                 backgroundImage: `url(${pictures.rightBottom50})`,
                 backgroundRepeat: 'no-repeat',
               }}
-            />
+            >
+              <Grid container spacing={16}>
+                <Grid item xs zeroMinWidth>
+                  <Headers text="offical sponsors of a good time" />
+                </Grid>
+              </Grid>
+            </Grid>
+          </Grid>
+        </Grid>
+      </Hidden>
+      <Hidden smUp>
+        <Grid item xs={12}>
+          <Grid
+            container
+            spacing={0}
+            className={classes.demo}
+            //   alignItems={'stretch'}
+            // direction={'column'}
+            //   justify={'center'}
+            //wrap="nowrap"
+          >
+            <Grid
+              item
+              xs={12}
+              sm={12}
+              style={{
+                // height: height,
+                //paddingTop: 60,
+                backgroundPosition: 'center',
+                backgroundSize: 'cover',
+                backgroundImage: `url(${pictures.left})`,
+                backgroundRepeat: 'no-repeat',
+              }}
+            >
+              <Grid container spacing={16}>
+                <Grid item xs zeroMinWidth>
+                  <Headers text="offical sponsors of a good time" />
+                </Grid>
+              </Grid>
+              {props.children}
+            </Grid>
           </Grid>
         </Grid>
       </Hidden>

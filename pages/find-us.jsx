@@ -4,7 +4,7 @@ import checkCookie from '../components/NoCookie'
 import { withStyles } from '@material-ui/core/styles'
 import Background from '../components/TransitionBackground'
 import compose from 'ramda/src/compose'
-
+import Headers from '../components/ScrollingHeaders'
 const styles = theme => ({})
 const FindUs = props => (
   <Fragment>
@@ -14,7 +14,11 @@ const FindUs = props => (
       pictures={{
         left: `/static/Ski_Boots1.jpg`,
       }}
-    />
+    >
+    <div style={{ textAlign: 'center', paddingTop: '20%' }}>
+    <Headers text="a taste like none other" />
+  </div>
+    </Page>
   </Fragment>
 )
 

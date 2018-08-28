@@ -13,11 +13,16 @@ import Typography from '@material-ui/core/Typography'
 const styles = theme => ({
   root: {},
   demo: {
-    height: `100%`,
+    height: '100vh',
     flexGrow: 1,
-    overflow: 'auto',
-    minHeight: '100vh',
+    //  overflow: 'hidden',
   },
+  // demo: {
+  //   height: `100%`,
+  //   flexGrow: 1,
+  //   overflow: 'auto',
+  //   minHeight: '100vh',
+  // },
   paper: {
     //  display: 'flex',
     //padding: theme.spacing.unit * 2,
@@ -52,7 +57,7 @@ const styles = theme => ({
   },
 })
 
-const PageLayout1x26040 = props => {
+const Page = props => {
   const { classes, pictures } = props
   return (
     <Grid
@@ -80,31 +85,14 @@ const PageLayout1x26040 = props => {
             sm={12}
             style={{
               // height: height,
-              paddingTop: 60,
+              //paddingTop: 60,
               backgroundPosition: 'center',
               backgroundSize: 'cover',
               backgroundImage: `url(${pictures.left})`,
               backgroundRepeat: 'no-repeat',
             }}
           >
-            <Paper className={classes.paper}>
-              <Typography variant="body2" className={classes.typo} paragraph>
-                Locke + Co. was born out of lasting, trusted friend- ships,
-                proven industry expertise and classic moonshiner innovation.
-              </Typography>
-              <Typography variant="body2" className={classes.typo} paragraph>
-                The western spirit of exploration and invention drives us and
-                shapes our approach to being a premium, small-batch Colorado
-                distiller.
-              </Typography>
-              <Typography variant="body2" className={classes.typo} paragraph>
-                We create innovative, seasonal products and traditional whiskey
-                varieties, employing unique aging, ingredients, and water to
-                deliver flavorfully crafted, superior artisan whiskeys and
-                moonshines. We are proud to bring them to market and hope you
-                enjoy them with your friends.
-              </Typography>
-            </Paper>
+            {props.children}
           </Grid>
         </Grid>
       </Grid>
@@ -155,11 +143,11 @@ const PageLayout1x26040 = props => {
   )
 }
 
-PageLayout1x26040.propTypes = {
+Page.propTypes = {
   classes: PropTypes.object.isRequired,
 }
 
 export default compose(
   withStyles(styles),
   withTransition
-)(PageLayout1x26040)
+)(Page)

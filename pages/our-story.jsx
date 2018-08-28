@@ -6,7 +6,6 @@ import Paper from '@material-ui/core/Paper'
 import { withStyles } from '@material-ui/core/styles'
 import compose from 'ramda/src/compose'
 import checkCookie from '../components/NoCookie'
-import Background from '../components/TransitionBackground'
 
 const styles = theme => ({
   root: {},
@@ -34,9 +33,9 @@ const styles = theme => ({
     // marginLeft: `calc(25%)`,
     minWidth: 200,
     //display: 'flex',
-    backgroundColor: 'rgba(0,0,0,.9)',
+    backgroundColor: 'rgba(0,0,0,.7)',
     borderRadius: 0,
-    opacity: 0.7,
+   // opacity: 0.7,
     padding: '1.5em',
     //flexGrow: 1,
     //flexDirection: 'column',
@@ -73,20 +72,22 @@ const OurStory = props => {
       >
         <Paper className={classes.paper}>
           <div className={classes.card}>
-            <Typography>
+            <Typography variant="body1" paragraph className={classes.typo}>
               The Locke’s family roots in Colorado moonshining go back several
               generations. Owen Locke kept the craft tradition alive with an
               early knack for brewing that continued through college to graduate
-              school, where he reconnected with Rick Talley. The high school
-              friends and lacrosse teammates immediately recognized that their
-              collaborative styles complimented each other well, working through
-              MBA degrees together at the University of Denver’s Daniels College
-              of Business as hand sale experts for Beam Suntory. It didn’t take
-              them long to realize they could create something bolder and wilder
-              than the premier spirits they offered at countless tastings. In
-              2010, the team bought a 23-gallon still that turned a garage hobby
-              into a lifestyle with their first whiskey batches aged in small
-              barrels.
+              school, where he reconnected with Rick Talley.
+            </Typography>
+            <Typography variant="body1" paragraph className={classes.typo}>
+              The high school friends and lacrosse teammates immediately
+              recognized that their collaborative styles complimented each other
+              well, working through MBA degrees together at the University of
+              Denver’s Daniels College of Business as hand sale experts for Beam
+              Suntory. It didn’t take them long to realize they could create
+              something bolder and wilder than the premier spirits they offered
+              at countless tastings. In 2010, the team bought a 23-gallon still
+              that turned a garage hobby into a lifestyle with their first
+              whiskey batches aged in small barrels.
             </Typography>
           </div>
         </Paper>

@@ -10,13 +10,13 @@ const style = theme => ({
   typoBigHeader: {
     color: '#E2DED5',
     fontFamily: 'OldGrowth',
-    fontSize: '3rem',
+    fontSize: '5rem',
     //overflow: 'hidden',
     marginTop: 20,
     whiteSpace: 'nowrap',
     [theme.breakpoints.down('xs')]: {
-      marginTop: 'calc(100vh * .10)',
-      fontsize: '1.8rem',
+      marginTop: 'calc(100vh * .15)',
+      fontSize: '3rem',
     },
     //textOverflow: 'ellipsis',
   },

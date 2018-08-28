@@ -14,6 +14,7 @@ const style = theme => ({
     //overflow: 'hidden',
     marginTop: 20,
     whiteSpace: 'nowrap',
+    textShadow: '1px 1px grey',
     [theme.breakpoints.down('xs')]: {
       marginTop: 'calc(100vh * .15)',
       fontSize: '3rem',

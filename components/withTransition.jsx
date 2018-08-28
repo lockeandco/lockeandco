@@ -109,23 +109,23 @@ class Index extends React.Component {
     // this.setState(() => {
     //   this.lockScroll()
     // })
-    this.setState(
-      {
-        where: true,
-        intent: intent,
-        scrollPending: !this.state.scrollPending,
-      },
-      () => {
-        if (this.state.scrollPending) {
-          this.state.ss.flush()
-          console.log('SS', this.state.ss)
-          return this.state.ss.listen()
-        }
-      }
-      //   () => {
-      //     this.lockScroll()
-      //   }
-    )
+    // this.setState(
+    //   {
+    //     where: true,
+    //     intent: intent,
+    //     scrollPending: !this.state.scrollPending,
+    //   },
+    //   () => {
+    //     if (this.state.scrollPending) {
+    //       this.state.ss.flush()
+    //       console.log('SS', this.state.ss)
+    //       return this.state.ss.listen()
+    //     }
+    //   }
+    //   //   () => {
+    //   //     this.lockScroll()
+    //   //   }
+    // )
   }
 
   lockScroll = this.lockScroll.bind(this)

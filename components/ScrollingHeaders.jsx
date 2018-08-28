@@ -46,7 +46,7 @@ const Content2 = Keyframes.Spring({
 })
 
 const Animation = props => {
-  const { classes } = props
+  const { classes, text } = props
   return (
     <Content2 reset native state="peek" impl={TimingAnimation}>
       {({ x, ...other }) => {
@@ -58,8 +58,7 @@ const Animation = props => {
             }}
             className={classes.typoBigHeader}
           >
-
-           welcome everyone everyone welcome
+            {text}
           </animated.div>
         )
       }}
@@ -67,4 +66,3 @@ const Animation = props => {
   )
 }
 export default withStyles(style)(Animation)
-

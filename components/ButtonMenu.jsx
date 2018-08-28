@@ -43,7 +43,7 @@ const styles = theme => ({
 })
 
 function TextButtons(props) {
-  const { classes, goToSlide, page } = props
+  const { classes, route } = props
   console.log(props)
   return (
     <React.Fragment>

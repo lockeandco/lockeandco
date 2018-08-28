@@ -8,6 +8,7 @@ import IconButton from '@material-ui/core/IconButton'
 import Icon from '@material-ui/core/Icon'
 import classNames from 'classnames'
 import SocialButtons from './SocialButtons'
+import Router from 'next/router'
 
 const styles = theme => ({
   button: {
@@ -16,7 +17,7 @@ const styles = theme => ({
     fontFamily: 'OldGrowth',
     fontWeight: 'bold',
     textTransform: 'unset',
-    fontSize: '0.65em'
+    fontSize: '0.65em',
   },
   paper: {
     borderRadius: 'unset',
@@ -43,11 +44,21 @@ const styles = theme => ({
   },
 })
 
-
+const links = [
+  {
+    name: 'merchandise',
+    link: '/merchandise',
+    order: 0,
+  },
+  {
+    name: 'stay connected',
+    link: '/stay-connected',
+    order: 1,
+  },
+]
 
 function TextButtons(props) {
-  const { classes, goToSlide, page } = props
-  console.log(props)
+  const { classes, route } = props
   return (
     <React.Fragment>
       <Grid
@@ -58,28 +69,26 @@ function TextButtons(props) {
         justify="space-around"
       >
         <Grid item xs>
-<SocialButtons />
+          <SocialButtons />
         </Grid>
-        <Grid item xs>
-          <Paper className={page === 6 ? classes.paperActive : classes.paper}>
-            <Button
-              className={classes.button}
-              onClick={() => goToSlide(6)}
-            >
-              merchandise
-            </Button>
-          </Paper>
-        </Grid>
-        <Grid item xs>
-          <Paper className={page === 5 ? classes.paperActive : classes.paper}>
-            <Button
-              className={classes.button}
-              onClick={() => goToSlide(5)}
-            >
-              stay connected
-            </Button>
-          </Paper>
-        </Grid>
+        {links.map(item => {
+          return (
+            <Grid key={item.name} item xs>
+              <Paper
+                className={
+                  route === item.link ? classes.paperActive : classes.paper
+                }
+              >
+                <Button
+                  className={classes.button}
+                  onClick={() => Router.push(item.link)}
+                >
+                  {item.name}
+                </Button>
+              </Paper>
+            </Grid>
+          )
+        })}
       </Grid>
     </React.Fragment>
   )
@@ -90,4 +99,3 @@ TextButtons.propTypes = {
 }
 
 export default withStyles(styles)(TextButtons)
-

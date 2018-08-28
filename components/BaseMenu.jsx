@@ -9,7 +9,7 @@ import MenuIcon from '@material-ui/icons/Menu'
 import CustomCard from './Cards'
 import MenuButtons from './TextButtons'
 
-const BaseMenu = ({ classes, goToSlide, page, children }) => (
+const BaseMenu = ({ classes, route, children }) => (
   <div className={classes.root}>
     <CustomCard />
     <AppBar position="fixed" className={classes.appBar}>

@@ -64,45 +64,51 @@ const styles = theme => ({
 const linkList = [
   {
     name: 'co-founders',
+    link: '/co-founders',
     page: 0,
     icon: <AccountMultiple style={{ color: '#C36D15' }} />,
   },
   {
     name: 'our story',
+    link: '/our-story',
     page: 1,
     icon: <BookOpenPageVariant style={{ color: '#C36D15' }} />,
   },
   {
     name: 'spirits',
+    link: '/spirits',
     page: 2,
     icon: <Keg style={{ color: '#C36D15' }} />,
   },
   {
     name: 'find us',
+    link: '/find-us',
     page: 3,
     icon: <MapSearch style={{ color: '#C36D15' }} />,
   },
   {
     name: 'contact us',
+    link: '/contact-us',
     page: 4,
     icon: <Email style={{ color: '#C36D15' }} />,
   },
   {
     name: 'stay connected',
+    link: '/stay-connected',
     page: 5,
     icon: <At style={{ color: '#C36D15' }} />,
   },
   {
     name: 'merchandise',
+    link: '/merchandise',
     page: 6,
     icon: <Cart style={{ color: '#C36D15' }} />,
   },
 ]
 
 function RightDrawerList(props) {
-  const { classes, page, goToSlide, toggleDrawer } = props
+  const { classes, toggleDrawer, route, Router } = props
   console.log('RDL', props)
-  console.log('Page', page)
   return (
     <div className={classes.root}>
       <List component="nav">
@@ -113,11 +119,11 @@ function RightDrawerList(props) {
             onClick={() =>
               compose(
                 toggleDrawer(false),
-                goToSlide
+                Router.push(item.link)
               )(item.page)
             }
             className={
-              page === item.page ? classes.buttonActive : classes.button
+              route === item.link ? classes.buttonActive : classes.button
             }
           >
             <ListItemIcon>{item.icon}</ListItemIcon>

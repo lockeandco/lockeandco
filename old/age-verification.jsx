@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react'
 import Page from '../components/Page1x15050'
+import { withStyles } from '@material-ui/core/styles'
 const AgeVerification = props => (
   <Fragment>
     <div

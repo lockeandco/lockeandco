@@ -27,8 +27,8 @@ class RightDrawer extends React.Component {
   }
 
   render() {
-    const { classes, goToSlide, page } = this.props
-    console.log(this.state)
+    const { classes, route, Router } = this.props
+
     return (
       <Fragment>
         <IconButton color="inherit" onClick={this.toggleDrawer(true)}>
@@ -41,9 +41,9 @@ class RightDrawer extends React.Component {
         >
           <div style={{ width: 225 }}>
             <MenuList
-              goToSlide={goToSlide}
-              page={page}
+              route={route}
               toggleDrawer={this.toggleDrawer}
+              Router={Router}
             />
           </div>
         </Drawer>

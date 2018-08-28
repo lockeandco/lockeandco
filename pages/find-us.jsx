@@ -1,29 +1,14 @@
 import React, { Fragment } from 'react'
 import Page from '../components/Page1x100'
-import HomeText from '../markdown/homepage.mdx'
-const Homepage = props => (
+import checkCookie from '../components/NoCookie'
+import { withStyles } from '@material-ui/core/styles'
+import Background from '../components/TransitionBackground'
+import compose from 'ramda/src/compose'
+
+const styles = theme => ({})
+const FindUs = props => (
   <Fragment>
-    <div
-      style={{
-        // height: height,
-        display: 'flex',
-        minWidth: '100vw',
-        minHeight: '100vh',
-        height: '100%',
-        width: '100%',
-        top: 0,
-        left: 0,
-        position: 'absolute',
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: 'transparent',
-        backgroundPosition: 'center',
-        backgroundSize: 'cover',
-        backgroundImage: `url(/static/Seal_Blue.png)`,
-        backgroundRepeat: 'no-repeat',
-        zIndex: -1000,
-      }}
-    />
+    <Background />
     <Page
       {...props}
       pictures={{
@@ -33,4 +18,7 @@ const Homepage = props => (
   </Fragment>
 )
 
-export default Homepage
+export default compose(
+  checkCookie,
+  withStyles(styles)
+)(FindUs)

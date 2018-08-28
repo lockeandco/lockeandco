@@ -35,18 +35,22 @@ const styles = theme => ({
 const links = [
   {
     name: 'co-founders',
+    link: '/co-founders',
     order: 0,
   },
   {
     name: 'our story',
+    link: '/our-story',
     order: 1,
   },
   {
     name: 'spirits',
+    link: '/spirits',
     order: 2,
   },
   {
     name: 'find us',
+    link: '/find-us',
     order: 3,
   },
 ]
@@ -54,8 +58,8 @@ const links = [
 const addDash = str =>
   str.split(' ').length > 1 ? str.split(' ').join('-') : str
 function TextButtons(props) {
-  const { classes, goToSlide, page } = props
-  console.log(props)
+  const { classes, route, Router } = props
+  console.log('TEXTBUTTON',props)
   return (
     <React.Fragment>
       <Grid
@@ -66,17 +70,16 @@ function TextButtons(props) {
         justify="space-around"
       >
         {links.map(item => {
-          console.log(item, page, page === item.order)
           return (
             <Grid key={item.name} item xs>
               <Paper
                 className={
-                  page === item.order ? classes.paperActive : classes.paper
+                  route === item.link ? classes.paperActive : classes.paper
                 }
               >
                 <Button
                   className={classes.button}
-                  onClick={() => Router.push(`/`.concat(addDash(item.name)))}
+                  onClick={() => Router.push(item.link)}
                 >
                   {item.name}
                 </Button>

@@ -10,6 +10,25 @@ import Headers from '../components/ScrollingHeaders'
 import Typography from '@material-ui/core/Typography'
 
 const styles = theme => ({
+  root: {},
+  demo: {
+    height: '100vh',
+    flexGrow: 1,
+    //  overflow: 'hidden',
+  },
+  paper1: {
+    //padding: theme.spacing.unit * 2,
+    height: '100%',
+    //color: theme.palette.text.secondary,
+    flexGrow: 1,
+    borderRadius: 'unset',
+    backgroundColor: 'transparent',
+    overflow: 'auto',
+    paddingBottom: ``,
+    paddingTop: `calc(15% + 90px)`,
+    paddingRight: `calc((100% - 300px)/2)`,
+    paddingLeft: `calc((100% - 300px)/2)`,
+  },
   paper: {
     //  display: 'flex',
     //padding: theme.spacing.unit * 2,
@@ -31,6 +50,7 @@ const styles = theme => ({
     borderRadius: 0,
     //opacity: 0.7,
     padding: '1em',
+    paddingBottom: 200, 
     //flexGrow: 1,
     //flexDirection: 'column',
     //boxShadow: `0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)`,
@@ -39,6 +59,22 @@ const styles = theme => ({
     color: '#E2DED5',
     fontFamily: 'Flama',
     overflow: 'auto',
+    [theme.breakpoints.up('sm')]: {
+     // height: '100%',
+      //color: theme.palette.text.secondary,
+      flexGrow: 1,
+      borderRadius: 'unset',
+      backgroundColor: 'transparent',
+      overflow: 'auto',
+      //   top: '50%',
+      // //  transform: 'translateY(-50%)',
+      // paddingBottom: `calc(15% + 90px)`,
+      // paddingTop: `calc(15% + 90px)`,
+
+      paddingRight: `10%`,
+      paddingLeft: `10%`,
+      paddingTop: 150,
+    },
   },
   card: {
     // marginTop: `calc(15% + 90px)`,
@@ -49,19 +85,24 @@ const styles = theme => ({
     backgroundColor: 'rgba(0,0,0,.7)',
     borderRadius: 0,
     // opacity: 0.7,
-    padding: '1.5em',
+    padding: '1em',
     //flexGrow: 1,
     //flexDirection: 'column',
     boxShadow: `0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)`,
     //margin: theme.spacing.unit,
+    // [theme.breakpoints.up('sm')]: {
+    //   transform: 'translateY(50%)',
+    // },
   },
   typo: {
-
-      color: '#E2DED5',
-      fontFamily: 'Flama',
- 
+    color: '#E2DED5',
+    fontFamily: 'Flama',
+    [theme.breakpoints.up('sm')]: {
+      fontSize: '1.1rem',
+    },
   },
 })
+
 const Spirits = props => {
   const { classes, ...other } = props
   return (

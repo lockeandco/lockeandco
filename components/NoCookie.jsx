@@ -63,7 +63,10 @@ const CheckAge = withStyles(styles)(props => {
           locke + cO
         </Typography>
         <Typography variant="title" className={classes.typosubHeader}>
-          welcome you are in good company here
+          welcome.
+        </Typography>
+        <Typography variant="title" className={classes.typosubHeader}>
+          you are in good company here
         </Typography>
         <AgeVerification {...other} />
       </Page>

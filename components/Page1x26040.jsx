@@ -39,7 +39,7 @@ const styles = theme => ({
     backgroundColor: 'rgba(0,0,0,.9)',
     borderRadius: 0,
     opacity: 0.7,
-    padding: '1.5em',
+    padding: '1em',
     //flexGrow: 1,
     //flexDirection: 'column',
     boxShadow: `0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)`,

@@ -119,8 +119,8 @@ function RightDrawerList(props) {
             onClick={() =>
               compose(
                 toggleDrawer(false),
-                Router.push(item.link)
-              )(item.page)
+                Router.push
+              )(item.link)
             }
             className={
               route === item.link ? classes.buttonActive : classes.button

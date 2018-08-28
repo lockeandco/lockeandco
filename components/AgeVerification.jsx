@@ -9,28 +9,34 @@ import Checkbox from '@material-ui/core/Checkbox'
 const styles = theme => ({
   button: {
     margin: theme.spacing.unit,
-    opacity: 'unset'
+    opacity: 'unset',
   },
   input: {
     display: 'none',
-    opacity: 'unset'
+    opacity: 'unset',
   },
   yesButton: {
     margin: theme.spacing.unit,
     backgroundColor: 'rgba(195, 109, 21, 1)',
     color: 'rgb(36, 55, 70)',
     fontWeight: 600,
-    opacity: 'unset'
+    opacity: 'unset',
   },
   noButton: {
     margin: theme.spacing.unit,
     backgroundColor: 'rgba(36, 55, 70, 1)',
     color: 'rgb(195, 109, 21)',
     fontWeight: 600,
-    opacity: 'unset'
+    opacity: 'unset',
   },
 
-  label: { color: '#E2DED5', fontWeight: 700 },
+  label: {
+    color: '#E2DED5',
+    fontWeight: 700,
+    fontFamily: 'Flama',
+    fontSize: '1.0rem',
+    textShadow: '1px 1px black',
+  },
 })
 
 function ContainedButtons(props) {

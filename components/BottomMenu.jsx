@@ -50,16 +50,16 @@ const styles = {
 }
 
 function ButtonAppBar(props) {
-  const { classes, goToSlide, page } = props
+  const { classes, route } = props
 
   return (
     <Fragment>
       <Hidden smDown>
         <footer className={classes.root}>
-          <CustomCard goToSlide={goToSlide} page={page} />
+          <CustomCard route={route} />
           <AppBar position="fixed" className={classes.appBar}>
             <Toolbar className={classes.toolBar} disableGutters={true}>
-              <MenuButtons goToSlide={goToSlide} page={page} />
+              <MenuButtons route={route} />
             </Toolbar>
           </AppBar>
         </footer>

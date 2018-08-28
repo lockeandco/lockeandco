@@ -10,6 +10,7 @@ import CustomCard from './Cards'
 import MenuButtons from './TextButtons'
 import RightDrawer from './RightDrawer'
 import Router from 'next/router'
+
 const styles = {
   root: {
     flexGrow: 1,
@@ -30,19 +31,19 @@ const styles = {
 }
 
 function TopMenu(props) {
-  const { classes, goToSlide, page } = props
+  const { classes, route, ...other } = props
 
   return (
     <div className={classes.root}>
-      <CustomCard goToSlide={goToSlide} />
+      <CustomCard />
       <AppBar position="fixed" className={classes.appBar}>
         <Toolbar className={classes.toolBar} disableGutters={true}>
           <Hidden smDown>
-            <MenuButtons goToSlide={goToSlide} page={page} />
+            <MenuButtons route={route} Router={Router} />
           </Hidden>
           <Hidden mdUp>
             <CustomCard />
-            <RightDrawer goToSlide={goToSlide} page={page} />
+            <RightDrawer route={route} Router={Router} />
           </Hidden>
         </Toolbar>
       </AppBar>

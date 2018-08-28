@@ -93,7 +93,7 @@ const Homepage = props => {
             you're welcome here.
           </Typography>
 
-          <Headers />
+          <Headers text='welcome everyone everyone welcome' />
         </div>
       </Page>
     </Fragment>

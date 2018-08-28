@@ -1,29 +1,15 @@
 import React, { Fragment } from 'react'
 import Page from '../components/Page1x16040'
-const FindUs = props => (
-  <Fragment>
-    <div
-      style={{
-        // height: height,
-        display: 'flex',
-        minWidth: '100vw',
-        minHeight: '100vh',
-        height: '100%',
-        width: '100%',
-        top: 0,
-        left:0,
-        position: 'absolute',
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: 'transparent',
-        backgroundPosition: 'center',
-        backgroundSize: 'cover',
-        backgroundImage: `url(/static/Seal_Blue.png)`,
-        backgroundRepeat: 'no-repeat',
-        zIndex: -1000,
-      }}
-    />
+import compose from 'ramda/src/compose'
+import checkCookie from '../components/NoCookie'
+import { withStyles } from '@material-ui/core/styles'
+import Background from '../components/TransitionBackground'
 
+const styles = theme => ({})
+
+const StayConnected = props => (
+  <Fragment>
+    <Background />
     <Page
       {...props}
       pictures={{
@@ -33,4 +19,7 @@ const FindUs = props => (
   </Fragment>
 )
 
-export default FindUs
+export default compose(
+  checkCookie,
+  withStyles(styles)
+)(StayConnected)

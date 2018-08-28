@@ -3,12 +3,12 @@ import Menu from './Menu'
 import Bottom from '../components/BottomMenu'
 
 const Layout = props => {
-  //console.log(props)
+  console.log('LAYOUT', props)
   return (
     <Fragment>
-      <Menu />
+      <Menu {...props} />
       {props.children}
-      <Bottom />
+      <Bottom {...props} />
     </Fragment>
   )
 }

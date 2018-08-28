@@ -9,7 +9,6 @@ import Content from './ContentCard'
 import compose from 'ramda/src/compose'
 import { withWindowSize } from 'react-fns'
 import withTransition from './withTransition'
-import Test from '../markdown/about-us.mdx'
 
 const styles = theme => ({
   root: {},
@@ -76,12 +75,7 @@ const PageLayout1x26040 = props => {
           backgroundRepeat: 'no-repeat',
         }}
       >
-        {/*Convert to Children*/}
-        <Paper className={classes.paper}>
-          <div className={classes.card}>
-<Test />
-          </div>
-        </Paper>
+        {props.children}
       </Grid>
       <Hidden xsDown>
         <Grid item xs={12} sm={6} style={{ padding: 'unset' }}>
@@ -94,9 +88,7 @@ const PageLayout1x26040 = props => {
               backgroundImage: `url(${pictures.rightTop.url})`,
               backgroundRepeat: 'no-repeat',
             }}
-          >
-            {`2`}
-          </Paper>
+          />
           <Paper
             className={classes.paper}
             style={{
@@ -106,9 +98,7 @@ const PageLayout1x26040 = props => {
               backgroundImage: `url(${pictures.rightBottom.url})`,
               backgroundRepeat: 'no-repeat',
             }}
-          >
-            {`3`}
-          </Paper>
+          />
         </Grid>
       </Hidden>
     </Grid>

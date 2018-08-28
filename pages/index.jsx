@@ -18,9 +18,10 @@ const styles = theme => ({
     fontFamily: 'OldGrowth',
     //fontSize: '6rem',
     //overflow: 'hidden',
-    marginBottom: 20,
+    marginBottom: 5,
     [theme.breakpoints.down('xs')]: {
       fontSize: '.8rem',
+      marginTop: 10,
       marginBottom: 5,
     },
   },
@@ -30,10 +31,11 @@ const styles = theme => ({
     //fontSize: '6rem',
     //overflow: 'hidden',
     margin: 50,
+    marginBottom:  100,
     [theme.breakpoints.down('xs')]: {
-      fontSize: '1rem',
-      marginTop: '5%',
-      marginBottom: '5%',
+      fontSize: '1.1rem',
+      marginTop: 50,
+      marginBottom:  0,
     },
   },
   typoBigHeader: {
@@ -43,10 +45,18 @@ const styles = theme => ({
     //overflow: 'hidden',
     marginTop: 20,
     [theme.breakpoints.down('xs')]: {
-      marginTop: 'calc(100vh * .10)',
+      //marginTop: 'calc(100vh * .10)',
       fontsize: '1.8rem',
     },
     //textOverflow: 'ellipsis',
+  },
+  container: {
+    textAlign: 'center',
+    paddingTop: '15%',
+    overflow: 'hidden',
+    [theme.breakpoints.up('sm')]: {
+      paddingTop: 150
+    },
   },
 })
 
@@ -61,7 +71,9 @@ const Homepage = props => {
           left: `/static/Snow_Hikers.jpg`,
         }}
       >
-        <div style={{ textAlign: 'center', paddingTop: '15%', overflow: 'hidden' }}>
+        <div
+          className={classes.container}
+        >
           <Typography variant="title" className={classes.typoHeader}>
             we believe great spirits bring people together to share
           </Typography>
@@ -72,7 +84,9 @@ const Homepage = props => {
           <Typography className={classes.typoH3Header} variant="title">
             you're welcome here.
           </Typography>
+          <div style={{marginTop: '-50px'}}>
           <Headers text="welcome everyone everyone welcome" />
+          </div>
         </div>
       </Page>
     </Fragment>

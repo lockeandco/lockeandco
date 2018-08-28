@@ -6,26 +6,13 @@ import cookie from 'cookie'
 import Check from '../components/NoCookie'
 import Router from 'next/router'
 import Headers from '../components/ScrollingHeaders'
-function redirect(context, target) {
-  if (context.res) {
-    // server
-    // 303: "See other"
-    context.res.writeHead(303, { Location: target })
-    context.res.end()
-  } else {
-    // In the browser, we just pretend like this never even happened ;)
-    Router.replace(target)
-  }
-}
+
 class Homepage extends React.Component {
-  static async getInitialProps({ res, req }) {
-    const { isVerified, rememberme } = await cookie.parse(req.headers.cookie)
-    if (!rememberme) redirect({ res, req }, '/spirits')
-    return { isVerified: isVerified, rememberme: rememberme }
-  }
+
+
+
   render() {
-    console.log('____________________________')
-    console.log(this.props)
+
     return (
       <Fragment>
         <div
@@ -65,4 +52,4 @@ class Homepage extends React.Component {
   }
 }
 
-export default Homepage
+export default checkCookie(Homepage)

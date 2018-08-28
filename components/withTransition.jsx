@@ -70,7 +70,7 @@ class Index extends React.Component {
       target: node,
       scrollSensitivity: 4,
       touchSensitivity: 4,
-      scrollPreventDefault: true,
+      scrollPreventDefault: false,
       touchPreventDefault: true,
       scrollCb: this.onScrollAction,
       touchCb: this.onScrollAction,
@@ -150,7 +150,7 @@ class Index extends React.Component {
 
   componentWillUnmount() {
     const ss = this.state.ss || null
-    ss.killAll()
+    //ss && ss.killAll()
     this.ss = null
 
     const { window } = this.state

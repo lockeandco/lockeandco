@@ -1,96 +1,142 @@
 import React, { Fragment } from 'react'
 import Page from '../components/Page1x15050'
-import { withCookies, Cookies } from 'react-cookie'
+import { Cookies } from 'react-cookie'
 import { instanceOf } from 'prop-types'
-const CheckAge = props => (
-  <Fragment>
-    <div
-      style={{
-        // height: height,
-        display: 'flex',
-        minWidth: '100vw',
-        minHeight: '100vh',
-        height: '100%',
-        width: '100%',
-        top: 0,
-        left: 0,
-        position: 'absolute',
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: 'transparent',
-        backgroundPosition: 'center',
-        backgroundSize: 'cover',
-        backgroundImage: `url(/static/Seal_Blue.png)`,
-        backgroundRepeat: 'no-repeat',
-        zIndex: -1000,
-      }}
-    />
-    <Page
-      {...props}
-      pictures={{
-        left: `/static/Golden_Aspen_Tree_Grove.jpg`,
-        right: `/static/tools.jpg`,
-      }}
-    />
-  </Fragment>
-)
-class CookieChecker extends React.Component {
-  static propTypes = {
-    cookies: instanceOf(Cookies).isRequired,
-  }
+import Router from 'next/router'
+import Typography from '@material-ui/core/Typography'
+import AgeVerification from './AgeVerification'
+import { withStyles } from '@material-ui/core/styles'
+import { addDays, addHours } from 'date-fns'
 
-  constructor(props) {
-    super(props)
-    const { cookies } = props
-    this.state = {
-      isVerified: cookies.get('isVerified') || false,
-      remember: cookies.get('remember') || false,
-    }
-  }
-  async check() {
-    await this.setState({
-      isVerified: cookies.get('isVerified') || false,
-    })
-  }
-  componentDidMount() {
-    this.check()
-  }
+const styles = theme => ({
+  typoHeader: {
+    color: '#E2DED5',
+    fontFamily: 'OldGrowth',
+    fontSize: '3rem',
+    overflow: 'hidden',
+    textShadow: '2px 2px black',
+    margin: '10% 5px 25px 5px',
+  },
+  typosubHeader: {
+    color: '#E2DED5',
+    fontFamily: 'OldGrowth',
+    fontSize: '1.1rem',
+    overflow: 'hidden',
+    margin: '10px 5px 25px 5px',
+  },
+})
 
-  handleVerified(verified) {
-    const { cookies } = this.props
+const CheckAge = withStyles(styles)(props => {
+  console.log('PROPS', props)
+  const { classes, ...other } = props
+  return (
+    <Fragment>
+      <div
+        style={{
+          // height: height,
+          display: 'flex',
+          minWidth: '100vw',
+          minHeight: '100vh',
+          height: '100%',
+          width: '100%',
+          top: 0,
+          left: 0,
+          position: 'absolute',
+          justifyContent: 'center',
+          alignItems: 'center',
+          backgroundColor: 'transparent',
+          backgroundPosition: 'center',
+          backgroundSize: 'cover',
+          backgroundImage: `url(/static/Seal_Blue.png)`,
+          backgroundRepeat: 'no-repeat',
+          zIndex: -1000,
+        }}
+      />
+      <Page
+        {...other}
+        pictures={{
+          left: `/static/Golden_Aspen_Tree_Grove.jpg`,
+          right: `/static/tools.jpg`,
+        }}
+      >
+        <Typography variant="display3" className={classes.typoHeader}>
+          locke + cO
+        </Typography>
+        <Typography variant="title" className={classes.typosubHeader}>
+          welcome you are in good company here
+        </Typography>
+        <AgeVerification {...other} />
+      </Page>
+    </Fragment>
+  )
+})
 
-    cookies.set('isVerified', verified, { path: '/' })
-    this.setState({ isVerified })
-  }
-
-  handleRemember(remember) {
-    const { cookies } = this.props
-
-    cookies.set('remember', remember, { path: '/' })
-    this.setState({ remember })
-  }
-  render() {
-    return this.props.render(this.state)
-  }
-}
-const CookieCheckerWithCookies = withCookies(CookieChecker)
 function withCookie(Component) {
-  return class extends React.Component {
+  return class CookieChecker extends React.Component {
+    static propTypes = {
+      cookies: instanceOf(Cookies).isRequired,
+    }
+    async getCookies() {
+      const isVerified = await this.props.cookies.get('isVerified')
+      console.log(isVerified)
+      if (isVerified === 'false') {
+        console.log('isVerified', isVerified)
+        Router.replace('/spirits')
+      }
+    }
+
+    constructor(props) {
+      super(props)
+      const { cookies } = props
+
+      this.state = {
+        isVerified: false,
+        remember: cookies.get('rememberme') === 'true' ? true : false,
+      }
+    }
+    async check() {
+      const { cookies } = this.props
+      await this.setState({
+        isVerified: false,
+      })
+    }
+    componentDidMount() {
+      this.check()
+    }
+
+    handleVerified(verified) {
+      const { cookies } = this.props
+
+
+      cookies.set('isVerified', true, {
+        path: '/',
+        expires: this.state.remember
+          ? addDays(Date.now(), 30)
+          : addHours(Date.now(), 1),
+      })
+      this.setState({ isVerified: true })
+    }
+
+    handleRemember(remember) {
+      const { cookies } = this.props
+
+      cookies.set('remember', !remember, { path: '/' })
+      this.setState({ remember: !remember })
+    }
     render() {
-      return (
-        <CookieCheckerWithCookies
-          render={mouse => {
-            console.log('PROPSSSS', this.props)
-            return mouse.isVerified ? (
-              <CheckAge {...this.props} mouse={mouse} />
-            ) : (
-              <Component {...this.props} mouse={mouse} />
-            )
-          }}
+      console.log('STATE', this.state)
+      return this.state.isVerified ? (
+        <Component {...this.props} />
+      ) : (
+        <CheckAge
+          {...this.props}
+          handleVerified={this.handleVerified.bind(this)}
+          handleRememberMe={this.handleRemember.bind(this)}
+          rememberMe={this.state.remember}
         />
       )
     }
   }
 }
 
-export default CheckAge
+export default withCookie

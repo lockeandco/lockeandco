@@ -105,16 +105,7 @@ const PageLayout1x26040 = props => {
               textAlign: 'center',
             }}
           >
-            <div className={classes.paper}>
-              <Test />
-              <Typography variant="display3" className={classes.typoHeader}>
-                locke + cO
-              </Typography>
-              <Typography variant="title" className={classes.typosubHeader}>
-                welcome you are in good company here
-              </Typography>
-            </div>
-            <AgeVerification />
+{props.children}
           </Grid>
         </Grid>
       </Grid>

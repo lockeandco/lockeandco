@@ -90,14 +90,15 @@ function withCookie(Component) {
       const { cookies } = props
 
       this.state = {
-        isVerified: false,
+        isVerified: cookies.get('isVerified') === 'true' ? true : false,
         remember: cookies.get('rememberme') === 'true' ? true : false,
       }
     }
     async check() {
       const { cookies } = this.props
       await this.setState({
-        isVerified: false,
+        isVerified: cookies.get('isVerified') === 'true' ? true : false,
+        remember: cookies.get('rememberme') === 'true' ? true : false,
       })
     }
     componentDidMount() {
@@ -120,7 +121,7 @@ function withCookie(Component) {
     handleRemember(remember) {
       const { cookies } = this.props
 
-      cookies.set('remember', !remember, { path: '/' })
+      cookies.set('rememberme', !remember, { path: '/' })
       this.setState({ remember: !remember })
     }
     render() {

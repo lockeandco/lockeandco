@@ -15,7 +15,7 @@ const FindUs = props => (
         left: `/static/Ski_Boots1.jpg`,
       }}
     >
-    <div style={{ textAlign: 'center', paddingTop: '20%' }}>
+    <div style={{ textAlign: 'center', paddingTop: '20%' , overflow: 'hidden'}}>
     <Headers text="a taste like none other" />
   </div>
     </Page>

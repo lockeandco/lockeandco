@@ -19,10 +19,13 @@ const styles = theme => ({
   //   //  overflow: 'hidden',
   // },
   demo: {
-    height: `100%`,
     flexGrow: 1,
-    overflow: 'auto',
+   // overflow: 'auto',
     minHeight: '100vh',
+   // minWidth: '100vw',
+
+    height: '100%',
+
   },
   // demo: {
   //   height: `100%`,

@@ -10,6 +10,7 @@ import compose from 'ramda/src/compose'
 import Hidden from '@material-ui/core/Hidden'
 import { config } from 'react-spring'
 import CommonHeader from '../components/MobileScrollingHeader'
+import Grid from '@material-ui/core/Grid'
 
 const styles = theme => ({
   typo: {
@@ -63,6 +64,14 @@ const styles = theme => ({
       paddingTop: 120,
     },
   },
+  bottle: {
+    height: 'calc(.35 * 100vh)',
+    width: 'auto',
+    [theme.breakpoints.up('md')]: {
+      height: 'calc(.45 * 100vh)',
+      width: 'auto',
+    },
+  },
   // scroll: {
   //   [theme.breakpoints.up('md')]: {
   //     marginTop: 0,
@@ -91,46 +100,61 @@ const Homepage = props => {
       text={{
         position: 'left',
         component: (
-          <div className={classes.container}>
-            <Typography variant="title" className={classes.typoHeader}>
-              we believe great spirits bring people together to share
-            </Typography>
-            <Typography variant="title" className={classes.typoHeader}>
-              the moments and stories that make life rich.
-            </Typography>
+          <React.Fragment>
+            <div className={classes.container}>
+              <Typography variant="title" className={classes.typoHeader}>
+                we believe great spirits bring people together to share
+              </Typography>
+              <Typography variant="title" className={classes.typoHeader}>
+                the moments and stories that make life rich.
+              </Typography>
+              <Typography className={classes.typoH3Header} variant="title">
+                you're welcome here.
+              </Typography>
+              <Hidden smUp>
+                <Headers text="welcome everyone everyone welcome" />
+              </Hidden>
+              <Hidden xsDown>
+                <Headers
+                  text="welcome everyone everyone welcome"
+                  springConfig={{
+                    peek: [
+                      {
+                        delay: 2000,
+                        from: { x: 0, opacity: 1 },
+                        to: { x: -150, opacity: 1 },
+                        config: { ...config.molasses, duration: 10000 },
+                      },
+                      {
+                        from: { x: 100, opacity: 1 },
+                        to: { x: -150, opacity: 1 },
+                        config: { ...config.molasses, duration: 10000 },
+                      },
+                      {
+                        from: { x: 100, opacity: 0 },
+                        to: { x: 0, opacity: 1 },
+                        config: { ...config.molasses, duration: 5000 },
+                      },
+                    ],
+                  }}
+                />
+              </Hidden>
+            </div>
 
-            <Typography className={classes.typoH3Header} variant="title">
-              you're welcome here.
-            </Typography>
-            <Hidden smUp>
-              <Headers text="welcome everyone everyone welcome" />
-            </Hidden>
-            <Hidden xsDown>
-              <Headers
-                text="welcome everyone everyone welcome"
-                springConfig={{
-                  peek: [
-                    {
-                      delay: 2000,
-                      from: { x: 0, opacity: 1 },
-                      to: { x: -150, opacity: 1 },
-                      config: { ...config.molasses, duration: 10000 },
-                    },
-                    {
-                      from: { x: 100, opacity: 1 },
-                      to: { x: -150, opacity: 1 },
-                      config: { ...config.molasses, duration: 10000 },
-                    },
-                    {
-                      from: { x: 100, opacity: 0 },
-                      to: { x: 0, opacity: 1 },
-                      config: { ...config.molasses, duration: 5000 },
-                    },
-                  ],
-                }}
+            <div style={{ bottom: 40, position: 'absolute' }}>
+              <img
+                src="/static/Bottle.png"
+                className={classes.bottle}
+                style={
+                  {
+                    // padding: 1,
+                    // border: '1px,solid, #C36D15',
+                    // backgroundColor: '#C36D15',
+                  }
+                }
               />
-            </Hidden>
-          </div>
+            </div>
+          </React.Fragment>
         ),
       }}
       header={{

@@ -34,20 +34,21 @@ const styles = theme => ({
 
 const links = [
   {
+    name: 'spirits',
+    link: '/spirits',
+    order: 0,
+  },
+  {
     name: 'co-founders',
     link: '/co-founders',
-    order: 0,
+    order: 1,
   },
   {
     name: 'our story',
     link: '/our-story',
-    order: 1,
-  },
-  {
-    name: 'spirits',
-    link: '/spirits',
     order: 2,
   },
+
   {
     name: 'find us',
     link: '/find-us',
@@ -59,7 +60,7 @@ const addDash = str =>
   str.split(' ').length > 1 ? str.split(' ').join('-') : str
 function TextButtons(props) {
   const { classes, route, Router } = props
-  console.log('TEXTBUTTON',props)
+  console.log('TEXTBUTTON', props)
   return (
     <React.Fragment>
       <Grid

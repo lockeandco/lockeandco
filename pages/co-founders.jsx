@@ -15,7 +15,7 @@ const styles = theme => ({
     borderRadius: 'unset',
     backgroundColor: 'transparent',
     overflow: 'auto',
-   // textOverflow: 'ellipsis',
+    // textOverflow: 'ellipsis',
     margin: 10,
     borderRadius: 0,
     paddingBottom: 200,
@@ -24,7 +24,7 @@ const styles = theme => ({
     fontFamily: 'Flama',
     [theme.breakpoints.down('sm')]: {
       maxHeight: 'calc(.6 * 100vh)',
-     // overflow: 'scroll',
+      // overflow: 'scroll',
     },
     [theme.breakpoints.up('md')]: {
       flexGrow: 1,
@@ -106,6 +106,18 @@ const CoFounders = props => {
                   backyard game of cornhole. The unapologetic last howl at the
                   moon.
                 </Typography>
+                <div style={{ textAlign: 'center' }}>
+                  <img
+                    src="/static/Owen+Rick.jpg"
+                    width="90%"
+                    height="auto"
+                    style={{
+                      padding: 1,
+                      border: '1px,solid, #C36D15',
+                      backgroundColor: '#C36D15',
+                    }}
+                  />
+                </div>
               </div>
             </Paper>
           ),

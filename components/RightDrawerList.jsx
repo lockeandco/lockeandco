@@ -62,23 +62,24 @@ const styles = theme => ({
 })
 
 const linkList = [
+
+  {
+    name: 'spirits',
+    link: '/spirits',
+    page: 0,
+    icon: <Keg style={{ color: '#C36D15' }} />,
+  },
   {
     name: 'co-founders',
     link: '/co-founders',
-    page: 0,
+    page: 1,
     icon: <AccountMultiple style={{ color: '#C36D15' }} />,
   },
   {
     name: 'our story',
     link: '/our-story',
-    page: 1,
-    icon: <BookOpenPageVariant style={{ color: '#C36D15' }} />,
-  },
-  {
-    name: 'spirits',
-    link: '/spirits',
     page: 2,
-    icon: <Keg style={{ color: '#C36D15' }} />,
+    icon: <BookOpenPageVariant style={{ color: '#C36D15' }} />,
   },
   {
     name: 'find us',
@@ -140,30 +141,3 @@ RightDrawerList.propTypes = {
 }
 
 export default withStyles(styles)(RightDrawerList)
-
-// <ListItem
-// button
-// onClick={() =>
-//   compose(
-//     toggleDrawer(false),
-//     goToSlide
-//   )(2)
-// }
-// className={page === 2 ? classes.buttonActive : classes.button}
-// >
-// <ListItemIcon>
-//   <Icon
-//     className={classNames(classes.iconColor, 'fas fa-book-open')}
-//   />
-// </ListItemIcon>
-// <ListItemText disableTypography primary="our story" />
-// </ListItem>
-// </List>
-// <Divider />
-// <List component="nav">
-// <ListItem button>
-// <ListItemText primary="Trash" />
-// </ListItem>
-// <ListItem button component="a" href="#simple-list">
-// <ListItemText primary="Spam" />
-// </ListItem>

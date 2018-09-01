@@ -1,6 +1,6 @@
 import React from 'react'
 import App, { Container } from 'next/app'
-import { MuiThemeProvider } from '@material-ui/core/styles'
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import JssProvider from 'react-jss/lib/JssProvider'
 import getPageContext from '../src/getPageContext'
@@ -12,10 +12,30 @@ import { withCookies, Cookies } from 'react-cookie'
 import { instanceOf } from 'prop-types'
 import components from '../MDXcomponents'
 
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      light: '#58687c',
+      main: '#8C0C04',
+      dark: '#041828',
+    },
+    secondary: {
+      light: '#c3452e',
+      main: '#243746',
+      dark: '#590000',
+    },
+  },
+  nprogress: {
+    color: '#8C0C04',
+  },
+})
 class MyApp extends App {
   constructor(props) {
     super(props)
     this.pageContext = getPageContext()
+    this.pageContext.theme = theme
+    console.log('IN PP Constructor', this.pageContext)
     const { cookies } = props
     this.state = {
       isVerified: cookies.get('isVerified') || false,
@@ -35,17 +55,17 @@ class MyApp extends App {
   }
   pageContext = null
 
-  handleVerified(verified) {
+  async handleVerified(verified) {
     const { cookies } = this.props
 
-    cookies.set('isVerified', verified, { path: '/' })
+    await cookies.set('isVerified', verified, { path: '/' })
     this.setState({ isVerified })
   }
 
-  handleRemember(remember) {
+  async handleRemember(remember) {
     const { cookies } = this.props
 
-    cookies.set('rememberme', remember, { path: '/' })
+    await cookies.set('rememberme', remember, { path: '/' })
     this.setState({ remember })
   }
   componentDidMount() {

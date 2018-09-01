@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import Page from '../components/Page1x25050R'
+import Page from '../components/PageLayout'
 import compose from 'ramda/src/compose'
 import checkCookie from '../components/NoCookie'
 import { withStyles } from '@material-ui/core/styles'
@@ -8,97 +8,95 @@ import Grid from '@material-ui/core/Grid'
 import Paper from '@material-ui/core/Paper'
 import Headers from '../components/ScrollingHeaders'
 import Typography from '@material-ui/core/Typography'
+import CommonHeader from '../components/MobileScrollingHeader'
+import Hidden from '@material-ui/core/Hidden'
 
 const styles = theme => ({
-  root: {},
-  demo: {
-    height: '100vh',
-    flexGrow: 1,
-    //  overflow: 'hidden',
-  },
-  paper1: {
-    //padding: theme.spacing.unit * 2,
-    height: '100%',
-    //color: theme.palette.text.secondary,
+  paperMdUp: {
     flexGrow: 1,
     borderRadius: 'unset',
     backgroundColor: 'transparent',
     overflow: 'auto',
-    paddingBottom: ``,
-    paddingTop: `calc(15% + 90px)`,
-    paddingRight: `calc((100% - 300px)/2)`,
-    paddingLeft: `calc((100% - 300px)/2)`,
-  },
-  paper: {
-    //  display: 'flex',
-    //padding: theme.spacing.unit * 2,
-    //height: '100%',
-    //color: theme.palette.text.secondary,
-    flexGrow: 1,
-    borderRadius: 'unset',
-    backgroundColor: 'transparent',
-    overflow: 'auto',
-    // marginBottom: `calc(20% + 90px)`,
-    // marginTop: `calc(15% + 90px)`,
-    // marginRight: `calc((100% - 300px)/2)`,
-    // marginLeft: `calc((100% - 300px)/2)`,
     margin: 10,
-    //overflow: 'auto'
-    // minWidth: 300,
-    //display: 'flex',
-    //backgroundColor: 'rgba(0,0,0,.9)',
     borderRadius: 0,
-    //opacity: 0.7,
     padding: '1em',
-    paddingBottom: 200,
-    //flexGrow: 1,
-    //flexDirection: 'column',
-    //boxShadow: `0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)`,
     boxShadow: 'unset',
-    //margin: theme.spacing.unit,
     color: '#E2DED5',
     fontFamily: 'Flama',
     overflow: 'auto',
-    [theme.breakpoints.up('sm')]: {
-     // height: '100%',
-      //color: theme.palette.text.secondary,
+  },
+  typoMdUp: {
+    color: 'rgb(36, 55, 70)',
+    fontFamily: 'Flama',
+    fontSize: '1.1rem',
+    fontWeight: 500,
+    overflow: 'auto',
+  },
+  paper: {
+    flexGrow: 1,
+    borderRadius: 'unset',
+    backgroundColor: 'transparent',
+    overflow: 'auto',
+    margin: '1px 10px 10px 10px',
+    borderRadius: 0,
+    padding: '1em',
+    paddingLeft: 2,
+    boxShadow: 'unset',
+    color: '#E2DED5',
+    fontFamily: 'Flama',
+    overflow: 'auto',
+    [theme.breakpoints.up('md')]: {
       flexGrow: 1,
       borderRadius: 'unset',
       backgroundColor: 'transparent',
       overflow: 'auto',
-      //   top: '50%',
-      // //  transform: 'translateY(-50%)',
-      // paddingBottom: `calc(15% + 90px)`,
-      // paddingTop: `calc(15% + 90px)`,
-
       paddingRight: `10%`,
       paddingLeft: `10%`,
       paddingTop: 150,
     },
   },
   card: {
-    // marginTop: `calc(15% + 90px)`,
-    // marginRight: `calc(25%)`,
-    // marginLeft: `calc(25%)`,
-    minWidth: 200,
-    //display: 'flex',
-    backgroundColor: 'rgba(0,0,0,.7)',
+    maxWidth: 190,
+    backgroundColor: 'rgba(0,0,0,0.4)',
     borderRadius: 0,
-    // opacity: 0.7,
-    padding: '1em',
-    //flexGrow: 1,
-    //flexDirection: 'column',
-    boxShadow: `0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)`,
-    //margin: theme.spacing.unit,
-    // [theme.breakpoints.up('sm')]: {
-    //   transform: 'translateY(50%)',
-    // },
+    padding: '10px 10px 10px 10px',
+    marginTop: -20,
+    [theme.breakpoints.up('sm')]: {
+      maxWidth: 350,
+      backgroundColor: 'rgba(0,0,0,0.4)',
+      borderRadius: 0,
+      padding: '10px 10px 10px 15px',
+      marginTop: -20,
+    },
   },
   typo: {
     color: '#E2DED5',
     fontFamily: 'Flama',
+    fontWeight: 900,
+    textShadow: '1px 1px rgb(36, 55, 70)',
+    fontSize: '.8rem',
     [theme.breakpoints.up('sm')]: {
-      fontSize: '1.1rem',
+      color: '#E2DED5',
+      fontFamily: 'Flama',
+      fontWeight: 900,
+      textShadow: '1px 1px rgb(36, 55, 70)',
+      fontSize: '.9rem',
+    },
+  },
+  wideCard: {
+    minWidth: 260,
+    backgroundColor: 'rgba(0,0,0,0.4)',
+    borderRadius: 0,
+    padding: '5px 5px 5px 5px',
+    marginTop: -20,
+    marginBottom: 20,
+    [theme.breakpoints.up('sm')]: {
+      minWidth: 400,
+      backgroundColor: 'rgba(0,0,0,0.4)',
+      borderRadius: 0,
+      padding: '5px 5px 5px 15px',
+      marginTop: -20,
+      marginBottom: 20,
     },
   },
 })
@@ -106,39 +104,71 @@ const styles = theme => ({
 const Spirits = props => {
   const { classes, ...other } = props
   return (
-    <Fragment>
-      <Background />
-
-      <Page
-        {...other}
-        pictures={{
-          left: `/static/Bottle_Creek.jpg`,
-          rightTop50: `/static/Aspen_Logs.jpg`,
-          rightBottom50: `/static/Close_Up_Aspen_Leaves.jpg`,
-        }}
-      >
-        <Grid container spacing={16}>
-          <Grid item xs zeroMinWidth style={{overflow: 'hidden'}}>
-            <Headers text="a taste like none other" />
-          </Grid>
-        </Grid>
-
-        <Paper className={classes.paper}>
-          <div className={classes.card}>
-            <Typography className={classes.typo} variant="body1" paragraph>
-              Locke + Co. Whiskey welcomes everyone and everyone is welcome,
-              whether around a campfire or a fine-dining table. Remarkably
-              smooth and flavorful, our small-barrel, Aspen- Aged craft spirit
-              helps create the warmth and personal connection of good times and
-              great memories. Aged, bottled and blended by sixth-generation
-              Coloradans, Locke + Co. Whiskey results from the secrets and
-              traditions of moonshiners on a mission: to make a whiskey among
-              the best in the West.
-            </Typography>
-          </div>
-        </Paper>
-      </Page>
-    </Fragment>
+    <Page
+      {...other}
+      pictures={{
+        left: {
+          url: `/static/Bottle_Creek.jpg`,
+          size: '100%',
+        },
+        rightTop: {
+          url: `/static/Aspen_Logs.jpg`,
+          size: '50%',
+        },
+        rightBottom: {
+          url: `/static/Close_Up_Aspen_Leaves.jpg`,
+          size: '50%',
+        },
+      }}
+      text={{
+        position: 'rightBottom',
+        component: (
+          <React.Fragment>
+            <Hidden mdUp>
+              <Paper className={classes.paper}>
+                <div className={classes.card}>
+                  <Typography
+                    className={classes.typo}
+                    variant="body1"
+                    paragraph
+                  >
+                    Locke + Co. Whiskey welcomes everyone and everyone is
+                    welcome, whether around a campfire or a fine-dining table.
+                    Remarkably smooth and flavorful, our small-barrel, Aspen-
+                    Aged craft spirit helps create the warmth and personal
+                    connection of good times and great memories.
+                  </Typography>
+                  <Typography className={classes.typo} variant="body1">
+                    Aged, bottled and blended by sixth-generation Coloradans,
+                    Locke + Co. Whiskey results from the secrets and traditions
+                    of moonshiners on a mission: to make a whiskey among the
+                    best in the West.
+                  </Typography>
+                </div>
+              </Paper>
+            </Hidden>
+            <Hidden smDown>
+              <Paper className={classes.paperMdUp}>
+                <Typography className={classes.typoMdUp} paragraph>
+                  Locke + Co. Whiskey welcomes everyone and everyone is welcome,
+                  whether around a campfire or a fine-dining table. Remarkably
+                  smooth and flavorful, our small-barrel, Aspen- Aged craft
+                  spirit helps create the warmth and personal connection of good
+                  times and great memories. Aged, bottled and blended by
+                  sixth-generation Coloradans, Locke + Co. Whiskey results from
+                  the secrets and traditions of moonshiners on a mission: to
+                  make a whiskey among the best in the West.
+                </Typography>
+              </Paper>
+            </Hidden>
+          </React.Fragment>
+        ),
+      }}
+      header={{
+        position: 'rightBottom',
+        component: <CommonHeader headerText={`a taste like none other`} />,
+      }}
+    />
   )
 }
 

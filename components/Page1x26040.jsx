@@ -1,3 +1,23 @@
+//
+//
+//
+//
+//
+//
+//Deprecated
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
 import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
@@ -12,55 +32,19 @@ import Typography from '@material-ui/core/Typography'
 import Headers from '../components/ScrollingHeaders'
 
 const styles = theme => ({
-  root: {},
-  // demo: {
-  //   height: '100vh',
-  //   flexGrow: 1,
-  //   //  overflow: 'hidden',
-  // },
   demo: {
     height: `100%`,
     flexGrow: 1,
-   // overflow: 'auto',
+    // overflow: 'auto',
     minHeight: '100vh',
   },
-  // demo: {
-  //   height: `100%`,
-  //   flexGrow: 1,
-  //   overflow: 'auto',
-  //   minHeight: '100vh',
-  // },
-  paper: {
-    //  display: 'flex',
-    //padding: theme.spacing.unit * 2,
-    //height: '100%',
-    //color: theme.palette.text.secondary,
-    flexGrow: 1,
-    borderRadius: 'unset',
-    backgroundColor: 'transparent',
-    overflow: 'auto',
-    marginBottom: `calc(20% + 90px)`,
-    marginTop: `calc(15% + 90px)`,
-    marginRight: `calc((100% - 300px)/2)`,
-    marginLeft: `calc((100% - 300px)/2)`,
-    //overflow: 'auto'
-    minWidth: 300,
-    //display: 'flex',
-    backgroundColor: 'rgba(0,0,0,.9)',
-    borderRadius: 0,
-    opacity: 0.7,
-    padding: '1em',
-    //flexGrow: 1,
-    //flexDirection: 'column',
-    boxShadow: `0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)`,
-    //margin: theme.spacing.unit,
-    color: '#E2DED5',
-    fontFamily: 'Flama',
-    overflow: 'auto',
-  },
-  typo: {
-    color: '#E2DED5',
-    fontFamily: 'Flama',
+  gridItem: {
+    // height: height,
+    //paddingTop: 60,
+    backgroundPosition: 'center',
+    backgroundSize: 'cover',
+    backgroundImage: `url(${pictures.left.url})`,
+    backgroundRepeat: 'no-repeat',
   },
 })
 
@@ -76,7 +60,7 @@ const Page = props => {
       justify={'center'}
       wrap="nowrap"
     >
-      <Hidden xsDown>
+      <Hidden smDown>
         <Grid item xs={12} sm={6}>
           <Grid
             container
@@ -130,13 +114,13 @@ const Page = props => {
             >
               <Grid
                 container
-                spacing={16}
+                spacing={0}
                 alignItems="flex-end"
                 direction="row"
                 style={{ height: '100%' }}
               >
-                <Grid item xs zeroMinWidth style={{overflow: 'hidden'}}>
-                  <Headers text="you're in good company" />
+                <Grid item xs zeroMinWidth style={{ overflow: 'hidden' }}>
+                  <Headers text="you're in good company here" />
                 </Grid>
               </Grid>
             </Grid>
@@ -159,7 +143,7 @@ const Page = props => {
           </Grid>
         </Grid>
       </Hidden>
-      <Hidden smUp>
+      <Hidden mdUp>
         <Grid item xs={12}>
           <Grid
             container
@@ -183,9 +167,14 @@ const Page = props => {
                 backgroundRepeat: 'no-repeat',
               }}
             >
-              <Grid container spacing={16}>
-                <Grid item xs zeroMinWidth style={{overflow: 'hidden'}}>
-                  <Headers text="you're in good company" />
+              <Grid container spacing={0}>
+                <Grid
+                  item
+                  xs
+                  zeroMinWidth
+                  style={{ overflow: 'hidden', marginTop: 90 }}
+                >
+                  <Headers text="you're in good company here" />
                 </Grid>
               </Grid>
               {props.children}
@@ -205,3 +194,15 @@ export default compose(
   withStyles(styles),
   withTransition
 )(Page)
+
+<Grid
+container
+spacing={0}
+alignItems="flex-end"
+direction="row"
+style={{ height: '100%' }}
+>
+<Grid item xs zeroMinWidth style={{ overflow: 'hidden' }}>
+  <Headers text="you're in good company here" />
+</Grid>
+</Grid>

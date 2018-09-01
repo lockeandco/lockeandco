@@ -11,38 +11,16 @@ const style = theme => ({
     color: '#E2DED5',
     fontFamily: 'OldGrowth',
     fontSize: '5rem',
-    //overflow: 'hidden',
-    marginTop: 20,
     whiteSpace: 'nowrap',
-    textShadow: '1px 1px grey',
-    [theme.breakpoints.down('xs')]: {
-      marginTop: 'calc(100vh * .15)',
+    textShadow: '1px 1px rgb(36, 55, 70)',
+    [theme.breakpoints.down('sm')]: {
       fontSize: '3rem',
     },
-    //textOverflow: 'ellipsis',
+    [theme.breakpoints.down('md')]: {
+      fontSize: '4rem',
+    },
   },
 })
-
-// const Content2 = Keyframes.Spring({
-//   peek: [
-//     {
-//       delay: 2000,
-//       from: { x: 0, opacity: 1 },
-//       to: { x: -350, opacity: 1 },
-//       config: { ...config.molasses, duration: 9000 },
-//     },
-//     {
-//       from: { x: 100, opacity: 1 },
-//       to: { x: -300, opacity: 1 },
-//       config: { ...config.molasses, duration: 9000 },
-//     },
-//     {
-//       from: { x: 100, opacity: 0 },
-//       to: { x: 0, opacity: 1 },
-//       config: { ...config.molasses, duration: 5000 },
-//     },
-//   ],
-// })
 
 const Animation = props => {
   const { classes, text, springConfig } = props

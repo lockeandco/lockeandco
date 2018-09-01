@@ -11,69 +11,20 @@ import withTransition from './withTransition'
 import Typography from '@material-ui/core/Typography'
 
 const styles = theme => ({
-  root: {},
-  demo: {
-    height: `100%`,
+  root: {
     flexGrow: 1,
-   // overflow: 'auto',
     minHeight: '100vh',
-  },
-  paper: {
-    //  display: 'flex',
-    //padding: theme.spacing.unit * 2,
-    //height: '100%',
-    //color: theme.palette.text.secondary,
-    flexGrow: 1,
-    borderRadius: 'unset',
-    backgroundColor: 'transparent',
-    // overflow: 'auto',
-    // marginBottom: `calc(20% + 90px)`,
-    // marginTop: `calc(15% + 90px)`,
-    // marginRight: `calc((100% - 300px)/2)`,
-    // marginLeft: `calc((100% - 300px)/2)`,
-    //overflow: 'auto'
-    // minWidth: 300,
-    //display: 'flex',
-    backgroundColor: 'transparent',
-    borderRadius: 0,
-    //opacity: 0.7,
-    paddingTop: '40%',
-    //flexGrow: 1,
-    //flexDirection: 'column',
-    //boxShadow: `0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)`,
-    //margin: theme.spacing.unit,
-    //color: '#E2DED5',
-    //fontFamily: 'Flama',
-    overflow: 'auto',
-  },
-  typo: {
-    color: '#E2DED5',
-    fontFamily: 'Flama',
-  },
-  typoHeader: {
-    color: '#E2DED5',
-    fontFamily: 'OldGrowth',
-    fontSize: '3rem',
     overflow: 'hidden',
-    textShadow: '2px 2px #ff0000',
-    margin: 5,
-  },
-  typosubHeader: {
-    color: '#E2DED5',
-    fontFamily: 'OldGrowth',
-    fontSize: '1.1rem',
-    overflow: 'hidden',
-    // margin: 5,
   },
 })
 
 const PageLayout1x100 = props => {
-  const { classes, pictures } = props
+  const { classes, pictures, text } = props
   return (
     <Grid
       container
       spacing={0}
-      className={classes.demo}
+      className={classes.root}
       alignItems={'stretch'}
       direction={'row'}
       justify={'center'}
@@ -92,6 +43,7 @@ const PageLayout1x100 = props => {
         }}
       >
         {props.children}
+        {text}
       </Grid>
     </Grid>
   )

@@ -10,6 +10,7 @@ import { withWindowSize } from 'react-fns'
 import withTransition from './withTransition'
 import Typography from '@material-ui/core/Typography'
 import Headers from './ScrollingHeaders'
+import { withDeviceOrientation } from 'react-fns'
 
 const styles = theme => ({
   root: {},
@@ -69,6 +70,7 @@ const styles = theme => ({
 
 const Page = props => {
   const { classes, pictures } = props
+  console.log(props)
   return (
     <Grid
       container
@@ -188,6 +190,7 @@ Page.propTypes = {
 }
 
 export default compose(
+  withDeviceOrientation,
   withStyles(styles),
   withTransition
 )(Page)

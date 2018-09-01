@@ -6,7 +6,7 @@ import flush from 'styled-jsx/server'
 class MyDocument extends Document {
   render() {
     const { pageContext } = this.props
-
+console.log('PAGECONTEXT', pageContext.theme.palette.primary)
     return (
       <html lang="en" dir="ltr">
         <Head>

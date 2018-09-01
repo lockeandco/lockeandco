@@ -8,15 +8,31 @@ import IconButton from '@material-ui/core/IconButton'
 import Icon from '@material-ui/core/Icon'
 import Tooltip from '@material-ui/core/Tooltip'
 import classNames from 'classnames'
-import { Facebook, Twitter, Instagram, MapSearch } from 'mdi-material-ui'
+import {
+  FacebookBox as Facebook,
+  Twitter,
+  Instagram,
+  MapSearch,
+} from 'mdi-material-ui'
 import Router from 'next/router'
 import Hidden from '@material-ui/core/Hidden'
+import Typography from '@material-ui/core/Typography'
+
 const styles = theme => ({
   button: {
-    margin: theme.spacing.unit,
-    color: '#E2DED5',
+    margin: theme.spacing.unit * 4,
+    color: 'rgb(36, 55, 70)',
     fontFamily: 'OldGrowth',
     fontWeight: 'bold',
+  },
+  [theme.breakpoints.down('sm')]: {
+    margin: theme.spacing.unit * 2,
+  },
+  iconButton: {
+    margin: theme.spacing.unit * 4,
+    [theme.breakpoints.down('sm')]: {
+      margin: theme.spacing.unit * 2,
+    },
   },
   paper: {
     borderRadius: 'unset',
@@ -25,26 +41,29 @@ const styles = theme => ({
     textAlign: 'center',
     minWidth: 200,
   },
-  paperActive: {
-    borderRadius: 'unset',
-    boxShadow: 'unset',
-    backgroundColor: '#C36D15',
-    textAlign: 'center',
-  },
-  buttonActive: {
-    margin: theme.spacing.unit,
-    color: '#E2DED5',
-    fontFamily: 'Flama',
-  },
+  //   paperActive: {
+  //     borderRadius: 'unset',
+  //     boxShadow: 'unset',
+  //     backgroundColor: '#C36D15',
+  //     textAlign: 'center',
+  //   },
+  //   buttonActive: {
+  //     margin: theme.spacing.unit,
+  //     color: '#E2DED5',
+  //     fontFamily: 'Flama',
+  //   },
   socialIcons: {
     float: 'left',
     margin: theme.spacing.unit * 2,
-    color: '#E2DED5',
+    color: 'rgb(36, 55, 70)',
     fontWeight: 'bold',
     position: 'relative',
-    fontSize: '20px !important',
+    fontSize: '75px !important',
     //paddingLeft: 75,
-    marginRight: '15px',
+    //marginRight: '15px',
+    [theme.breakpoints.down('sm')]: {
+      fontSize: '45px !important',
+    },
   },
 
   tooltip: {
@@ -72,6 +91,32 @@ const styles = theme => ({
     whiteSpace: 'normal',
     lineBreak: 'auto',
   },
+  typo: {
+    color: 'rgb(36, 55, 70)',
+    fontFamily: 'Flama',
+    marginBottom: 30,
+    [theme.breakpoints.down('md')]: {
+      marginBottom: 20,
+    },
+  },
+  typoBody: {
+    color: 'rgb(36, 55, 70)',
+    fontFamily: 'Flama',
+    marginBottom: 50,
+    [theme.breakpoints.down('md')]: {
+      marginBottom: 10,
+    },
+  },
+  typoTitle: {
+    color: 'rgb(36, 55, 70)',
+    fontFamily: 'Flama',
+    marginBottom: 30,
+    marginTop: 100,
+    [theme.breakpoints.down('md')]: {
+      marginBottom: 20,
+      marginTop: 50,
+    },
+  },
 })
 
 const socialIcons = [
@@ -98,10 +143,13 @@ const socialIcons = [
 ]
 
 function TextButtons(props) {
-  const { classes, goToSlide, page } = props
+  const { classes } = props
   console.log(props)
   return (
     <Paper className={classes.paper}>
+      <Typography variant="display1" className={classes.typo}>
+        Follow Us!
+      </Typography>
       {socialIcons.map(ico => (
         <Tooltip
           key={ico.href}
@@ -110,23 +158,21 @@ function TextButtons(props) {
           placement={'bottom'}
           classes={{ tooltip: classes.tooltip }}
         >
-          <IconButton href={ico.href} target="_blank">
+          <IconButton
+            className={classes.iconButton}
+            href={ico.href}
+            target="_blank"
+          >
             {ico.icon(classes.socialIcons)}
           </IconButton>
         </Tooltip>
       ))}
-      <Hidden mdUp>
-        <Tooltip
-          id={`tooltip-find-us`}
-          title={`Find Places Carrying our Aspen Aged Whiskey!`}
-          placement={'bottom'}
-          classes={{ tooltip: classes.tooltip }}
-        >
-          <IconButton onClick={() => Router.push('/find-us')}>
-            <MapSearch className={classes.socialIcons} />
-          </IconButton>
-        </Tooltip>
-      </Hidden>
+      <Typography variant="title" className={classes.typoTitle}>
+        Sign up for our Newsletter
+      </Typography>
+      <Typography variant="body1" className={classes.typoBody}>
+        (We promise not to send too many cat videos . . . probably)
+      </Typography>
     </Paper>
   )
 }

@@ -1,3 +1,22 @@
+//
+//
+//
+//
+//
+//
+//Deprecated
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
@@ -16,7 +35,7 @@ const styles = theme => ({
   demo: {
     height: `100%`,
     flexGrow: 1,
-   //overflow: 'auto',
+    //overflow: 'auto',
     minHeight: '100vh',
   },
   paper: {
@@ -52,7 +71,7 @@ const styles = theme => ({
   typo: {
     color: 'rgb(36, 55, 70)',
     fontFamily: 'Flama',
-    fontSize: '1.4rem',
+    fontSize: '1.1rem',
     fontWeight: 500,
     overflow: 'auto',
   },
@@ -61,7 +80,7 @@ const styles = theme => ({
     fontFamily: 'OldGrowth',
     fontSize: '6rem',
     overflow: 'hidden',
-    margin: 5,
+    margin: 1,
   },
 })
 
@@ -77,8 +96,8 @@ const Page = props => {
       justify={'center'}
       wrap="nowrap"
     >
-      <Hidden xsDown>
-        <Grid item xs={12} sm={6}>
+      <Hidden smDown>
+        <Grid item xs={12} md={6}>
           <Grid
             container
             spacing={0}
@@ -91,7 +110,7 @@ const Page = props => {
             <Grid
               item
               xs={12}
-              sm={12}
+              md={12}
               style={{
                 // height: height,
                 paddingTop: 60,
@@ -104,7 +123,7 @@ const Page = props => {
           </Grid>
         </Grid>
 
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={12} md={6}>
           <Grid
             container
             spacing={0}
@@ -131,7 +150,7 @@ const Page = props => {
             <Grid
               item
               xs={12}
-              sm={12}
+              md={12}
               //style={{ padding: 'unset' }}
               //className={classes.demo}
               style={{
@@ -144,8 +163,13 @@ const Page = props => {
                 backgroundRepeat: 'no-repeat',
               }}
             >
-              <Grid container spacing={16}>
-                <Grid item xs zeroMinWidth style={{marginLeft: 0, overflow: 'hidden'}}>
+              <Grid container spacing={0}>
+                <Grid
+                  item
+                  xs
+                  zeroMinWidth
+                  style={{ marginLeft: 0, overflow: 'hidden' }}
+                >
                   <Headers text="a taste like none other" />
                 </Grid>
               </Grid>
@@ -166,7 +190,7 @@ const Page = props => {
           </Grid>
         </Grid>
       </Hidden>
-      <Hidden smUp>
+      <Hidden mdUp>
         <Grid item xs={12}>
           <Grid
             container
@@ -180,7 +204,7 @@ const Page = props => {
             <Grid
               item
               xs={12}
-              sm={12}
+              md={12}
               style={{
                 // height: height,
                 backgroundPosition: 'center',

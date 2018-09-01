@@ -8,7 +8,7 @@ import Headers from '../components/ScrollingHeaders'
 const styles = theme => ({})
 const FindUs = props => (
   <Fragment>
-    <Background />
+
     <Page
       {...props}
       pictures={{

@@ -11,7 +11,7 @@ const Background = () => (
       width: '100%',
       top: 0,
       left: 0,
-      position: 'absolute',
+      position: 'fixed',
       justifyContent: 'center',
       alignItems: 'center',
       backgroundColor: 'transparent',

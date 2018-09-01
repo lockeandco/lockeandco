@@ -25,7 +25,7 @@ const Merchandise = props => {
   const { classes, ...other } = props
   return (
     <React.Fragment>
-      <Background />
+    
       <Page
         {...other}
         pictures={{

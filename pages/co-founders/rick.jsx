@@ -144,12 +144,12 @@ const styles = theme => ({
 class SwipeComponent extends React.Component {
   onSwipedLeft(e, absX) {
     console.log("You're Swiping to the Left...", e, absX)
-    Router.push('/co-founders/owen')
+    Router.push('/co-founders')
   }
 
   onSwipedRight(e, deltaX, deltaY, isFlick, velocity) {
     console.log('You Swiped...', e, deltaX, deltaY, isFlick, velocity)
-    Router.push('/co-founders')
+    Router.push('/co-founders/owen')
   }
 
   render() {

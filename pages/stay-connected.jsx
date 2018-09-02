@@ -13,7 +13,7 @@ const styles = theme => ({
     textAlign: 'center',
     backgroundColor: `rgba(226, 222, 213, 0.5)`,
     [theme.breakpoints.up('md')]: {
-      marginTop: 200,
+      marginTop: 130,
       textAlign: 'center',
       backgroundColor: 'unset',
     },

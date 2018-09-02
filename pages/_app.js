@@ -12,7 +12,6 @@ import { withCookies, Cookies } from 'react-cookie'
 import { instanceOf } from 'prop-types'
 import components from '../MDXcomponents'
 
-
 const theme = createMuiTheme({
   palette: {
     primary: {
@@ -35,7 +34,6 @@ class MyApp extends App {
     super(props)
     this.pageContext = getPageContext()
     this.pageContext.theme = theme
-    console.log('IN PP Constructor', this.pageContext)
     const { cookies } = props
     this.state = {
       isVerified: cookies.get('isVerified') || false,

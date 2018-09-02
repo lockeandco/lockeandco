@@ -1,69 +1,138 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React, { Fragment } from 'react'
+import Page from '../components/PageLayout'
+import compose from 'ramda/src/compose'
+import checkCookie from '../components/NoCookie'
 import { withStyles } from '@material-ui/core/styles'
-import Grid from '@material-ui/core/Grid'
-import FormControl from '@material-ui/core/FormControl'
-import FormLabel from '@material-ui/core/FormLabel'
-import FormControlLabel from '@material-ui/core/FormControlLabel'
-import RadioGroup from '@material-ui/core/RadioGroup'
-import Radio from '@material-ui/core/Radio'
+import Background from '../components/TransitionBackground'
 import Paper from '@material-ui/core/Paper'
+import Typography from '@material-ui/core/Typography'
+import Headers from '../components/ScrollingHeaders'
+import CommonHeader from '../components/MobileScrollingHeader'
 
 const styles = theme => ({
-  root: {
-    flexGrow: 1,
-    backgroundPosition: 'left, right',
-    backgroundSize: 'cover, cover',
-    backgroundImage: `url(/static/AxeBottle.jpg), url(/static/Bottle_Creek.jpg)`,
-    backgroundRepeat: 'no-repeat, no-repeat',
-    //background: `rgb(226, 222, 213)`,
-    height: '100vh',
-  },
-  demo: {
-    height: 240,
-  },
   paper: {
-    padding: theme.spacing.unit * 2,
-    height: '100%',
-    color: theme.palette.text.secondary,
     flexGrow: 1,
+    borderRadius: 'unset',
+    backgroundColor: 'transparent',
+    overflow: 'auto',
+    // textOverflow: 'ellipsis',
+    margin: 10,
+    borderRadius: 0,
+    paddingBottom: 200,
+    boxShadow: 'unset',
+    color: '#E2DED5',
+    fontFamily: 'Flama',
+    [theme.breakpoints.down('sm')]: {
+      maxHeight: 'calc(.6 * 100vh)',
+      // overflow: 'scroll',
+    },
+    [theme.breakpoints.up('md')]: {
+      flexGrow: 1,
+      borderRadius: 'unset',
+      backgroundColor: 'transparent',
+      overflow: 'auto',
+      paddingRight: `10%`,
+      paddingLeft: `10%`,
+      paddingTop: 150,
+    },
   },
-  control: {
-    padding: theme.spacing.unit * 2,
+  card: {
+    minWidth: 200,
+    backgroundColor: 'rgba(0,0,0,.7)',
+    borderRadius: 0,
+    padding: '1em',
+    boxShadow: `0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)`,
+    // [theme.breakpoints.down('sm')]: {
+    //   maxHeight: 'calc(.6 * 100vh)',
+    // //  overflow: 'scroll',
+    // },
+  },
+  typo: {
+    color: '#E2DED5',
+    fontFamily: 'Flama',
+    [theme.breakpoints.up('sm')]: {
+      fontSize: '1.1rem',
+    },
   },
 })
 
-class InteractiveGrid extends React.Component {
-  state = {
-    direction: 'row',
-    justify: 'center',
-    alignItems: 'stretch',
-  }
-
-  handleChange = key => (event, value) => {
-    this.setState({
-      [key]: value,
-    })
-  }
-
-  render() {
-    const { classes, children } = this.props
-    const { alignItems, direction, justify } = this.state
-    return (
-      <Grid
-        container
-        className={classes.root}
-        style={{ paddingTop: 100 }}
-        alignItems="stretch"
-      >
-      {children}
-      </Grid>
-    )
-  }
+const CoFounders = props => {
+  const { classes, ...other } = props
+  return (
+    <Fragment>
+      <Page
+        {...other}
+        pictures={{
+          left: {
+            url: `/static/Bonfire_in_the_Woods.jpg`,
+            size: '100%',
+          },
+          rightTop: {
+            url: `/static/Group_Dinner_Table.jpg`,
+            size: `50%`,
+          },
+          rightBottom: {
+            url: `/static/Woman_in_Hammock.jpg`,
+            size: `50%`,
+          },
+        }}
+        text={{
+          position: 'left',
+          component: (
+            <Paper className={classes.paper}>
+              <div className={classes.card}>
+                <Typography variant="body1" paragraph className={classes.typo}>
+                  The process of distilling has brought with it valuable
+                  perspective. After years focused on business development,
+                  management and client service, as well as giving back (Rick
+                  serves on Denver Museum of Nature & Science’s Giving Club
+                  Council; Owen on the board of nonprofit Geneva Glen Camp) both
+                  established successful careers.
+                </Typography>
+                <Typography variant="body1" paragraph className={classes.typo}>
+                  However, the alchemy of creating something new through careful
+                  selection plus separation helped both distill down their own
+                  busy working lives. They extracted out one common element:
+                  celebrating the best of what life in Colorado has afforded.
+                </Typography>
+                <Typography variant="body1" paragraph className={classes.typo}>
+                  This guiding principle, of sharing that experience, hit them
+                  while hand-cutting the aging discs from mature stands of aspen
+                  on family land flanking Central Colorado’s Mosquito Range. All
+                  the best days added up. The days spent camping, hiking,
+                  biking, fishing, snowboarding and skiing: that sunset toast
+                  after an unending day fly-fishing the Yampa, the warm nip from
+                  a flask on a cold chairlift, the laughter over a late-summer
+                  backyard game of cornhole. The unapologetic last howl at the
+                  moon.
+                </Typography>
+                <div style={{ textAlign: 'center' }}>
+                  <img
+                    src="/static/Owen+Rick.jpg"
+                    width="90%"
+                    height="auto"
+                    style={{
+                      padding: 1,
+                      border: '1px,solid, #C36D15',
+                      backgroundColor: '#C36D15',
+                    }}
+                  />
+                </div>
+              </div>
+            </Paper>
+          ),
+        }}
+        header={{
+          position: 'rightBottom',
+          component: (
+            <CommonHeader headerText={`official sponsors of a good time`} />
+          ),
+        }}
+      />
+    </Fragment>
+  )
 }
-
-InteractiveGrid.propTypes = {
-  classes: PropTypes.object.isRequired,
-}
-
-export default withStyles(styles)(InteractiveGrid)
+export default compose(
+  checkCookie,
+  withStyles(styles)
+)(CoFounders)

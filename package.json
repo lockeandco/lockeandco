@@ -39,6 +39,7 @@
     "react-spring": "^5.6.9",
     "react-streams": "^13.6.6",
     "react-swipeable": "^4.3.0",
+    "react-swipeable-views": "^0.12.17",
     "recompose": "^0.28.1",
     "redux": "^4.0.0",
     "redux-observable": "^1.0.0",

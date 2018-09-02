@@ -36,7 +36,6 @@ const styles = theme => ({
 })
 
 const CheckAge = withStyles(styles)(props => {
-  console.log('PROPS', props)
   const { classes, ...other } = props
   return (
     <Fragment>
@@ -91,14 +90,6 @@ function withCookie(Component) {
     static propTypes = {
       cookies: instanceOf(Cookies).isRequired,
     }
-    async getCookies() {
-      const isVerified = await this.props.cookies.get('isVerified')
-      console.log(isVerified)
-      if (isVerified === 'false') {
-        console.log('isVerified', isVerified)
-        Router.replace('/spirits')
-      }
-    }
 
     constructor(props) {
       super(props)
@@ -139,7 +130,6 @@ function withCookie(Component) {
       this.setState({ remember: !remember })
     }
     render() {
-      console.log('STATE', this.state)
       return this.state.isVerified ? (
         <Component
           {...this.props}

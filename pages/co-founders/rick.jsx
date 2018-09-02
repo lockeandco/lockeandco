@@ -1,14 +1,14 @@
 import React, { Fragment } from 'react'
-import Page from '../components/PageLayout'
+import Page from '../../components/PageLayout'
 import compose from 'ramda/src/compose'
-import checkCookie from '../components/NoCookie'
+import checkCookie from '../../components/NoCookie'
 import { withStyles } from '@material-ui/core/styles'
-import Background from '../components/TransitionBackground'
+import Background from '../../components/TransitionBackground'
 import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
-import Headers from '../components/ScrollingHeaders'
-import CommonHeader from '../components/MobileScrollingHeader'
-import Cofounders from '../components/Cofounders'
+import Headers from '../../components/ScrollingHeaders'
+import CommonHeader from '../../components/MobileScrollingHeader'
+import Rick from '../../components/Rick'
 import Swipeable from 'react-swipeable'
 import Router from 'next/router'
 
@@ -144,12 +144,12 @@ const styles = theme => ({
 class SwipeComponent extends React.Component {
   onSwipedLeft(e, absX) {
     console.log("You're Swiping to the Left...", e, absX)
-    Router.push('/co-founders/rick')
+    Router.push('/co-founders/owen')
   }
 
   onSwipedRight(e, deltaX, deltaY, isFlick, velocity) {
     console.log('You Swiped...', e, deltaX, deltaY, isFlick, velocity)
-    Router.push('/co-founders/owen')
+    Router.push('/co-founders')
   }
 
   render() {
@@ -159,7 +159,7 @@ class SwipeComponent extends React.Component {
         onSwipedLeft={this.onSwipedLeft}
         onSwipedRight={this.onSwipedRight}
       >
-        <Cofounders {...this.props} />
+        <Rick {...other} />
       </Swipeable>
     )
   }

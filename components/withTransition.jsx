@@ -100,8 +100,8 @@ class Index extends React.Component {
     // console.log(direction)
     // console.log(intent)
     // console.log(startEvent)
-    console.log('ONScrollAction', e)
-    console.log(this.state.scrollPending)
+   // console.log('ONScrollAction', e)
+   // console.log(this.state.scrollPending)
 
     // scrollTo(determineVerticalRoot(), 'scrollTop', to, 200, () =>
     //   Router.push('/about')
@@ -162,9 +162,9 @@ class Index extends React.Component {
     // }
   }
   render() {
-    console.log(this.state)
+   // console.log(this.state)
     const { window, position, transitionOut, enter, where, intent } = this.state
-    console.log('ENTER', enter)
+   // console.log('ENTER', enter)
     return (
       <Box2
         pose={where || enter ? 'top' : 'bottom'}
@@ -190,7 +190,7 @@ class Index extends React.Component {
 
 const withTransition = Component => {
   const Wrapper = (props, ref) => {
-    console.log(Component)
+   // console.log(Component)
     return (
       <Index>
         <Component {...props} ref={ref} />
@@ -219,7 +219,7 @@ function scrollTo(element, elementBoundary, to, duration, callback) {
     element[elementBoundary] = val
 
     if (currentTime >= duration) {
-      console.log('Canceled')
+     // console.log('Canceled')
       //cancelAnimationFrame(globalId);
       return callback()
     }

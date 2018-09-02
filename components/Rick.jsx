@@ -56,7 +56,7 @@ const styles = theme => ({
   },
 })
 
-const CoFounders = props => {
+const CoFoundersRick = props => {
   const { classes, ...other } = props
   return (
     <Fragment>
@@ -64,16 +64,16 @@ const CoFounders = props => {
         {...other}
         pictures={{
           left: {
-            url: `/static/Bonfire_in_the_Woods.jpg`,
+            url: `/static/Axebottle.jpg`,
             size: '100%',
           },
           rightTop: {
-            url: `/static/Group_Dinner_Table.jpg`,
-            size: `50%`,
+            url: `/static/Two_Men_Cheersing.jpg`,
+            size: `60%`,
           },
           rightBottom: {
-            url: `/static/Woman_in_Hammock.jpg`,
-            size: `50%`,
+            url: `/static/Weathered_CO_Flag.jpg`,
+            size: `40%`,
           },
         }}
         text={{
@@ -81,51 +81,40 @@ const CoFounders = props => {
           component: (
             <Paper className={classes.paper}>
               <div className={classes.card}>
-                <Typography variant="body1" paragraph className={classes.typo}>
-                  The process of distilling has brought with it valuable
-                  perspective. After years focused on business development,
-                  management and client service, as well as giving back (Rick
-                  serves on Denver Museum of Nature & Science’s Giving Club
-                  Council; Owen on the board of nonprofit Geneva Glen Camp) both
-                  established successful careers.
-                </Typography>
-                <Typography variant="body1" paragraph className={classes.typo}>
-                  However, the alchemy of creating something new through careful
-                  selection plus separation helped both distill down their own
-                  busy working lives. They extracted out one common element:
-                  celebrating the best of what life in Colorado has afforded.
-                </Typography>
-                <Typography variant="body1" paragraph className={classes.typo}>
-                  This guiding principle, of sharing that experience, hit them
-                  while hand-cutting the aging discs from mature stands of aspen
-                  on family land flanking Central Colorado’s Mosquito Range. All
-                  the best days added up. The days spent camping, hiking,
-                  biking, fishing, snowboarding and skiing: that sunset toast
-                  after an unending day fly-fishing the Yampa, the warm nip from
-                  a flask on a cold chairlift, the laughter over a late-summer
-                  backyard game of cornhole. The unapologetic last howl at the
-                  moon.
-                </Typography>
                 <div style={{ textAlign: 'center' }}>
                   <img
-                    src="/static/Owen+Rick.jpg"
+                    src="/static/Rick.jpg"
                     width="90%"
                     height="auto"
                     style={{
                       padding: 1,
                       border: '1px,solid, #C36D15',
                       backgroundColor: '#C36D15',
+                      marginBottom: 20,
                     }}
                   />
                 </div>
+                <Typography variant="body1" paragraph className={classes.typo}>
+                  Rick shares the same Colorado-bred love of the outdoors—eager
+                  to answer the pull toward the peaks with friends and family,
+                  and to explore deeper. Drawn from an early age to the high
+                  country’s historic forts, mines and ranches, of past lives
+                  forged and fueled by whiskey, he shares the same appreciation
+                  of the broad base that rye provides other cocktails, as well
+                  as its simple balance to act on its own.
+                </Typography>
               </div>
             </Paper>
           ),
         }}
         header={{
-          position: 'rightBottom',
+          position: 'rightTop',
           component: (
-            <CommonHeader headerText={`official sponsors of a good time`} />
+            <CommonHeader
+              height="100%"
+              alignItems="flex-end"
+              headerText={`official sponsors of a good time`}
+            />
           ),
         }}
       />
@@ -135,4 +124,4 @@ const CoFounders = props => {
 export default compose(
   checkCookie,
   withStyles(styles)
-)(CoFounders)
+)(CoFoundersRick)

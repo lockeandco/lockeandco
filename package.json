@@ -17,6 +17,7 @@
     "change-case": "^3.0.2",
     "delay": "^3.1.0",
     "fullpage-react": "^3.0.33",
+    "google-maps-react": "^2.0.2",
     "history": "^4.7.2",
     "hoist-non-react-statics": "^3.0.1",
     "jss": "^9.8.7",

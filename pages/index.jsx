@@ -25,7 +25,7 @@ const styles = theme => ({
     marginBottom: 5,
     fontSize: '1.2rem',
     [theme.breakpoints.down('sm')]: {
-      fontSize: '.8rem',
+      fontSize: '.7rem',
       marginTop: 10,
       marginBottom: 5,
     },
@@ -122,12 +122,12 @@ const Homepage = props => {
                       {
                         delay: 2000,
                         from: { x: 0, opacity: 1 },
-                        to: { x: -150, opacity: 1 },
+                        to: { x: -200, opacity: 1 },
                         config: { ...config.molasses, duration: 10000 },
                       },
                       {
                         from: { x: 100, opacity: 1 },
-                        to: { x: -150, opacity: 1 },
+                        to: { x: -200, opacity: 1 },
                         config: { ...config.molasses, duration: 10000 },
                       },
                       {

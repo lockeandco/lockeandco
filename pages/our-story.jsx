@@ -45,14 +45,9 @@ const styles = theme => ({
   typo: {
     color: '#E2DED5',
     fontFamily: 'Flama',
+    textShadow: '1px 1px rgb(36, 55, 70)',
     [theme.breakpoints.up('sm')]: {
-      fontSize: '.9rem',
-    },
-    [theme.breakpoints.down('sm')]: {
-      color: '#E2DED5',
-      fontFamily: 'Flama',
-      textShadow: '1px 1px rgb(36, 55, 70)',
-      fontSize: '.8rem',
+      fontSize: '1.1rem',
     },
   },
 })

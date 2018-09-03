@@ -25,7 +25,6 @@ const Merchandise = props => {
   const { classes, ...other } = props
   return (
     <React.Fragment>
-    
       <Page
         {...other}
         pictures={{
@@ -43,11 +42,14 @@ const Merchandise = props => {
           },
         }}
       />
-      <div style={{ 
-        textAlign: 'center', 
-      top: '40%', 
-      position: 'fixed' }}>
-        <Headers text="new arrivals. shop now" />
+      <div
+        style={{
+          textAlign: 'center',
+          top: '40%',
+          position: 'fixed',
+        }}
+      >
+        <Headers text="new arrivals. coming soon." />
       </div>
     </React.Fragment>
   )

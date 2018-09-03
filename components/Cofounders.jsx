@@ -23,7 +23,7 @@ const styles = theme => ({
     color: '#E2DED5',
     fontFamily: 'Flama',
     [theme.breakpoints.down('sm')]: {
-      maxHeight: 'calc(.6 * 100vh)',
+      //maxHeight: 'calc(.6 * 100vh)',
       // overflow: 'scroll',
     },
     [theme.breakpoints.up('md')]: {
@@ -50,6 +50,7 @@ const styles = theme => ({
   typo: {
     color: '#E2DED5',
     fontFamily: 'Flama',
+    textShadow: '1px 1px rgb(36, 55, 70)',
     [theme.breakpoints.up('sm')]: {
       fontSize: '1.1rem',
     },

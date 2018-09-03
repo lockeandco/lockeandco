@@ -5,6 +5,8 @@ import { withStyles } from '@material-ui/core/styles'
 import Background from '../components/TransitionBackground'
 import compose from 'ramda/src/compose'
 import Headers from '../components/ScrollingHeaders'
+import FindUsMap from '../components/FindUs'
+
 const styles = theme => ({})
 const FindUs = props => (
   <Fragment>
@@ -16,9 +18,10 @@ const FindUs = props => (
       }}
     >
       <div
-        style={{ textAlign: 'center', paddingTop: '20%', overflow: 'hidden' }}
+        style={{ textAlign: 'center', paddingTop: '90px', overflow: 'hidden' }}
       >
         <Headers text="a taste like none other" />
+        <FindUsMap />
       </div>
     </Page>
   </Fragment>

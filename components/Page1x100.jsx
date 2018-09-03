@@ -43,7 +43,6 @@ const PageLayout1x100 = props => {
         }}
       >
         {props.children}
-        {text}
       </Grid>
     </Grid>
   )

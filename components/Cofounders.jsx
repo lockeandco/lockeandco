@@ -101,7 +101,7 @@ const CoFounders = props => {
                     style={{ color: 'white' }}
                     onClick={() => Router.push('/co-founders/owen')}
                   >
-                    <ChevronRight style={{ fontSize: 40 }} />
+                    <ChevronRight style={{ fontSize: 60 }} />
                   </IconButton>
                 </div>
                 <div
@@ -119,7 +119,7 @@ const CoFounders = props => {
                     style={{ color: 'white' }}
                     onClick={() => Router.push('/co-founders/rick')}
                   >
-                    <ChevronLeft style={{ fontSize: 40 }} />
+                    <ChevronLeft style={{ fontSize: 60 }} />
                   </IconButton>
                 </div>
 

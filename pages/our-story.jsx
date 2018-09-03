@@ -22,7 +22,7 @@ const styles = theme => ({
     fontFamily: 'Flama',
     overflow: 'auto',
     [theme.breakpoints.down('sm')]: {
-      maxHeight: 'calc(.6 * 100vh)',
+     // maxHeight: 'calc(.6 * 100vh)',
       //overflow: 'scroll',
     },
     [theme.breakpoints.up('md')]: {

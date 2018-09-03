@@ -8,6 +8,10 @@ import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
 import Headers from '../components/ScrollingHeaders'
 import CommonHeader from '../components/MobileScrollingHeader'
+import ChevronRight from '@material-ui/icons/ChevronRight'
+import ChevronLeft from '@material-ui/icons/ChevronLeft'
+import IconButton from '@material-ui/core/IconButton'
+import Router from 'next/router'
 
 const styles = theme => ({
   paper: {
@@ -23,7 +27,7 @@ const styles = theme => ({
     color: '#E2DED5',
     fontFamily: 'Flama',
     [theme.breakpoints.down('sm')]: {
-      maxHeight: 'calc(.6 * 100vh)',
+      //maxHeight: 'calc(.6 * 100vh)',
       // overflow: 'scroll',
     },
     [theme.breakpoints.up('md')]: {
@@ -81,6 +85,42 @@ const CoFounders = props => {
           component: (
             <Paper className={classes.paper}>
               <div className={classes.card}>
+                <div
+                  style={{
+                    top: '50%',
+                    float: 'right',
+                    position: 'sticky',
+                    width: 'auto',
+                    opacity: 0.7,
+
+                    marginRight: -40,
+                  }}
+                >
+                  <IconButton
+                    style={{ color: 'white' }}
+                    onClick={() => Router.push('/co-founders/rick')}
+                  >
+                    <ChevronRight style={{ fontSize: 40 }} />
+                  </IconButton>
+                </div>
+                <div
+                  style={{
+                    top: '50%',
+                    float: 'left',
+                    position: 'sticky',
+                    width: 'auto',
+                    opacity: 0.7,
+
+                    marginLeft: -40,
+                  }}
+                >
+                  <IconButton
+                    style={{ color: 'white' }}
+                    onClick={() => Router.push('/co-founders')}
+                  >
+                    <ChevronLeft style={{ fontSize: 40 }} />
+                  </IconButton>
+                </div>
                 <div style={{ textAlign: 'center' }}>
                   <img
                     src="/static/Owen.jpg"

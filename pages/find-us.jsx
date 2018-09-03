@@ -18,7 +18,7 @@ const FindUs = props => (
       }}
     >
       <div
-        style={{ textAlign: 'center', paddingTop: '90px', overflow: 'hidden' }}
+        style={{ textAlign: 'center', paddingTop: '75px', overflow: 'hidden' }}
       >
         <Headers text="a taste like none other" />
         <FindUsMap />

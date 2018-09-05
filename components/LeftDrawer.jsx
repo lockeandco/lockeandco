@@ -51,6 +51,12 @@ class LeftDrawer extends React.Component {
     open: undefined,
   }
 
+  componentWillUnmount() {
+    this.setState({
+      open: undefined,
+    })
+  }
+
   toggleDrawer = () => this.setState(state => ({ open: !state.open }))
 
   render() {
@@ -99,7 +105,7 @@ class LeftDrawer extends React.Component {
               float: 'left',
               color: this.state.open
                 ? '#C36D15'
-                : this.state.open === undefined
+                : this.state.open === undefined && route === '/find-us'
                   ? '#D4C201'
                   : '#E2DED5',
               fontWeight: 'bold',

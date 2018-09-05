@@ -7,9 +7,11 @@ import Typography from '@material-ui/core/Typography'
 import Button from '@material-ui/core/Button'
 import Hidden from '@material-ui/core/Hidden'
 import CustomCard from './Cards'
-import MenuButtons from './TextButtons'
+import MenuButtons from './FindUsTextButtons'
 import RightDrawer from './RightDrawer'
 import Router from 'next/router'
+
+
 
 const styles = {
   root: {
@@ -18,15 +20,10 @@ const styles = {
   flex: {
     flex: 1,
   },
-  appBar: {
-    width: `calc(100% - 275px)`,
-    marginLeft: '275px',
-    maxHeight: 45,
-    backgroundColor: 'rgb(36, 55, 70)',
-  },
   toolBar: {
+    backgroundColor: 'rgb(36, 55, 70)',
     minHeight: 45,
-    justifyContent: 'space-around',
+    justifyContent: 'center',
   },
 }
 
@@ -35,18 +32,11 @@ function TopMenu(props) {
 
   return (
     <div className={classes.root}>
-      <CustomCard route={route} />
-      <AppBar position="fixed" className={classes.appBar}>
-        <Toolbar className={classes.toolBar} disableGutters={true}>
-          <Hidden smDown>
-            <MenuButtons route={route} Router={Router} />
-          </Hidden>
-          <Hidden mdUp>
-            <CustomCard />
-            <RightDrawer route={route} Router={Router} />
-          </Hidden>
-        </Toolbar>
-      </AppBar>
+      <Toolbar className={classes.toolBar} disableGutters={true}>
+        <Hidden smDown>
+          <MenuButtons route={route} Router={Router} />
+        </Hidden>
+      </Toolbar>
     </div>
   )
 }

@@ -1,7 +1,7 @@
 import React from 'react'
 import Page from '../components/Page1x26040M'
 import Paper from '@material-ui/core/Paper'
-import Headers from '../components/ScrollingHeaders'
+import Headers from '../components/MobileScrollingHeader'
 import Typography from '@material-ui/core/Typography'
 import { withStyles } from '@material-ui/core/styles'
 import Background from '../components/TransitionBackground'

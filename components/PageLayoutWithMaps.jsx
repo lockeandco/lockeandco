@@ -9,7 +9,7 @@ import compose from 'ramda/src/compose'
 import { withWindowSize } from 'react-fns'
 import withTransition from './withTransition'
 import Typography from '@material-ui/core/Typography'
-import Header100 from '../components/MobileScrollingHeader'
+import Header100 from './MobileScrollingHeader'
 
 const styles = theme => ({
   demo: {
@@ -28,6 +28,7 @@ const Page = props => {
     leftSize,
     rightSize,
     backgroundColorRight,
+    gMap,
   } = props
   return (
     <Grid
@@ -53,16 +54,8 @@ const Page = props => {
               backgroundRepeat: 'no-repeat',
             }}
           >
-            <Hidden mdUp>
-              {header &&
-                header.component && (
-                  <Header100 headerText={header.component.props.headerText} />
-                )}
-              {text && text.component}
-            </Hidden>
-            <Hidden smDown>
-              {text && text.position === 'left' && text.component}
-            </Hidden>
+  
+            {gMap}
           </Grid>
         </Grid>
       </Grid>
@@ -124,6 +117,4 @@ Page.propTypes = {
   classes: PropTypes.object.isRequired,
 }
 
-export default compose(
-  withStyles(styles),
-)(Page)
+export default compose(withStyles(styles))(Page)

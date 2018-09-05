@@ -12,17 +12,30 @@ import Headers from '../components/ScrollingHeaders'
 import CommonHeader from '../components/MobileScrollingHeader'
 import CardBackground from '../components/CardBackground'
 
-const owenBio = ` For Owen, the independent spirit of the Wild West still
-          inspires the sixth-generation Colorado native with a wild
-          desire to create, to build, to become—or celebrate—anything.
-          At 15, he started sourcing home-brew ingredients, refining his
-          fermentation skills ever since. Rye always stood out: the
-          complexities and unique flavors it brings to cocktails. It
-          just tasted a bit more wild than other whiskey.`
+const ourStoryCopy = classes => (
+  <React.Fragment>
+    <Typography variant="body1" paragraph className={classes.typo}>
+      The Locke’s family roots in Colorado moonshining go back several
+      generations. Owen Locke kept the craft tradition alive with an early knack
+      for brewing that continued through college to graduate school, where he
+      reconnected with Rick Talley.
+    </Typography>
+    <Typography variant="body1" paragraph className={classes.typo}>
+      The high school friends and lacrosse teammates immediately recognized that
+      their collaborative styles complimented each other well, working through
+      MBA degrees together at the University of Denver’s Daniels College of
+      Business as hand sale experts for Beam Suntory. It didn’t take them long
+      to realize they could create something bolder and wilder than the premier
+      spirits they offered at countless tastings. In 2010, the team bought a
+      23-gallon still that turned a garage hobby into a lifestyle with their
+      first whiskey batches aged in small barrels.
+    </Typography>
+  </React.Fragment>
+)
 
 const styles = theme => ({})
 
-const Owen = props => {
+const OurStory = props => {
   const { classes, ...other } = props
   return (
     <Fragment>
@@ -30,16 +43,16 @@ const Owen = props => {
         {...other}
         pictures={{
           left: {
-            url: `/static/Bottle_Flyfishing.jpg`,
+            url: `/static/Man_Looking_Over_Cliff.jpg`,
             size: '100%',
           },
           rightTop: {
-            url: `/static/Woman_with_Camera_in_Woods.jpg`,
-            size: `60%`,
+            url: `/static/Moonshine_Jars.jpg`,
+            size: '55%',
           },
           rightBottom: {
-            url: `/static/Weathered_CO_Flag.jpg`,
-            size: `40%`,
+            url: `/static/Group_with_Sparklers.jpg`,
+            size: '45%',
           },
         }}
         text={{
@@ -47,17 +60,15 @@ const Owen = props => {
           component: (
             <CardBackground
               {...other}
-              media={'/static/Owen.jpg'}
-              content={owenBio}
-              title={`Owen Locke`}
+              content={ourStoryCopy}
               links={{
                 left: {
                   title: 'Co-Founders',
                   link: '/co-founders',
                 },
                 right: {
-                  title: 'Rick',
-                  link: '/co-founders/rick',
+                  title: 'Find Us',
+                  link: '/find-us',
                 },
               }}
             />
@@ -69,7 +80,7 @@ const Owen = props => {
             <CommonHeader
               height="100%"
               alignItems="flex-end"
-              headerText={`official sponsors of a good time`}
+              headerText={`you're in good company here`}
             />
           ),
         }}
@@ -80,4 +91,4 @@ const Owen = props => {
 export default compose(
   checkCookie,
   withStyles(styles)
-)(Owen)
+)(OurStory)

@@ -66,9 +66,11 @@ const styles = theme => ({
   },
   bottle: {
     height: 'calc(.35 * 100vh)',
+    maxHeight: 200,
     width: 'auto',
     [theme.breakpoints.up('md')]: {
       height: 'calc(.45 * 100vh)',
+      maxHeight: 400,
       width: 'auto',
     },
   },
@@ -112,7 +114,29 @@ const Homepage = props => {
                 you're welcome here.
               </Typography>
               <Hidden smUp>
-                <Headers text="welcome everyone everyone welcome" />
+                <Headers
+                  text="welcome everyone everyone welcome"
+                  springConfig={{
+                    peek: [
+                      {
+                        delay: 2000,
+                        from: { x: 0, opacity: 1 },
+                        to: { x: -590, opacity: 1 },
+                        config: { ...config.molasses, duration: 10000 },
+                      },
+                      {
+                        from: { x: 100, opacity: 1 },
+                        to: { x: -590, opacity: 1 },
+                        config: { ...config.molasses, duration: 10000 },
+                      },
+                      {
+                        from: { x: 100, opacity: 0 },
+                        to: { x: Math.random() * -100, opacity: 1 },
+                        config: { ...config.molasses, duration: 5000 },
+                      },
+                    ],
+                  }}
+                />
               </Hidden>
               <Hidden xsDown>
                 <Headers
@@ -140,8 +164,14 @@ const Homepage = props => {
                 />
               </Hidden>
             </div>
-
-            <div style={{ bottom: 40, position: 'absolute' }}>
+            <div
+              style={{
+                bottom: 40,
+                position: 'absolute',
+                marginTop: 10,
+                marginLeft: 20,
+              }}
+            >
               <img
                 src="/static/Bottle.png"
                 className={classes.bottle}
@@ -169,5 +199,3 @@ export default compose(
   checkCookie,
   withStyles(styles)
 )(Homepage)
-
-

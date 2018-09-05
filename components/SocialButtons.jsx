@@ -11,6 +11,9 @@ import classNames from 'classnames'
 import { Facebook, Twitter, Instagram, MapSearch } from 'mdi-material-ui'
 import Router from 'next/router'
 import Hidden from '@material-ui/core/Hidden'
+import LeftDrawer from './LeftDrawer'
+
+
 const styles = theme => ({
   button: {
     margin: theme.spacing.unit,
@@ -98,7 +101,7 @@ const socialIcons = [
 ]
 
 function TextButtons(props) {
-  const { classes, goToSlide, page } = props
+  const { classes, goToSlide, page, ...other } = props
   console.log(props)
   return (
     <Paper className={classes.paper}>
@@ -122,9 +125,7 @@ function TextButtons(props) {
           placement={'bottom'}
           classes={{ tooltip: classes.tooltip }}
         >
-          <IconButton onClick={() => Router.push('/find-us')}>
-            <MapSearch className={classes.socialIcons} />
-          </IconButton>
+          <LeftDrawer {...other} Router={Router} />
         </Tooltip>
       </Hidden>
     </Paper>

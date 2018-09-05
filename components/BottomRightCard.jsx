@@ -32,7 +32,7 @@ const styles = {
     backgroundPosition: 'center center',
     backgroundSize: 'contain, cover',
     //backgroundImage: `url(/static/hearFromYou.png)`,
-    background: `rgb(226, 222, 213)`,
+    background: `#D6D1C4`,
   },
 }
 

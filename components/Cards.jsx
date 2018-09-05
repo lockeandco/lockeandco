@@ -34,11 +34,11 @@ const styles = {
 }
 
 function SimpleCard(props) {
-  const { classes, goToSlide } = props
+  const { classes, goToSlide, route } = props
 
   return (
     <div>
-      <Card className={classes.card} onClick={() => Router.push('/')}>
+      <Card className={classes.card} onClick={() => Router.push('/')} >
         <CardContent />
         <CardActions />
       </Card>

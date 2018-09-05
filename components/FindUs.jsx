@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react'
 import locations from '../lib/formattedLocations.json'
 
-console.log(locations.filter(x => x.location))
+//console.log(locations.filter(x => x.location))
+//stream props for performance
 export class MapContainer extends Component {
   constructor(props) {
     super(props)
@@ -18,7 +19,6 @@ export class MapContainer extends Component {
     }
   }
   onMarkerClick(props, marker, e, s) {
-    
     this.setState({
       selectedPlace: e,
       activeMarker: marker.position,
@@ -34,18 +34,17 @@ export class MapContainer extends Component {
       <div
         style={{
           position: 'relative',
-          height: 'calc(100vh * .6)',
-          width: 'calc(100vw * .9',
-          paddingLeft: '5%',
-          paddingBottom: '20%',
-
+          height: '100%',
+          width: '100%',
+          minHeight: '95vh',
+          //   height: 'calc(100vh * .7)',
+          //   width: 'calc(100vw * .9',
+          //   paddingLeft: '5%',
+          //   paddingRight: '5%',
+          //paddingBottom: '200px',
         }}
       >
         <Map
-
-          style={{
-              border: '5px solid rgb(36, 55, 70)'
-          }}
           google={this.props.google}
           zoom={11}
           initialCenter={{
@@ -54,8 +53,6 @@ export class MapContainer extends Component {
           }}
         >
           {locations.map(x => {
-
-
             return (
               <Marker
                 key={x.name}
@@ -88,13 +85,12 @@ export class MapContainer extends Component {
                 // }}
                 name={x.name}
                 onClick={(e, a, b, l) => {
-          
                   this.onMarkerClick(e, a, x.name, x.site)
                 }}
                 icon={{
                   url: '/static/Bottle.png',
                   anchor: new google.maps.Point(0, 0),
-                  scaledSize: new google.maps.Size(32, 48),
+                  scaledSize: new google.maps.Size(32, 68),
                 }}
                 position={x.location}
                 title={x.formatted_address}

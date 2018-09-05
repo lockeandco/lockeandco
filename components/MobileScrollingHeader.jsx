@@ -14,7 +14,7 @@ const styles = theme => ({
 })
 
 const MobileScrollingHeader = props => {
-  const { classes, headerText, height, direction, alignItems } = props
+  const { classes, headerText, height, direction, alignItems, ...other } = props
   return (
     <Grid
       container
@@ -25,7 +25,7 @@ const MobileScrollingHeader = props => {
       spacing={0}
     >
       <Grid item xs zeroMinWidth>
-        <Headers text={headerText} />
+        <Headers text={headerText} {...other} />
       </Grid>
     </Grid>
   )

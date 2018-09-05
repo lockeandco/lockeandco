@@ -149,6 +149,7 @@ import { config } from 'react-spring'
 import CommonHeader from '../components/MobileScrollingHeader'
 import Grid from '@material-ui/core/Grid'
 import TextField from '@material-ui/core/TextField'
+import Paper from '@material-ui/core/Paper'
 
 const styles = theme => ({
   typo: {
@@ -210,6 +211,19 @@ const styles = theme => ({
       width: 'auto',
     },
   },
+  paper: {
+    marginTop: 30,
+    marginBottom: 40,
+    width: '70%',
+    padding: '30px 30px 30px 30px',
+    display: 'flex',
+    justifyContent: 'center',
+    backgroundColor: `rgba(226, 222, 213, 0.95)`,
+    [theme.breakpoints.down('sm')]: {
+      width: '90%',
+      padding: '15px 15px 15px 15px',
+    },
+  },
   // scroll: {
   //   [theme.breakpoints.up('md')]: {
   //     marginTop: 0,
@@ -225,7 +239,7 @@ const Homepage = props => {
       {...other}
       pictures={{
         left: {
-          url: `/static/Group_Cheersing.jpg`,
+          url: `/static/Ski_Boots1.jpg`,
           size: `100%`,
         },
         right: {
@@ -241,7 +255,29 @@ const Homepage = props => {
           <React.Fragment>
             <div className={classes.container}>
               <Hidden smUp>
-                <Headers text="welcome everyone everyone welcome" />
+                <Headers
+                  text="welcome everyone everyone welcome"
+                  springConfig={{
+                    peek: [
+                      {
+                        delay: 2000,
+                        from: { x: 0, opacity: 1 },
+                        to: { x: -600, opacity: 1 },
+                        config: { ...config.molasses, duration: 13000 },
+                      },
+                      {
+                        from: { x: 100, opacity: 1 },
+                        to: { x: -600, opacity: 1 },
+                        config: { ...config.molasses, duration: 13000 },
+                      },
+                      {
+                        from: { x: 100, opacity: 0 },
+                        to: { x: 0, opacity: 1 },
+                        config: { ...config.molasses, duration: 5000 },
+                      },
+                    ],
+                  }}
+                />
               </Hidden>
               <Hidden xsDown>
                 <Headers
@@ -274,33 +310,32 @@ const Homepage = props => {
                 width: '100%',
                 display: 'flex',
                 justifyContent: 'center',
+                height: 'auto',
+                paddingBottom: 40,
               }}
             >
+              <Paper className={classes.paper}>
+                <CU {...other} />
+              </Paper>
+            </div>
             <div
-            style={{
-              width: '70%',
-              padding: '20px 30px 20px 50px',
-              display: 'flex',
-              justifyContent: 'flex-start',
-              backgroundColor: 'rgba(255,255,255,.8)'
-            }}
-          >
-              <CU {...other} />
-   
-            </div>
-            
-            </div>
-            <div style={{ bottom: 40, position: 'absolute' }}>
+              style={{
+                bottom: 40,
+                position: 'relative',
+                marginTop: 10,
+                marginLeft: 50,
+              }}
+            >
               <img
                 src="/static/Bottle.png"
                 className={classes.bottle}
-                style={
-                  {
-                    // padding: 1,
-                    // border: '1px,solid, #C36D15',
-                    // backgroundColor: '#C36D15',
-                  }
-                }
+                style={{
+                  height: 400,
+                  width: 'auto',
+                  // padding: 1,
+                  // border: '1px,solid, #C36D15',
+                  // backgroundColor: '#C36D15',
+                }}
               />
             </div>
           </React.Fragment>

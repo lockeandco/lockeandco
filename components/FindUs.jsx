@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react'
 import locations from '../lib/formattedLocations.json'
+import { equals } from 'ramda'
 
 //console.log(locations.filter(x => x.location))
 //stream props for performance
@@ -16,6 +17,11 @@ export class MapContainer extends Component {
       },
       selectedPlace: '',
       site: '',
+      loc: {
+        lat: 39.743642,
+        lng: -104.9854807,
+      },
+      zoom: 10,
     }
   }
   onMarkerClick(props, marker, e, s) {
@@ -26,10 +32,30 @@ export class MapContainer extends Component {
       site: s,
     })
   }
+  componentDidUpdate(prevProps) {
+    // Typical usage (don't forget to compare props):
+    if (!equals(this.props.testP, prevProps.testP)) {
+      console.log(this.props.testP)
+      console.log(prevProps.testP)
+      this.setState({
+        loc: this.props.testP,
+        zoom: equals(
+          {
+            lat: 39.743642,
+            lng: -104.9854807,
+          },
+          this.props.testP
+        )
+          ? 10
+          : 12,
+      })
+    }
+  }
   render() {
     if (!this.props.google) {
       return <div>Loading...</div>
     }
+    console.log(this.state.zoom)
     return (
       <div
         style={{
@@ -46,11 +72,12 @@ export class MapContainer extends Component {
       >
         <Map
           google={this.props.google}
-          zoom={11}
+          zoom={this.state.zoom}
           initialCenter={{
             lat: 39.743642,
             lng: -104.9854807,
           }}
+          center={this.state.loc}
         >
           {locations.map(x => {
             return (

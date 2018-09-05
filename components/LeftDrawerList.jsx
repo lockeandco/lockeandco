@@ -23,17 +23,17 @@ const styles = theme => ({
   },
 })
 
-function RightDrawerList(props) {
-  const { classes, toggleDrawer, route, Router } = props
+function LeftDrawerList(props) {
+  const { classes, toggleDrawer, route, Router, ...other} = props
   return (
     <div className={classes.root}>
-      <CityList />
+      <CityList {...other} toggleDrawer={toggleDrawer} />
     </div>
   )
 }
 
-RightDrawerList.propTypes = {
+LeftDrawerList.propTypes = {
   classes: PropTypes.object.isRequired,
 }
 
-export default withStyles(styles)(RightDrawerList)
+export default withStyles(styles)(LeftDrawerList)

@@ -49,6 +49,10 @@ class MyApp extends App {
     this.state = {
       isVerified: cookies.get('isVerified') || false,
       rememberme: cookies.get('rememberme') || false,
+      test: {
+        lat: 39.743642,
+        lng: -104.9854807,
+      },
     }
   }
   // static async getInitialProps(x, y, z) {
@@ -77,6 +81,12 @@ class MyApp extends App {
     await cookies.set('rememberme', remember, { path: '/' })
     this.setState({ remember })
   }
+
+  handleTest(p) {
+    this.setState({
+      test: p,
+    })
+  }
   componentDidMount() {
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector('#jss-server-side')
@@ -96,6 +106,8 @@ class MyApp extends App {
     //   return true
     // })
   }
+
+  handleTest = this.handleTest.bind(this)
   render() {
     const { Component, pageProps, router, cookies } = this.props
 
@@ -124,12 +136,16 @@ class MyApp extends App {
                   pageContext={this.pageContext}
                   {...pageProps}
                   {...router}
+                  handleTest={this.handleTest}
+                  testP={this.state.test}
                 >
                   <Component
                     pageContext={this.pageContext}
                     {...pageProps}
                     {...router}
                     cookies={cookies}
+                    handleTest={this.handleTest}
+                    testP={this.state.test}
                   />
                 </Layout>
               </MDXProvider>

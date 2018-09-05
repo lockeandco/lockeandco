@@ -21,7 +21,7 @@ export class MapContainer extends Component {
         lat: 39.743642,
         lng: -104.9854807,
       },
-      zoom: 10,
+      zoom: 9,
     }
   }
   onMarkerClick(props, marker, e, s) {
@@ -46,7 +46,7 @@ export class MapContainer extends Component {
           },
           this.props.testP
         )
-          ? 10
+          ? 9
           : 12,
       })
     }

@@ -11,6 +11,7 @@ import MenuList from './LeftDrawerList'
 import { MapSearch } from 'mdi-material-ui'
 import { Keyframes, animated, config } from 'react-spring'
 import delay from 'delay'
+import { equals, compose, tap } from 'ramda'
 
 const styles = {
   list: {
@@ -51,14 +52,22 @@ class LeftDrawer extends React.Component {
     open: undefined,
   }
 
-  componentWillUnmount() {
-    this.setState({
-      open: undefined,
-    })
+  componentDidUpdate(p, v, s) {
+    this.props.route !== '/find-us' &&
+      p.route === '/find-us' &&
+      this.setState({
+        open: undefined,
+      })
   }
 
   toggleDrawer = () => this.setState(state => ({ open: !state.open }))
-
+  handleClick = location =>
+    this.toggleDrawer
+      ? compose(
+          this.toggleDrawer,
+          tap(this.props.handleTest)
+        )(location)
+      : this.props.handleTest(location)
   render() {
     const { classes, route, Router, ...other } = this.props
     const state =
@@ -69,11 +78,18 @@ class LeftDrawer extends React.Component {
           : 'close'
     console.log(this.state)
     console.log(state)
+
     const items = [
       <div style={{ position: 'relative', marginBottom: 10, marginTop: 20 }}>
         <img
           src="/static/Bottle.png"
           className={classes.bottle}
+          onClick={() =>
+            this.handleClick({
+              lat: 39.743642,
+              lng: -104.9854807,
+            })
+          }
           style={{
             height: 150,
 
@@ -137,7 +153,6 @@ class LeftDrawer extends React.Component {
                 state={state}
               >
                 {items.map((item, i) => ({ x, ...props }) => {
-                  console.log(item)
                   return (
                     <animated.div
                       style={{

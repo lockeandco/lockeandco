@@ -21,6 +21,7 @@ import {
   Email,
 } from 'mdi-material-ui'
 import { compose } from 'ramda'
+import Link from 'next/link'
 
 const styles = theme => ({
   root: {
@@ -62,7 +63,6 @@ const styles = theme => ({
 })
 
 const linkList = [
-
   {
     name: 'spirits',
     link: '/spirits',
@@ -114,22 +114,24 @@ function RightDrawerList(props) {
     <div className={classes.root}>
       <List component="nav">
         {linkList.map(item => (
-          <ListItem
-            key={item.name}
-            button
-            onClick={() =>
-              compose(
-                toggleDrawer(false),
-                Router.push
-              )(item.link)
-            }
-            className={
-              route === item.link ? classes.buttonActive : classes.button
-            }
-          >
-            <ListItemIcon>{item.icon}</ListItemIcon>
-            <ListItemText disableTypography primary={item.name} />
-          </ListItem>
+          <Link key={item.name} href={item.link}>
+            <ListItem
+              button
+              onClick={toggleDrawer(false)}
+              className={
+                route === item.link ? classes.buttonActive : classes.button
+              }
+            >
+              <ListItemIcon>{item.icon}</ListItemIcon>
+
+              <ListItemText
+                disableTypography
+                component
+                primary={item.name}
+                component="a"
+              />
+            </ListItem>
+          </Link>
         ))}
       </List>
     </div>

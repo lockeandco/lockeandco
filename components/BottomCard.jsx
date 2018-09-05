@@ -79,7 +79,7 @@ function SimpleCard(props) {
   return (
     <Card
       className={classes.card}
-      style={{ backgroundColor: route === 'contact-us' && '#C36D15' }}
+      style={{ backgroundColor: route === '/contact-us' && '#C36D15' }}
     >
       <CardContent className={classes.content}>
         <ListItem

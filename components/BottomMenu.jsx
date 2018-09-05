@@ -81,7 +81,7 @@ function ButtonAppBar(props) {
                 justify="space-around"
               >
                 <Grid item xs>
-                  <SocialButtons />
+                  <SocialButtons route={route} />
                 </Grid>
               </Grid>
             </Toolbar>

@@ -16,14 +16,14 @@ const styles = theme => ({
     flexGrow: 1,
     borderRadius: 'unset',
     backgroundColor: 'transparent',
-    overflow: 'auto',
     margin: 10,
     borderRadius: 0,
     padding: '1em',
     boxShadow: 'unset',
     color: '#E2DED5',
     fontFamily: 'Flama',
-    overflow: 'auto',
+    //overflow: 'auto',
+    paddingBottom: 100,
   },
   typoMdUp: {
     color: 'rgb(36, 55, 70)',
@@ -31,6 +31,9 @@ const styles = theme => ({
     fontSize: '1.1rem',
     fontWeight: 500,
     overflow: 'auto',
+    [theme.breakpoints.up('lg')]: {
+      fontSize: '1.5rem',
+    },
   },
   paper: {
     flexGrow: 1,
@@ -105,6 +108,7 @@ const Spirits = props => {
   const { classes, ...other } = props
   return (
     <Page
+
       {...other}
       pictures={{
         left: {

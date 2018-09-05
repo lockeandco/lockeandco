@@ -11,6 +11,7 @@ import CommonHeader from '../components/MobileScrollingHeader'
 import Cofounders from '../components/Cofounders'
 import Swipeable from 'react-swipeable'
 import Router from 'next/router'
+import withTransition from '../components/withTransition'
 
 class SwipeComponent extends React.Component {
   onSwipedLeft(e, absX) {
@@ -33,7 +34,6 @@ class SwipeComponent extends React.Component {
       <Swipeable
         onSwipedLeft={this.onSwipedLeft}
         onSwipedRight={this.onSwipedRight}
-        onSwipedUp={this.onSwipedUp}
       >
         <Cofounders {...this.props} />
       </Swipeable>
@@ -41,4 +41,4 @@ class SwipeComponent extends React.Component {
   }
 }
 
-export default compose(checkCookie)(SwipeComponent)
+export default compose(checkCookie, withTransition)(SwipeComponent)

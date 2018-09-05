@@ -1,5 +1,5 @@
 import React from 'react'
-import Page from '../components/Page1x26040M'
+import Page from '../components/PageLayout'
 import Paper from '@material-ui/core/Paper'
 import Headers from '../components/MobileScrollingHeader'
 import Typography from '@material-ui/core/Typography'
@@ -7,51 +7,93 @@ import { withStyles } from '@material-ui/core/styles'
 import Background from '../components/TransitionBackground'
 import compose from 'ramda/src/compose'
 import checkCookie from '../components/NoCookie'
+import Hidden from '@material-ui/core/Hidden'
+import { config } from 'react-spring'
 
-const styles = theme => ({
-  typoBigHeader: {
-    color: '#E2DED5',
-    fontFamily: 'OldGrowth',
-    //fontSize: '6rem',
-    //overflow: 'hidden',
-    marginTop: 20,
-    [theme.breakpoints.down('xs')]: {
-      marginTop: 'calc(100vh * .10)',
-      fontsize: '1.8rem',
-    },
-  },
-})
+const styles = theme => ({})
 const Merchandise = props => {
   const { classes, ...other } = props
   return (
-    <React.Fragment>
-      <Page
-        {...other}
-        pictures={{
-          left: {
-            url: `/static/Ski_Goggles_Close_up.jpg`,
-            size: '100%',
-          },
-          rightTop: {
-            url: `/static/Moonshine_Jars.jpg`,
-            size: '60%',
-          },
-          rightBottom: {
-            url: `/static/Hats.jpg`,
-            size: '40%',
-          },
-        }}
-      />
-      <div
-        style={{
-          textAlign: 'center',
-          top: '40%',
-          position: 'fixed',
-        }}
-      >
-        <Headers text="new arrivals. coming soon." />
-      </div>
-    </React.Fragment>
+    <Page
+      {...other}
+      pictures={{
+        left: {
+          url: `/static/Ski_Goggles_Close_up.jpg`,
+          size: '100%',
+        },
+        rightTop: {
+          url: `/static/Fishing.jpg`,
+          size: '55%',
+        },
+        rightBottom: {
+          url: `/static/Hats.jpg`,
+          size: '45%',
+        },
+      }}
+      text={{
+        position: 'left',
+        component: (
+          <div
+            style={{
+              textAlign: 'center',
+              top: '40%',
+              position: 'fixed',
+            }}
+          >
+            <Hidden smUp>
+              <Headers
+                text="new arrivals. coming soon."
+                springConfig={{
+                  peek: [
+                    {
+                      delay: 2000,
+                      from: { x: 0, opacity: 1 },
+                      to: { x: -100, opacity: 1 },
+                      config: { ...config.molasses, duration: 12000 },
+                    },
+                    {
+                      from: { x: 100, opacity: 1 },
+                      to: { x: -100, opacity: 1 },
+                      config: { ...config.molasses, duration: 12000 },
+                    },
+                    {
+                      from: { x: 100, opacity: 0 },
+                      to: { x: Math.random() * -50, opacity: 1 },
+                      config: { ...config.molasses, duration: 10000 },
+                    },
+                  ],
+                }}
+              />
+            </Hidden>
+            <Hidden xsDown>
+              <Headers
+                text="new arrivals. coming soon."
+                springConfig={{
+                  peek: [
+                    {
+                      delay: 2000,
+                      from: { x: 0, opacity: 1 },
+                      to: { x: -200, opacity: 1 },
+                      config: { ...config.molasses, duration: 14000 },
+                    },
+                    {
+                      from: { x: 100, opacity: 1 },
+                      to: { x: -200, opacity: 1 },
+                      config: { ...config.molasses, duration: 14000 },
+                    },
+                    {
+                      from: { x: 100, opacity: 0 },
+                      to: { x: 0, opacity: 1 },
+                      config: { ...config.molasses, duration: 5000 },
+                    },
+                  ],
+                }}
+              />
+            </Hidden>
+          </div>
+        ),
+      }}
+    />
   )
 }
 

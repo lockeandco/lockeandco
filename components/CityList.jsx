@@ -12,10 +12,8 @@ import IconButton from '@material-ui/core/IconButton'
 import Icon from '@material-ui/core/Icon'
 import classNames from 'classnames'
 import { ChevronDoubleLeft } from 'mdi-material-ui'
-import { compose, head, toLower } from 'ramda'
+import { tap, compose, head, toLower } from 'ramda'
 import cities from '../lib/cities.json'
-
-console.log('CITIES', cities)
 
 const citiesF = cities.map(x => {
   return Object.assign(
@@ -70,8 +68,8 @@ function RightDrawerList(props) {
   const handleClick = location =>
     toggleDrawer
       ? compose(
-          toggleDrawer(false),
-          props.handleTest
+          toggleDrawer,
+          tap(props.handleTest)
         )(location)
       : props.handleTest(location)
   return (

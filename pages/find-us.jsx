@@ -33,14 +33,14 @@ const styles = theme => ({
   },
 })
 
-const StayConnected = props => {
+const FindUs = props => {
   const { classes, ...other } = props
   return (
     <Page
       {...other}
       pictures={{
         left: {
-          url: `/static/Ski_Boots1.jpg`,
+          url: ``,
           size: `100%`,
         },
         rightTop: {
@@ -55,7 +55,7 @@ const StayConnected = props => {
         <div
           style={{ textAlign: 'center', paddingTop: '3vh', overflow: 'hidden' }}
         >
-          <FindUsMap {...other}/>
+          <FindUsMap {...other} />
         </div>
       }
       text={{
@@ -81,7 +81,7 @@ const StayConnected = props => {
                 you can find locke + co. spirits at the following retailers and
                 establishments:
               </Typography>
-              <CityList {...other}/>
+              <CityList {...other} />
             </div>
             <CommonHeader
               springConfig={{
@@ -89,23 +89,23 @@ const StayConnected = props => {
                   {
                     delay: 2000,
                     from: { x: 0, opacity: 1 },
-                    to: { x: -800, opacity: 1 },
-                    config: { ...config.molasses, duration: 10000 },
+                    to: { x: -600, opacity: 0.5 },
+                    config: { ...config.molasses, duration: 12000 },
                   },
                   {
                     from: { x: 100, opacity: 1 },
-                    to: { x: -800, opacity: 1 },
-                    config: { ...config.molasses, duration: 10000 },
+                    to: { x: -600, opacity: 0.5 },
+                    config: { ...config.molasses, duration: 12000 },
                   },
                   {
                     from: { x: 100, opacity: 0 },
-                    to: { x: 0, opacity: 1 },
+                    to: { x: Math.random() * -100, opacity: 1 },
                     config: { ...config.molasses, duration: 5000 },
                   },
                 ],
               }}
               alignItems="flex-end"
-              headerText={`a taste like no other - 100% colorado`}
+              headerText={`a taste like none other`}
               // style={{
               //   margin: '10px -10px 10px -10px',
               //   paddingRight: -15,
@@ -122,4 +122,4 @@ const StayConnected = props => {
 export default compose(
   checkCookie,
   withStyles(styles)
-)(StayConnected)
+)(FindUs)

@@ -28,6 +28,7 @@ const styles = theme => ({
 
 const Layout = props => {
   const { classes, ...other } = props
+ 
   return (
     <Fragment>
       <div className={classes.background} />

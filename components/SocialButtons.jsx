@@ -101,8 +101,7 @@ const socialIcons = [
 ]
 
 function TextButtons(props) {
-  const { classes, goToSlide, page, ...other } = props
-  console.log(props)
+  const { classes, ...other } = props
   return (
     <Paper className={classes.paper}>
       {socialIcons.map(ico => (
@@ -125,7 +124,7 @@ function TextButtons(props) {
           placement={'bottom'}
           classes={{ tooltip: classes.tooltip }}
         >
-          <LeftDrawer  Router={Router} {...other} />
+          <LeftDrawer Router={Router} {...other}/>
         </Tooltip>
       </Hidden>
     </Paper>

@@ -21,19 +21,26 @@ class SwipeComponent extends React.Component {
 
   onSwipedUp(e, deltaY, isFlick) {
     console.log('You Swiped...', e, deltaY, isFlick)
+    isFlick && Router.push('/our-story')
   }
 
   onSwipedRight(e, deltaX, deltaY, isFlick, velocity) {
-    console.log('You Swiped...', e, deltaX, deltaY, isFlick, velocity)
+    console.log('You Swiped Right...', e, deltaX, deltaY, isFlick, velocity)
     Router.push('/co-founders/rick')
   }
 
+  onSwiped(e, deltaX, deltaY, isFlick, velocity) {
+    console.log('Swiped...', e, deltaX, deltaY, isFlick, velocity)
+  }
   render() {
     const { classes, ...other } = this.props
     return (
       <Swipeable
+        flickThreshold={1.5}
         onSwipedLeft={this.onSwipedLeft}
         onSwipedRight={this.onSwipedRight}
+        onSwiped={this.onSwiped}
+        onSwipedUp={this.onSwipedUp}
       >
         <Cofounders {...this.props} />
       </Swipeable>
@@ -41,4 +48,7 @@ class SwipeComponent extends React.Component {
   }
 }
 
-export default compose(checkCookie, withTransition)(SwipeComponent)
+export default compose(
+  checkCookie,
+  withTransition
+)(SwipeComponent)

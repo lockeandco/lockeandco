@@ -40,6 +40,14 @@ const theme = createMuiTheme({
     color: '#8C0C04',
   },
 })
+
+const handleRouteChange = url => {
+  console.log('App is changing to: ', url)
+}
+const handleHistoryChange = url => {
+  console.log('App is changing to: ', url)
+}
+
 class MyApp extends App {
   constructor(props) {
     super(props)
@@ -112,6 +120,7 @@ class MyApp extends App {
     const { Component, pageProps, router, cookies } = this.props
 
     // console.log('PCX', this.pageContext)
+
 
     return (
       <Container>

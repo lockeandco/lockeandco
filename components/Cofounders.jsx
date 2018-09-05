@@ -12,6 +12,15 @@ import CardBackground from '../components/CardBackground'
 
 const coFounderCopy = classes => (
   <React.Fragment>
+    <Typography
+      variant="body1"
+      paragraph
+      className={classes.typo}
+      style={{ fontStyle: 'oblique' }}
+    >
+      What is Locke &amp; Co. about? Good company. The same as those aspens
+      quaking together in the wind: Connection through deep Colorado roots.
+    </Typography>
     <Typography variant="body1" paragraph className={classes.typo}>
       The process of distilling has brought with it valuable perspective. After
       years focused on business development, management and client service, as

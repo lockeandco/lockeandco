@@ -12,7 +12,7 @@ import Paper from '@material-ui/core/Paper'
 import Router from 'next/router'
 import ChevronRight from '@material-ui/icons/ChevronRight'
 import ChevronLeft from '@material-ui/icons/ChevronLeft'
-
+import Link from 'next/link'
 const styles = theme => ({
   media: {
     objectFit: 'cover',
@@ -130,25 +130,19 @@ function MediaCard(props) {
           )}
         </CardContent>
         <CardActions>
-          <Button
-            className={classes.button}
-            size="small"
-            color="inherit"
-            onClick={() => Router.push(links.left.link)}
-          >
-            <ChevronLeft className={classes.leftIcon} />
-            {links.left.title}
-          </Button>
+          <Link href={links.left.link}>
+            <Button className={classes.button} size="small" color="inherit">
+              <ChevronLeft className={classes.leftIcon} />
+              {links.left.title}
+            </Button>
+          </Link>
           <div className={classes.grow} />
-          <Button
-            className={classes.button}
-            size="small"
-            color="secondary"
-            onClick={() => Router.push(links.right.link)}
-          >
-            {links.right.title}
-            <ChevronRight className={classes.rightIcon} />
-          </Button>
+          <Link href={links.right.link}>
+            <Button className={classes.button} size="small" color="secondary">
+              {links.right.title}
+              <ChevronRight className={classes.rightIcon} />
+            </Button>
+          </Link>
         </CardActions>
         {media &&
           mediaPosition === 'bottom' && (

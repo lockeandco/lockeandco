@@ -66,12 +66,23 @@ const styles = theme => ({
 const chevrons = '<<'
 function RightDrawerList(props) {
   const { classes, toggleDrawer, route, Router } = props
-
+  console.log(props)
+  const handleClick = location =>
+    toggleDrawer
+      ? compose(
+          toggleDrawer(false),
+          props.handleTest
+        )(location)
+      : props.handleTest(location)
   return (
     <List>
       {citiesF.map(item => (
-        <ListItem key={item.city} button style={{ textAlign: 'center' }}>
-
+        <ListItem
+          key={item.city}
+          onClick={() => handleClick(item.location)}
+          button
+          style={{ textAlign: 'center' }}
+        >
           <ListItemText
             primaryTypographyProps={{ className: classes.listItemText }}
             primary={item.city}

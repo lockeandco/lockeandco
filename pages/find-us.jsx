@@ -55,7 +55,7 @@ const StayConnected = props => {
         <div
           style={{ textAlign: 'center', paddingTop: '3vh', overflow: 'hidden' }}
         >
-          <FindUsMap />
+          <FindUsMap {...other}/>
         </div>
       }
       text={{
@@ -81,7 +81,7 @@ const StayConnected = props => {
                 you can find locke + co. spirits at the following retailers and
                 establishments:
               </Typography>
-              <CityList />
+              <CityList {...other}/>
             </div>
             <CommonHeader
               springConfig={{

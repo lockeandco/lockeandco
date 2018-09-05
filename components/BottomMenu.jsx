@@ -51,7 +51,7 @@ const styles = {
 }
 
 function ButtonAppBar(props) {
-  const { classes, route } = props
+  const { classes, route, ...other } = props
 
   return (
     <Fragment>
@@ -81,7 +81,7 @@ function ButtonAppBar(props) {
                 justify="space-around"
               >
                 <Grid item xs>
-                  <SocialButtons route={route} />
+                  <SocialButtons route={route} {...other} />
                 </Grid>
               </Grid>
             </Toolbar>

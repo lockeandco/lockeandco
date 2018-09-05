@@ -28,8 +28,8 @@ class LeftDrawer extends React.Component {
   }
 
   render() {
-    const { classes, route, Router } = this.props
-console.log(route)
+    const { classes, route, Router, ...other } = this.props
+console.log(this.props)
     return (
       <Fragment>
         <IconButton
@@ -82,6 +82,7 @@ console.log(route)
               />
             </div>
             <MenuList
+            {...other}
               route={route}
               toggleDrawer={this.toggleDrawer}
               Router={Router}

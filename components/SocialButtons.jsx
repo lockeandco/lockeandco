@@ -125,7 +125,7 @@ function TextButtons(props) {
           placement={'bottom'}
           classes={{ tooltip: classes.tooltip }}
         >
-          <LeftDrawer {...other} Router={Router} />
+          <LeftDrawer  Router={Router} {...other} />
         </Tooltip>
       </Hidden>
     </Paper>

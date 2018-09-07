@@ -11,7 +11,7 @@ const styles = theme => ({
     margin: '115px 10px 95px 10px ',
     padding: 15,
     textAlign: 'center',
-    backgroundColor: `rgba(226, 222, 213, 0.5)`,
+    backgroundColor: `rgba(226, 222, 213, 0.9)`,
     [theme.breakpoints.up('md')]: {
       marginTop: 130,
       textAlign: 'center',

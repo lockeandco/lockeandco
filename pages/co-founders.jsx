@@ -11,7 +11,7 @@ import CommonHeader from '../components/MobileScrollingHeader'
 import Cofounders from '../components/Cofounders'
 import Swipeable from 'react-swipeable'
 import Router from 'next/router'
-import withTransition from '../components/withTransition'
+import withPageTransition from '../components/withPageTransition'
 
 class SwipeComponent extends React.Component {
   onSwipedLeft(e, absX) {
@@ -21,7 +21,8 @@ class SwipeComponent extends React.Component {
 
   onSwipedUp(e, deltaY, isFlick) {
     console.log('You Swiped...', e, deltaY, isFlick)
-    isFlick && Router.push('/our-story')
+    isFlick &&
+      Router.push({ pathname: '/our-story', query: { prev: 'co-founders' } })
   }
 
   onSwipedRight(e, deltaX, deltaY, isFlick, velocity) {
@@ -32,11 +33,12 @@ class SwipeComponent extends React.Component {
   onSwiped(e, deltaX, deltaY, isFlick, velocity) {
     console.log('Swiped...', e, deltaX, deltaY, isFlick, velocity)
   }
+
   render() {
     const { classes, ...other } = this.props
     return (
       <Swipeable
-        flickThreshold={1.5}
+        flickThreshold={2.5}
         onSwipedLeft={this.onSwipedLeft}
         onSwipedRight={this.onSwipedRight}
         onSwiped={this.onSwiped}
@@ -50,5 +52,8 @@ class SwipeComponent extends React.Component {
 
 export default compose(
   checkCookie,
-  withTransition
+  withPageTransition({
+    yPosition: { from: 0, to: 0 },
+    xPosition: { from: 0, to: 0 },
+  })
 )(SwipeComponent)

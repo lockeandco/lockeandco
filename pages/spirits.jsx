@@ -10,7 +10,7 @@ import Headers from '../components/ScrollingHeaders'
 import Typography from '@material-ui/core/Typography'
 import CommonHeader from '../components/MobileScrollingHeader'
 import Hidden from '@material-ui/core/Hidden'
-
+import withPageTransition from '../components/withPageTransition'
 const styles = theme => ({
   paperMdUp: {
     flexGrow: 1,
@@ -108,7 +108,6 @@ const Spirits = props => {
   const { classes, ...other } = props
   return (
     <Page
-
       {...other}
       pictures={{
         left: {
@@ -178,5 +177,9 @@ const Spirits = props => {
 
 export default compose(
   checkCookie,
-  withStyles(styles)
+  withStyles(styles),
+  withPageTransition({
+    yPosition: { from: 0, to: 0 },
+    xPosition: { from: 0, to: 0 },
+  })
 )(Spirits)

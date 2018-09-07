@@ -11,7 +11,7 @@ import Hidden from '@material-ui/core/Hidden'
 import { config } from 'react-spring'
 import CommonHeader from '../components/MobileScrollingHeader'
 import Grid from '@material-ui/core/Grid'
-
+import withPageTransition from '../components/withPageTransition'
 const styles = theme => ({
   typo: {
     color: '#E2DED5',
@@ -197,5 +197,9 @@ const Homepage = props => {
 
 export default compose(
   checkCookie,
-  withStyles(styles)
+  withStyles(styles),
+  withPageTransition({
+    yPosition: { from: 0, to: 0 },
+    xPosition: { from: 0, to: 0 },
+  })
 )(Homepage)

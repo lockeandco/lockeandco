@@ -11,7 +11,7 @@ import CommonHeader from '../../components/MobileScrollingHeader'
 import Owen from '../../components/Owen'
 import Swipeable from 'react-swipeable'
 import Router from 'next/router'
-
+import withPageTransition from '../../components/withPageTransition'
 const styles = theme => ({
   // demo: {
   //   maxHeight: `80%`,
@@ -165,4 +165,10 @@ class SwipeComponent extends React.Component {
   }
 }
 
-export default compose(checkCookie)(SwipeComponent)
+export default compose(
+  checkCookie,
+  withPageTransition({
+    yPosition: { from: 0, to: 0 },
+    xPosition: { from: 0, to: 0 },
+  })
+)(SwipeComponent)

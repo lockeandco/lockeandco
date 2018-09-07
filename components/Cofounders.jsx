@@ -9,24 +9,27 @@ import Typography from '@material-ui/core/Typography'
 import Headers from '../components/ScrollingHeaders'
 import CommonHeader from '../components/MobileScrollingHeader'
 import CardBackground from '../components/CardBackground'
+import Link from 'next/link'
 
 const coFounderCopy = classes => (
   <React.Fragment>
-    <Typography
-      variant="body1"
-      paragraph
-      className={classes.typo}
-      style={{ fontStyle: 'oblique' }}
-    >
+    <Typography variant="body1" paragraph className={classes.typoCaption}>
       What is Locke &amp; Co. about? Good company. The same as those aspens
       quaking together in the wind: Connection through deep Colorado roots.
     </Typography>
     <Typography variant="body1" paragraph className={classes.typo}>
       The process of distilling has brought with it valuable perspective. After
       years focused on business development, management and client service, as
-      well as giving back (Rick serves on Denver Museum of Nature & Science’s
-      Giving Club Council; Owen on the board of nonprofit Geneva Glen Camp) both
-      established successful careers.
+      well as giving back (
+      <Link href={'/co-founders/rick'} prefetch>
+        <a className={classes.typo}>Rick</a>
+      </Link>{' '}
+      serves on Denver Museum of Nature & Science’s Giving Club Council;{' '}
+      <Link href={'/co-founders/owen'} prefetch>
+        <a className={classes.typo}>Owen </a>
+      </Link>{' '}
+      on the board of nonprofit Geneva Glen Camp) both established successful
+      careers.
     </Typography>
     <Typography variant="body1" paragraph className={classes.typo}>
       However, the alchemy of creating something new through careful selection

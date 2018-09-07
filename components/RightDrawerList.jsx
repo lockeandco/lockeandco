@@ -114,7 +114,7 @@ function RightDrawerList(props) {
     <div className={classes.root}>
       <List component="nav">
         {linkList.map(item => (
-          <Link key={item.name} href={item.link}>
+          <Link key={item.name} href={item.link} prefetch>
             <ListItem
               button
               onClick={toggleDrawer(false)}

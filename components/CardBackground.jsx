@@ -68,6 +68,17 @@ const styles = theme => ({
       fontSize: '1.1rem',
     },
   },
+  typoCaption: {
+    color: '#E2DED5',
+    fontFamily: 'Flama',
+//    fontWeight: 'bold',
+    textShadow: '1px 1px rgb(36, 55, 70)',
+    fontSize: '0.825rem',
+    fontStyle: 'oblique',
+    [theme.breakpoints.up('sm')]: {
+      fontSize: '1.0rem',
+    },
+  },
   typoHeader: {
     color: '#E2DED5',
     fontFamily: 'Flama',

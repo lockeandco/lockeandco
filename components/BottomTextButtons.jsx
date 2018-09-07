@@ -8,7 +8,7 @@ import IconButton from '@material-ui/core/IconButton'
 import Icon from '@material-ui/core/Icon'
 import classNames from 'classnames'
 import SocialButtons from './SocialButtons'
-import Router from 'next/router'
+import Link from 'next/link'
 
 const styles = theme => ({
   button: {
@@ -79,12 +79,9 @@ function TextButtons(props) {
                   route === item.link ? classes.paperActive : classes.paper
                 }
               >
-                <Button
-                  className={classes.button}
-                  onClick={() => Router.push(item.link)}
-                >
-                  {item.name}
-                </Button>
+                <Link href={`${item.link}`} prefetch>
+                  <Button className={classes.button}>{item.name}</Button>
+                </Link>
               </Paper>
             </Grid>
           )

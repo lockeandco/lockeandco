@@ -78,7 +78,7 @@ function TextButtons(props) {
                   route === item.link ? classes.paperActive : classes.paper
                 }
               >
-                <Link href={`${item.link}`}>
+                <Link href={`${item.link}`} prefetch>
                   <Button className={classes.button}>{item.name}</Button>
                 </Link>
               </Paper>

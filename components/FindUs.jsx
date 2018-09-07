@@ -35,8 +35,8 @@ export class MapContainer extends Component {
   componentDidUpdate(prevProps) {
     // Typical usage (don't forget to compare props):
     if (!equals(this.props.testP, prevProps.testP)) {
-      console.log(this.props.testP)
-      console.log(prevProps.testP)
+      console.log(this.props)
+      console.log(prevProps)
       this.setState({
         loc: this.props.testP,
         zoom: equals(

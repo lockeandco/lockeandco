@@ -67,54 +67,61 @@ const Page = props => {
         </Grid>
       </Grid>
       <Hidden smDown>
-        <Grid item sm={rightSize || 6}>
-          <Grid
-            container
-            spacing={0}
-            className={classes.demo}
-            alignItems={'stretch'}
-            direction={'row'}
-          >
+        {rightSize < 1 || rightSize > 12 ? null : (
+          <Grid item sm={rightSize || 6}>
             <Grid
-              item
-              xs={12}
-              style={{
-                padding: 'unset',
-                height: `${pictures.rightTop ? pictures.rightTop.size : 0}`,
-                backgroundPosition: 'center',
-                backgroundSize: 'cover',
-                backgroundImage: `url(${
-                  pictures.rightTop ? pictures.rightTop.url : ``
-                })`,
-                backgroundRepeat: 'no-repeat',
-                backgroundColor: `${backgroundColorRight}`,
-              }}
-            >
-              {header && header.position === 'rightTop' && header.component}
-              {text && text.position === 'rightTop' && text.component}
-            </Grid>
+              container
+              spacing={0}
+              className={classes.demo}
+              alignItems={'stretch'}
+              direction={'row'}
+              // style={right{
 
-            <Grid
-              item
-              xs={12}
-              style={{
-                height: `${
-                  pictures.rightBottom ? pictures.rightBottom.size : 0
-                }`,
-                paddingBottom: 'unset',
-                backgroundPosition: 'center',
-                backgroundSize: 'cover',
-                backgroundImage: `url(${
-                  pictures.rightBottom ? pictures.rightBottom.url : ``
-                })`,
-                backgroundRepeat: 'no-repeat',
-              }}
+              // }}
             >
-              {header && header.position === 'rightBottom' && header.component}
-              {text && text.position === 'rightBottom' && text.component}
+              <Grid
+                item
+                xs={12}
+                style={{
+                  padding: 'unset',
+                  height: `${pictures.rightTop ? pictures.rightTop.size : 0}`,
+                  backgroundPosition: 'center',
+                  backgroundSize: 'cover',
+                  backgroundImage: `url(${
+                    pictures.rightTop ? pictures.rightTop.url : ``
+                  })`,
+                  backgroundRepeat: 'no-repeat',
+                  backgroundColor: `${backgroundColorRight}`,
+                }}
+              >
+                {header && header.position === 'rightTop' && header.component}
+                {text && text.position === 'rightTop' && text.component}
+              </Grid>
+
+              <Grid
+                item
+                xs={12}
+                style={{
+                  height: `${
+                    pictures.rightBottom ? pictures.rightBottom.size : 0
+                  }`,
+                  paddingBottom: 'unset',
+                  backgroundPosition: 'center',
+                  backgroundSize: 'cover',
+                  backgroundImage: `url(${
+                    pictures.rightBottom ? pictures.rightBottom.url : ``
+                  })`,
+                  backgroundRepeat: 'no-repeat',
+                }}
+              >
+                {header &&
+                  header.position === 'rightBottom' &&
+                  header.component}
+                {text && text.position === 'rightBottom' && text.component}
+              </Grid>
             </Grid>
           </Grid>
-        </Grid>
+        )}
       </Hidden>
     </Grid>
   )
@@ -124,6 +131,4 @@ Page.propTypes = {
   classes: PropTypes.object.isRequired,
 }
 
-export default compose(
-  withStyles(styles),
-)(Page)
+export default compose(withStyles(styles))(Page)

@@ -10,6 +10,7 @@ import Typography from '@material-ui/core/Typography'
 import CityList from '../components/CityList'
 import CommonHeader from '../components/MobileScrollingHeader'
 import { config } from 'react-spring'
+import withPageTransition from '../components/withPageTransition'
 
 const styles = theme => ({
   container: {
@@ -121,5 +122,9 @@ const FindUs = props => {
 
 export default compose(
   checkCookie,
-  withStyles(styles)
+  withStyles(styles),
+  withPageTransition({
+    yPosition: { from: 0, to: 0 },
+    xPosition: { from: 0, to: 0 },
+  })
 )(FindUs)

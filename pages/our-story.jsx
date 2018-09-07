@@ -2,6 +2,7 @@
 import compose from 'ramda/src/compose'
 import checkCookie from '../components/NoCookie'
 import OurStory from '../components/OurStory'
+import withPageTransition from '../components/withPageTransition'
 
 // const styles = theme => ({
 //   paper: {

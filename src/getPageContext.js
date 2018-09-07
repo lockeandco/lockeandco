@@ -1,39 +1,41 @@
 /* eslint-disable no-underscore-dangle */
 
-import { SheetsRegistry } from 'jss';
-import { createMuiTheme, createGenerateClassName } from '@material-ui/core/styles';
-import purple from '@material-ui/core/colors/purple';
-import green from '@material-ui/core/colors/green';
+import { SheetsRegistry } from 'jss'
+import {
+  createMuiTheme,
+  createGenerateClassName,
+} from '@material-ui/core/styles'
+import purple from '@material-ui/core/colors/purple'
+import green from '@material-ui/core/colors/green'
 
 // A theme with custom primary and secondary color.
 // It's optional.
 const theme = createMuiTheme({
   palette: {
     primary: {
-      light: purple[300],
-      main: purple[500],
-      dark: purple[700],
+      light: '#58687c',
+      main: '#C36D15',
+      dark: '#041828',
     },
     secondary: {
-      light: green[300],
-      main: green[500],
-      dark: green[700],
+      light: '#c3452e',
+      main: '#C36D15',
+      dark: '#C36D15',
     },
-    typography:{
+    typography: {
       fontFamily: [
         '"Flama"',
         '"Roboto"',
         '"Helvetica"',
         '"Arial"',
-        'sans-serif'
-      ].join(',')
+        'sans-serif',
+      ].join(','),
     },
     root: {
-      minWidth: 320
-      },
-    
+      minWidth: 320,
+    },
   },
-});
+})
 
 function createPageContext() {
   return {
@@ -44,20 +46,20 @@ function createPageContext() {
     sheetsRegistry: new SheetsRegistry(),
     // The standard class name generator.
     generateClassName: createGenerateClassName(),
-  };
+  }
 }
 
 export default function getPageContext() {
   // Make sure to create a new context for every server-side request so that data
   // isn't shared between connections (which would be bad).
   if (!process.browser) {
-    return createPageContext();
+    return createPageContext()
   }
 
   // Reuse context on the client-side.
   if (!global.__INIT_MATERIAL_UI__) {
-    global.__INIT_MATERIAL_UI__ = createPageContext();
+    global.__INIT_MATERIAL_UI__ = createPageContext()
   }
 
-  return global.__INIT_MATERIAL_UI__;
+  return global.__INIT_MATERIAL_UI__
 }

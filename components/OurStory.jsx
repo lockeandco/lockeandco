@@ -11,14 +11,22 @@ import Typography from '@material-ui/core/Typography'
 import Headers from '../components/ScrollingHeaders'
 import CommonHeader from '../components/MobileScrollingHeader'
 import CardBackground from '../components/CardBackground'
-
+import Link from 'next/link'
+import withPageTransition from './withPageTransition'
+import { branch } from 'recompose'
 const ourStoryCopy = classes => (
   <React.Fragment>
     <Typography variant="body1" paragraph className={classes.typo}>
       The Locke’s family roots in Colorado moonshining go back several
-      generations. Owen Locke kept the craft tradition alive with an early knack
-      for brewing that continued through college to graduate school, where he
-      reconnected with Rick Talley.
+      generations.{' '}
+      <Link href={'/co-founders/owen'} prefetch>
+        <a className={classes.typo}>Owen Locke</a>
+      </Link>{' '}
+      kept the craft tradition alive with an early knack for brewing that
+      continued through college to graduate school, where he reconnected with{' '}
+      <Link href={'/co-founders/rick'} prefetch>
+        <a className={classes.typo}>Rick Talley</a>
+      </Link>{' '}
     </Typography>
     <Typography variant="body1" paragraph className={classes.typo}>
       The high school friends and lacrosse teammates immediately recognized that
@@ -35,8 +43,10 @@ const ourStoryCopy = classes => (
 
 const styles = theme => ({})
 
+
 const OurStory = props => {
   const { classes, ...other } = props
+  console.log('Our Story', props)
   return (
     <Fragment>
       <Page
@@ -90,5 +100,16 @@ const OurStory = props => {
 }
 export default compose(
   checkCookie,
-  withStyles(styles)
+  withStyles(styles),
+  branch(
+    ({ query: { prev } }) => prev === 'co-founders',
+    withPageTransition({
+      yPosition: { from: 100, to: 0 },
+      xPosition: { from: 0, to: 0 },
+    }),
+    withPageTransition({
+      yPosition: { from: 0, to: 0 },
+      xPosition: { from: 0, to: 0 },
+    })
+  )
 )(OurStory)

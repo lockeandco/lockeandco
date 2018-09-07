@@ -5,7 +5,7 @@ import checkCookie from '../components/NoCookie'
 import { withStyles } from '@material-ui/core/styles'
 import Subscribe from '../components/MailChimpsubscribe'
 import SocialButtons from '../components/SocialButtons2'
-
+import withPageTransition from '../components/withPageTransition'
 const styles = theme => ({
   container: {
     margin: '115px 10px 95px 10px ',
@@ -53,5 +53,8 @@ const StayConnected = props => {
 
 export default compose(
   checkCookie,
-  withStyles(styles)
+  withStyles(styles),  withPageTransition({
+    yPosition: { from: 0, to: 0 },
+    xPosition: { from: 0, to: 0 },
+  })
 )(StayConnected)

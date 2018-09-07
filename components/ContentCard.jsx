@@ -33,10 +33,7 @@ function SimpleCard(props) {
 
   return (
     <Paper className={classes.card}>
-      <div className={classes.content}>
-
-      
-        </div>
+      <div className={classes.content} />
     </Paper>
   )
 }

@@ -83,33 +83,6 @@ export class MapContainer extends Component {
             return (
               <Marker
                 key={x.name}
-                // onMouseover={(e, k, l, m) => {
-                //   this.state.showingInfoWindow ||
-                //      setTimeout(() => {  this.setState(
-                //       Object.assign(this.state, {
-                //         showingInfoWindow: true,
-                //         activeMarker: e.position,
-                //         selectedPlace: x.name,
-                //         site: x.site,
-                //       })
-                //     )
-                // }}
-                // onMouseout={(e, k, l, m) => {
-                //   console.log(this.state.showingInfoWindow)
-                //   setTimeout(() => {
-                //     this.setState(
-                //       Object.assign(this.state, {
-                //         showingInfoWindow: false,
-                //         activeMarker: {
-                //           lat: 39.743642,
-                //           lng: -104.9854807,
-                //         },
-                //         selectedPlace: '',
-                //         site: '',
-                //       })
-                //     )
-                //   }, 1000)
-                // }}
                 name={x.name}
                 onClick={(e, a, b, l) => {
                   this.onMarkerClick(e, a, x.name, x.site)

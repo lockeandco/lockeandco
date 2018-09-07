@@ -31,14 +31,14 @@ const withPageTransitions = p => Component => {
       : Keyframes.Spring({
           start: [
             {
-              delay: 300,
+              delay: 0,
               from: { x: xPosition.from, y: yPosition.from, opacity: 0 },
               to: { x: xPosition.to, y: yPosition.to, opacity: 1 },
-              config: { ...config.molasses, duration: 300 },
+              config: { ...config.molasses, duration: 800 },
             },
           ],
         })
-        
+
     return (
       <Content2 reset native state="start" impl={TimingAnimation}>
         {({ x, y, ...other }) => {

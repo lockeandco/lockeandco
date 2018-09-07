@@ -1,8 +1,8 @@
-
 import compose from 'ramda/src/compose'
 import checkCookie from '../components/NoCookie'
 import OurStory from '../components/OurStory'
 import withPageTransition from '../components/withPageTransition'
+import { branch } from 'recompose'
 
 // const styles = theme => ({
 //   paper: {
@@ -107,4 +107,17 @@ import withPageTransition from '../components/withPageTransition'
 //     />
 //   )
 // }
-export default compose(checkCookie)(OurStory)
+export default compose(
+  checkCookie,
+  // branch(
+  // ({ query: { prev } }) => prev === 'co-founders',
+  // withPageTransition({
+  //   yPosition: { from: 100, to: 0 },
+  //   xPosition: { from: 0, to: 0 },
+  // }),
+  withPageTransition({
+    yPosition: { from: 0, to: 0 },
+    xPosition: { from: 0, to: 0 },
+  })
+  // )
+)(OurStory)

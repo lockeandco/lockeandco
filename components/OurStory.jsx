@@ -12,8 +12,6 @@ import Headers from '../components/ScrollingHeaders'
 import CommonHeader from '../components/MobileScrollingHeader'
 import CardBackground from '../components/CardBackground'
 import Link from 'next/link'
-import withPageTransition from './withPageTransition'
-import { branch } from 'recompose'
 const ourStoryCopy = classes => (
   <React.Fragment>
     <Typography variant="body1" paragraph className={classes.typo}>
@@ -100,16 +98,5 @@ const OurStory = props => {
 }
 export default compose(
   checkCookie,
-  withStyles(styles),
-  branch(
-    ({ query: { prev } }) => prev === 'co-founders',
-    withPageTransition({
-      yPosition: { from: 100, to: 0 },
-      xPosition: { from: 0, to: 0 },
-    }),
-    withPageTransition({
-      yPosition: { from: 0, to: 0 },
-      xPosition: { from: 0, to: 0 },
-    })
-  )
+  withStyles(styles)
 )(OurStory)

@@ -76,6 +76,12 @@ const FindUs = props => {
                     // border: '1px,solid, #C36D15',
                     // backgroundColor: '#C36D15',
                   }}
+                  onClick={() =>
+                    props.handleTest({
+                      lat: 39.743642,
+                      lng: -104.9854807,
+                    })
+                  }
                 />
               </div>
               <Typography variant="headline" className={classes.typo}>

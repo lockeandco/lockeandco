@@ -17,8 +17,8 @@ const styles = theme => ({
     flexWrap: 'wrap',
     width: '80%',
     [theme.breakpoints.down('sm')]: {
-        width: '100%',
-      },
+      width: '100%',
+    },
   },
   formControl: {
     margin: theme.spacing.unit,
@@ -26,6 +26,7 @@ const styles = theme => ({
   },
   selectEmpty: {
     marginTop: theme.spacing.unit * 2,
+    background: 'rgba(226, 222, 213, 0.95)',
   },
   textField: {
     marginLeft: theme.spacing.unit,
@@ -55,6 +56,10 @@ class ContactUs extends React.Component {
           value={this.state.name}
           onChange={this.handleChange}
           margin="normal"
+          variant={'filled'}
+          inputProps={{
+            style: { background: 'rgba(226, 222, 213, 0.95)' },
+          }}
         />
         <TextField
           id="email"
@@ -65,40 +70,50 @@ class ContactUs extends React.Component {
           onChange={this.handleChange}
           margin="normal"
           type="email"
+          variant={'filled'}
+          inputProps={{
+            style: { background: 'rgba(226, 222, 213, 0.95)' },
+          }}
         />
-        <FormControl required className={classes.formControl}>
-          <InputLabel htmlFor="age-required">About You</InputLabel>
-          <Select
-            value={this.state.age}
-            onChange={this.handleChange}
-            name="age"
-            inputProps={{
-              id: 'age-required',
-            }}
-            className={classes.selectEmpty}
-          >
-            <MenuItem value="">
-              <em>None</em>
+
+        <TextField
+          value={this.state.aboutyou}
+          onChange={this.handleChange}
+          variant={'filled'}
+          name="aboutyou"
+          id="aboutyou"
+          label="About You"
+          required
+          fullWidth
+          select
+          inputProps={{
+            style: { background: 'rgba(226, 222, 213, 0.95)' },
+          }}
+        >
+          <MenuItem value="">
+            <em>None</em>
+          </MenuItem>
+          {enumerations.map(x => (
+            <MenuItem key={x} value={x}>
+              {x}
             </MenuItem>
-            {enumerations.map(x => (
-              <MenuItem key={x} value={x}>
-                {x}
-              </MenuItem>
-            ))}
-          </Select>
-          <FormHelperText>Required</FormHelperText>
-        </FormControl>
+          ))}
+        </TextField>
         <TextField
           id="message"
           label="Send Us a Message"
           name="message"
-          className={classes.textField}
+          // className={classes.textField}
           value={this.state.message}
           onChange={this.handleChange}
-          margin="normal"
+          margin="none"
           multiline
           fullWidth
-          rows={10}
+          // rows={10}
+          variant={'filled'}
+          inputProps={{
+            style: { background: 'rgba(226, 222, 213, 0.95)' },
+          }}
         />
       </div>
     )

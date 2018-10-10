@@ -53,7 +53,8 @@ const StayConnected = props => {
 
 export default compose(
   checkCookie,
-  withStyles(styles),  withPageTransition({
+  withStyles(styles),
+  withPageTransition({
     yPosition: { from: 0, to: 0 },
     xPosition: { from: 0, to: 0 },
   })

@@ -82,14 +82,14 @@ const Homepage = props => {
         }}
       >
         <div style={{ textAlign: 'center', paddingTop: '15%' }}>
-          <Typography variant="title" className={classes.typoHeader}>
+          <Typography variant="h6" className={classes.typoHeader}>
             we believe great spirits bring people together to share
           </Typography>
-          <Typography variant="title" className={classes.typoHeader}>
+          <Typography variant="h6" className={classes.typoHeader}>
             the moments and stories that make life rich.
           </Typography>
 
-          <Typography className={classes.typoH3Header} variant="title">
+          <Typography className={classes.typoH3Header} variant="h6">
             you're welcome here.
           </Typography>
 

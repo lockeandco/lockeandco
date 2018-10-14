@@ -56,10 +56,10 @@ const CheckAge = withStyles(styles)(props => {
         <Typography variant="display3" className={classes.typoHeader}>
           locke + cO
         </Typography>
-        <Typography variant="title" className={classes.typosubHeader}>
+        <Typography variant="h6" className={classes.typosubHeader}>
           welcome.
         </Typography>
-        <Typography variant="title" className={classes.typosubHeader}>
+        <Typography variant="h6" className={classes.typosubHeader}>
           you are in good company here
         </Typography>
         <div className={classes.card}>

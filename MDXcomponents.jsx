@@ -50,7 +50,7 @@ const H1 = withStyles(style)(props => {
   console.log('h1')
   return (
     <Typography
-      variant="display1"
+      variant="h4"
       className={classes.typoBigHeader}
       noWrap
       {...other}
@@ -61,7 +61,7 @@ const H2 = withStyles(style)(props => {
   const { classes, ...other } = props
   console.log('h2')
   return (
-    <Typography variant="title" className={classes.typoHeader} {...other} />
+    <Typography variant="h6" className={classes.typoHeader} {...other} />
   )
 })
 const H3 = withStyles(style)(props => {
@@ -69,14 +69,14 @@ const H3 = withStyles(style)(props => {
   console.log('h3')
   return (
     <React.Fragment>
-      <Typography className={classes.typoH3Header} variant="title" {...other} />
+      <Typography className={classes.typoH3Header} variant="h6" {...other} />
     </React.Fragment>
   )
 })
 const Paragraph = withStyles(style)(props => {
   const { classes, ...other } = props
   return (
-    <Typography variant="body2" className={classes.typo} paragraph {...other} />
+    <Typography variant="body1" className={classes.typo} paragraph {...other} />
   )
 })
 

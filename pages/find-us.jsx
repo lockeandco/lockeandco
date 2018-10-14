@@ -84,7 +84,7 @@ const FindUs = props => {
                   }
                 />
               </div>
-              <Typography variant="headline" className={classes.typo}>
+              <Typography variant="h5" className={classes.typo}>
                 you can find locke + co. spirits at the following retailers and
                 establishments:
               </Typography>

@@ -125,7 +125,7 @@ function MediaCard(props) {
         <CardContent>
           <Typography
             gutterBottom
-            variant="headline"
+            variant="h5"
             component="h2"
             className={classes.typoHeader}
           >

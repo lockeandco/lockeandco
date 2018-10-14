@@ -2,6 +2,8 @@ const adds = require('./locations.json')
 const fetch = require('isomorphic-unfetch')
 const fs = require('fs')
 const R = require('ramda')
+const util = require('util')
+const setTimeoutPromise = util.promisify(setTimeout)
 
 const url = address =>
   `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=AIzaSyCAHEdspo9nrGHO9GqZxKwPXcjmOWr6mY4`
@@ -34,11 +36,19 @@ const formattedAdds = adds
   .map(async y => {
     const { url, name, site } = y
     console.log(url)
+    let timer = 0
+    const dd = Date.now() + 500
+    while (dd > Date.now()) {
+      timer++
+    }
+    console.log(timer)
     return Object.assign(
       {},
       await fetch(url)
         .then(z => z.json())
-        .then(d => d),
+        .then(d =>  { 
+          console.log(d)
+          return  d}),
       {
         name: name,
         site: site,
@@ -58,36 +68,41 @@ const formattedAdds = adds
 // fdsd()
 //   .then(x => x.json())
 //   .then(data => console.log(data))
-Promise.all(formattedAdds).then(x =>
-  fs.writeFileSync(
-    'formattedLocations.json',
-    JSON.stringify(
-      R.chain(
-        x =>
-          Object.assign(
-            {},
-            {
-              formatted_address: R.compose(
-                R.head,
-                R.map(R.path(['formatted_address'])),
-                R.path(['results'])
-              )(x),
-            },
-            {
-              location: R.compose(
-                R.path(['location']),
-                R.head,
-                R.map(R.path(['geometry'])),
-                R.path(['results'])
-              )(x),
-            },
-            R.pick(['name', 'site'])(x)
-          ),
-        x
+Promise.all(formattedAdds)
+  .then(x => {
+    fs.writeFileSync('formattedAdds.json', JSON.stringify(x))
+    console.log(x)
+    return x
+  })
+  .then(x =>
+    fs.writeFileSync(
+      'formattedLocations.json',
+      JSON.stringify(
+        R.chain(
+          x =>
+            Object.assign(
+              {},
+              {
+                formatted_address: R.compose(
+                  R.path(['formatted_address']),
+                  R.mergeAll,
+                  R.path(['results'])
+                )(x),
+              },
+              {
+                location: R.compose(
+                  R.path(['geometry', 'location']),
+                  R.mergeAll,
+                  R.path(['results'])
+                )(x),
+              },
+              R.pick(['name', 'site'])(x)
+            ),
+          x
+        )
       )
     )
   )
-)
 
 // fs.writeFileSync('goo.json', JSON.stringify(formattedAdds))
 

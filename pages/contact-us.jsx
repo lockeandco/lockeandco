@@ -83,7 +83,8 @@ const styles = theme => ({
     padding: '30px 30px 30px 30px',
     display: 'flex',
     justifyContent: 'center',
-    backgroundColor: `rgba(226, 222, 213, 0.95)`,
+    backgroundColor: `transparent`,
+    boxShadow: 'unset',
     [theme.breakpoints.down('sm')]: {
       width: '90%',
       padding: '15px 15px 15px 15px',

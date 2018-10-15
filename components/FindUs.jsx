@@ -4,7 +4,7 @@ import locations from '../lib/formattedLocations.json'
 import { equals } from 'ramda'
 
 //console.log(locations.filter(x => x.location))
-//stream props for performance
+//stream props for performance?
 export class MapContainer extends Component {
   constructor(props) {
     super(props)
@@ -62,7 +62,7 @@ export class MapContainer extends Component {
           position: 'relative',
           height: '100%',
           width: '100%',
-          minHeight: '95vh',
+          minHeight: '97vh',
           //   height: 'calc(100vh * .7)',
           //   width: 'calc(100vw * .9',
           //   paddingLeft: '5%',
@@ -114,14 +114,14 @@ export class MapContainer extends Component {
             position={this.state.activeMarker}
             visible={this.state.showingInfoWindow}
           >
-            <div>
+            <React.Fragment>
               <h3>{this.state.selectedPlace}</h3>
               {this.state.site && (
                 <a href={this.state.site} target="_blank">
                   {this.state.site}
                 </a>
               )}
-            </div>
+            </React.Fragment>
           </InfoWindow>
         </Map>
       </div>

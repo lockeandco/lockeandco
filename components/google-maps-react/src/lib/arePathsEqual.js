@@ -4,32 +4,26 @@
 
 export const arePathsEqual = function(pathA, pathB) {
   if (pathA === pathB) {
-    return true;
+    return true
   }
   if (!Array.isArray(pathA) || !Array.isArray(pathB)) {
-    return false;
+    return false
   }
   if (pathA.length !== pathB.length) {
-    return false;
+    return false
   }
   for (let i = 0; i < pathA.length; ++i) {
     if (pathA[i] === pathB[i]) {
-      continue;
+      continue
     }
-    if (
-      !isValidLatLng(pathA[i]) ||
-      !isValidLatLng(pathB[i])
-    ) {
-      return false;
+    if (!isValidLatLng(pathA[i]) || !isValidLatLng(pathB[i])) {
+      return false
     }
-    if (
-      pathB[i].lat !== pathA[i].lat ||
-      pathB[i].lng !== pathA[i].lng
-    ) {
-      return false;
+    if (pathB[i].lat !== pathA[i].lat || pathB[i].lng !== pathA[i].lng) {
+      return false
     }
   }
-  return true;
+  return true
 }
 
 /**
@@ -44,5 +38,5 @@ const isValidLatLng = function(elem) {
     typeof elem === 'object' &&
     elem.hasOwnProperty('lat') &&
     elem.hasOwnProperty('lng')
-  );
+  )
 }

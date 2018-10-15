@@ -21,3 +21,4 @@ yarn-error.log*
 
 /static/LCD-0725-Website Images 2
 accessKeys.csv
+/out

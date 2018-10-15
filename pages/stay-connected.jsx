@@ -8,15 +8,23 @@ import SocialButtons from '../components/SocialButtons2'
 import withPageTransition from '../components/withPageTransition'
 const styles = theme => ({
   container: {
-    margin: '115px 10px 95px 10px ',
-    padding: 15,
+    margin: '130px 10px 95px 10px ',
+    paddingTop: 100,
+    paddingLeft: 15,
+    paddingRight: 15,
+    paddingBottom: 15,
     textAlign: 'center',
     backgroundColor: `rgba(226, 222, 213, 0.9)`,
     [theme.breakpoints.up('md')]: {
-      marginTop: 130,
+      marginTop: 0,
       textAlign: 'center',
       backgroundColor: 'unset',
     },
+    // [theme.breakpoints.down('sm')]: {
+    //   marginTop: 130,
+    //   textAlign: 'center',
+    //   //backgroundColor: 'unset',
+    // },
   },
 })
 

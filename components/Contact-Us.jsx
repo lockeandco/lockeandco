@@ -15,7 +15,7 @@ const styles = theme => ({
     display: 'flex',
     flexDirection: 'column',
     flexWrap: 'wrap',
-    width: '80%',
+    width: '100%',
     [theme.breakpoints.down('sm')]: {
       width: '100%',
     },
@@ -79,15 +79,20 @@ class ContactUs extends React.Component {
         <TextField
           value={this.state.aboutyou}
           onChange={this.handleChange}
+          className={classes.textField}
           variant={'filled'}
           name="aboutyou"
           id="aboutyou"
           label="About You"
+          margin="normal"
           required
           fullWidth
           select
-          inputProps={{
+          InputProps={{
             style: { background: 'rgba(226, 222, 213, 0.95)' },
+          }}
+          InputLabelProps={{
+            shrink: true,
           }}
         >
           <MenuItem value="">
@@ -103,16 +108,17 @@ class ContactUs extends React.Component {
           id="message"
           label="Send Us a Message"
           name="message"
-          // className={classes.textField}
+          className={classes.textField}
           value={this.state.message}
           onChange={this.handleChange}
-          margin="none"
+          margin="normal"
           multiline
           fullWidth
-          // rows={10}
+          rows={10}
           variant={'filled'}
-          inputProps={{
+          InputProps={{
             style: { background: 'rgba(226, 222, 213, 0.95)' },
+
           }}
         />
       </div>

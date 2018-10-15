@@ -16,15 +16,15 @@ const ourStoryCopy = classes => (
   <React.Fragment>
     <Typography variant="body1" paragraph className={classes.typo}>
       The Locke’s family roots in Colorado moonshining go back several
-      generations.{' '}
+      generations.
       <Link href={'/co-founders/owen'} prefetch>
         <a className={classes.typo}>Owen Locke</a>
-      </Link>{' '}
+      </Link>
       kept the craft tradition alive with an early knack for brewing that
       continued through college to graduate school, where he reconnected with{' '}
       <Link href={'/co-founders/rick'} prefetch>
         <a className={classes.typo}>Rick Talley</a>
-      </Link>{' '}
+      </Link>
     </Typography>
     <Typography variant="body1" paragraph className={classes.typo}>
       The high school friends and lacrosse teammates immediately recognized that

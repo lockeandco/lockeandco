@@ -52,13 +52,7 @@ const FindUs = props => {
       leftSize={9}
       rightSize={3}
       backgroundColorRight={`#243746`}
-      gMap={
-        <div
-          style={{ textAlign: 'center', paddingTop: '3vh', overflow: 'hidden' }}
-        >
-          <FindUsMap {...other} />
-        </div>
-      }
+      gMap={<FindUsMap {...other} />}
       text={{
         position: `rightTop`,
         component: (
@@ -88,37 +82,37 @@ const FindUs = props => {
                 you can find locke + co. spirits at the following retailers and
                 establishments:
               </Typography>
+              <CommonHeader
+                springConfig={{
+                  peek: [
+                    {
+                      delay: 2000,
+                      from: { x: 0, opacity: 1 },
+                      to: { x: -600, opacity: 0.5 },
+                      config: { ...config.molasses, duration: 12000 },
+                    },
+                    {
+                      from: { x: 100, opacity: 1 },
+                      to: { x: -600, opacity: 0.5 },
+                      config: { ...config.molasses, duration: 12000 },
+                    },
+                    {
+                      from: { x: 100, opacity: 0 },
+                      to: { x: Math.random() * -100, opacity: 1 },
+                      config: { ...config.molasses, duration: 5000 },
+                    },
+                  ],
+                }}
+                alignItems="flex-end"
+                headerText={`a taste like none other`}
+                // style={{
+                //   margin: '10px -10px 10px -10px',
+                //   paddingRight: -15,
+                //   paddingLeft: -15
+                // }}
+              />
               <CityList {...other} />
             </div>
-            <CommonHeader
-              springConfig={{
-                peek: [
-                  {
-                    delay: 2000,
-                    from: { x: 0, opacity: 1 },
-                    to: { x: -600, opacity: 0.5 },
-                    config: { ...config.molasses, duration: 12000 },
-                  },
-                  {
-                    from: { x: 100, opacity: 1 },
-                    to: { x: -600, opacity: 0.5 },
-                    config: { ...config.molasses, duration: 12000 },
-                  },
-                  {
-                    from: { x: 100, opacity: 0 },
-                    to: { x: Math.random() * -100, opacity: 1 },
-                    config: { ...config.molasses, duration: 5000 },
-                  },
-                ],
-              }}
-              alignItems="flex-end"
-              headerText={`a taste like none other`}
-              // style={{
-              //   margin: '10px -10px 10px -10px',
-              //   paddingRight: -15,
-              //   paddingLeft: -15
-              // }}
-            />
           </React.Fragment>
         ),
       }}

@@ -1,0 +1,170 @@
+[
+  {
+    "formatted_address": "Arvada, CO, USA",
+    "location": {
+      "lat": 39.8027644,
+      "lng": -105.0874842
+    }
+  },
+  {
+    "formatted_address": "Aurora, CO, USA",
+    "location": {
+      "lat": 39.7294319,
+      "lng": -104.8319195
+    }
+  },
+  {
+    "formatted_address": "Boulder, CO, USA",
+    "location": {
+      "lat": 40.0149856,
+      "lng": -105.2705456
+    }
+  },
+  {
+    "formatted_address": "Broomfield, CO, USA",
+    "location": {
+      "lat": 39.9205411,
+      "lng": -105.0866504
+    }
+  },
+  {
+    "formatted_address": "Centennial, CO, USA",
+    "location": {
+      "lat": 39.5807452,
+      "lng": -104.8771726
+    }
+  },
+  {
+    "formatted_address": "Colorado Springs, CO, USA",
+    "location": {
+      "lat": 38.8338816,
+      "lng": -104.8213634
+    }
+  },
+  {
+    "formatted_address": "Conifer, CO 80433, USA",
+    "location": {
+      "lat": 39.5202516,
+      "lng": -105.3056996
+    }
+  },
+  {
+    "formatted_address": "Crested Butte, CO 81224, USA",
+    "location": {
+      "lat": 38.8697146,
+      "lng": -106.9878231
+    }
+  },
+  {
+    "formatted_address": "Denver, CO, USA",
+    "location": {
+      "lat": 39.7392358,
+      "lng": -104.990251
+    }
+  },
+  {
+    "formatted_address": "Englewood, CO, USA",
+    "location": {
+      "lat": 39.6477653,
+      "lng": -104.9877597
+    }
+  },
+  {
+    "formatted_address": "Fort Collins, CO, USA",
+    "location": {
+      "lat": 40.5852602,
+      "lng": -105.084423
+    }
+  },
+  {
+    "formatted_address": "Fraser, CO, USA",
+    "location": {
+      "lat": 39.9449868,
+      "lng": -105.8172316
+    }
+  },
+  {
+    "formatted_address": "Frisco, CO, USA",
+    "location": {
+      "lat": 39.5744309,
+      "lng": -106.0975203
+    }
+  },
+  {
+    "formatted_address": "Granby, CO 80446, USA",
+    "location": {
+      "lat": 40.086097,
+      "lng": -105.9394597
+    }
+  },
+  {
+    "formatted_address": "Grand Lake, CO 80447, USA",
+    "location": {
+      "lat": 40.25220729999999,
+      "lng": -105.8230671
+    }
+  },
+  {
+    "formatted_address": "Greenwood Village, CO, USA",
+    "location": {
+      "lat": 39.6172101,
+      "lng": -104.9508141
+    }
+  },
+  {
+    "formatted_address": "Highlands Ranch, CO, USA",
+    "location": {
+      "lat": 39.5480789,
+      "lng": -104.9739333
+    }
+  },
+  {
+    "formatted_address": "Idaho Springs, CO, USA",
+    "location": {
+      "lat": 39.7424881,
+      "lng": -105.5136081
+    }
+  },
+  {
+    "formatted_address": "Lafayette, CO, USA",
+    "location": {
+      "lat": 39.9935959,
+      "lng": -105.0897058
+    }
+  },
+  {
+    "formatted_address": "Littleton, CO, USA",
+    "location": {
+      "lat": 39.613321,
+      "lng": -105.0166498
+    }
+  },
+  {
+    "formatted_address": "Parker, CO, USA",
+    "location": {
+      "lat": 39.5186002,
+      "lng": -104.7613633
+    }
+  },
+  {
+    "formatted_address": "Tabernash, CO 80478, USA",
+    "location": {
+      "lat": 39.9935977,
+      "lng": -105.8430661
+    }
+  },
+  {
+    "formatted_address": "Thornton, CO, USA",
+    "location": {
+      "lat": 39.8680412,
+      "lng": -104.9719243
+    }
+  },
+  {
+    "formatted_address": "Winter Park, CO 80482, USA",
+    "location": {
+      "lat": 39.8916537,
+      "lng": -105.7630624
+    }
+  }
+]

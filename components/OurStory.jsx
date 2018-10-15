@@ -41,7 +41,6 @@ const ourStoryCopy = classes => (
 
 const styles = theme => ({})
 
-
 const OurStory = props => {
   const { classes, ...other } = props
   console.log('Our Story', props)

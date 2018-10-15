@@ -10,12 +10,13 @@ import Headers from '../components/ScrollingHeaders'
 import CommonHeader from '../components/MobileScrollingHeader'
 import CardBackground from '../components/CardBackground'
 import Link from 'next/link'
+import Divider from '@material-ui/core/Divider'
 
 const coFounderCopy = classes => (
   <React.Fragment>
     <Typography variant="body1" paragraph className={classes.typoCaption}>
-      What is Locke &amp; Co. about? Good company. The same as those aspens
-      quaking together in the wind: Connection through deep Colorado roots.
+      What is Locke + Co. about? Good company. The same as those aspens quaking
+      together in the wind: Connection through deep Colorado roots.
     </Typography>
     <Typography variant="body1" paragraph className={classes.typo}>
       The process of distilling has brought with it valuable perspective. After

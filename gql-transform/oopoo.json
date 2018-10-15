@@ -1,0 +1,100 @@
+[
+    {
+        "formatted_address": "Arvada, CO, USA",
+        "location": {
+            "lat": 39.8027644,
+            "lng": -105.0874842
+        }
+    },
+    {
+        "formatted_address": "Aurora, CO, USA",
+        "location": {
+            "lat": 39.7294319,
+            "lng": -104.8319195
+        }
+    },
+    {
+        "formatted_address": "Boulder, CO, USA",
+        "location": {
+            "lat": 40.0149856,
+            "lng": -105.2705456
+        }
+    },
+    {
+        "formatted_address": "Centennial, CO, USA",
+        "location": {
+            "lat": 39.5807452,
+            "lng": -104.8771726
+        }
+    },
+    {
+        "formatted_address": "Conifer, CO 80433, USA",
+        "location": {
+            "lat": 39.5202516,
+            "lng": -105.3056996
+        }
+    },
+    {
+        "formatted_address": "Denver, CO, USA",
+        "location": {
+            "lat": 39.7392358,
+            "lng": -104.990251
+        }
+    },
+    {
+        "formatted_address": "Fort Collins, CO, USA",
+        "location": {
+            "lat": 40.5852602,
+            "lng": -105.084423
+        }
+    },
+    {
+        "formatted_address": "Grand Lake, CO 80447, USA",
+        "location": {
+            "lat": 40.25220729999999,
+            "lng": -105.8230671
+        }
+    },
+    {
+        "formatted_address": "Parker, CO, USA",
+        "location": {
+            "lat": 39.5186002,
+            "lng": -104.7613633
+        }
+    },
+    {
+        "formatted_address": "Sheridan, CO, USA",
+        "location": {
+            "lat": 39.6469319,
+            "lng": -105.025261
+        }
+    },
+    {
+        "formatted_address": "Greenwood Village, CO, USA",
+        "location": {
+            "lat": 39.6172101,
+            "lng": -104.9508141
+        }
+    },
+    {
+        "formatted_address": "Granby, CO 80446, USA",
+        "location": {
+            "lat": 40.086097,
+            "lng": -105.9394597
+        }
+    },
+    {
+        "formatted_address": "Littleton, CO, USA",
+        "location": {
+            "lat": 39.613321,
+            "lng": -105.0166498
+        }
+    },
+    {
+        "formatted_address": "Crested Butte, CO 81224, USA",
+        "location": {
+            "lat": 38.8697146,
+            "lng": -106.9878231
+        }
+    }
+]

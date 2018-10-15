@@ -14,14 +14,23 @@ const styles = theme => ({
 })
 
 const MobileScrollingHeader = props => {
-  const { classes, headerText, height, direction, alignItems, ...other } = props
+  const {
+    classes,
+    headerText,
+    height,
+    direction,
+    alignItems,
+    override,
+    ...other
+  } = props
+  const styleOverride = Object.assign({}, { height: height }, override || {})
   return (
     <Grid
       container
       className={classes.root}
       alignItems={alignItems || 'flex-start'}
       direction={direction || 'row'}
-      style={{ height: height }}
+      style={styleOverride}
       spacing={0}
     >
       <Grid item xs zeroMinWidth>

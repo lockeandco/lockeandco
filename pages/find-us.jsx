@@ -23,6 +23,7 @@ const styles = theme => ({
       marginTop: 95,
       textAlign: 'center',
       backgroundColor: 'unset',
+      height: '100vh',
     },
   },
   typo: {
@@ -78,11 +79,8 @@ const FindUs = props => {
                   }
                 />
               </div>
-              <Typography variant="h5" className={classes.typo}>
-                you can find locke + co. spirits at the following retailers and
-                establishments:
-              </Typography>
               <CommonHeader
+                override={{ overflow: 'unset' }}
                 springConfig={{
                   peek: [
                     {
@@ -105,12 +103,16 @@ const FindUs = props => {
                 }}
                 alignItems="flex-end"
                 headerText={`a taste like none other`}
-                // style={{
-                //   margin: '10px -10px 10px -10px',
-                //   paddingRight: -15,
-                //   paddingLeft: -15
-                // }}
+                style={{
+                  marginLeft: '-24px',
+                  width: '120%',
+                }}
               />
+              <Typography variant="h5" className={classes.typo}>
+                you can find locke + co. spirits at the following retailers and
+                establishments:
+              </Typography>
+
               <CityList {...other} />
             </div>
           </React.Fragment>

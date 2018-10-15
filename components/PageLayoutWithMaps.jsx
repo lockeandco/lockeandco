@@ -13,9 +13,9 @@ import Header100 from './MobileScrollingHeader'
 
 const styles = theme => ({
   demo: {
-    height: `100%`,
+    // height: `100%`,
     flexGrow: 1,
-    minHeight: '100vh',
+    maxHeight: '100vh',
   },
 })
 
@@ -34,7 +34,7 @@ const Page = props => {
     <Grid
       container
       spacing={0}
-      //className={classes.demo}
+      className={classes.demo}
       alignItems="stretch"
       direction="row"
       justify="center"
@@ -48,8 +48,8 @@ const Page = props => {
           sm={rightSize || 6}
           xs={12}
           style={{
-            padding: 'unset',
-            height: `${pictures.rightTop ? pictures.rightTop.size : 0}`,
+            paddingBottom: '300px',
+            height: `98vh`,
             backgroundPosition: 'center',
             backgroundSize: 'cover',
             backgroundImage: `url(${
@@ -57,10 +57,11 @@ const Page = props => {
             })`,
             backgroundRepeat: 'no-repeat',
             backgroundColor: `${backgroundColorRight}`,
+            overflow: 'scroll'
           }}
         >
-          {header && header.position === 'rightTop' && header.component}
-          {text && text.position === 'rightTop' && text.component}
+          {header && header.position === 'rightTop' && header.component}{' '}
+          {text && text.position === 'rightTop' && text.component}{' '}
         </Grid>
       </Hidden>
     </Grid>

@@ -1,10 +1,5 @@
 import React, { Component } from 'react'
-import {
-  Map,
-  InfoWindow,
-  Marker,
-  GoogleApiWrapper,
-} from './google-maps-react/src/index'
+import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react'
 import locations from '../lib/formattedLocations.json'
 import { equals } from 'ramda'
 
@@ -67,7 +62,7 @@ export class MapContainer extends Component {
           position: 'relative',
           height: '100%',
           width: '100%',
-          minHeight: '95vh',
+          minHeight: '97vh',
           //   height: 'calc(100vh * .7)',
           //   width: 'calc(100vw * .9',
           //   paddingLeft: '5%',

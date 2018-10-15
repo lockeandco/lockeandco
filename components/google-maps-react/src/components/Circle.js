@@ -1,63 +1,62 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 
-import { arePathsEqual } from '../lib/arePathsEqual';
-import { camelize } from '../lib/String';
-const evtNames = ['click', 'mouseout', 'mouseover'];
+import { arePathsEqual } from '../lib/arePathsEqual'
+import { camelize } from '../lib/String'
+const evtNames = ['click', 'mouseout', 'mouseover']
 
 const wrappedPromise = function() {
-    var wrappedPromise = {},
-        promise = new Promise(function
-           (resolve, reject) {
-            wrappedPromise.resolve = resolve;
-            wrappedPromise.reject = reject;
-        });
-    wrappedPromise.then = promise.then.bind(promise);
-    wrappedPromise.catch = promise.catch.bind(promise);
-    wrappedPromise.promise = promise;
+  var wrappedPromise = {},
+    promise = new Promise(function(resolve, reject) {
+      wrappedPromise.resolve = resolve
+      wrappedPromise.reject = reject
+    })
+  wrappedPromise.then = promise.then.bind(promise)
+  wrappedPromise.catch = promise.catch.bind(promise)
+  wrappedPromise.promise = promise
 
-    return wrappedPromise;
+  return wrappedPromise
 }
 
 export class Circle extends React.Component {
   componentDidMount() {
-    this.circlePromise = wrappedPromise();
-    this.renderCircle();
+    this.circlePromise = wrappedPromise()
+    this.renderCircle()
   }
 
   componentDidUpdate(prevProps) {
-    const { path, map } = this.props;
+    const { path, map } = this.props
 
     if (
       this.propsChanged(prevProps) ||
       map !== prevProps.map ||
       !arePathsEqual(path, prevProps.path)
     ) {
-      this.destroyCircle();
-      this.renderCircle();
+      this.destroyCircle()
+      this.renderCircle()
     }
   }
 
-  centerChanged = (newCenter) => {
-    const { lat, lng } = this.props.center;
-    return lat !== newCenter.lat || lng !== newCenter.lng;
-  };
+  centerChanged = newCenter => {
+    const { lat, lng } = this.props.center
+    return lat !== newCenter.lat || lng !== newCenter.lng
+  }
 
-  propsChanged = (newProps) => {
-    if (this.centerChanged(newProps.center)) return true;
+  propsChanged = newProps => {
+    if (this.centerChanged(newProps.center)) return true
 
-    return Object.keys(Circle.propTypes).some(key => (
-      this.props[key] !== newProps[key]
-    ));
-  };
+    return Object.keys(Circle.propTypes).some(
+      key => this.props[key] !== newProps[key]
+    )
+  }
 
   componentWillUnmount() {
-    this.destroyCircle();
+    this.destroyCircle()
   }
 
   destroyCircle = () => {
     if (this.circle) {
-      this.circle.setMap(null);
+      this.circle.setMap(null)
     }
   }
 
@@ -75,10 +74,10 @@ export class Circle extends React.Component {
       draggable,
       visible,
       ...props
-    } = this.props;
+    } = this.props
 
     if (!google) {
-        return null;
+      return null
     }
 
     const params = {
@@ -95,32 +94,32 @@ export class Circle extends React.Component {
         fillColor,
         fillOpacity,
       },
-    };
+    }
 
-    this.circle = new google.maps.Circle(params);
+    this.circle = new google.maps.Circle(params)
 
     evtNames.forEach(e => {
-      this.circle.addListener(e, this.handleEvent(e));
-    });
+      this.circle.addListener(e, this.handleEvent(e))
+    })
 
-    this.circlePromise.resolve(this.circle);
+    this.circlePromise.resolve(this.circle)
   }
 
   getCircle() {
-    return this.circlePromise;
+    return this.circlePromise
   }
 
   handleEvent(evt) {
-    return (e) => {
+    return e => {
       const evtName = `on${camelize(evt)}`
       if (this.props[evtName]) {
-        this.props[evtName](this.props, this.circle, e);
+        this.props[evtName](this.props, this.circle, e)
       }
     }
   }
 
   render() {
-    return null;
+    return null
   }
 }
 
@@ -136,10 +135,10 @@ Circle.propTypes = {
   visible: PropTypes.bool,
 }
 
-evtNames.forEach(e => Circle.propTypes[e] = PropTypes.func)
+evtNames.forEach(e => (Circle.propTypes[e] = PropTypes.func))
 
 Circle.defaultProps = {
-  name: 'Circle'
+  name: 'Circle',
 }
 
 export default Circle

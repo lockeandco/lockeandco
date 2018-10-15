@@ -1,28 +1,27 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 
-import { arePathsEqual } from '../lib/arePathsEqual';
-import { camelize } from '../lib/String';
-const evtNames = ['click', 'mouseout', 'mouseover'];
+import { arePathsEqual } from '../lib/arePathsEqual'
+import { camelize } from '../lib/String'
+const evtNames = ['click', 'mouseout', 'mouseover']
 
 const wrappedPromise = function() {
-    var wrappedPromise = {},
-        promise = new Promise(function
-           (resolve, reject) {
-            wrappedPromise.resolve = resolve;
-            wrappedPromise.reject = reject;
-        });
-    wrappedPromise.then = promise.then.bind(promise);
-    wrappedPromise.catch = promise.catch.bind(promise);
-    wrappedPromise.promise = promise;
+  var wrappedPromise = {},
+    promise = new Promise(function(resolve, reject) {
+      wrappedPromise.resolve = resolve
+      wrappedPromise.reject = reject
+    })
+  wrappedPromise.then = promise.then.bind(promise)
+  wrappedPromise.catch = promise.catch.bind(promise)
+  wrappedPromise.promise = promise
 
-    return wrappedPromise;
+  return wrappedPromise
 }
 
 export class Polyline extends React.Component {
   componentDidMount() {
-    this.polylinePromise = wrappedPromise();
-    this.renderPolyline();
+    this.polylinePromise = wrappedPromise()
+    this.renderPolyline()
   }
 
   componentDidUpdate(prevProps) {
@@ -31,15 +30,15 @@ export class Polyline extends React.Component {
       !arePathsEqual(this.props.path, prevProps.path)
     ) {
       if (this.polyline) {
-        this.polyline.setMap(null);
+        this.polyline.setMap(null)
       }
-      this.renderPolyline();
+      this.renderPolyline()
     }
   }
 
   componentWillUnmount() {
     if (this.polyline) {
-      this.polyline.setMap(null);
+      this.polyline.setMap(null)
     }
   }
 
@@ -52,10 +51,10 @@ export class Polyline extends React.Component {
       strokeOpacity,
       strokeWeight,
       ...props
-    } = this.props;
+    } = this.props
 
     if (!google) {
-        return null;
+      return null
     }
 
     const params = {
@@ -64,33 +63,33 @@ export class Polyline extends React.Component {
       strokeColor,
       strokeOpacity,
       strokeWeight,
-      ...props
-    };
+      ...props,
+    }
 
-    this.polyline = new google.maps.Polyline(params);
+    this.polyline = new google.maps.Polyline(params)
 
     evtNames.forEach(e => {
-      this.polyline.addListener(e, this.handleEvent(e));
-    });
+      this.polyline.addListener(e, this.handleEvent(e))
+    })
 
-    this.polylinePromise.resolve(this.polyline);
+    this.polylinePromise.resolve(this.polyline)
   }
 
   getPolyline() {
-    return this.polylinePromise;
+    return this.polylinePromise
   }
 
   handleEvent(evt) {
-    return (e) => {
+    return e => {
       const evtName = `on${camelize(evt)}`
       if (this.props[evtName]) {
-        this.props[evtName](this.props, this.polyline, e);
+        this.props[evtName](this.props, this.polyline, e)
       }
     }
   }
 
   render() {
-    return null;
+    return null
   }
 }
 
@@ -98,13 +97,13 @@ Polyline.propTypes = {
   path: PropTypes.array,
   strokeColor: PropTypes.string,
   strokeOpacity: PropTypes.number,
-  strokeWeight: PropTypes.number
+  strokeWeight: PropTypes.number,
 }
 
-evtNames.forEach(e => Polyline.propTypes[e] = PropTypes.func)
+evtNames.forEach(e => (Polyline.propTypes[e] = PropTypes.func))
 
 Polyline.defaultProps = {
-  name: 'Polyline'
+  name: 'Polyline',
 }
 
 export default Polyline

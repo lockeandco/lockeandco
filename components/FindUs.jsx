@@ -1,10 +1,15 @@
 import React, { Component } from 'react'
-import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react'
+import {
+  Map,
+  InfoWindow,
+  Marker,
+  GoogleApiWrapper,
+} from '../packages/google-maps-react/src'
 import locations from '../lib/formattedLocations.json'
 import { equals } from 'ramda'
 
 //console.log(locations.filter(x => x.location))
-//stream props for performance
+//stream props for performance?
 export class MapContainer extends Component {
   constructor(props) {
     super(props)
@@ -114,14 +119,14 @@ export class MapContainer extends Component {
             position={this.state.activeMarker}
             visible={this.state.showingInfoWindow}
           >
-            <div>
+            <React.Fragment>
               <h3>{this.state.selectedPlace}</h3>
               {this.state.site && (
                 <a href={this.state.site} target="_blank">
                   {this.state.site}
                 </a>
               )}
-            </div>
+            </React.Fragment>
           </InfoWindow>
         </Map>
       </div>

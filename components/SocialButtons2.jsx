@@ -29,9 +29,9 @@ const styles = theme => ({
     margin: theme.spacing.unit * 2,
   },
   iconButton: {
-    margin: theme.spacing.unit * 4,
+    margin: theme.spacing.unit * 2,
     [theme.breakpoints.down('sm')]: {
-      margin: theme.spacing.unit * 2,
+      margin: theme.spacing.unit * 1,
     },
   },
   paper: {
@@ -54,11 +54,11 @@ const styles = theme => ({
   //   },
   socialIcons: {
     float: 'left',
-    margin: theme.spacing.unit * 2,
+    margin: theme.spacing.unit,
     color: 'rgb(36, 55, 70)',
     fontWeight: 'bold',
     position: 'relative',
-    fontSize: '75px !important',
+    fontSize: '50px !important',
     //paddingLeft: 75,
     //marginRight: '15px',
     [theme.breakpoints.down('sm')]: {

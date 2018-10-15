@@ -118,7 +118,6 @@ class ContactUs extends React.Component {
           variant={'filled'}
           InputProps={{
             style: { background: 'rgba(226, 222, 213, 0.95)' },
-
           }}
         />
       </div>

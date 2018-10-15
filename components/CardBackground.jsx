@@ -71,12 +71,12 @@ const styles = theme => ({
   typoCaption: {
     color: '#E2DED5',
     fontFamily: 'Flama',
-//    fontWeight: 'bold',
+    fontWeight: 'bold',
     textShadow: '1px 1px rgb(36, 55, 70)',
     fontSize: '0.825rem',
-    fontStyle: 'oblique',
+    //fontStyle: 'oblique',
     [theme.breakpoints.up('sm')]: {
-      fontSize: '1.0rem',
+      fontSize: '1.1rem',
     },
   },
   typoHeader: {
@@ -125,7 +125,7 @@ function MediaCard(props) {
         <CardContent>
           <Typography
             gutterBottom
-            variant="headline"
+            variant="h5"
             component="h2"
             className={classes.typoHeader}
           >

@@ -13,9 +13,9 @@ import Header100 from './MobileScrollingHeader'
 
 const styles = theme => ({
   demo: {
-    height: `100%`,
+    // height: `100%`,
     flexGrow: 1,
-    minHeight: '100vh',
+    maxHeight: '100vh',
   },
 })
 
@@ -35,78 +35,33 @@ const Page = props => {
       container
       spacing={0}
       className={classes.demo}
-      alignItems={'stretch'}
-      direction={'row'}
-      justify={'center'}
-      wrap="nowrap"
+      alignItems="stretch"
+      direction="row"
+      justify="center"
     >
       <Grid item xs={12} md={leftSize || 6}>
-        <Grid container spacing={0} className={classes.demo}>
-          <Grid
-            item
-            xs={12}
-            style={{
-              // height: height,
-              //paddingTop: 60,
-              backgroundPosition: 'center',
-              backgroundSize: 'cover',
-              backgroundImage: `url(${pictures.left ? pictures.left.url : ``})`,
-              backgroundRepeat: 'no-repeat',
-            }}
-          >
-  
-            {gMap}
-          </Grid>
-        </Grid>
+        {gMap}
       </Grid>
       <Hidden smDown>
-        <Grid item sm={rightSize || 6}>
-          <Grid
-            container
-            spacing={0}
-            className={classes.demo}
-            alignItems={'stretch'}
-            direction={'row'}
-          >
-            <Grid
-              item
-              xs={12}
-              style={{
-                padding: 'unset',
-                height: `${pictures.rightTop ? pictures.rightTop.size : 0}`,
-                backgroundPosition: 'center',
-                backgroundSize: 'cover',
-                backgroundImage: `url(${
-                  pictures.rightTop ? pictures.rightTop.url : ``
-                })`,
-                backgroundRepeat: 'no-repeat',
-                backgroundColor: `${backgroundColorRight}`,
-              }}
-            >
-              {header && header.position === 'rightTop' && header.component}
-              {text && text.position === 'rightTop' && text.component}
-            </Grid>
-
-            <Grid
-              item
-              xs={12}
-              style={{
-                height: `${
-                  pictures.rightBottom ? pictures.rightBottom.size : 0
-                }`,
-                paddingBottom: 'unset',
-                backgroundPosition: 'center',
-                backgroundSize: 'cover',
-                backgroundImage: `url(${
-                  pictures.rightBottom ? pictures.rightBottom.url : ``
-                })`,
-                backgroundRepeat: 'no-repeat',
-              }}
-            >
-              {header && header.position === 'rightBottom' && header.component}
-              {text && text.position === 'rightBottom' && text.component}
-            </Grid>
-          </Grid>
+        <Grid
+          item
+          sm={rightSize || 6}
+          xs={12}
+          style={{
+            paddingBottom: '300px',
+            height: `98vh`,
+            backgroundPosition: 'center',
+            backgroundSize: 'cover',
+            backgroundImage: `url(${
+              pictures.rightTop ? pictures.rightTop.url : ``
+            })`,
+            backgroundRepeat: 'no-repeat',
+            backgroundColor: `${backgroundColorRight}`,
+            overflow: 'scroll'
+          }}
+        >
+          {header && header.position === 'rightTop' && header.component}{' '}
+          {text && text.position === 'rightTop' && text.component}{' '}
         </Grid>
       </Hidden>
     </Grid>

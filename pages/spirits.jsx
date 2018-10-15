@@ -22,8 +22,8 @@ const styles = theme => ({
     boxShadow: 'unset',
     color: '#E2DED5',
     fontFamily: 'Flama',
-    //overflow: 'auto',
-    paddingBottom: 100,
+    overflow: 'auto',
+    //paddingBottom: 30,
   },
   typoMdUp: {
     color: 'rgb(36, 55, 70)',
@@ -32,7 +32,7 @@ const styles = theme => ({
     fontWeight: 500,
     overflow: 'auto',
     [theme.breakpoints.up('lg')]: {
-      fontSize: '1.5rem',
+      fontSize: '1.3rem',
     },
   },
   paper: {

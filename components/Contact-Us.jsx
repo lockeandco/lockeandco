@@ -15,10 +15,10 @@ const styles = theme => ({
     display: 'flex',
     flexDirection: 'column',
     flexWrap: 'wrap',
-    width: '80%',
+    width: '100%',
     [theme.breakpoints.down('sm')]: {
-        width: '100%',
-      },
+      width: '100%',
+    },
   },
   formControl: {
     margin: theme.spacing.unit,
@@ -26,6 +26,7 @@ const styles = theme => ({
   },
   selectEmpty: {
     marginTop: theme.spacing.unit * 2,
+    background: 'rgba(226, 222, 213, 0.95)',
   },
   textField: {
     marginLeft: theme.spacing.unit,
@@ -55,6 +56,10 @@ class ContactUs extends React.Component {
           value={this.state.name}
           onChange={this.handleChange}
           margin="normal"
+          variant={'filled'}
+          inputProps={{
+            style: { background: 'rgba(226, 222, 213, 0.95)' },
+          }}
         />
         <TextField
           id="email"
@@ -65,29 +70,40 @@ class ContactUs extends React.Component {
           onChange={this.handleChange}
           margin="normal"
           type="email"
+          variant={'filled'}
+          inputProps={{
+            style: { background: 'rgba(226, 222, 213, 0.95)' },
+          }}
         />
-        <FormControl required className={classes.formControl}>
-          <InputLabel htmlFor="age-required">About You</InputLabel>
-          <Select
-            value={this.state.age}
-            onChange={this.handleChange}
-            name="age"
-            inputProps={{
-              id: 'age-required',
-            }}
-            className={classes.selectEmpty}
-          >
-            <MenuItem value="">
-              <em>None</em>
+
+        <TextField
+          value={this.state.aboutyou}
+          onChange={this.handleChange}
+          className={classes.textField}
+          variant={'filled'}
+          name="aboutyou"
+          id="aboutyou"
+          label="About You"
+          margin="normal"
+          required
+          fullWidth
+          select
+          InputProps={{
+            style: { background: 'rgba(226, 222, 213, 0.95)' },
+          }}
+          InputLabelProps={{
+            shrink: true,
+          }}
+        >
+          <MenuItem value="">
+            <em>None</em>
+          </MenuItem>
+          {enumerations.map(x => (
+            <MenuItem key={x} value={x}>
+              {x}
             </MenuItem>
-            {enumerations.map(x => (
-              <MenuItem key={x} value={x}>
-                {x}
-              </MenuItem>
-            ))}
-          </Select>
-          <FormHelperText>Required</FormHelperText>
-        </FormControl>
+          ))}
+        </TextField>
         <TextField
           id="message"
           label="Send Us a Message"
@@ -99,6 +115,10 @@ class ContactUs extends React.Component {
           multiline
           fullWidth
           rows={10}
+          variant={'filled'}
+          InputProps={{
+            style: { background: 'rgba(226, 222, 213, 0.95)' },
+          }}
         />
       </div>
     )

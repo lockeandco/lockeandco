@@ -29,9 +29,9 @@ const styles = theme => ({
     margin: theme.spacing.unit * 2,
   },
   iconButton: {
-    margin: theme.spacing.unit * 4,
+    margin: theme.spacing.unit * 2,
     [theme.breakpoints.down('sm')]: {
-      margin: theme.spacing.unit * 2,
+      margin: theme.spacing.unit * 1,
     },
   },
   paper: {
@@ -54,11 +54,11 @@ const styles = theme => ({
   //   },
   socialIcons: {
     float: 'left',
-    margin: theme.spacing.unit * 2,
+    margin: theme.spacing.unit,
     color: 'rgb(36, 55, 70)',
     fontWeight: 'bold',
     position: 'relative',
-    fontSize: '75px !important',
+    fontSize: '50px !important',
     //paddingLeft: 75,
     //marginRight: '15px',
     [theme.breakpoints.down('sm')]: {
@@ -147,7 +147,7 @@ function TextButtons(props) {
   console.log(props)
   return (
     <Paper className={classes.paper}>
-      <Typography variant="display1" className={classes.typo}>
+      <Typography variant="h4" className={classes.typo}>
         Follow Us!
       </Typography>
       {socialIcons.map(ico => (
@@ -167,7 +167,7 @@ function TextButtons(props) {
           </IconButton>
         </Tooltip>
       ))}
-      <Typography variant="title" className={classes.typoTitle}>
+      <Typography variant="h6" className={classes.typoTitle}>
         Sign up for our Newsletter
       </Typography>
       <Typography variant="body1" className={classes.typoBody}>

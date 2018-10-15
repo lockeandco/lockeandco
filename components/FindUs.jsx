@@ -4,7 +4,7 @@ import {
   InfoWindow,
   Marker,
   GoogleApiWrapper,
-} from '../packages/google-maps-react/src'
+} from './google-maps-react/src/index'
 import locations from '../lib/formattedLocations.json'
 import { equals } from 'ramda'
 

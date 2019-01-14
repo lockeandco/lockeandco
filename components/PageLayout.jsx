@@ -28,6 +28,7 @@ const Page = props => {
     leftSize,
     rightSize,
     backgroundColorRight,
+    useTopRight,
   } = props
   return (
     <Grid
@@ -39,34 +40,49 @@ const Page = props => {
       justify={'center'}
       wrap="nowrap"
     >
-      <Grid
-        item
-        xs={12}
-        md={leftSize || 6}
-        style={{
-          minHeight: '100vh',
-          //paddingTop: 60,
-          backgroundPosition: 'center',
-          backgroundSize: 'cover',
-          backgroundImage: `url(${pictures.left ? pictures.left.url : ``})`,
-          backgroundRepeat: 'no-repeat',
-          height: '100%',
-        }}
-      >
-        <Hidden mdUp>
+      <Hidden mdUp>
+        <Grid
+          item
+          xs={12}
+          md={leftSize || 6}
+          style={{
+            minHeight: '100vh',
+            //paddingTop: 60,
+            backgroundPosition: 'right 40px',
+            backgroundSize: 'cover',
+            backgroundImage: useTopRight
+              ? `url(${pictures.rightTop ? pictures.rightTop.url : ``})`
+              : `url(${pictures.left ? pictures.left.url : ``})`,
+            backgroundRepeat: 'no-repeat',
+            height: '100%',
+          }}
+        >
           {header &&
             header.component && (
               <Header100 headerText={header.component.props.headerText} />
             )}
           {text && text.component}
-        </Hidden>
-        <Hidden smDown>
+        </Grid>
+      </Hidden>
+      <Hidden smDown>
+        <Grid
+          item
+          xs={12}
+          md={leftSize || 6}
+          style={{
+            minHeight: '100vh',
+            //paddingTop: 60,
+            backgroundPosition: 'center',
+            backgroundSize: 'cover',
+            backgroundImage: `url(${pictures.left ? pictures.left.url : ``})`,
+            backgroundRepeat: 'no-repeat',
+            height: '100%',
+          }}
+        >
           {text && text.position === 'left' && text.component}
           {text &&
             text.position !== 'left' && <div style={{ overflow: 'auto' }} />}
-        </Hidden>
-      </Grid>
-      <Hidden smDown>
+        </Grid>
         {rightSize < 1 || rightSize > 12 ? null : (
           <Grid item sm={rightSize || 6}>
             <div
@@ -74,7 +90,7 @@ const Page = props => {
                 width: '100%',
                 padding: 'unset',
                 height: `${pictures.rightTop ? pictures.rightTop.size : 0}`,
-                backgroundPosition: 'center',
+                backgroundPosition: useTopRight ? 'right 40px' : 'center',
                 backgroundSize: 'cover',
                 backgroundImage: `url(${
                   pictures.rightTop ? pictures.rightTop.url : ``

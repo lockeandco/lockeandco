@@ -13,6 +13,7 @@ import Icon from '@material-ui/core/Icon'
 import classNames from 'classnames'
 import { compose } from 'ramda'
 import CityList from './CityList'
+import lockeColocs from '../lib/formatLocNext'
 
 const styles = theme => ({
   root: {
@@ -20,14 +21,15 @@ const styles = theme => ({
     minHeight: '100vh',
     maxWidth: 300,
     backgroundColor: 'rgb(36, 55, 70)',
+    padding: 10,
   },
 })
 
 function LeftDrawerList(props) {
-  const { classes, toggleDrawer, route, Router, ...other} = props
+  const { classes, toggleDrawer, route, Router, ...other } = props
   return (
     <div className={classes.root}>
-      <CityList {...other} toggleDrawer={toggleDrawer} />
+      <CityList {...other} toggleDrawer={toggleDrawer} locs={lockeColocs} />
     </div>
   )
 }

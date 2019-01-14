@@ -11,6 +11,7 @@ import { MDXProvider } from '@mdx-js/tag'
 import { withCookies, Cookies } from 'react-cookie'
 import { instanceOf } from 'prop-types'
 import components from '../MDXcomponents'
+import { toLower } from 'ramda'
 
 // Blue
 // (36, 55, 70) - #243746
@@ -61,7 +62,19 @@ class MyApp extends App {
         lat: 39.743642,
         lng: -104.9854807,
       },
+      city: '',
+      zoom: 10,
+      position: {
+        lat: 39.743642,
+        lng: -104.9854807,
+      },
+      selectedItem: {},
     }
+    this.expandList = this.expandList.bind(this)
+    this.setZoom = this.setZoom.bind(this)
+    this.setPosition = this.setPosition.bind(this)
+    this.setPositionAndZoom = this.setPositionAndZoom.bind(this)
+    this.setStore = this.setStore.bind(this)
   }
   // static async getInitialProps(x, y, z) {
   //   console.log(Object.keys(x))
@@ -95,6 +108,33 @@ class MyApp extends App {
       test: p,
     })
   }
+  expandList(o) {
+    this.setState({
+      city: toLower(String(o)),
+    })
+  }
+  setZoom(z) {
+    this.setState({
+      zoom: z,
+    })
+  }
+  setPosition(p) {
+    this.setState({
+      position: p,
+    })
+  }
+  setPositionAndZoom({ position, zoom }) {
+    this.setState({
+      position: position || this.state.position,
+      zoom: zoom || this.state.zoom,
+    })
+  }
+  setStore(s) {
+    console.log('SSSSSSS', s)
+    this.setState({
+      selectedItem: s,
+    })
+  }
   componentDidMount() {
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector('#jss-server-side')
@@ -115,12 +155,27 @@ class MyApp extends App {
     // })
   }
 
+  getStateAndHelpers() {
+    const { state, props } = this
+
+    return {
+      ...state,
+      ...props,
+      expandList: this.expandList,
+      setZoom: this.setZoom,
+      setPosition: this.setPosition,
+      setPositionAndZoom: this.setPositionAndZoom,
+      handleTest: this.handleTest,
+      pageContext: this.pageContext,
+      setStore: this.setStore,
+    }
+  }
+
   handleTest = this.handleTest.bind(this)
   render() {
     const { Component, pageProps, router, cookies } = this.props
 
     // console.log('PCX', this.pageContext)
-
 
     return (
       <Container>
@@ -142,18 +197,18 @@ class MyApp extends App {
                 to render collected styles on server side. */}
               <MDXProvider components={components}>
                 <Layout
-                  pageContext={this.pageContext}
+
                   {...pageProps}
                   {...router}
-                  handleTest={this.handleTest}
+                  {...this.getStateAndHelpers()}
                   testP={this.state.test}
                 >
                   <Component
-                    pageContext={this.pageContext}
+
                     {...pageProps}
                     {...router}
-                    cookies={cookies}
-                    handleTest={this.handleTest}
+                    {...this.getStateAndHelpers()}
+
                     testP={this.state.test}
                   />
                 </Layout>

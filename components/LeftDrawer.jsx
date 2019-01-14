@@ -12,10 +12,12 @@ import { MapSearch } from 'mdi-material-ui'
 import { Keyframes, animated, config } from 'react-spring'
 import delay from 'delay'
 import { equals, compose, tap } from 'ramda'
+import Tooltip from '@material-ui/core/Tooltip'
+import Zoom from '@material-ui/core/Zoom'
 
 const styles = {
   list: {
-    width: 300,
+    width: 380,
   },
 }
 const fast = {
@@ -27,8 +29,8 @@ const fast = {
 const Sidebar = Keyframes.Spring({
   // Slots can take arrays/chains,
   peek: [
-    { delay: 500, from: { x: -100 }, to: { x: 0 }, config: fast },
-    { delay: 800, to: { x: -100 }, config: config.slow },
+    { delay: 500, from: { x: -100 }, to: { x: 0 }, config: config.slow },
+    // { delay: 800, to: { x: -100 }, config: config.slow },
   ],
   // single items,
   open: { to: { x: 0 }, config: config.default },
@@ -41,7 +43,7 @@ const Sidebar = Keyframes.Spring({
 const Content = Keyframes.Trail({
   peek: [
     { delay: 600, from: { x: -100, opacity: 0 }, to: { x: 0, opacity: 1 } },
-    { to: { x: -100, opacity: 0 } },
+    // { to: { x: -100, opacity: 0 } },
   ],
   open: { delay: 100, to: { x: 0, opacity: 1 } },
   close: { to: { x: -100, opacity: 0 } },
@@ -71,34 +73,42 @@ class LeftDrawer extends React.Component {
   render() {
     const { classes, route, Router, ...other } = this.props
     const state =
-      this.state.open === undefined && route === '/find-us'
+      this.state.open === undefined &&
+      route === '/find-us' &&
+      this.props.allCookies.isVerified === 'true'
         ? 'peek'
         : this.state.open
           ? 'open'
           : 'close'
-    console.log(this.state)
-    console.log(state)
+    console.log(this.props.allCookies.isVerified === 'true')
 
     const items = [
       <div style={{ position: 'relative', marginBottom: 10, marginTop: 20 }}>
-        <img
-          src="/static/Bottle.png"
-          className={classes.bottle}
-          onClick={() =>
-            this.handleClick({
-              lat: 39.743642,
-              lng: -104.9854807,
-            })
-          }
-          style={{
-            height: 150,
+        <Tooltip TransitionComponent={Zoom} title={'Reset Map'}>
+          <img
+            src="/static/Bottle.png"
+            className={classes.bottle}
+            onClick={() => {
+              this.props.expandList('')
+              this.props.setStore({})
+              this.props.setPositionAndZoom({
+                position: {
+                  lat: 39.743642,
+                  lng: -104.9854807,
+                },
+                zoom: 10,
+              })
+            }}
+            style={{
+              height: 150,
 
-            width: 'auto',
-            // padding: 1,
-            // border: '1px,solid, #C36D15',
-            // backgroundColor: '#C36D15',
-          }}
-        />
+              width: 'auto',
+              // padding: 1,
+              // border: '1px,solid, #C36D15',
+              // backgroundColor: '#C36D15',
+            }}
+          />
+        </Tooltip>
       </div>,
       <MenuList
         {...other}

@@ -9,19 +9,36 @@ import Divider from '@material-ui/core/Divider'
 import PeopleIcon from '@material-ui/icons/People'
 import DraftsIcon from '@material-ui/icons/Drafts'
 import IconButton from '@material-ui/core/IconButton'
+import Collapse from '@material-ui/core/Collapse'
 import Icon from '@material-ui/core/Icon'
 import classNames from 'classnames'
 import { ChevronDoubleLeft } from 'mdi-material-ui'
-import { tap, compose, head, toLower } from 'ramda'
+import {
+  tap,
+  compose,
+  head,
+  toLower,
+  pluck,
+  flatten,
+  reject,
+  isNil,
+  isEmpty,
+  map,
+} from 'ramda'
 import cities from '../lib/cities.json'
+import PlacesSearch from './MaterialFormiklDownshift'
 
-const citiesF = cities.map(x => {
-  return Object.assign(
-    {},
-    { city: toLower(head(x.formatted_address.split(','))) },
-    { location: x.location }
-  )
-})
+// const citiesF = cities.map(x => {
+//   return Object.assign(
+//     {},
+//     { city: toLower(head(x.formatted_address.split(','))) },
+//     { location: x.location }
+//   )
+// })
+
+// const citiesD = citiesF.map(x => {
+//   return Object.assign({}, { label: x.city }, { id: x.location })
+// })
 
 const styles = theme => ({
   root: {
@@ -39,6 +56,22 @@ const styles = theme => ({
     fontSize: '0.6em',
     //padding: 'unset',
   },
+  listItemTextActive: {
+    color: 'rgb(212, 194, 1)',
+    fontFamily: 'OldGrowth',
+    fontWeight: 'bold',
+    textTransform: 'unset',
+    fontSize: '0.6em',
+    //padding: 'unset',
+  },
+  insetItemText: {
+    color: '#E2DED5',
+    fontFamily: 'OldGrowth',
+    fontWeight: 'bold',
+    textTransform: 'unset',
+    fontSize: '0.5em',
+    //padding: 'unset',
+  },
   iconColor: {
     color: '#C36D15',
   },
@@ -48,6 +81,11 @@ const styles = theme => ({
     fontWeight: 'bold',
     textTransform: 'unset',
     fontSize: '0.6em',
+  },
+  inset: {
+    '&:first-child': {
+      paddingLeft: 15,
+    },
   },
   buttonActive: {
     backgroundColor: '#243746',
@@ -60,42 +98,204 @@ const styles = theme => ({
     textTransform: 'unset',
     fontSize: '0.7em',
   },
+  downshiftMargin: {
+    marginTop: 10,
+    marginBottom: 10,
+  },
+  menuItem: {
+    fontFamily: 'OldGrowth',
+    fontWeight: 'bold',
+    textTransform: 'unset',
+    fontSize: '0.6em',
+    color: '#243746',
+  },
 })
 const chevrons = '<<'
-function RightDrawerList(props) {
-  const { classes, toggleDrawer, route, Router } = props
-  console.log(props)
-  const handleClick = location =>
-    toggleDrawer
-      ? compose(
-          toggleDrawer,
-          tap(props.handleTest)
-        )(location)
-      : props.handleTest(location)
+function CityList(props) {
+  const {
+    classes,
+    locs,
+    expandList,
+    open,
+    toggleDrawer,
+    handleClick,
+    route,
+    Router,
+    city,
+    setZoom,
+    setPosition,
+    setPositionAndZoom,
+    setStore,
+    selectedItem,
+  } = props
+
+  const citiesD = compose(
+    map(l => Object.assign({}, { label: toLower(l.name) }, { id: l.place_id })),
+    reject(isEmpty),
+    reject(isNil),
+    flatten,
+    pluck('list')
+  )(locs)
+
+  const getCity = loc =>
+    locs.reduce((x, y) => {
+      return Array.isArray(y.list) &&
+        y.list.reduce(
+          (w, z) => (toLower(loc) === toLower(z.name) ? z.name : w),
+          ''
+        )
+        ? y.city
+        : x
+    }, city)
+  const getPosition = loc =>
+    locs.reduce((x, y) => {
+      return Array.isArray(y.list) &&
+        y.list.reduce((w, z) => (toLower(loc) === toLower(z.name) ? z : w), '')
+        ? y.list.reduce(
+            (w, z) => (toLower(loc) === toLower(z.name) ? z : w),
+            {}
+          )
+        : x
+    }, selectedItem)
+
+  const showCity = city
+    ? locs.filter(l => (l.city ? toLower(l.city) === toLower(city) : true))
+    : locs
+  // console.log('SHOWCITy', showCity)
   return (
-    <List>
-      {citiesF.map(item => (
-        <ListItem
-          key={item.city}
-          onClick={() => handleClick(item.location)}
-          button
-          style={{ textAlign: 'center' }}
-        >
-          <ListItemText
-            primaryTypographyProps={{ className: classes.listItemText }}
-            primary={item.city}
-          />
-        </ListItem>
-      ))}
-    </List>
+    <React.Fragment>
+      <div className={classes.downshiftMargin}>
+        <PlacesSearch
+          menuClasses={classes.menuItem}
+          handleChange={item => {
+            console.log('ITEM', item)
+            // const g = handleClick(
+            //   locs.reduce((d, c) => (c.city === item ? c.location : d))
+            // )
+            // console.log(getPosition(item))
+            if (item) {
+              const newSelectedItem = Object.assign({}, getPosition(item))
+              const posLoc = newSelectedItem.location
+
+              console.log(posLoc)
+              expandList(getCity(item))
+              setPositionAndZoom({
+                position: posLoc || {
+                  lat: 39.743642,
+                  lng: -104.9854807,
+                },
+                zoom: 14,
+              })
+              setStore(newSelectedItem)
+            } else {
+              expandList('')
+              setPositionAndZoom({
+                position: {
+                  lat: 39.743642,
+                  lng: -104.9854807,
+                },
+                zoom: 10,
+              })
+              setStore({})
+            }
+          }}
+          items={citiesD}
+        />
+      </div>
+      <List>
+        {showCity.map(item => (
+          <React.Fragment key={item.city || Math.random() * 32}>
+            <ListItem
+              onClick={() => {
+                console.log(item)
+                if (item.city && toLower(item.city) !== toLower(city)) {
+                  expandList(item.city)
+                  setPositionAndZoom({ position: item.location, zoom: 12 })
+                } else {
+                  expandList('')
+                  setPositionAndZoom({
+                    position: {
+                      lat: 39.743642,
+                      lng: -104.9854807,
+                    },
+                    zoom: 10,
+                  })
+                }
+              }}
+              key={item.city || Math.random() * 32}
+              // onClick={() => {
+              //   console.log('ITMs', item)
+              //   console.log('Loc', item.location)
+              //   handleClick
+              //     ? handleClick(item.location)
+              //     : props.handleTest(item.location)
+              // }}
+              button
+              style={{ textAlign: 'left' }}
+            >
+              <ListItemText
+                primaryTypographyProps={{
+                  className:
+                    item.city && toLower(item.city) !== toLower(city)
+                      ? classes.listItemText
+                      : classes.listItemTextActive,
+                }}
+                primary={`${item.city || 'no city'} (${item.total})`}
+              />
+            </ListItem>
+            <Collapse in={city === item.city} timeout="auto">
+              {Array.isArray(item.list) &&
+                item.list.map(store => {
+                  return (
+                    <List
+                      key={store.name || Math.random() * 64}
+                      component="div"
+                      disablePadding
+                    >
+                      <ListItem
+                        button
+                        onClick={() => {
+                          console.log(store)
+                          // expandList(item.city)
+                          setPositionAndZoom({
+                            position: store.location,
+                            zoom: 14,
+                          })
+                          setStore(store || {})
+                        }}
+                      >
+                        <ListItemText
+                          inset
+                          classes={{
+                            inset: classes.inset,
+                          }}
+                          primaryTypographyProps={{
+                            className:
+                              store.name &&
+                              selectedItem.name &&
+                              toLower(store.name) === toLower(selectedItem.name)
+                                ? classes.listItemTextActive
+                                : classes.listItemText,
+                          }}
+                          primary={toLower(store.name)}
+                        />
+                      </ListItem>
+                    </List>
+                  )
+                })}
+            </Collapse>
+          </React.Fragment>
+        ))}
+      </List>
+    </React.Fragment>
   )
 }
 
-RightDrawerList.propTypes = {
+CityList.propTypes = {
   classes: PropTypes.object.isRequired,
 }
 
-export default withStyles(styles)(RightDrawerList)
+export default withStyles(styles)(CityList)
 
 // <ListItemIcon>
 // <span

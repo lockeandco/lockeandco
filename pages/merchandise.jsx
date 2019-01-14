@@ -16,6 +16,7 @@ const Merchandise = props => {
   return (
     <Page
       {...other}
+      useTopRight={true}
       pictures={{
         left: {
           url: `/static/Ski_Goggles_Close_up.jpg`,
@@ -23,11 +24,11 @@ const Merchandise = props => {
         },
         rightTop: {
           url: `/static/Fishing.jpg`,
-          size: '55%',
+          size: '65%',
         },
         rightBottom: {
           url: `/static/Hats.jpg`,
-          size: '45%',
+          size: '35%',
         },
       }}
       text={{

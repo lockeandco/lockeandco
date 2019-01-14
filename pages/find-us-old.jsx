@@ -5,20 +5,12 @@ import { withStyles } from '@material-ui/core/styles'
 import Background from '../components/TransitionBackground'
 import compose from 'ramda/src/compose'
 import Headers from '../components/ScrollingHeaders'
-import FindUsMap from '../components/FindUsAlt'
+import FindUsMap from '../components/FindUs'
 import Typography from '@material-ui/core/Typography'
 import CityList from '../components/CityList'
-import Tooltip from '@material-ui/core/Tooltip'
-import Zoom from '@material-ui/core/Zoom'
 import CommonHeader from '../components/MobileScrollingHeader'
 import { config } from 'react-spring'
 import withPageTransition from '../components/withPageTransition'
-import lockeColocs from '../lib/formatLocNext'
-import { pluck, flatten } from 'ramda'
-
-const lockeCoAvailable = flatten(pluck('list', lockeColocs))
-
-// console.log(lockeCoAvailable)
 
 const styles = theme => ({
   container: {
@@ -44,19 +36,7 @@ const styles = theme => ({
 })
 
 const FindUs = props => {
-  const {
-    expandList,
-    setZoom,
-    setPosition,
-    setPositionAndZoom,
-    setStore,
-    city,
-    position,
-    zoom,
-    classes,
-    ...other
-  } = props
-
+  const { classes, ...other } = props
   return (
     <Page
       {...other}
@@ -73,48 +53,31 @@ const FindUs = props => {
       leftSize={9}
       rightSize={3}
       backgroundColorRight={`#243746`}
-      gMap={
-        <FindUsMap
-          {...other}
-          locs={lockeCoAvailable}
-          zoom={zoom}
-          expandList={expandList}
-          city={city}
-          zoom={zoom}
-          position={position}
-          setZoom={setZoom}
-          setPosition={setPosition}
-          setPositionAndZoom={setPositionAndZoom}
-          setStore={setStore}
-        />
-      }
+      gMap={<FindUsMap {...other} />}
       text={{
         position: `rightTop`,
         component: (
           <React.Fragment>
             <div className={classes.container}>
               <div style={{ position: 'relative', marginBottom: 10 }}>
-                <Tooltip TransitionComponent={Zoom} title={'Reset Map'}>
-                  <img
-                    src="/static/Bottle.png"
-                    className={classes.bottle}
-                    style={{
-                      height: 250,
+                <img
+                  src="/static/Bottle.png"
+                  className={classes.bottle}
+                  style={{
+                    height: 250,
 
-                      width: 'auto',
-                      // padding: 1,
-                      // border: '1px,solid, #C36D15',
-                      // backgroundColor: '#C36D15',
-                    }}
-                    onClick={() => {
-                      props.handleTest({
-                        lat: 39.743642,
-                        lng: -104.9854807,
-                      })
-                      expandList('')
-                    }}
-                  />
-                </Tooltip>
+                    width: 'auto',
+                    // padding: 1,
+                    // border: '1px,solid, #C36D15',
+                    // backgroundColor: '#C36D15',
+                  }}
+                  onClick={() =>
+                    props.handleTest({
+                      lat: 39.743642,
+                      lng: -104.9854807,
+                    })
+                  }
+                />
               </div>
               <CommonHeader
                 override={{ overflow: 'unset' }}
@@ -150,18 +113,7 @@ const FindUs = props => {
                 establishments:
               </Typography>
 
-              <CityList
-                {...other}
-                locs={lockeColocs}
-                expandList={expandList}
-                city={city}
-                zoom={zoom}
-                position={position}
-                setZoom={setZoom}
-                setPosition={setPosition}
-                setPositionAndZoom={setPositionAndZoom}
-                setStore={setStore}
-              />
+              <CityList {...other} />
             </div>
           </React.Fragment>
         ),

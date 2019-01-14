@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react'
 import locations from '../lib/formattedLocations.json'
+
 import { equals } from 'ramda'
 
 //console.log(locations.filter(x => x.location))
@@ -24,6 +25,14 @@ export class MapContainer extends Component {
       zoom: 9,
     }
   }
+  onMouseoverMarker(props, marker, e) {
+    this.setState({
+      selectedPlace: e,
+      activeMarker: marker.position,
+      showingInfoWindow: true,
+      site: s,
+    })
+  }
   onMarkerClick(props, marker, e, s) {
     this.setState({
       selectedPlace: e,
@@ -35,8 +44,8 @@ export class MapContainer extends Component {
   componentDidUpdate(prevProps) {
     // Typical usage (don't forget to compare props):
     if (!equals(this.props.testP, prevProps.testP)) {
-      console.log(this.props)
-      console.log(prevProps)
+      // console.log('OPOP', this.props)
+      // console.log('PSOPODs', prevProps)
       this.setState({
         loc: this.props.testP,
         zoom: equals(
@@ -55,7 +64,7 @@ export class MapContainer extends Component {
     if (!this.props.google) {
       return <div>Loading...</div>
     }
-    console.log(this.state.zoom)
+    // console.log(this.state.zoom)
     return (
       <div
         style={{
@@ -77,7 +86,14 @@ export class MapContainer extends Component {
             lat: 39.743642,
             lng: -104.9854807,
           }}
-          center={this.state.loc}
+          center={
+            typeof this.state.loc !== 'object'
+              ? {
+                  lat: 39.743642,
+                  lng: -104.9854807,
+                }
+              : this.state.loc
+          }
         >
           {locations.map(x => {
             return (
@@ -88,9 +104,9 @@ export class MapContainer extends Component {
                   this.onMarkerClick(e, a, x.name, x.site)
                 }}
                 icon={{
-                  url: '/static/Bottle.png',
+                  url: '/static/plus.png',
                   anchor: new google.maps.Point(0, 0),
-                  scaledSize: new google.maps.Size(32, 68),
+                  scaledSize: new google.maps.Size(20, 20),
                 }}
                 position={x.location}
                 title={x.formatted_address}
@@ -98,19 +114,19 @@ export class MapContainer extends Component {
             )
           })}
           <InfoWindow
-            onClose={() =>
-              this.setState(
-                Object.assign(this.state, {
-                  showingInfoWindow: false,
-                  activeMarker: {
-                    lat: 39.743642,
-                    lng: -104.9854807,
-                  },
-                  selectedPlace: '',
-                  site: '',
-                })
-              )
-            }
+            // onClose={() =>
+            //   this.setState(
+            //     Object.assign(this.state, {
+            //       showingInfoWindow: false,
+            //       // activeMarker: {
+            //       //   lat: 39.743642,
+            //       //   lng: -104.9854807,
+            //       // },
+            //       // selectedPlace: '',
+            //       // site: '',
+            //     })
+            //   )
+            // }
             position={this.state.activeMarker}
             visible={this.state.showingInfoWindow}
           >

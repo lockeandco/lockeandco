@@ -80,7 +80,7 @@ class LeftDrawer extends React.Component {
         : this.state.open
           ? 'open'
           : 'close'
-    console.log(this.props.allCookies.isVerified === 'true')
+    //console.log(this.props.allCookies.isVerified === 'true')
 
     const items = [
       <div style={{ position: 'relative', marginBottom: 10, marginTop: 20 }}>
@@ -121,9 +121,11 @@ class LeftDrawer extends React.Component {
       <Fragment>
         <IconButton
           onClick={
-            route === '/find-us'
-              ? this.toggleDrawer
-              : () => Router.push('/find-us')
+            route !== '/find-us'
+              ? () => Router.push('/find-us')
+              : this.state.open === undefined
+                ? () => this.setState({ open: false })
+                : () => this.toggleDrawer()
           }
         >
           <MapSearch

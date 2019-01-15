@@ -187,6 +187,7 @@ function CityList(props) {
                 zoom: 14,
               })
               setStore(newSelectedItem)
+              toggleDrawer && toggleDrawer()
             } else {
               expandList('')
               setPositionAndZoom({
@@ -262,6 +263,7 @@ function CityList(props) {
                             zoom: 14,
                           })
                           setStore(store || {})
+                          toggleDrawer && toggleDrawer()
                         }}
                       >
                         <ListItemText

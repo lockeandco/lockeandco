@@ -14,6 +14,7 @@ import delay from 'delay'
 import { equals, compose, tap } from 'ramda'
 import Tooltip from '@material-ui/core/Tooltip'
 import Zoom from '@material-ui/core/Zoom'
+import MenuBackIcon from 'mdi-material-ui/Backburger'
 
 const styles = {
   list: {
@@ -62,7 +63,10 @@ class LeftDrawer extends React.Component {
       })
   }
 
-  toggleDrawer = () => this.setState(state => ({ open: !state.open }))
+  toggleDrawer = () =>
+    this.setState(state => ({
+      open: state.open === undefined ? false : !state.open,
+    }))
   handleClick = location =>
     this.toggleDrawer
       ? compose(
@@ -76,13 +80,20 @@ class LeftDrawer extends React.Component {
       this.state.open === undefined &&
       route === '/find-us' &&
       this.props.allCookies.isVerified === 'true'
-        ? 'peek'
+        ? tap(this.setState({ open: true }), 'peek')
         : this.state.open
           ? 'open'
           : 'close'
     //console.log(this.props.allCookies.isVerified === 'true')
 
     const items = [
+      <IconButton
+        color="inherit"
+        onClick={() => this.setState({ open: false })}
+        style={{ display: 'flex' }}
+      >
+        <MenuBackIcon />
+      </IconButton>,
       <div style={{ position: 'relative', marginBottom: 10, marginTop: 20 }}>
         <Tooltip TransitionComponent={Zoom} title={'Reset Map'}>
           <img

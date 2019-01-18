@@ -80,7 +80,7 @@ class LeftDrawer extends React.Component {
       this.state.open === undefined &&
       route === '/find-us' &&
       this.props.allCookies.isVerified === 'true'
-        ? tap(this.setState({ open: true }), 'peek')
+        ? 'peek'
         : this.state.open
           ? 'open'
           : 'close'

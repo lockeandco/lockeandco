@@ -10,15 +10,35 @@
         "name": "287 Craft Spirits",
         "site": "http://www.287craftspirits.com"
     }, {
-        "formatted_address": "356 E Harmony Rd, Fort Collins, CO 80525, USA",
+        "formatted_address": "3645 S College Ave, Fort Collins, CO 80525, USA",
+        "location": {
+            "lat": 40.5366021,
+            "lng": -105.0775123
+        },
+        "city": "Fort Collins",
+        "place_id": "ChIJPx0XJ3hLaYcRGp07nVt6vHo",
+        "name": "Cottonwood Liquors",
+        "site": ""
+    }, {
+        "formatted_address": "356 E Harmony Rd #6C, Fort Collins, CO 80525, USA",
         "location": {
             "lat": 40.5239585,
             "lng": -105.0711764
         },
         "city": "Fort Collins",
-        "place_id": "ChIJy4M3kINMaYcR5tHfAREsWGU",
+        "place_id": "EjE2QywgMzU2IEUgSGFybW9ueSBSZCwgRm9ydCBDb2xsaW5zLCBDTyA4MDUyNSwgVVNBIh4aHAoWChQKEgnLgzeQg0xphxHm0d8BESxYZRICNkM",
         "name": "Crystal's Liquor",
         "site": ""
+    }, {
+        "formatted_address": "1007 E Harmony Rd, Fort Collins, CO 80525, USA",
+        "location": {
+            "lat": 40.5217915,
+            "lng": -105.0594185
+        },
+        "city": "Fort Collins",
+        "place_id": "ChIJ05WIpJlMaYcRU8bHAxvo64U",
+        "name": "Fish's Liquor",
+        "site": "http://fishsliquor.com"
     }, {
         "formatted_address": "1920 Country Club Road, Fort Collins, CO 80524, USA",
         "location": {
@@ -40,13 +60,13 @@
         "name": "Fort Collins Warehouse Liquors",
         "site": "http://fortcollinswarehouseliquors.com"
     }, {
-        "formatted_address": "2100 W Drake Rd, Fort Collins, CO 80526, USA",
+        "formatted_address": "2100 W Drake Rd #11, Fort Collins, CO 80526, USA",
         "location": {
             "lat": 40.5531465,
             "lng": -105.1159826
         },
         "city": "Fort Collins",
-        "place_id": "ChIJ6_TKa9BLaYcRzPF5T4L9L1k",
+        "place_id": "EjAxMSwgMjEwMCBXIERyYWtlIFJkLCBGb3J0IENvbGxpbnMsIENPIDgwNTI2LCBVU0EiHhocChYKFAoSCev0ymvQS2mHEczxeU-C_S9ZEgIxMQ",
         "name": "Pringle's Fine Wine and Spirits",
         "site": ""
     }, {
@@ -57,45 +77,64 @@
         },
         "city": "Fort Collins",
         "place_id": "ChIJc71X5cJKaYcRvoIVpkKpGnk",
-        "name": "Supermarket Liquors",
-        "site": ""
+        "name": "Super Market Liquors",
+        "site": "http://www.sml-uncorked.com/"
     }, {
         "formatted_address": "2201 S College Ave, Fort Collins, CO 80525, USA",
         "location": {
-            "lat": 40.5590315,
-            "lng": -105.0786998
+            "lat": 40.5591025,
+            "lng": -105.0785748
         },
         "city": "Fort Collins",
-        "place_id": "ChIJH3bKogdLaYcRJEUCsStZDAM",
+        "place_id": "ChIJwX0UgQdLaYcRs4M9lwWmVYE",
         "name": "Wilbur's Total Beverage",
         "site": "http://www.wilburstotalbeverage.com"
     }],
-    "total": 7,
+    "total": 9,
     "formatted_address": "Fort Collins, CO, USA",
+    "city": "fort collins",
     "location": {
         "lat": 40.5852602,
         "lng": -105.084423
-    },
-    "city": "fort collins"
+    }
 }, {
     "list": [{
-        "formatted_address": "8031 Wadsworth Blvd, Arvada, CO 80003, USA",
+        "formatted_address": "681 Co Rd 129, Slater, CO 81653, USA",
+        "location": {
+            "lat": 40.99934950000001,
+            "lng": -107.3529612
+        },
+        "city": "Slater",
+        "place_id": "ChIJPZyafM8mQ4cR9G5pHfi5vFE",
+        "name": "3 Forks Ranch",
+        "site": "http://www.threeforksranch.com/"
+    }],
+    "total": 1,
+    "formatted_address": "Slater, CO 81625, USA",
+    "city": "slater",
+    "location": {
+        "lat": 40.9477439,
+        "lng": -107.4978422
+    }
+}, {
+    "list": [{
+        "formatted_address": "8031 Wadsworth Blvd A1, Arvada, CO 80003, USA",
         "location": {
             "lat": 39.8440844,
             "lng": -105.0834483
         },
         "city": "Arvada",
-        "place_id": "ChIJf-_p8v6Ia4cRsthiy8jFn5o",
+        "place_id": "Ei5BMSwgODAzMSBXYWRzd29ydGggQmx2ZCwgQXJ2YWRhLCBDTyA4MDAwMywgVVNBIh4aHAoWChQKEgl_7-ny_ohrhxGy2GLLyMWfmhICQTE",
         "name": "3S Liquors",
         "site": ""
     }, {
-        "formatted_address": "6390 Wadsworth Bypass, Arvada, CO 80003, USA",
+        "formatted_address": "6390 Wadsworth Bypass Unit  B, Arvada, CO 80003, USA",
         "location": {
             "lat": 39.812652,
             "lng": -105.0802117
         },
         "city": "Arvada",
-        "place_id": "Eiw2MzkwIFdhZHN3b3J0aCBCeXBhc3MsIEFydmFkYSwgQ08gODAwMDMsIFVTQSIbEhkKFAoSCSHyLmqHiGuHETMaE0gM42nIEPYx",
+        "place_id": "EjVVbml0ICBCLCA2MzkwIFdhZHN3b3J0aCBCeXBhc3MsIEFydmFkYSwgQ08gODAwMDMsIFVTQSIoGiYKGxIZChQKEgkh8i5qh4hrhxEzGhNIDONpyBD2MRIHVW5pdCAgQg",
         "name": "Hill Top Liquor (Hiwat Corp)",
         "site": ""
     }, {
@@ -109,13 +148,13 @@
         "name": "Marshall Liquors",
         "site": ""
     }, {
-        "formatted_address": "15400 W 64th Ave, Arvada, CO 80007, USA",
+        "formatted_address": "15400 W 64th Ave E7, Arvada, CO 80007, USA",
         "location": {
-            "lat": 39.8121676,
-            "lng": -105.1729557
+            "lat": 39.8121389,
+            "lng": -105.1730243
         },
         "city": "Arvada",
-        "place_id": "ChIJMVuJ1p-Pa4cRK9-zT1DiZrM",
+        "place_id": "ChIJ-QrK1p-Pa4cR__tnwXpxo1k",
         "name": "Mile High Wine Cellars",
         "site": ""
     }, {
@@ -129,13 +168,13 @@
         "name": "Primo Vino",
         "site": "http://www.primovino.net"
     }, {
-        "formatted_address": "7735 Wadsworth Blvd b, Arvada, CO 80003, USA",
+        "formatted_address": "7735 Wadsworth Blvd unit c, Arvada, CO 80003, USA",
         "location": {
-            "lat": 39.8370986,
-            "lng": -105.083896
+            "lat": 39.8370898,
+            "lng": -105.0838824
         },
         "city": "Arvada",
-        "place_id": "ChIJOwxJNfiIa4cRVZ-BnPa_xXU",
+        "place_id": "ChIJh-j1NPiIa4cReG28AWgO_7U",
         "name": "Royal Liquor",
         "site": ""
     }, {
@@ -159,23 +198,170 @@
         "name": "The Bluegrass Coffee & Bourbon Lounge",
         "site": "https://www.thebluegrasslounge.com/"
     }, {
-        "formatted_address": "8770 Wadsworth Blvd, Arvada, CO 80003, USA",
+        "formatted_address": "8770 Wadsworth Blvd Unit  K, Arvada, CO 80003, USA",
         "location": {
             "lat": 39.8552997,
             "lng": -105.0803102
         },
         "city": "Arvada",
-        "place_id": "ChIJueMokweJa4cRFZk4D79RcZQ",
+        "place_id": "EjNVbml0ICBLLCA4NzcwIFdhZHN3b3J0aCBCbHZkLCBBcnZhZGEsIENPIDgwMDAzLCBVU0EiIxohChYKFAoSCbnjKJMHiWuHERWZOA-_UXGUEgdVbml0ICBL",
         "name": "Vineland Liquors",
         "site": ""
+    }, {
+        "formatted_address": "5545 Olde Wadsworth Blvd, Arvada, CO 80002, USA",
+        "location": {
+            "lat": 39.7979797,
+            "lng": -105.0816715
+        },
+        "city": "Arvada",
+        "place_id": "ChIJ2SbNcy2Ga4cRASFiQlq9uq0",
+        "name": "Water Tower Liquors",
+        "site": ""
     }],
-    "total": 9,
+    "total": 10,
     "formatted_address": "Arvada, CO, USA",
+    "city": "arvada",
     "location": {
         "lat": 39.8027644,
         "lng": -105.0874842
-    },
-    "city": "arvada"
+    }
+}, {
+    "list": [{
+        "formatted_address": "2550 CO-82, Glenwood Springs, CO 81601, USA",
+        "location": {
+            "lat": 39.5168438,
+            "lng": -107.3158598
+        },
+        "city": "Glenwood Springs",
+        "place_id": "ChIJXUsLLkYIQYcR-00BUVPgYwo",
+        "name": "82 Liquors",
+        "site": "http://82liquors.com"
+    }, {
+        "formatted_address": "704 Grand Ave, Glenwood Springs, CO 81601, USA",
+        "location": {
+            "lat": 39.5475372,
+            "lng": -107.324415
+        },
+        "city": "Glenwood Springs",
+        "place_id": "ChIJAXi-lJcJQYcRRVPsoILmNDI",
+        "name": "CO. Ranch House (Western Hospitality Group)",
+        "site": ""
+    }, {
+        "formatted_address": "732 Cooper Ave, Glenwood Springs, CO 81601, USA",
+        "location": {
+            "lat": 39.5467963,
+            "lng": -107.3232372
+        },
+        "city": "Glenwood Springs",
+        "place_id": "ChIJ3SDV1pcJQYcRILhnuJ56rhg",
+        "name": "Cooper Wine and Spirits",
+        "site": "http://cooperwineandspirits.com"
+    }],
+    "total": 3,
+    "formatted_address": "Glenwood Springs, CO 81601, USA",
+    "city": "glenwood springs",
+    "location": {
+        "lat": 39.5505376,
+        "lng": -107.3247762
+    }
+}, {
+    "list": [{
+        "formatted_address": "510 Belleview Ave, Crested Butte, CO 81224, USA",
+        "location": {
+            "lat": 38.8670362,
+            "lng": -106.9823827
+        },
+        "city": "Crested Butte",
+        "place_id": "Ei81MTAgQmVsbGV2aWV3IEF2ZSwgQ3Jlc3RlZCBCdXR0ZSwgQ08gODEyMjQsIFVTQSIbEhkKFAoSCUdRgrxAckCHEcx-dmpnl7bXEP4D",
+        "name": "Acme Liquor Store",
+        "site": ""
+    }, {
+        "formatted_address": "620 2nd St, Crested Butte, CO 81224, USA",
+        "location": {
+            "lat": 38.8670944,
+            "lng": -106.9872146
+        },
+        "city": "Crested Butte",
+        "place_id": "ChIJ26vO7T5yQIcR3Ct0tRrRbXY",
+        "name": "Crested Butte Nordic",
+        "site": ""
+    }, {
+        "formatted_address": "301 6th St, Crested Butte, CO 81224, USA",
+        "location": {
+            "lat": 38.8704751,
+            "lng": -106.981392
+        },
+        "city": "Crested Butte",
+        "place_id": "ChIJc01WPEByQIcRJwRwvtmLIYE",
+        "name": "The Wine House",
+        "site": ""
+    }, {
+        "formatted_address": "611 Gothic Rd, Crested Butte, CO 81224, USA",
+        "location": {
+            "lat": 38.9005082,
+            "lng": -106.968212
+        },
+        "city": "Crested Butte",
+        "place_id": "ChIJ__9jTYRtQIcR_acarNJAJdY",
+        "name": "Treasury Liquors",
+        "site": ""
+    }],
+    "total": 4,
+    "formatted_address": "Crested Butte, CO 81224, USA",
+    "city": "crested butte",
+    "location": {
+        "lat": 38.8697146,
+        "lng": -106.9878231
+    }
+}, {
+    "list": [{
+        "formatted_address": "134 Emma Rd, Basalt, CO 81621, USA",
+        "location": {
+            "lat": 39.3643814,
+            "lng": -107.0340589
+        },
+        "city": "Basalt",
+        "place_id": "ChIJAQDw2ctMQIcRq_GiFst15Gs",
+        "name": "Alpine Liquor Store",
+        "site": ""
+    }, {
+        "formatted_address": "350 Reed St #218, Basalt, CO 81621, USA",
+        "location": {
+            "lat": 39.3869244,
+            "lng": -107.0823346
+        },
+        "city": "Basalt",
+        "place_id": "EicyMTgsIDM1MCBSZWVkIFN0LCBCYXNhbHQsIENPIDgxNjIxLCBVU0EiHxodChYKFAoSCRWbLgqUskGHEX7vR1Ig2P5gEgMyMTg",
+        "name": "Four Dogs Fine Wines & Spirits",
+        "site": "http://fourdogswine.com"
+    }, {
+        "formatted_address": "305 Gold Rivers Ct, Basalt, CO 81621, USA",
+        "location": {
+            "lat": 39.3675393,
+            "lng": -107.0345202
+        },
+        "city": "Basalt",
+        "place_id": "ChIJ17BoFMtMQIcRbao946_Zdvk",
+        "name": "FREE RANGE KITCHEN & WINE BAR",
+        "site": "https://www.freerangebasalt.com/"
+    }, {
+        "formatted_address": "128 Basalt Center Cir, Basalt, CO 81621, USA",
+        "location": {
+            "lat": 39.36838880000001,
+            "lng": -107.034115
+        },
+        "city": "Basalt",
+        "place_id": "ChIJ9XvoOstMQIcR9b1DV0FUWXY",
+        "name": "Jimbo's Liquor",
+        "site": ""
+    }],
+    "total": 4,
+    "formatted_address": "Basalt, CO, USA",
+    "city": "basalt",
+    "location": {
+        "lat": 39.36887309999999,
+        "lng": -107.0328241
+    }
 }, {
     "list": [{
         "formatted_address": "842 Summit Blvd, Frisco, CO 80443, USA",
@@ -187,14 +373,43 @@
         "place_id": "ChIJdyqSHidcaocRGvWOZ2dYiSg",
         "name": "Antler's Liquor and Wine Cellar",
         "site": "http://antlersliquor.com"
+    }, {
+        "formatted_address": "223 Lusher Ct #1, Frisco, CO 80443, USA",
+        "location": {
+            "lat": 39.5891298,
+            "lng": -106.0998216
+        },
+        "city": "Frisco",
+        "place_id": "EicxLCAyMjMgTHVzaGVyIEN0LCBGcmlzY28sIENPIDgwNDQzLCBVU0EiHRobChYKFAoSCdcpeokoXGqHEYOJTbVr2XaLEgEx",
+        "name": "Base Camp Wine and Spirits",
+        "site": "https://basecampliquors.com/"
     }],
-    "total": 1,
+    "total": 2,
     "formatted_address": "Frisco, CO, USA",
+    "city": "frisco",
     "location": {
         "lat": 39.5744309,
         "lng": -106.0975203
-    },
-    "city": "frisco"
+    }
+}, {
+    "list": [{
+        "formatted_address": "3320 Youngfield St, Wheat Ridge, CO 80033, USA",
+        "location": {
+            "lat": 39.7634547,
+            "lng": -105.1410719
+        },
+        "city": "Wheat Ridge",
+        "place_id": "ChIJPd14g86Fa4cRtzz3w0mKhN0",
+        "name": "Applejack Wine & Spirits",
+        "site": "https://applejack.com/"
+    }],
+    "total": 1,
+    "formatted_address": "Wheat Ridge, CO, USA",
+    "city": "wheat ridge",
+    "location": {
+        "lat": 39.766098,
+        "lng": -105.0772063
+    }
 }, {
     "list": [{
         "formatted_address": "760 E Colfax Ave, Denver, CO 80203, USA",
@@ -207,13 +422,13 @@
         "name": "Argonaut Wine & Liquor",
         "site": "http://argonautliquor.com"
     }, {
-        "formatted_address": "3100 S Sheridan Blvd, Denver, CO 80227, USA",
+        "formatted_address": "3100 S Sheridan Blvd Unit  F, Denver, CO 80227, USA",
         "location": {
             "lat": 39.6554047,
             "lng": -105.0495086
         },
         "city": "Denver",
-        "place_id": "ChIJ09sxSBmAa4cRZ5ExEtq8rKg",
+        "place_id": "EjRVbml0ICBGLCAzMTAwIFMgU2hlcmlkYW4gQmx2ZCwgRGVudmVyLCBDTyA4MDIyNywgVVNBIiMaIQoWChQKEgnT2zFIGYBrhxFnkTES2rysqBIHVW5pdCAgRg",
         "name": "Bear Valley Wine and Spirits",
         "site": "http://bearvalleyliquor.com"
     }, {
@@ -225,7 +440,7 @@
         "city": "Denver",
         "place_id": "ChIJGWRHCFJ-bIcR9edrJezeciw",
         "name": "Bird American Comfort Food (Black Pearl Restaurant)",
-        "site": "http://irddenver.com"
+        "site": "http://birddenver.com"
     }, {
         "formatted_address": "3911 Fox St, Denver, CO 80216, USA",
         "location": {
@@ -247,6 +462,16 @@
         "name": "Bottle Shop 33",
         "site": "http://www.bottleshop33.com"
     }, {
+        "formatted_address": "2233 Larimer St, Denver, CO 80205, USA",
+        "location": {
+            "lat": 39.7554631,
+            "lng": -104.9897484
+        },
+        "city": "Denver",
+        "place_id": "ChIJSzGN9d54bIcRJS7A70zKVB4",
+        "name": "Butchers Bistro",
+        "site": "https://www.thebutchersbistro.com/"
+    }, {
         "formatted_address": "3744 Tejon St, Denver, CO 80211, USA",
         "location": {
             "lat": 39.7688389,
@@ -257,13 +482,23 @@
         "name": "Cask and Craft",
         "site": "http://www.caskandcraft.com"
     }, {
-        "formatted_address": "939 E Cedar Ave, Denver, CO 80209, USA",
+        "formatted_address": "100 16th St Mall #145, Denver, CO 80202, USA",
         "location": {
-            "lat": 39.71303280000001,
-            "lng": -104.9759756
+            "lat": 39.741502,
+            "lng": -104.9874141
         },
         "city": "Denver",
-        "place_id": "ChIJFfGqueV-bIcR2B88UNVQjVc",
+        "place_id": "EiwxNDUsIDEwMCAxNnRoIFN0IE1hbGwsIERlbnZlciwgQ08gODAyMDIsIFVTQSIjGiEKGhIYChQKEgnJteG71XhshxH5uT9kOtox3hBkEgMxNDU",
+        "name": "Chuey Fu's Baja Cantina",
+        "site": "https://chueyfus.com/"
+    }, {
+        "formatted_address": "939 E Cedar Ave, Denver, CO 80209, USA",
+        "location": {
+            "lat": 39.7130431,
+            "lng": -104.9760099
+        },
+        "city": "Denver",
+        "place_id": "ChIJQyROuOV-bIcRxBAFbw_lIv4",
         "name": "Country Club Liquors",
         "site": ""
     }, {
@@ -317,6 +552,16 @@
         "name": "DIA Liquor Warehouse",
         "site": ""
     }, {
+        "formatted_address": "2500 E 1st Ave #101, Denver, CO 80209, USA",
+        "location": {
+            "lat": 39.7175717,
+            "lng": -104.9561373
+        },
+        "city": "Denver",
+        "place_id": "EioxMDEsIDI1MDAgRSAxc3QgQXZlLCBEZW52ZXIsIENPIDgwMjA5LCBVU0EiHxodChYKFAoSCWNEn6iWfmyHEVlYklkFlnQwEgMxMDE",
+        "name": "Elway's- Cherry Creek",
+        "site": "http://www.elways.com/"
+    }, {
         "formatted_address": "3755 Federal Blvd, Denver, CO 80211, USA",
         "location": {
             "lat": 39.768565,
@@ -349,11 +594,11 @@
     }, {
         "formatted_address": "2016 W 32nd Ave, Denver, CO 80211, USA",
         "location": {
-            "lat": 39.7618431,
-            "lng": -105.0116728
+            "lat": 39.7618667,
+            "lng": -105.0116594
         },
         "city": "Denver",
-        "place_id": "ChIJGXsQCZN4bIcREbO7ounfhBg",
+        "place_id": "ChIJq00cCZN4bIcRAHfOVzHiyBc",
         "name": "HJM Wine & Spirits",
         "site": ""
     }, {
@@ -367,13 +612,23 @@
         "name": "Hugo's Colorado Beer & Spirits",
         "site": "http://hugosbeer.com"
     }, {
-        "formatted_address": "500 16th St Mall, Denver, CO 80202, USA",
+        "formatted_address": "650 15th St, Denver, CO 80202, USA",
+        "location": {
+            "lat": 39.7434054,
+            "lng": -104.9935598
+        },
+        "city": "Denver",
+        "place_id": "ChIJDRyabdF4bIcRDLL7PxhO7gU",
+        "name": "Hyatt Regency CO Convention Center (Former Saint)",
+        "site": "https://www.hyatt.com/en-US/hotel/colorado/hyatt-regency-denver-at-colorado-convention-center/dencc"
+    }, {
+        "formatted_address": "500 16th St Mall #136, Denver, CO 80202, USA",
         "location": {
             "lat": 39.7435364,
             "lng": -104.9913688
         },
         "city": "Denver",
-        "place_id": "ChIJvwtUsNZ4bIcRjJBHu3XH3aE",
+        "place_id": "EiwxMzYsIDUwMCAxNnRoIFN0IE1hbGwsIERlbnZlciwgQ08gODAyMDIsIFVTQSIfGh0KFgoUChIJvwtUsNZ4bIcRjJBHu3XH3aESAzEzNg",
         "name": "Jerri's Tobacco Shop & Fine Wines",
         "site": "http://www.denvercigars.com"
     }, {
@@ -385,7 +640,7 @@
         "city": "Denver",
         "place_id": "ChIJCV_Eg8R-bIcRY-oSTy7bei0",
         "name": "Joy Wine & Spirits",
-        "site": ""
+        "site": "https://www.joywineandspirits.com/"
     }, {
         "formatted_address": "2012 Larimer St, Denver, CO 80205, USA",
         "location": {
@@ -397,13 +652,23 @@
         "name": "Larimer Beer Hall",
         "site": "http://larimerbeerhall.com"
     }, {
-        "formatted_address": "2390 S Downing St, Denver, CO 80210, USA",
+        "formatted_address": "2030 W 30th Ave, Denver, CO 80211, USA",
+        "location": {
+            "lat": 39.7595239,
+            "lng": -105.0113827
+        },
+        "city": "Denver",
+        "place_id": "ChIJ_wBlj5R4bIcR_9igYuWXSPY",
+        "name": "Linger",
+        "site": "http://lingerdenver.com"
+    }, {
+        "formatted_address": "2390 S Downing St Unit  A, Denver, CO 80210, USA",
         "location": {
             "lat": 39.6733968,
             "lng": -104.9731574
         },
         "city": "Denver",
-        "place_id": "ChIJX5cKEjp-bIcRQ9GIvlo5_00",
+        "place_id": "EjFVbml0ICBBLCAyMzkwIFMgRG93bmluZyBTdCwgRGVudmVyLCBDTyA4MDIxMCwgVVNBIiMaIQoWChQKEglflwoSOn5shxFD0Yi-Wjn_TRIHVW5pdCAgQQ",
         "name": "Little's Wine and Spirits",
         "site": "http://www.littleswine.com"
     }, {
@@ -416,6 +681,16 @@
         "place_id": "ChIJA9N3vWB-bIcRRRjfO2WAH4I",
         "name": "Max Gill and Grill",
         "site": "http://www.maxgillandgrill.com"
+    }, {
+        "formatted_address": "1385 Krameria St, Denver, CO 80224, USA",
+        "location": {
+            "lat": 39.7381304,
+            "lng": -104.9171416
+        },
+        "city": "Denver",
+        "place_id": "ChIJtcfuZA18bIcRNy9nIEHVR8g",
+        "name": "Mayfair Liquors",
+        "site": "http://www.mayfairliquors.com/"
     }, {
         "formatted_address": "3244 Navajo St, Denver, CO 80211, USA",
         "location": {
@@ -439,11 +714,11 @@
     }, {
         "formatted_address": "3601 W 32nd Ave, Denver, CO 80211, USA",
         "location": {
-            "lat": 39.7622749,
-            "lng": -105.0347475
+            "lat": 39.7623381,
+            "lng": -105.0347833
         },
         "city": "Denver",
-        "place_id": "ChIJS-91LH2Ha4cRcBPWmrj9sac",
+        "place_id": "ChIJ_YpZLH2Ha4cRIS9hIe1Pf8o",
         "name": "Mondo Vino",
         "site": "http://www.mondovinodenver.com"
     }, {
@@ -456,6 +731,16 @@
         "place_id": "ChIJgy7iFzh-bIcRpZ1Ttkw6vhA",
         "name": "Morgans Liquors",
         "site": "http://www.morgansliquors.com"
+    }, {
+        "formatted_address": "3316 Tejon St, Denver, CO 80211, USA",
+        "location": {
+            "lat": 39.7635388,
+            "lng": -105.0107692
+        },
+        "city": "Denver",
+        "place_id": "ChIJL6Cw6JJ4bIcRsVNYiGKQ_Dc",
+        "name": "Old Major",
+        "site": ""
     }, {
         "formatted_address": "2259 Oneida St, Denver, CO 80207, USA",
         "location": {
@@ -477,13 +762,13 @@
         "name": "Palizo",
         "site": "http://palizodenver.com"
     }, {
-        "formatted_address": "3480 Park Ave W, Denver, CO 80216, USA",
+        "formatted_address": "3480 Park Ave W Unit  E, Denver, CO 80216, USA",
         "location": {
             "lat": 39.7654855,
             "lng": -104.9936054
         },
         "city": "Denver",
-        "place_id": "ChIJtxy58OR4bIcR9DsCk-2g8Ts",
+        "place_id": "Ei9Vbml0ICBFLCAzNDgwIFBhcmsgQXZlIFcsIERlbnZlciwgQ08gODAyMTYsIFVTQSIjGiEKFgoUChIJtxy58OR4bIcR9DsCk-2g8TsSB1VuaXQgIEU",
         "name": "Park Avenue Wine & Spirits",
         "site": "http://www.parkaveliquor.com"
     }, {
@@ -505,17 +790,57 @@
         "city": "Denver",
         "place_id": "ChIJQc67Php5bIcR1q2lE77pbTc",
         "name": "Proof Wine & Spirits (Noble Swine, LLC)",
-        "site": "http://www.proofwineandspirits.com"
+        "site": "https://www.proofwinedenver.com/"
     }, {
-        "formatted_address": "3083 Brighton Blvd, Denver, CO 80216, USA",
+        "formatted_address": "650 Sherman St, Denver, CO 80203, USA",
         "location": {
-            "lat": 39.7665965,
-            "lng": -104.9845678
+            "lat": 39.72660339999999,
+            "lng": -104.9844765
         },
         "city": "Denver",
-        "place_id": "ChIJETpYcR15bIcREgkJ1pZbh_A",
+        "place_id": "ChIJI6_-Zdh-bIcRPlcyVct0KLs",
+        "name": "Racines",
+        "site": "http://www.racinesrestaurant.com/"
+    }, {
+        "formatted_address": "3083 Brighton Blvd Suite B, Denver, CO 80216, USA",
+        "location": {
+            "lat": 39.76667399999999,
+            "lng": -104.984541
+        },
+        "city": "Denver",
+        "place_id": "EjJTdWl0ZSBCLCAzMDgzIEJyaWdodG9uIEJsdmQsIERlbnZlciwgQ08gODAyMTYsIFVTQSIjGiEKFgoUChIJgd-udh15bIcRFcb4m5FmjGcSB1N1aXRlIEI",
         "name": "RiNo Liqour",
         "site": "http://rinoartdistrict.org"
+    }, {
+        "formatted_address": "1600 W 33rd Ave, Denver, CO 80211, USA",
+        "location": {
+            "lat": 39.7630439,
+            "lng": -105.0055651
+        },
+        "city": "Denver",
+        "place_id": "ChIJR_feUOx4bIcRUAkxZx8vqHA",
+        "name": "Root Down- Highlands",
+        "site": "http://www.rootdowndenver.com/"
+    }, {
+        "formatted_address": "2900 W 25th Ave, Denver, CO 80211, USA",
+        "location": {
+            "lat": 39.7534095,
+            "lng": -105.0238487
+        },
+        "city": "Denver",
+        "place_id": "ChIJV0xBeaJ4bIcRj99uGi5rj7I",
+        "name": "Sartos",
+        "site": "http://sartos.com/"
+    }, {
+        "formatted_address": "3330 Brighton Blvd #202, Denver, CO 80216, USA",
+        "location": {
+            "lat": 39.768778,
+            "lng": -104.980545
+        },
+        "city": "Denver",
+        "place_id": "Ei4yMDIsIDMzMzAgQnJpZ2h0b24gQmx2ZCwgRGVudmVyLCBDTyA4MDIxNiwgVVNBIh8aHQoWChQKEgmr9RukHHlshxHRUIRktddbJhIDMjAy",
+        "name": "Smok Barbecue",
+        "site": ""
     }, {
         "formatted_address": "2035 S Broadway, Denver, CO 80210, USA",
         "location": {
@@ -537,15 +862,35 @@
         "name": "Society Sports & Spirits",
         "site": "http://societydenver.com"
     }, {
-        "formatted_address": "415 S Cherokee St, Denver, CO 80223, USA",
+        "formatted_address": "415 S Cherokee St #125, Denver, CO 80223, USA",
         "location": {
             "lat": 39.709233,
             "lng": -104.992647
         },
         "city": "Denver",
-        "place_id": "ChIJU99Jcht_bIcR4SQPWz9Xgqk",
+        "place_id": "Ei0xMjUsIDQxNSBTIENoZXJva2VlIFN0LCBEZW52ZXIsIENPIDgwMjIzLCBVU0EiHxodChYKFAoSCVPfSXIbf2yHEeEkD1s_V4KpEgMxMjU",
         "name": "The White Whale Room",
         "site": "https://www.chasethewhitewhale.com/"
+    }, {
+        "formatted_address": "3330 Brighton Blvd, Denver, CO 80216, USA",
+        "location": {
+            "lat": 39.768778,
+            "lng": -104.980545
+        },
+        "city": "Denver",
+        "place_id": "ChIJq_UbpBx5bIcR0VCEZLXXWyY",
+        "name": "The Woods",
+        "site": "https://thesourcehotel.com/the-woods"
+    }, {
+        "formatted_address": "3333 E Colfax Ave, Denver, CO 80206, USA",
+        "location": {
+            "lat": 39.740313,
+            "lng": -104.9480345
+        },
+        "city": "Denver",
+        "place_id": "ChIJF2x9rq1-bIcR1TKHTw50zKo",
+        "name": "To The Wind Bistro",
+        "site": "http://tothewindbistro.com/"
     }, {
         "formatted_address": "900 E 104th Ave, Denver, CO 80233, USA",
         "location": {
@@ -554,8 +899,18 @@
         },
         "city": "Denver",
         "place_id": "ChIJUwHwvY12bIcRoRgFGDRdG28",
-        "name": "Total Beverage-Thorton",
+        "name": "Total Beverage- Thorton",
         "site": ""
+    }, {
+        "formatted_address": "3905 E Evans Ave, Denver, CO 80210, USA",
+        "location": {
+            "lat": 39.6789783,
+            "lng": -104.9423533
+        },
+        "city": "Denver",
+        "place_id": "ChIJRQIVxQt-bIcR1E16j59u6W8",
+        "name": "Total Wine and More",
+        "site": "http://www.totalwine.com/denver"
     }, {
         "formatted_address": "1455 S Holly St, Denver, CO 80222, USA",
         "location": {
@@ -567,13 +922,13 @@
         "name": "Virginia Village Liquor",
         "site": ""
     }],
-    "total": 37,
+    "total": 51,
     "formatted_address": "Denver, CO, USA",
+    "city": "denver",
     "location": {
         "lat": 39.7392358,
         "lng": -104.990251
-    },
-    "city": "denver"
+    }
 }, {
     "list": [{
         "formatted_address": "25937 Conifer Rd, Conifer, CO 80433, USA",
@@ -588,39 +943,118 @@
     }],
     "total": 1,
     "formatted_address": "Conifer, CO 80433, USA",
+    "city": "conifer",
     "location": {
         "lat": 39.5202516,
         "lng": -105.3056996
-    },
-    "city": "conifer"
+    }
 }, {
     "list": [{
-        "formatted_address": "2770 Arapahoe Rd, Lafayette, CO 80026, USA",
+        "formatted_address": "300 Puppy Smith St, Aspen, CO 81611, USA",
+        "location": {
+            "lat": 39.1928426,
+            "lng": -106.8190087
+        },
+        "city": "Aspen",
+        "place_id": "ChIJVaFulH05QIcR4LjsPJu7urk",
+        "name": "Aspen Wine & Spirits",
+        "site": "http://aspenwineandspirit.com/"
+    }, {
+        "formatted_address": "710 E Durant Ave, Aspen, CO 81611, USA",
+        "location": {
+            "lat": 39.1868847,
+            "lng": -106.8162564
+        },
+        "city": "Aspen",
+        "place_id": "ChIJGaaw9tg7QIcR_RDG4MGmVRk",
+        "name": "Great Western Grog Shop (Paul Robinson Inc.)",
+        "site": "http://www.aspengrogshop.com"
+    }, {
+        "formatted_address": "30 E Main St, Aspen, CO 81611, USA",
+        "location": {
+            "lat": 39.1916302,
+            "lng": -106.822406
+        },
+        "city": "Aspen",
+        "place_id": "EiIzMCBFIE1haW4gU3QsIEFzcGVuLCBDTyA4MTYxMSwgVVNBIhoSGAoUChIJs-nEYXw5QIcRTLgia_KY-y0QHg",
+        "name": "Hotel Jerome",
+        "site": "http://hoteljerome.aubergeresorts.com"
+    }, {
+        "formatted_address": "319 E Hopkins Ave, Aspen, CO 81611, USA",
+        "location": {
+            "lat": 39.1899093,
+            "lng": -106.820328
+        },
+        "city": "Aspen",
+        "place_id": "ChIJnTgvJX05QIcR8pNno3HDuQ8",
+        "name": "Meat & Cheese Restaurant and Farm Shop",
+        "site": "http://meatcheese.avalancheaspen.com"
+    }, {
+        "formatted_address": "111 S Monarch St, Aspen, CO 81611, USA",
+        "location": {
+            "lat": 39.1906136,
+            "lng": -106.8207184
+        },
+        "city": "Aspen",
+        "place_id": "ChIJ1bDjHX05QIcRB4D9z5uwaL8",
+        "name": "Of Grape & Grain",
+        "site": ""
+    }, {
+        "formatted_address": "420 E Cooper Ave, Aspen, CO 81611, USA",
+        "location": {
+            "lat": 39.188377,
+            "lng": -106.819278
+        },
+        "city": "Aspen",
+        "place_id": "ChIJ_4GZuGI5QIcRx8Me-ZxhEWs",
+        "name": "The Red Onion",
+        "site": "http://redonionaspen.com"
+    }, {
+        "formatted_address": "315 E Dean St, Aspen, CO 81611, USA",
+        "location": {
+            "lat": 39.1869935,
+            "lng": -106.8212945
+        },
+        "city": "Aspen",
+        "place_id": "ChIJe4xwBGM5QIcRrZ7xc-DZabo",
+        "name": "The St. Regis Aspen Resort",
+        "site": "https://www.marriott.com/hotels/travel/asexr-the-st-regis-aspen-resort/?scid=bb1a189a-fec3-4d19-a255-54ba596febe2"
+    }],
+    "total": 7,
+    "formatted_address": "Aspen, CO 81611, USA",
+    "city": "aspen",
+    "location": {
+        "lat": 39.1910983,
+        "lng": -106.8175387
+    }
+}, {
+    "list": [{
+        "formatted_address": "2770 Arapahoe Rd #100, Lafayette, CO 80026, USA",
         "location": {
             "lat": 40.0136364,
             "lng": -105.1325654
         },
         "city": "Lafayette",
-        "place_id": "ChIJnQ9e2o7za4cRykRq6mkqjLM",
+        "place_id": "Ei8xMDAsIDI3NzAgQXJhcGFob2UgUmQsIExhZmF5ZXR0ZSwgQ08gODAwMjYsIFVTQSIfGh0KFgoUChIJnQ9e2o7za4cRykRq6mkqjLMSAzEwMA",
         "name": "Atlas Valley Purveyors",
         "site": "http://avpurveyors.com"
     }],
     "total": 1,
     "formatted_address": "Lafayette, CO, USA",
+    "city": "lafayette",
     "location": {
         "lat": 39.9935959,
         "lng": -105.0897058
-    },
-    "city": "lafayette"
+    }
 }, {
     "list": [{
-        "formatted_address": "9265 S Broadway, Highlands Ranch, CO 80129, USA",
+        "formatted_address": "9265 S Broadway #400, Highlands Ranch, CO 80129, USA",
         "location": {
             "lat": 39.5479954,
             "lng": -104.9946927
         },
         "city": "Highlands Ranch",
-        "place_id": "ChIJXbIoBE-CbIcRuWVIRoIUDvE",
+        "place_id": "EjQ0MDAsIDkyNjUgUyBCcm9hZHdheSwgSGlnaGxhbmRzIFJhbmNoLCBDTyA4MDEyOSwgVVNBIh8aHQoWChQKEgldsigET4JshxG5ZUhGghQO8RIDNDAw",
         "name": "Bacchus Wine & Spirits",
         "site": "http://www.bacchuswinesandspirits.com"
     }, {
@@ -630,17 +1064,76 @@
             "lng": -104.9058793
         },
         "city": "Highlands Ranch",
-        "place_id": "EidUaW1iZXJsaW5lIFJkLCBIaWdobGFuZHMgUmFuY2gsIENPLCBVU0EiSCpGChQKEgk3gEW1-YRshxEv_seUw5yi-RIUChIJC13RgvCCbIcRSduMa81j8REaGAoKDW3DkRcV-r93wRIKDfROkhcVRop5wQ",
+        "place_id": "EidUaW1iZXJsaW5lIFJkLCBIaWdobGFuZHMgUmFuY2gsIENPLCBVU0EiLiosChQKEgk3gEW1-YRshxEv_seUw5yi-RIUChIJC13RgvCCbIcRSduMa81j8RE",
         "name": "Highlands Wineseller",
         "site": "http://www.highlandswineseller.com"
     }],
     "total": 2,
     "formatted_address": "Highlands Ranch, CO, USA",
+    "city": "highlands ranch",
     "location": {
         "lat": 39.5480789,
         "lng": -104.9739333
-    },
-    "city": "highlands ranch"
+    }
+}, {
+    "list": [{
+        "formatted_address": "818 Lincoln Avenue Box 883427, Steamboat Springs, CO 80487, United States",
+        "location": {
+            "lat": 40.486669,
+            "lng": -106.834798
+        },
+        "city": "Steamboat Springs",
+        "place_id": "ChIJF65UQ9toQocRvoB-C7IQ2no",
+        "name": "Besame Steamboat",
+        "site": "http://besamesteamboat.com"
+    }, {
+        "formatted_address": "521 Lincoln Ave, Steamboat Springs, CO 80487, USA",
+        "location": {
+            "lat": 40.4842784,
+            "lng": -106.8321493
+        },
+        "city": "Steamboat Springs",
+        "place_id": "ChIJi4mjN9poQocRulIyZo3i-OY",
+        "name": "Mambo Italiano",
+        "site": "http://mambos.com"
+    }, {
+        "formatted_address": "2300 Mt Werner Cir, Steamboat Springs, CO 80487, USA",
+        "location": {
+            "lat": 40.45856149999999,
+            "lng": -106.8065919
+        },
+        "city": "Steamboat Springs",
+        "place_id": "ChIJKfKla7duQocRmkTDOn5SGKo",
+        "name": "Ski Town Wine & Spirits",
+        "site": "http://skitownws.com"
+    }, {
+        "formatted_address": "635 Lincoln Ave, Steamboat Springs, CO 80487, USA",
+        "location": {
+            "lat": 40.4850772,
+            "lng": -106.8335321
+        },
+        "city": "Steamboat Springs",
+        "place_id": "ChIJgzVupttoQocR-PRRGhbIKO0",
+        "name": "The Barley Tap and Tavern",
+        "site": "http://www.thebarleycolorado.com/"
+    }, {
+        "formatted_address": "2525 Village Dr, Steamboat Springs, CO 80487, USA",
+        "location": {
+            "lat": 40.4552031,
+            "lng": -106.8057623
+        },
+        "city": "Steamboat Springs",
+        "place_id": "ChIJYevbeLpuQocRy6Yu8rsebss",
+        "name": "Wild Plum",
+        "site": ""
+    }],
+    "total": 5,
+    "formatted_address": "Steamboat Springs, CO 80487, USA",
+    "city": "steamboat springs",
+    "location": {
+        "lat": 40.4849769,
+        "lng": -106.8317158
+    }
 }, {
     "list": [{
         "formatted_address": "1285 E 1st Ave #3765, Broomfield, CO 80020, USA",
@@ -655,11 +1148,11 @@
     }],
     "total": 1,
     "formatted_address": "Broomfield, CO, USA",
+    "city": "broomfield",
     "location": {
         "lat": 39.9205411,
         "lng": -105.0866504
-    },
-    "city": "broomfield"
+    }
 }, {
     "list": [{
         "formatted_address": "Conifer Rd, Aspen Park, CO 80433, USA",
@@ -674,11 +1167,11 @@
     }],
     "total": 1,
     "formatted_address": "Aspen Park, CO 80433, USA",
+    "city": "aspen park",
     "location": {
         "lat": 39.542748,
         "lng": -105.295922
-    },
-    "city": "aspen park"
+    }
 }, {
     "list": [{
         "formatted_address": "35 Co Rd 804, Winter Park, CO 80482, USA",
@@ -713,40 +1206,98 @@
     }],
     "total": 3,
     "formatted_address": "Winter Park, CO 80482, USA",
+    "city": "winter park",
     "location": {
         "lat": 39.8916537,
         "lng": -105.7630624
-    },
-    "city": "winter park"
+    }
 }, {
     "list": [{
-        "formatted_address": "3325 28th St, Boulder, CO 80301, USA",
+        "formatted_address": "3325 28th St #3, Boulder, CO 80301, USA",
         "location": {
-            "lat": 40.0353347,
-            "lng": -105.260258
+            "lat": 40.0353313,
+            "lng": -105.2602617
         },
         "city": "Boulder",
-        "place_id": "ChIJZbsgnGTua4cR0q-vsRjax9s",
+        "place_id": "EiczLCAzMzI1IDI4dGggU3QsIEJvdWxkZXIsIENPIDgwMzAxLCBVU0EiHRobChYKFAoSCWW7IJxk7muHEdKvr7EY2sfbEgEz",
         "name": "Boulder Wine and Spirits",
         "site": "http://boulderwineandspirits.net"
     }, {
         "formatted_address": "1955 28th St, Boulder, CO 80301, USA",
         "location": {
-            "lat": 40.0207251,
-            "lng": -105.2599837
+            "lat": 40.0207248,
+            "lng": -105.2599845
         },
         "city": "Boulder",
         "place_id": "ChIJA_ithtbta4cRNGAgcA3SPXw",
         "name": "Hazel's Beverage World",
         "site": "http://www.hazelsboulder.com"
+    }, {
+        "formatted_address": "1346 Pearl St, Boulder, CO 80302, USA",
+        "location": {
+            "lat": 40.0182131,
+            "lng": -105.2775494
+        },
+        "city": "Boulder",
+        "place_id": "ChIJYzbjhCjsa4cR_iiTWIC9DzU",
+        "name": "Lazy Dog Sports Bar & Grill",
+        "site": "https://www.thelazydog.com/"
+    }, {
+        "formatted_address": "750 15th St, Boulder, CO 80302, USA",
+        "location": {
+            "lat": 40.001026,
+            "lng": -105.2733714
+        },
+        "city": "Boulder",
+        "place_id": "EiM3NTAgMTV0aCBTdCwgQm91bGRlciwgQ08gODAzMDIsIFVTQSIbEhkKFAoSCVEL9MJJ7GuHEWfaHHO-zwl_EO4F",
+        "name": "Liquor Mart",
+        "site": "http://www.liquormart.com"
     }],
-    "total": 2,
+    "total": 4,
     "formatted_address": "Boulder, CO, USA",
+    "city": "boulder",
     "location": {
         "lat": 40.0149856,
         "lng": -105.2705456
-    },
-    "city": "boulder"
+    }
+}, {
+    "list": [{
+        "formatted_address": "6130 E Cross Roads Blvd, Loveland, CO 80538, USA",
+        "location": {
+            "lat": 40.4356388,
+            "lng": -104.9872152
+        },
+        "city": "Loveland",
+        "place_id": "ChIJaRe7PQqtbocRdxGBMxJREcY",
+        "name": "Brix Wine and Spirits",
+        "site": "http://brixwineandspirits.com"
+    }],
+    "total": 1,
+    "formatted_address": "Loveland, CO, USA",
+    "city": "loveland",
+    "location": {
+        "lat": 40.3977612,
+        "lng": -105.0749801
+    }
+}, {
+    "list": [{
+        "formatted_address": "675 Genoa Way, Castle Rock, CO 80109, USA",
+        "location": {
+            "lat": 39.4113182,
+            "lng": -104.869816
+        },
+        "city": "Castle Rock",
+        "place_id": "ChIJ4-EJOZWZbIcR7BCQV_DAxFQ",
+        "name": "Bubbles Liquor Mart",
+        "site": "http://bubblesliquorworld.com"
+    }],
+    "total": 1,
+    "formatted_address": "Castle Rock, CO, USA",
+    "city": "castle rock",
+    "location": {
+        "lat": 39.3722121,
+        "lng": -104.8560902
+    }
 }, {
     "list": [{
         "formatted_address": "640 CO-125, Granby, CO 80446, USA",
@@ -759,6 +1310,16 @@
         "name": "C Lazy U Ranch",
         "site": "http://www.clazyu.com"
     }, {
+        "formatted_address": "1131 Thompson Rd, Granby, CO 80446, USA",
+        "location": {
+            "lat": 40.0623884,
+            "lng": -105.9274415
+        },
+        "city": "Granby",
+        "place_id": "ChIJNZoIthwvaocR8FATdgLetXE",
+        "name": "Grandby Market Place Liquor",
+        "site": ""
+    }, {
         "formatted_address": "88 E Agate Ave, Granby, CO 80446, USA",
         "location": {
             "lat": 40.0853754,
@@ -769,54 +1330,103 @@
         "name": "R and J Liquors",
         "site": ""
     }],
-    "total": 2,
+    "total": 3,
     "formatted_address": "Granby, CO 80446, USA",
+    "city": "granby",
     "location": {
         "lat": 40.086097,
         "lng": -105.9394597
-    },
-    "city": "granby"
+    }
 }, {
     "list": [{
         "formatted_address": "15260 E Iliff Ave, Aurora, CO 80014, USA",
         "location": {
-            "lat": 39.6734722,
-            "lng": -104.8106032
+            "lat": 39.673393,
+            "lng": -104.8105336
         },
         "city": "Aurora",
-        "place_id": "ChIJTXnz9iWIbIcRebw1FUGeRd4",
+        "place_id": "ChIJdb-rhyWIbIcRCCFTP8LQvTo",
         "name": "Chambers Wine and Liquors",
         "site": "http://www.chamberswineandliquor.com"
     }, {
-        "formatted_address": "15405 E Briarwood Cir, Aurora, CO 80016, USA",
-        "location": {
-            "lat": 39.5943482,
-            "lng": -104.8092126
-        },
-        "city": "Aurora",
-        "place_id": "ChIJtbAzEy6PbIcR1jpu2e8ZKvA",
-        "name": "Cornerstar Wine & Liquor",
-        "site": "http://cornerstarwineandliquor.com"
-    }, {
         "formatted_address": "6140 S Gun Club Rd, Aurora, CO 80016, USA",
         "location": {
-            "lat": 39.6038497,
-            "lng": -104.7155695
+            "lat": 39.6038445,
+            "lng": -104.7148171
         },
         "city": "Aurora",
-        "place_id": "Eik2MTQwIFMgR3VuIENsdWIgUmQsIEF1cm9yYSwgQ08gODAwMTYsIFVTQSIbEhkKFAoSCTlaNYF6jGyHEROnv5Z425oAEPwv",
+        "place_id": "ChIJ25BF5XqMbIcR1SzhWKZBk_8",
         "name": "Great Vines Liquor",
         "site": "http://www.greatvinesliquors.net"
+    }, {
+        "formatted_address": "25791 E Smoky Hill Rd, Aurora, CO 80016, USA",
+        "location": {
+            "lat": 39.58604760000001,
+            "lng": -104.6870704
+        },
+        "city": "Aurora",
+        "place_id": "ChIJ9d6juuiMbIcRgjgxchRposs",
+        "name": "Serenity Ridge Liquors",
+        "site": ""
     }],
     "total": 3,
     "formatted_address": "Aurora, CO, USA",
+    "city": "aurora",
     "location": {
         "lat": 39.7294319,
         "lng": -104.8319195
-    },
-    "city": "aurora"
+    }
 }, {
     "list": [{
+        "formatted_address": "8156 S Wadsworth Blvd, Littleton, CO 80128, USA",
+        "location": {
+            "lat": 39.5684929,
+            "lng": -105.0814977
+        },
+        "city": "Littleton",
+        "place_id": "ChIJ7zWLxIB-a4cRot4b0G0P384",
+        "name": "Chatfield Wine & Spirits",
+        "site": "https://www.chatfieldwineandspirits.com/"
+    }, {
+        "formatted_address": "5555 Boatworks Dr, Littleton, CO 80126, USA",
+        "location": {
+            "lat": 39.565506,
+            "lng": -104.9237689
+        },
+        "city": "Littleton",
+        "place_id": "ChIJAVGkJROEbIcRDsoprK1DCT4",
+        "name": "Davidson's Liquor Colorado- Highlands Ranch",
+        "site": "https://www.davidsonsliquors.com/"
+    }, {
+        "formatted_address": "7403 W Chatfield Ave, Littleton, CO 80128, USA",
+        "location": {
+            "lat": 39.5673171,
+            "lng": -105.0805386
+        },
+        "city": "Littleton",
+        "place_id": "ChIJA7PvjIB-a4cR_v3Rqm_vSjQ",
+        "name": "Southside Pizzeria",
+        "site": "http://www.eatsouthside.com"
+    }],
+    "total": 3,
+    "formatted_address": "Littleton, CO, USA",
+    "city": "littleton",
+    "location": {
+        "lat": 39.613321,
+        "lng": -105.0166498
+    }
+}, {
+    "list": [{
+        "formatted_address": "1105 N Circle Dr, Colorado Springs, CO 80909, USA",
+        "location": {
+            "lat": 38.848544,
+            "lng": -104.7750205
+        },
+        "city": "Colorado Springs",
+        "place_id": "ChIJv19am8BFE4cRIs_uaqOC2Rc",
+        "name": "Cheers Liquor Mart",
+        "site": "https://www.cheersliquormart.com/"
+    }, {
         "formatted_address": "19 E Kiowa St, Colorado Springs, CO 80903, USA",
         "location": {
             "lat": 38.8351624,
@@ -837,13 +1447,23 @@
         "name": "Coaltrain Fine Wine and Spirits",
         "site": "http://coaltrainwine.com"
     }, {
-        "formatted_address": "103 Wahsatch Avenue, Colorado Springs, CO 80903, USA",
+        "formatted_address": "1615 Briargate Blvd, Colorado Springs, CO 80920, USA",
         "location": {
-            "lat": 38.8319354,
-            "lng": -104.8176776
+            "lat": 38.944654,
+            "lng": -104.796939
         },
         "city": "Colorado Springs",
-        "place_id": "EjQxMDMgV2Foc2F0Y2ggQXZlbnVlLCBDb2xvcmFkbyBTcHJpbmdzLCBDTyA4MDkwMywgVVNBIhoSGAoUChIJN8U5OhlFE4cRDeyzeeEr3f4QZw",
+        "place_id": "ChIJ6wOqFYdOE4cRB-SP7iOG9J4",
+        "name": "Colorado Liquor Outlet",
+        "site": ""
+    }, {
+        "formatted_address": "103 Wahsatch Avenue, Colorado Springs, CO 80903, USA",
+        "location": {
+            "lat": 38.8353165,
+            "lng": -104.8175081
+        },
+        "city": "Colorado Springs",
+        "place_id": "EjQxMDMgV2Foc2F0Y2ggQXZlbnVlLCBDb2xvcmFkbyBTcHJpbmdzLCBDTyA4MDkwMywgVVNBIhoSGAoUChIJPYca3RlFE4cRcN4Jx5w-LocQZw",
         "name": "Downtown Fine Spirits & Wines",
         "site": "http://dtnfspiritsandwines.com"
     }, {
@@ -857,6 +1477,36 @@
         "name": "J & K Liquor",
         "site": "http://jkliquor.com"
     }, {
+        "formatted_address": "7935 Constitution Ave #140, Colorado Springs, CO 80951, USA",
+        "location": {
+            "lat": 38.8672518,
+            "lng": -104.6785059
+        },
+        "city": "Colorado Springs",
+        "place_id": "EjsxNDAsIDc5MzUgQ29uc3RpdHV0aW9uIEF2ZSwgQ29sb3JhZG8gU3ByaW5ncywgQ08gODA5NTEsIFVTQSIfGh0KFgoUChIJdcmcr-tHE4cRAmbt9EqXj4ESAzE0MA",
+        "name": "Patriots Liquor",
+        "site": ""
+    }, {
+        "formatted_address": "5847 Palmer Park Blvd, Colorado Springs, CO 80915, USA",
+        "location": {
+            "lat": 38.8545214,
+            "lng": -104.7182801
+        },
+        "city": "Colorado Springs",
+        "place_id": "ChIJZeDdDUZGE4cROVsGDYqF0VM",
+        "name": "Powers Liquor Mart",
+        "site": "http://powersliquormart.com/"
+    }, {
+        "formatted_address": "2850 S Circle Dr, Colorado Springs, CO 80906, USA",
+        "location": {
+            "lat": 38.7973216,
+            "lng": -104.7924797
+        },
+        "city": "Colorado Springs",
+        "place_id": "ChIJf2AzWntEE4cRnKL-6hQivhA",
+        "name": "SCP Hotel",
+        "site": "https://www.scphotel.com/"
+    }, {
         "formatted_address": "123 E Pikes Peak Ave, Colorado Springs, CO 80947, USA",
         "location": {
             "lat": 38.8336622,
@@ -867,92 +1517,55 @@
         "name": "Springs Orleans",
         "site": "http://www.springsorleans.com"
     }, {
-        "formatted_address": "3630 Austin Bluffs Pkwy, Colorado Springs, CO 80918, USA",
+        "formatted_address": "5903 Delmonico Dr, Colorado Springs, CO 80919, USA",
+        "location": {
+            "lat": 38.9170859,
+            "lng": -104.8236878
+        },
+        "city": "Colorado Springs",
+        "place_id": "ChIJbWISIDhOE4cRyEFYJjOptxg",
+        "name": "The Wine Gallery",
+        "site": "https://www.thewinegalleryco.com/"
+    }, {
+        "formatted_address": "2713 Janitell Rd, Colorado Springs, CO 80906, USA",
+        "location": {
+            "lat": 38.7954051,
+            "lng": -104.7884224
+        },
+        "city": "Colorado Springs",
+        "place_id": "ChIJP1braXpEE4cR-tb_oEBQVRw",
+        "name": "Total Wine & Liquor",
+        "site": "http://totalwineandliquor.com"
+    }, {
+        "formatted_address": "3630 Austin Bluffs Pkwy #170, Colorado Springs, CO 80918, USA",
         "location": {
             "lat": 38.8932403,
             "lng": -104.7595686
         },
         "city": "Colorado Springs",
-        "place_id": "ChIJXS6Ix0lPE4cR_QkNXQChNFk",
+        "place_id": "Ej0xNzAsIDM2MzAgQXVzdGluIEJsdWZmcyBQa3d5LCBDb2xvcmFkbyBTcHJpbmdzLCBDTyA4MDkxOCwgVVNBIh8aHQoWChQKEgldLojHSU8ThxH9CQ1dAKE0WRIDMTcw",
         "name": "Veterans Wine & Liquor",
         "site": ""
     }],
-    "total": 6,
+    "total": 13,
     "formatted_address": "Colorado Springs, CO, USA",
+    "city": "colorado springs",
     "location": {
         "lat": 38.8338816,
         "lng": -104.8213634
-    },
-    "city": "colorado springs"
+    }
 }, {
     "list": [{
-        "formatted_address": "620 2nd St, Crested Butte, CO 81224, USA",
+        "formatted_address": "4125 S University Blvd, Englewood, CO 80113, USA",
         "location": {
-            "lat": 38.8670944,
-            "lng": -106.9872146
+            "lat": 39.6429225,
+            "lng": -104.9625692
         },
-        "city": "Crested Butte",
-        "place_id": "ChIJ26vO7T5yQIcR3Ct0tRrRbXY",
-        "name": "Crested Butte Nordic",
-        "site": ""
-    }],
-    "total": 1,
-    "formatted_address": "Crested Butte, CO 81224, USA",
-    "location": {
-        "lat": 38.8697146,
-        "lng": -106.9878231
-    },
-    "city": "crested butte"
-}, {
-    "list": [{
-        "formatted_address": "5555 Boatworks Dr, Littleton, CO 80126, USA",
-        "location": {
-            "lat": 39.565506,
-            "lng": -104.9237689
-        },
-        "city": "Littleton",
-        "place_id": "ChIJAVGkJROEbIcRDsoprK1DCT4",
-        "name": "Davidson's Liquor Colorado",
-        "site": "https://www.davidsonsliquors.com/"
+        "city": "Englewood",
+        "place_id": "ChIJJa5IGpWAbIcRw2_aGCTkzCM",
+        "name": "Cherry Hills Country Club",
+        "site": "http://www.chcc.com"
     }, {
-        "formatted_address": "7403 W Chatfield Ave, Littleton, CO 80128, USA",
-        "location": {
-            "lat": 39.5673171,
-            "lng": -105.0805386
-        },
-        "city": "Littleton",
-        "place_id": "ChIJA7PvjIB-a4cR_v3Rqm_vSjQ",
-        "name": "Southside Pizzeria",
-        "site": "http://www.eatsouthside.com"
-    }],
-    "total": 2,
-    "formatted_address": "Littleton, CO, USA",
-    "location": {
-        "lat": 39.613321,
-        "lng": -105.0166498
-    },
-    "city": "littleton"
-}, {
-    "list": [{
-        "formatted_address": "3530 County Rd 83, Tabernash, CO 80478, USA",
-        "location": {
-            "lat": 39.9663313,
-            "lng": -105.7842685
-        },
-        "city": "Tabernash",
-        "place_id": "ChIJDTx7REszaocRe77lVPcKB6A",
-        "name": "Devil's Thumb Ranch",
-        "site": "http://devilsthumbranch.com"
-    }],
-    "total": 1,
-    "formatted_address": "Tabernash, CO 80478, USA",
-    "location": {
-        "lat": 39.9935977,
-        "lng": -105.8430661
-    },
-    "city": "tabernash"
-}, {
-    "list": [{
         "formatted_address": "110 Glenmoor Dr, Englewood, CO 80113, USA",
         "location": {
             "lat": 39.6250883,
@@ -972,14 +1585,169 @@
         "place_id": "ChIJA5zcQaKAbIcReyI1eR72BQs",
         "name": "Kent Cellars",
         "site": "https://kent-cellars.business.site/"
+    }, {
+        "formatted_address": "5922 S Holly St, Englewood, CO 80111, USA",
+        "location": {
+            "lat": 39.609355,
+            "lng": -104.9226521
+        },
+        "city": "Englewood",
+        "place_id": "ChIJoShfvsaGbIcRMT2sgmrPF-4",
+        "name": "Rice Bistro & Sushi",
+        "site": "http://ricebistrodenver.com"
     }],
-    "total": 2,
+    "total": 4,
     "formatted_address": "Englewood, CO, USA",
+    "city": "englewood",
     "location": {
         "lat": 39.6477653,
         "lng": -104.9877597
-    },
-    "city": "englewood"
+    }
+}, {
+    "list": [{
+        "formatted_address": "8000 Preservation Trail, Parker, CO 80134, USA",
+        "location": {
+            "lat": 39.476607,
+            "lng": -104.735425
+        },
+        "city": "Parker",
+        "place_id": "ChIJIy2YwsWTbIcR1LmOTpD6nQU",
+        "name": "Colorado Golf Club",
+        "site": "http://www.coloradogolfclub.com/"
+    }, {
+        "formatted_address": "9749 S Parker Rd, Parker, CO 80134, USA",
+        "location": {
+            "lat": 39.5393001,
+            "lng": -104.7715133
+        },
+        "city": "Parker",
+        "place_id": "ChIJlVooJxSObIcRGwj855zJCac",
+        "name": "Parker Payless Liquors",
+        "site": "http://parkerpaylessliquors.com"
+    }, {
+        "formatted_address": "2939 S Parker Rd, Parker, CO 80134, USA",
+        "location": {
+            "lat": 39.4351887,
+            "lng": -104.7603314
+        },
+        "city": "Parker",
+        "place_id": "EicyOTM5IFMgUGFya2VyIFJkLCBQYXJrZXIsIENPIDgwMTM0LCBVU0EiGxIZChQKEgnffkkMr5ZshxGLRlfocdvtxxD7Fg",
+        "name": "Stroh Ranch Liquors",
+        "site": "http://strohranchliquor.com"
+    }],
+    "total": 3,
+    "formatted_address": "Parker, CO, USA",
+    "city": "parker",
+    "location": {
+        "lat": 39.5186002,
+        "lng": -104.7613633
+    }
+}, {
+    "list": [{
+        "formatted_address": "15745 E Arapahoe Rd, Centennial, CO 80016, USA",
+        "location": {
+            "lat": 39.59679999999999,
+            "lng": -104.80578
+        },
+        "city": "Centennial",
+        "place_id": "ChIJ-0yUayyPbIcRwXO3l2mpxes",
+        "name": "Davidsons Beer, Wine & Spirits - Centennial",
+        "site": "https://www.davidsonscentennial.com"
+    }, {
+        "formatted_address": "7475 E Arapahoe Rd, Centennial, CO 80112, USA",
+        "location": {
+            "lat": 39.5963508,
+            "lng": -104.9032977
+        },
+        "city": "Centennial",
+        "place_id": "ChIJUQgGN4WGbIcRQycY0qXp6pE",
+        "name": "Heritage Wine and Liquor",
+        "site": "http://www.heritagewineandliquor.com"
+    }, {
+        "formatted_address": "8200 S Quebec St a2, Centennial, CO 80112, USA",
+        "location": {
+            "lat": 39.5673818,
+            "lng": -104.9025678
+        },
+        "city": "Centennial",
+        "place_id": "Ei9hMiwgODIwMCBTIFF1ZWJlYyBTdCwgQ2VudGVubmlhbCwgQ08gODAxMTIsIFVTQSIeGhwKFgoUChIJf5tCHkiEbIcRmbfxl1lfxG4SAmEy",
+        "name": "Willow Creek Wine & Spirits (Mojo Beau Co)",
+        "site": ""
+    }],
+    "total": 3,
+    "formatted_address": "Centennial, CO, USA",
+    "city": "centennial",
+    "location": {
+        "lat": 39.5807452,
+        "lng": -104.8771726
+    }
+}, {
+    "list": [{
+        "formatted_address": "3530 County Rd 83, Tabernash, CO 80478, USA",
+        "location": {
+            "lat": 39.9663313,
+            "lng": -105.7842685
+        },
+        "city": "Tabernash",
+        "place_id": "ChIJDTx7REszaocRe77lVPcKB6A",
+        "name": "Devil's Thumb Ranch",
+        "site": "http://devilsthumbranch.com"
+    }],
+    "total": 1,
+    "formatted_address": "Tabernash, CO 80478, USA",
+    "city": "tabernash",
+    "location": {
+        "lat": 39.9935977,
+        "lng": -105.8430661
+    }
+}, {
+    "list": [{
+        "formatted_address": "300 E Valley Rd, Carbondale, CO 81623, USA",
+        "location": {
+            "lat": 39.3912309,
+            "lng": -107.0876587
+        },
+        "city": "Carbondale",
+        "place_id": "ChIJq8-TIJCyQYcRRe6GmhpAhro",
+        "name": "El Jebeverage",
+        "site": ""
+    }, {
+        "formatted_address": "1026 CO-133, Carbondale, CO 81623, USA",
+        "location": {
+            "lat": 39.4005634,
+            "lng": -107.2192343
+        },
+        "city": "Carbondale",
+        "place_id": "ChIJcUU8X5WrQYcRrSzGqimfkpM",
+        "name": "Sopris Liquor & Wine",
+        "site": "https://www.soprisliquor.com/"
+    }],
+    "total": 2,
+    "formatted_address": "Carbondale, CO 81623, USA",
+    "city": "carbondale",
+    "location": {
+        "lat": 39.4022054,
+        "lng": -107.2111628
+    }
+}, {
+    "list": [{
+        "formatted_address": "3847 Evergreen Pkwy, Evergreen, CO 80439, USA",
+        "location": {
+            "lat": 39.6461659,
+            "lng": -105.3403499
+        },
+        "city": "Evergreen",
+        "place_id": "ChIJFfgrhV6ea4cReWjK3gIXjeU",
+        "name": "Evergreen Discount Liquors",
+        "site": "http://evergreendiscountliquors.com"
+    }],
+    "total": 1,
+    "formatted_address": "Evergreen, CO 80439, USA",
+    "city": "evergreen",
+    "location": {
+        "lat": 39.6333213,
+        "lng": -105.3172146
+    }
 }, {
     "list": [{
         "formatted_address": "15500 US-34, Grand Lake, CO 80447, USA",
@@ -1004,82 +1772,154 @@
     }],
     "total": 2,
     "formatted_address": "Grand Lake, CO 80447, USA",
+    "city": "grand lake",
     "location": {
         "lat": 40.25220729999999,
         "lng": -105.8230671
-    },
-    "city": "grand lake"
+    }
 }, {
     "list": [{
-        "formatted_address": "7475 E Arapahoe Rd, Centennial, CO 80112, USA",
+        "formatted_address": "8457 S Yosemite St, Lone Tree, CO 80124, USA",
         "location": {
-            "lat": 39.596468,
-            "lng": -104.9017506
+            "lat": 39.5633063,
+            "lng": -104.8857316
         },
-        "city": "Centennial",
-        "place_id": "ChIJ5SEMEoWGbIcRh-CykOYuXHQ",
-        "name": "Heritage Wine and Liquor",
-        "site": "http://www.heritagewineandliquor.com"
-    }, {
-        "formatted_address": "8200 S Quebec St, Centennial, CO 80112, USA",
-        "location": {
-            "lat": 39.5673818,
-            "lng": -104.9025678
-        },
-        "city": "Centennial",
-        "place_id": "ChIJf5tCHkiEbIcRmbfxl1lfxG4",
-        "name": "Willow Creek Wine & Spirits (Mojo Beau Co)",
-        "site": ""
-    }],
-    "total": 2,
-    "formatted_address": "Centennial, CO, USA",
-    "location": {
-        "lat": 39.5807452,
-        "lng": -104.8771726
-    },
-    "city": "centennial"
-}, {
-    "list": [{
-        "formatted_address": "E Smoky Hill Rd, Colorado, USA",
-        "location": {
-            "lat": 39.60918360000001,
-            "lng": -104.7488575
-        },
-        "city": "",
-        "place_id": "ChIJf1h4bh2MbIcRG6Pz7GNg1is",
-        "name": "Serenity Ridge Liquors",
-        "site": ""
-    }, {
-        "formatted_address": "Janitell Rd, Southeast Colorado Springs, CO 80906, USA",
-        "location": {
-            "lat": 38.7944135,
-            "lng": -104.7898732
-        },
-        "city": "",
-        "place_id": "ChIJwwqOwntEE4cRacSE2jtXLx0",
-        "name": "Total Wine & Liquor",
-        "site": "http://totalwineandliquor.com"
-    }],
-    "total": 2
-}, {
-    "list": [{
-        "formatted_address": "2939 S Parker Rd, Parker, CO 80134, USA",
-        "location": {
-            "lat": 39.4351887,
-            "lng": -104.7603314
-        },
-        "city": "Parker",
-        "place_id": "EicyOTM5IFMgUGFya2VyIFJkLCBQYXJrZXIsIENPIDgwMTM0LCBVU0EiGxIZChQKEgnffkkMr5ZshxGLRlfocdvtxxD7Fg",
-        "name": "Stroh Ranch Liquors",
-        "site": "http://strohranchliquor.com"
+        "city": "Lone Tree",
+        "place_id": "ChIJuXA5Z7GFbIcRGtD8-wXbBYs",
+        "name": "Lukas Liquors Superstore",
+        "site": "https://www.lukasliquorsuperstore.com/#/home"
     }],
     "total": 1,
-    "formatted_address": "Parker, CO, USA",
+    "formatted_address": "Lone Tree, CO, USA",
+    "city": "lone tree",
     "location": {
-        "lat": 39.5186002,
-        "lng": -104.7613633
-    },
-    "city": "parker"
+        "lat": 39.536482,
+        "lng": -104.8970678
+    }
+}, {
+    "list": [{
+        "formatted_address": "820 Castle Valley Blvd #104, New Castle, CO 81647, USA",
+        "location": {
+            "lat": 39.5689032,
+            "lng": -107.5151063
+        },
+        "city": "New Castle",
+        "place_id": "EjYxMDQsIDgyMCBDYXN0bGUgVmFsbGV5IEJsdmQsIE5ldyBDYXN0bGUsIENPIDgxNjQ3LCBVU0EiHxodChYKFAoSCdObtJ1aEkGHEWhYOyDHKUejEgMxMDQ",
+        "name": "New Castle Liquors",
+        "site": "https://www.newcastleliquors.com/"
+    }],
+    "total": 1,
+    "formatted_address": "New Castle, CO 81647, USA",
+    "city": "new castle",
+    "location": {
+        "lat": 39.5727585,
+        "lng": -107.5364443
+    }
+}, {
+    "list": [{
+        "formatted_address": "113 S Elizabeth St, Elizabeth, CO 80107, USA",
+        "location": {
+            "lat": 39.3608082,
+            "lng": -104.6082598
+        },
+        "city": "Elizabeth",
+        "place_id": "ChIJxxd2vLXBbIcRCAaQ4ZBvPCs",
+        "name": "Outback Liquors",
+        "site": ""
+    }],
+    "total": 1,
+    "formatted_address": "Elizabeth, CO 80107, USA",
+    "city": "elizabeth",
+    "location": {
+        "lat": 39.3602662,
+        "lng": -104.596915
+    }
+}, {
+    "list": [{
+        "formatted_address": "665 Frontage Rd #130, Longmont, CO 80501, USA",
+        "location": {
+            "lat": 40.1503491,
+            "lng": -105.121047
+        },
+        "city": "Longmont",
+        "place_id": "ChIJkYqh24j5a4cRFh-B7Uk9B3w",
+        "name": "PJ's Wine & Spirits",
+        "site": "https://www.pjwinespirits.com/"
+    }],
+    "total": 1,
+    "formatted_address": "Longmont, CO, USA",
+    "city": "longmont",
+    "location": {
+        "lat": 40.1672068,
+        "lng": -105.1019275
+    }
+}, {
+    "list": [{
+        "formatted_address": "5850 W 25th Ave, Edgewater, CO 80214, USA",
+        "location": {
+            "lat": 39.7527374,
+            "lng": -105.0612586
+        },
+        "city": "Edgewater",
+        "place_id": "ChIJlTINHBSHa4cRVlDTcqGcg9o",
+        "name": "Sloan's Bar & Grill",
+        "site": "http://sloansbarandgrill.com"
+    }],
+    "total": 1,
+    "formatted_address": "Edgewater, CO 80214, USA",
+    "city": "edgewater",
+    "location": {
+        "lat": 39.75304250000001,
+        "lng": -105.0641503
+    }
+}, {
+    "list": [{
+        "formatted_address": "3971 Big Horn Rd, Vail, CO 81657, USA",
+        "location": {
+            "lat": 39.641958,
+            "lng": -106.303582
+        },
+        "city": "Vail",
+        "place_id": "ChIJGYk6GoFvaocRapoa2yEBN0g",
+        "name": "Spikes Liqour at Simms landing (east Vail Liqour)",
+        "site": ""
+    }],
+    "total": 1,
+    "formatted_address": "Vail, CO 81657, USA",
+    "city": "vail",
+    "location": {
+        "lat": 39.6402638,
+        "lng": -106.3741955
+    }
+}, {
+    "list": [{
+        "formatted_address": "1990 Youngfield St, Lakewood, CO 80215, USA",
+        "location": {
+            "lat": 39.7470233,
+            "lng": -105.1418625
+        },
+        "city": "Lakewood",
+        "place_id": "ChIJcTpiazqEa4cRJveJAK7_9Gw",
+        "name": "Teller's Taproom & Kitchen",
+        "site": ""
+    }, {
+        "formatted_address": "295 S Union Blvd, Lakewood, CO 80228, USA",
+        "location": {
+            "lat": 39.711291,
+            "lng": -105.1336161
+        },
+        "city": "Lakewood",
+        "place_id": "ChIJXz4Yp_uDa4cRZxFDVWd7hcc",
+        "name": "Union Wine & Spirits",
+        "site": "http://unionwinespirits.placeweb.site/"
+    }],
+    "total": 2,
+    "formatted_address": "Lakewood, CO, USA",
+    "city": "lakewood",
+    "location": {
+        "lat": 39.7047095,
+        "lng": -105.0813734
+    }
 }, {
     "list": [{
         "formatted_address": "1401 Miner St, Idaho Springs, CO 80452, USA",
@@ -1094,11 +1934,30 @@
     }],
     "total": 1,
     "formatted_address": "Idaho Springs, CO, USA",
+    "city": "idaho springs",
     "location": {
         "lat": 39.7424881,
         "lng": -105.5136081
-    },
-    "city": "idaho springs"
+    }
+}, {
+    "list": [{
+        "formatted_address": "130 Parry Peak Way, Parshall, CO 80468, USA",
+        "location": {
+            "lat": 39.8848105,
+            "lng": -105.7622127
+        },
+        "city": "Parshall",
+        "place_id": "ChIJWcmHK6PKa4cRchIJk_4mnMo",
+        "name": "Vertical Bistro & Tap",
+        "site": "http://verticalbistro.com"
+    }],
+    "total": 1,
+    "formatted_address": "Parshall, CO 80468, USA",
+    "city": "parshall",
+    "location": {
+        "lat": 40.0571839,
+        "lng": -106.1757043
+    }
 }, {
     "list": [{
         "formatted_address": "8310 E Belleview Ave, Greenwood Village, CO 80111, USA",
@@ -1113,9 +1972,9 @@
     }],
     "total": 1,
     "formatted_address": "Greenwood Village, CO, USA",
+    "city": "greenwood village",
     "location": {
         "lat": 39.6172101,
         "lng": -104.9508141
-    },
-    "city": "greenwood village"
+    }
 }]

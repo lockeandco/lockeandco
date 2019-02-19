@@ -1,62 +1,116 @@
-const adds = require('./locations.json')
+const adds = require('./updatedList-0128')
 const fetch = require('isomorphic-unfetch')
 const fs = require('fs')
 const R = require('ramda')
 const util = require('util')
+const { from, zip, interval, of } = require('rxjs')
+const { ajax } = require('rxjs/ajax')
+const {
+  map,
+  scan,
+  switchMap,
+  concatMap,
+  expand,
+  startWith,
+  pluck,
+  tap: rxjs_tap,
+  mergeMap,
+} = require('rxjs/operators')
 const setTimeoutPromise = util.promisify(setTimeout)
+const { XMLHttpRequest } = require('xmlhttprequest')
+const { isTruthy } = require('ramda-adjunct')
+
+function createXHR() {
+  return new XMLHttpRequest()
+}
+
+const ajax$ = url =>
+  ajax({
+    createXHR, // <--- here
+    url: url,
+    crossDomain: true,
+    withCredentials: false,
+    method: 'GET',
+  })
 
 const url = address =>
   `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=AIzaSyCAHEdspo9nrGHO9GqZxKwPXcjmOWr6mY4`
 
 //Address
-// const formattedAdds = adds
-//   .map(x =>
-//     Object.assign(
-//       {},
-//       {
-//         url: url(
-//           x['Company Address - Work Street']
-//             .split(' ')
-//             .join('+')
-//             .concat(
-//               ',+',
-//               x['Company Address - Work City'].split(' ').join('+'),
-//               ',+',
-//               x['Company Address - Work State']
-//             )
-//         ),
-//       },
+const formattedAdds = adds.map(x =>
+  Object.assign(
+    {},
+    {
+      url: url(
+        x['Company Address - Work Street']
+          .split(' ')
+          .join('+')
+          .concat(
+            ',+',
+            x['Company Address - Work City'].split(' ').join('+'),
+            ',+',
+            x['Company Address - Work State']
+          )
+      ),
+    },
 
-//       {
-//         name: x['Name'],
-//         site: x['Web address - Work'],
-//       }
-//     )
-//   )
+    {
+      name: x['Company'],
+      site: x['Company Web address - Work'],
+    }
+  )
+)
+const faf = R.compose(
+  // R.map(x =>
+  //   ajax$(x.url).pipe(
+  //     pluck('response'),
+  //     map(R.identity)
+  //   )
+  // ),
+  R.pluck('url')
+)
+const list = zip(from(formattedAdds), interval(5000), url => url).pipe(
+  rxjs_tap(x => console.log(x)),
+  switchMap(
+    u =>
+      R.and(isTruthy(u))
+        ? ajax$(u.url).pipe(
+            pluck('response'),
+            map(t => Object.assign({}, t, u))
+          )
+        : of(u)
+  ),
+  scan((acc, cur) => acc.concat(cur), [])
+)
 
-//   .map(async y => {
-//     const { url, name, site } = y
-//     console.log(url)
-//     let timer = 0
-//     const dd = Date.now() + 500
-//     while (dd > Date.now()) {
-//       timer++
+list.subscribe(x =>
+  fs.writeFileSync('./update0128.json', JSON.stringify(x, null, 2))
+)
+
+// console.log(formattedAdds)
+// .map(async y => {
+//   const { url, name, site } = y
+//   console.log(url)
+//   let timer = 0
+//   const dd = Date.now() + 500
+//   while (dd > Date.now()) {
+//     timer++
+//   }
+//   console.log(timer)
+//   return Object.assign(
+//     {},
+//     await fetch(url)
+//       .then(z => z.json())
+//       .then(d => {
+//         console.log(d)
+//         return d
+//       }),
+//     {
+//       name: name,
+//       site: site,
 //     }
-//     console.log(timer)
-//     return Object.assign(
-//       {},
-//       await fetch(url)
-//         .then(z => z.json())
-//         .then(d => {
-//           console.log(d)
-//           return d
-//         }),
-//       {
-//         name: name,
-//         site: site,
-//       }
-//     )
-//   })
+//   )
+// })
 
 // Promise.all(formattedAdds)
 //   .then(x => {
@@ -139,32 +193,32 @@ const url = address =>
 //   )
 //____________________________________________
 
-const cities = require('./gsps.json')
+// const cities = require('./gsps.json')
 
-fs.writeFileSync(
-  'cities.json',
-  R.compose(
-    // R.path(['location']),
-    // R.head,
-    c => JSON.stringify(c, null, 2),
-    R.sortWith([R.ascend(R.prop('formatted_address'))]),
-    R.tap(console.log),
-    R.uniqWith(R.eqBy(R.pick(['formatted_address']))),
-    R.chain(x =>
-      Object.assign(
-        {},
-        { formatted_address: x.formatted_address },
-        { location: R.path(['geometry', 'location'])(x) }
-      )
-    ),
-    R.tap(console.log),
-    R.chain(R.pick(['geometry', 'formatted_address'])),
-    R.tap(console.log),
-    R.flatten,
-    R.tap(console.log),
-    R.pluck(['results'])
-  )(cities)
-)
+// fs.writeFileSync(
+//   'cities.json',
+//   R.compose(
+//     // R.path(['location']),
+//     // R.head,
+//     c => JSON.stringify(c, null, 2),
+//     R.sortWith([R.ascend(R.prop('formatted_address'))]),
+//     R.tap(console.log),
+//     R.uniqWith(R.eqBy(R.pick(['formatted_address']))),
+//     R.chain(x =>
+//       Object.assign(
+//         {},
+//         { formatted_address: x.formatted_address },
+//         { location: R.path(['geometry', 'location'])(x) }
+//       )
+//     ),
+//     R.tap(console.log),
+//     R.chain(R.pick(['geometry', 'formatted_address'])),
+//     R.tap(console.log),
+//     R.flatten,
+//     R.tap(console.log),
+//     R.pluck(['results'])
+//   )(cities)
+// )
 
 //Working
 // fs.writeFileSync(

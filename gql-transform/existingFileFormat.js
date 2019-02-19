@@ -97,7 +97,7 @@ fs.readFile('./citiesNew.json', (err, data) => {
     )(cityList)
   )
 
-  fs.readFile('./formattedAdds.json', async (err, data) => {
+  fs.readFile('./update0128.json', async (err, data) => {
     const addresses = R.chain(
       x =>
         Object.assign(
@@ -193,14 +193,15 @@ fs.readFile('./citiesNew.json', (err, data) => {
           ),
 
           R.flatten,
-        R.tap(console.log),
+          R.tap(console.log),
           R.pluck(['results'])
         )(v)
       )
     )
+    
 
-    //   fs.writeFileSync('./partsas.json', data.toString())
-    // fs.writeFileSync('formattedLocationsNew.json', JSON.stringify(adresses))
+    // fs.writeFileSync('./partsas1.json', data.toString())
+    fs.writeFileSync('formattedLocationsNew2.json', JSON.stringify(addresses))
   })
 })
 // ____________________________________________

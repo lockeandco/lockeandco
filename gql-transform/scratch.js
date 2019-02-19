@@ -1,7 +1,7 @@
 const R = require('ramda')
 const fs = require('fs')
 
-fs.readFile('./formattedLocationsNew.json', (err, data) => {
+fs.readFile('./formattedLocationsNew2.json', (err, data) => {
   const cities = JSON.parse(fs.readFileSync('./cityList.json').toString()).map(
     x =>
       Object.assign({}, x, {

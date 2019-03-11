@@ -24,6 +24,9 @@ import {
   isNil,
   isEmpty,
   map,
+  sort,
+  prop,
+  ascend,
 } from 'ramda'
 import cities from '../lib/cities.json'
 import PlacesSearch from './MaterialFormiklDownshift'
@@ -133,6 +136,7 @@ function CityList(props) {
     map(l => Object.assign({}, { label: toLower(l.name) }, { id: l.place_id })),
     reject(isEmpty),
     reject(isNil),
+    sort(ascend(prop('name'))),
     flatten,
     pluck('list')
   )(locs)
@@ -158,10 +162,14 @@ function CityList(props) {
         : x
     }, selectedItem)
 
+  const sortedLocs = sort(ascend(prop('city')))(locs)
   const showCity = city
-    ? locs.filter(l => (l.city ? toLower(l.city) === toLower(city) : true))
-    : locs
-  // console.log('SHOWCITy', showCity)
+    ? sortedLocs.filter(
+        l => (l.city ? toLower(l.city) === toLower(city) : true)
+      )
+    : sortedLocs
+
+  console.log('SHOWCITy', showCity)
   return (
     <React.Fragment>
       <div className={classes.downshiftMargin}>

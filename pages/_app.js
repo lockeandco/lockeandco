@@ -130,7 +130,7 @@ class MyApp extends App {
     })
   }
   setStore(s) {
-    console.log('SSSSSSS', s)
+    // console.log('SSSSSSS', s)
     this.setState({
       selectedItem: s,
     })

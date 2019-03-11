@@ -107,9 +107,12 @@ const FindUs = props => {
                       // backgroundColor: '#C36D15',
                     }}
                     onClick={() => {
-                      props.handleTest({
-                        lat: 39.743642,
-                        lng: -104.9854807,
+                      setPositionAndZoom({
+                        position: {
+                          lat: 39.743642,
+                          lng: -104.9854807,
+                        },
+                        zoom: 10,
                       })
                       expandList('')
                     }}

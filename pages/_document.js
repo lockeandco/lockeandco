@@ -39,6 +39,8 @@ class MyDocument extends Document {
             integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ"
             crossOrigin="anonymous"
           />
+          <script src="/__/firebase/6.0.2/firebase-app.js" />
+          <script src="/__/firebase/init.js" />
         </Head>
         <body>
           <Main />

@@ -19,7 +19,9 @@
     "classnames": "^2.2.6",
     "delay": "^3.1.0",
     "downshift": "^3.1.5",
-    "firebase": "5.5.5",
+    "firebase": "^6.0.2",
+    "firebase-admin": "^7.3.0",
+    "firebase-functions": "^2.3.1",
     "fullpage-react": "^3.0.33",
     "fuse.js": "^3.3.0",
     "google-map-react": "^1.1.2",
@@ -40,6 +42,7 @@
     "react-cookie": "^3.0.4",
     "react-dom": "^16.4.1",
     "react-easy-swipe": "^0.0.16",
+    "react-firebaseui": "^3.1.2",
     "react-fns": "^1.4.0",
     "react-jss": "^8.6.1",
     "react-mailchimp-subscribe": "^2.0.2",
@@ -55,7 +58,8 @@
     "redux-observable": "^1.0.0",
     "remark-emoji": "^2.0.1",
     "remark-images": "^0.8.1",
-    "rxjs": "^6.2.2",
+    "rxfire": "^3.4.6",
+    "rxjs": "^6.5.2",
     "scroll-swipe": "^0.0.17",
     "xmlhttprequest": "^1.8.0"
   },
@@ -83,6 +87,7 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "export": "npm run build && next export"
+    "export": "yarn build && next export",
+    "deploy": "yarn export && firebase deploy"
   }
 }

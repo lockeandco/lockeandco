@@ -13,7 +13,7 @@ const Layout = dynamic(() => import('../components/Layout.jsx'), {
   ssr: false,
 })
 import theme from '../src/theme'
-import awsconfig from '../src/aws-exports'
+
 let Amplify
 if (typeof window !== 'undefined') {
   Amplify = require('aws-amplify').default

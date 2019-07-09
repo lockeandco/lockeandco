@@ -19,7 +19,7 @@ let Amplify
 if (typeof window !== 'undefined') {
   Amplify = require('aws-amplify').default
   console.log(Amplify)
-  Amplify.configure(awsconfig)
+  Amplify.configure(JSON.parse(AWSCONFIG))
 
   Amplify.Analytics.autoTrack('pageView', {
     // REQUIRED, turn on/off the auto tracking

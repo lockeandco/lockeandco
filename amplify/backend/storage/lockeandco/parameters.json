@@ -1,0 +1,7 @@
+{
+    "tableName": "lockeandco",
+    "partitionKeyName": "itemId",
+    "partitionKeyType": "S",
+    "sortKeyName": "itemTypeTarget",
+    "sortKeyType": "S"
+}

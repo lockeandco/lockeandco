@@ -1,0 +1,270 @@
+type Location {
+	PlaceId: String
+	FormattedAddress: String
+	Location: LatLng
+	City: String
+	BusinessName: String
+	Site: AWSURL
+}
+
+type Message {
+	itemId: String!
+	itemTypeTarget: String!
+	Name: String
+	Email: AWSEmail
+	Type: String
+	Body: String
+}
+
+input CreateMessageInput {
+	itemId: String!
+	itemTypeTarget: String!
+	Name: String
+	Email: AWSEmail
+	Type: String
+	Body: String
+}
+
+
+type LatLng {
+	lat: Float
+	lng: Float
+}
+
+input LatLngInput {
+		lat: Float
+	lng: Float
+}
+
+type City {
+	FormattedAddress: String
+	Location: LatLng
+}
+
+input CreateLocationInput {
+	itemId: String!
+	itemTypeTarget: String!
+	PlaceId: String
+	FormattedAddress: String
+	Location: LatLngInput
+	City: String
+	BusinessName: String
+	Site: AWSURL
+}
+
+input CreateLockeandcoItemInput {
+	itemId: String!
+	itemTypeTarget: String!
+}
+
+input DeleteLocationInput {
+	PlaceId: String!
+}
+
+input DeleteLockeandcoItemInput {
+	itemId: String!
+	itemTypeTarget: String!
+}
+
+
+type LockeandcoItem {
+	itemId: String!
+	itemTypeTarget: String!
+}
+
+type LockeandcoItemConnection {
+	items: [LockeandcoItem]
+	nextToken: String
+}
+
+input ModelBooleanFilterInput {
+	ne: Boolean
+	eq: Boolean
+}
+
+input ModelFloatFilterInput {
+	ne: Float
+	eq: Float
+	le: Float
+	lt: Float
+	ge: Float
+	gt: Float
+	contains: Float
+	notContains: Float
+	between: [Float]
+}
+
+input ModelIDFilterInput {
+	ne: ID
+	eq: ID
+	le: ID
+	lt: ID
+	ge: ID
+	gt: ID
+	contains: ID
+	notContains: ID
+	between: [ID]
+	beginsWith: ID
+}
+
+input ModelIntFilterInput {
+	ne: Int
+	eq: Int
+	le: Int
+	lt: Int
+	ge: Int
+	gt: Int
+	contains: Int
+	notContains: Int
+	between: [Int]
+}
+
+type ModelLocationConnection {
+	items: [Location]
+	nextToken: String
+}
+
+input ModelLocationFilterInput {
+	PlaceId: ModelStringFilterInput
+	FormattedAddress: ModelStringFilterInput
+	Location: ModelLatLngFilterInput
+	BusinessName:  ModelStringFilterInput
+	City: ModelStringFilterInput
+	Site:   ModelStringFilterInput
+	and: [ModelLocationFilterInput]
+	or: [ModelLocationFilterInput]
+	not: ModelLocationFilterInput
+}
+
+input ModelLatLngFilterInput {
+	lat: ModelFloatFilterInput
+	lng: ModelFloatFilterInput
+}
+
+enum ModelSortDirection {
+	ASC
+	DESC
+}
+
+input ModelStringFilterInput {
+	ne: String
+	eq: String
+	le: String
+	lt: String
+	ge: String
+	gt: String
+	contains: String
+	notContains: String
+	between: [String]
+	beginsWith: String
+}
+
+type Mutation {
+	createLocation(input: CreateLocationInput!): Location
+	updateLocation(input: UpdateLocationInput!): Location
+	deleteLocation(input: DeleteLocationInput!): Location
+	createLockeandcoItem(input: CreateLockeandcoItemInput!): LockeandcoItem
+	updateLockeandcoItem(input: UpdateLockeandcoItemInput!): LockeandcoItem
+	deleteLockeandcoItem(input: DeleteLockeandcoItemInput!): LockeandcoItem
+	createMessage(input: CreateMessageInput!): Message @function(name: "messagefromwebform-${env}", region: "us-west-2")
+}
+
+type Query {
+	getLocation(id: ID!): Location
+	listLocations(filter: ModelLocationFilterInput, limit: Int, nextToken: String): ModelLocationConnection
+	getLockeandcoItem(itemId: String!, itemTypeTarget: String!): LockeandcoItem
+	listLockeandcoItems(filter: TableLockeandcoItemFilterInput, limit: Int, nextToken: String): LockeandcoItemConnection
+}
+
+type Subscription {
+	onCreateLocation: Location
+		@aws_subscribe(mutations: ["createLocation"])
+	onUpdateLocation: Location
+		@aws_subscribe(mutations: ["updateLocation"])
+	onDeleteLocation: Location
+		@aws_subscribe(mutations: ["deleteLocation"])
+	onCreateLockeandcoItem(itemId: String, itemTypeTarget: String): LockeandcoItem
+		@aws_subscribe(mutations: ["createLockeandcoItem"])
+	onUpdateLockeandcoItem(itemId: String, itemTypeTarget: String): LockeandcoItem
+		@aws_subscribe(mutations: ["updateLockeandcoItem"])
+	onDeleteLockeandcoItem(itemId: String, itemTypeTarget: String): LockeandcoItem
+		@aws_subscribe(mutations: ["deleteLockeandcoItem"])
+	onCreateMessage: Message
+		@aws_subscribe(mutations: ["createMessage"])
+}
+
+input TableBooleanFilterInput {
+	ne: Boolean
+	eq: Boolean
+}
+
+input TableFloatFilterInput {
+	ne: Float
+	eq: Float
+	le: Float
+	lt: Float
+	ge: Float
+	gt: Float
+	contains: Float
+	notContains: Float
+	between: [Float]
+}
+
+input TableIDFilterInput {
+	ne: ID
+	eq: ID
+	le: ID
+	lt: ID
+	ge: ID
+	gt: ID
+	contains: ID
+	notContains: ID
+	between: [ID]
+	beginsWith: ID
+}
+
+input TableIntFilterInput {
+	ne: Int
+	eq: Int
+	le: Int
+	lt: Int
+	ge: Int
+	gt: Int
+	contains: Int
+	notContains: Int
+	between: [Int]
+}
+
+input TableLockeandcoItemFilterInput {
+	itemId: TableStringFilterInput
+	itemTypeTarget: TableStringFilterInput
+}
+
+input TableStringFilterInput {
+	ne: String
+	eq: String
+	le: String
+	lt: String
+	ge: String
+	gt: String
+	contains: String
+	notContains: String
+	between: [String]
+	beginsWith: String
+}
+
+input UpdateLocationInput {
+	itemId: String!
+	itemTypeTarget: String!
+	PlaceId: String
+	FormattedAddress: String
+	Location: LatLngInput
+	City: String
+	BusinessName: String
+	Site: AWSURL
+}
+
+input UpdateLockeandcoItemInput {
+	itemId: String!
+	itemTypeTarget: String!
+}

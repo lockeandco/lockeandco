@@ -1,0 +1,21 @@
+{
+    "production": {
+        "awscloudformation": {
+            "AuthRoleName": "lockeandco-production-20190705123627-authRole",
+            "UnauthRoleArn": "arn:aws:iam::840164070895:role/lockeandco-production-20190705123627-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::840164070895:role/lockeandco-production-20190705123627-authRole",
+            "Region": "us-west-2",
+            "DeploymentBucketName": "lockeandco-production-20190705123627-deployment",
+            "UnauthRoleName": "lockeandco-production-20190705123627-unauthRole",
+            "StackName": "lockeandco-production-20190705123627",
+            "StackId": "arn:aws:cloudformation:us-west-2:840164070895:stack/lockeandco-production-20190705123627/cd3734c0-9f53-11e9-b757-02e4b221489c"
+        },
+        "categories": {
+            "auth": {
+                "lockeandco135e34ac": {
+                    "hostedUIProviderCreds": "[{\"ProviderName\":\"Facebook\",\"client_id\":\"204710153787383\",\"client_secret\":\"e9e8d87566305e7e45d6eda6ecebba00\"},{\"ProviderName\":\"Google\",\"client_id\":\"919158524159-gnu8u03d7e9sku64qvr5iu991p36kodv.apps.googleusercontent.com\",\"client_secret\":\"_FU-y6aibL7hJeuP6CmTczTv\\\"\"}]"
+                }
+            }
+        }
+    }
+}

@@ -53,7 +53,7 @@ const CheckAge = withStyles(styles)(props => {
           right: `/static/tools.jpg`,
         }}
       >
-        <Typography variant="display3" className={classes.typoHeader}>
+        <Typography variant="body1" className={classes.typoHeader}>
           locke + cO
         </Typography>
         <Typography variant="h6" className={classes.typosubHeader}>

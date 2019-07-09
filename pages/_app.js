@@ -15,10 +15,11 @@ const Layout = dynamic(() => import('../components/Layout.jsx'), {
 import theme from '../src/theme'
 
 let Amplify
+
 if (typeof window !== 'undefined') {
   Amplify = require('aws-amplify').default
   console.log(Amplify)
-  Amplify.configure(JSON.parse(process.env.AWSCONFIG))
+  Amplify.configure(awsconfig)
 
   Amplify.Analytics.autoTrack('pageView', {
     // REQUIRED, turn on/off the auto tracking

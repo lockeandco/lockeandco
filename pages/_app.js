@@ -1,46 +1,56 @@
 import React from 'react'
 import App, { Container } from 'next/app'
-import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
+import { ThemeProvider } from '@material-ui/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
-import JssProvider from 'react-jss/lib/JssProvider'
-import getPageContext from '../src/getPageContext'
-import Layout from '../components/Layout.jsx'
 import Router from 'next/router'
 import { CookiesProvider } from 'react-cookie'
-import { MDXProvider } from '@mdx-js/tag'
 import { withCookies, Cookies } from 'react-cookie'
 import { instanceOf } from 'prop-types'
-import components from '../MDXcomponents'
-import { toLower } from 'ramda'
-
-// Blue
-// (36, 55, 70) - #243746
-// Orange
-// (195, 109, 21) - #C36D15
-// 70% Tan
-// (226, 222, 213) - #E2DED5
-// Tan
-// (214, 209, 196) - #D6D1C4
-// Gold
-// (212, 194, 1) - #D4C201
-
-const theme = createMuiTheme({
-  palette: {
-    primary: {
-      light: '#58687c',
-      main: '#C36D15',
-      dark: '#041828',
-    },
-    secondary: {
-      light: '#c3452e',
-      main: '#C36D15',
-      dark: '#590000',
-    },
-  },
-  nprogress: {
-    color: '#8C0C04',
-  },
+import dynamic from 'next/dynamic'
+import { toLower, compose } from 'ramda'
+import Head from 'next/head'
+const Layout = dynamic(() => import('../components/Layout.jsx'), {
+  ssr: false,
 })
+import theme from '../src/theme'
+import awsconfig from '../src/aws-exports'
+let Amplify
+
+if (typeof window !== 'undefined') {
+  Amplify = require('aws-amplify').default
+  console.log(Amplify)
+  Amplify.configure(awsconfig)
+
+  Amplify.Analytics.autoTrack('pageView', {
+    // REQUIRED, turn on/off the auto tracking
+    enable: true,
+    // OPTIONAL, the event name, by default is 'pageView'
+    eventName: 'pageView',
+    // OPTIONAL, the attributes of the event, you can either pass an object or a function
+    // which allows you to define dynamic attributes
+    attributes: {
+      attr: 'attr',
+    },
+    // when using function
+    // attributes: () => {
+    //    const attr = somewhere();
+    //    return {
+    //        myAttr: attr
+    //    }
+    // },
+    // OPTIONAL, by default is 'multiPageApp'
+    // you need to change it to 'SPA' if your app is a single-page app like React
+    type: 'multiPageApp',
+    // OPTIONAL, the service provider, by default is the AWS Pinpoint
+    provider: 'AWSPinpoint',
+    // OPTIONAL, to get the current page url
+    getUrl: () => {
+      // the default function
+      return window.location.origin + window.location.pathname
+    },
+  })
+}
+// import Layout from '../components/Layout.jsx'
 
 const handleRouteChange = url => {
   console.log('App is changing to: ', url)
@@ -48,12 +58,10 @@ const handleRouteChange = url => {
 const handleHistoryChange = url => {
   console.log('App is changing to: ', url)
 }
-
 class MyApp extends App {
   constructor(props) {
     super(props)
-    this.pageContext = getPageContext()
-    this.pageContext.theme = theme
+
     const { cookies } = props
     this.state = {
       isVerified: cookies.get('isVerified') || false,
@@ -76,18 +84,16 @@ class MyApp extends App {
     this.setPositionAndZoom = this.setPositionAndZoom.bind(this)
     this.setStore = this.setStore.bind(this)
   }
-  // static async getInitialProps(x, y, z) {
-  //   console.log(Object.keys(x))
-  //   console.log(x.ctx)
-  //   // const { isVerified, rememberme } = await cookie.parse(req.headers.cookie)
-  //   // if (!rememberme) redirect({ res, req }, '/spirits')
-  //   return { isVerified: false, rememberme: true }
-  // }
-
+  componentDidMount() {
+    // Remove the server-side injected CSS.
+    const jssStyles = document.querySelector('#jss-server-side')
+    if (jssStyles) {
+      jssStyles.parentNode.removeChild(jssStyles)
+    }
+  }
   static propTypes = {
     cookies: instanceOf(Cookies).isRequired,
   }
-  pageContext = null
 
   async handleVerified(verified) {
     const { cookies } = this.props
@@ -135,25 +141,6 @@ class MyApp extends App {
       selectedItem: s,
     })
   }
-  componentDidMount() {
-    // Remove the server-side injected CSS.
-    const jssStyles = document.querySelector('#jss-server-side')
-    if (jssStyles && jssStyles.parentNode) {
-      jssStyles.parentNode.removeChild(jssStyles)
-    }
-
-    // Router.beforePopState(({ url, as, options }) => {
-    //   // I only want to allow these two routes!
-    //   console.log('BPS', url, as, options)
-    //   if (as !== '/m' || as !== '/other') {
-    //     // Have SSR render bad routes as a 404.
-    //     window.location.href = as
-    //     return false
-    //   }
-
-    //   return true
-    // })
-  }
 
   getStateAndHelpers() {
     const { state, props } = this
@@ -166,7 +153,6 @@ class MyApp extends App {
       setPosition: this.setPosition,
       setPositionAndZoom: this.setPositionAndZoom,
       handleTest: this.handleTest,
-      pageContext: this.pageContext,
       setStore: this.setStore,
     }
   }
@@ -175,50 +161,33 @@ class MyApp extends App {
   render() {
     const { Component, pageProps, router, cookies } = this.props
 
-    // console.log('PCX', this.pageContext)
-
     return (
       <Container>
+        <Head>
+          <title>Locke & Co Distillery</title>
+        </Head>
         <CookiesProvider>
-          {/* Wrap every page in Jss and Theme providers */}
-          <JssProvider
-            registry={this.pageContext.sheetsRegistry}
-            generateClassName={this.pageContext.generateClassName}
-          >
-            {/* MuiThemeProvider makes the theme available down the React
-              tree thanks to React context. */}
-            <MuiThemeProvider
-              theme={this.pageContext.theme}
-              sheetsManager={this.pageContext.sheetsManager}
+          <ThemeProvider theme={theme}>
+            {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+            <CssBaseline />
+            <Layout
+              {...pageProps}
+              {...router}
+              {...this.getStateAndHelpers()}
+              testP={this.state.test}
             >
-              {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-              <CssBaseline />
-              {/* Pass pageContext to the _document though the renderPage enhancer
-                to render collected styles on server side. */}
-              <MDXProvider components={components}>
-                <Layout
-
-                  {...pageProps}
-                  {...router}
-                  {...this.getStateAndHelpers()}
-                  testP={this.state.test}
-                >
-                  <Component
-
-                    {...pageProps}
-                    {...router}
-                    {...this.getStateAndHelpers()}
-
-                    testP={this.state.test}
-                  />
-                </Layout>
-              </MDXProvider>
-            </MuiThemeProvider>
-          </JssProvider>
+              <Component
+                {...pageProps}
+                {...router}
+                {...this.getStateAndHelpers()}
+                testP={this.state.test}
+              />
+            </Layout>
+          </ThemeProvider>
         </CookiesProvider>
       </Container>
     )
   }
 }
 
-export default withCookies(MyApp)
+export default compose(withCookies)(MyApp)

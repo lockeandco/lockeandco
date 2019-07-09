@@ -1,0 +1,20 @@
+{
+    "appName": "lockeandco",
+    "roleName": "pinpointLambdaRoled74ce725",
+    "cloudWatchPolicyName": "cloudWatchPolicyd74ce725",
+    "pinpointPolicyName": "pinpointPolicyd74ce725",
+    "authPolicyName": "pinpoint_amplify_d74ce725",
+    "unauthPolicyName": "pinpoint_amplify_d74ce725",
+    "authRoleName": {
+        "Ref": "AuthRoleName"
+    },
+    "unauthRoleName": {
+        "Ref": "UnauthRoleName"
+    },
+    "authRoleArn": {
+        "Fn::GetAtt": [
+            "AuthRole",
+            "Arn"
+        ]
+    }
+}

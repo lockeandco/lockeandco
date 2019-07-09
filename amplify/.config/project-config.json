@@ -1,0 +1,17 @@
+{
+    "projectName": "lockeandco",
+    "version": "2.0",
+    "frontend": "javascript",
+    "javascript": {
+        "framework": "react",
+        "config": {
+            "SourceDir": "src",
+            "DistributionDir": "out",
+            "BuildCommand": "yarn out",
+            "StartCommand": "yarn dev"
+        }
+    },
+    "providers": [
+        "awscloudformation"
+    ]
+}

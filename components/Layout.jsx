@@ -3,6 +3,7 @@ import { withStyles } from '@material-ui/core/styles'
 import Menu from './Menu'
 import Bottom from '../components/BottomMenu'
 
+import { useTheme } from '@material-ui/styles'
 
 const styles = theme => ({
   background: {
@@ -27,8 +28,9 @@ const styles = theme => ({
 })
 
 const Layout = props => {
+  const theme = useTheme()
   const { classes, ...other } = props
- 
+
   return (
     <Fragment>
       <div className={classes.background} />

@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react'
-import CU from '../components/Contact-Us'
 import Page from '../components/PageLayout'
 import checkCookie from '../components/NoCookie'
 import Router from 'next/router'
@@ -15,6 +14,9 @@ import Grid from '@material-ui/core/Grid'
 import TextField from '@material-ui/core/TextField'
 import Paper from '@material-ui/core/Paper'
 import withPageTransition from '../components/withPageTransition'
+import dynamic from 'next/dynamic'
+
+const CU = dynamic(() => import('../components/Contact-Us'), { ssr: false })
 
 const styles = theme => ({
   typo: {
@@ -174,9 +176,7 @@ const Homepage = props => {
                 paddingBottom: 40,
               }}
             >
-              <Paper className={classes.paper}>
-                <CU {...other} />
-              </Paper>
+              <CU {...other} />
             </div>
             <div
               style={{

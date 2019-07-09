@@ -9,7 +9,7 @@ module.exports = withMDX({
   webpack: function(config, { isServer }) {
     if (!isServer) {
       config.plugins.push(
-        new CopyWebpackPlugin(['./favicon.ico'], {
+        new CopyWebpackPlugin(['./static/favicon.ico'], {
           debug: 'debug',
         })
       )

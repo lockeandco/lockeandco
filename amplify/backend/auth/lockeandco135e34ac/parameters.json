@@ -1,0 +1,80 @@
+{
+    "identityPoolName": "lockeandco135e34ac_identitypool_135e34ac",
+    "allowUnauthenticatedIdentities": true,
+    "lambdaLogPolicy": "lockea_135e34ac_lambda_log_policy",
+    "openIdLambdaRoleName": "lockea_135e34ac_openid_lambda_role",
+    "openIdRolePolicy": "lockea_135e34ac_openid_pass_role_policy",
+    "openIdLambdaIAMPolicy": "lockea_135e34ac_openid_lambda_iam_policy",
+    "openIdLogPolicy": "lockea_135e34ac_openid_lambda_log_policy",
+    "userPoolName": "lockeandco135e34ac_userpool_135e34ac",
+    "autoVerifiedAttributes": [
+        "email"
+    ],
+    "mfaConfiguration": "OFF",
+    "mfaTypes": [
+        "SMS Text Message"
+    ],
+    "roleName": "lockea135e34ac_sns-role",
+    "roleExternalId": "lockea135e34ac_role_external_id",
+    "policyName": "lockea135e34ac-sns-policy",
+    "smsAuthenticationMessage": "Your authentication code is {####}",
+    "smsVerificationMessage": "Your verification code is {####}",
+    "emailVerificationSubject": "Your verification code",
+    "emailVerificationMessage": "Your verification code is {####}",
+    "defaultPasswordPolicy": false,
+    "passwordPolicyMinLength": 8,
+    "passwordPolicyCharacters": [],
+    "requiredAttributes": [
+        "birthdate",
+        "email"
+    ],
+    "userpoolClientName": "lockea135e34ac_app_client",
+    "userpoolClientGenerateSecret": true,
+    "userpoolClientRefreshTokenValidity": 30,
+    "userpoolClientWriteAttributes": [
+        "email"
+    ],
+    "userpoolClientReadAttributes": [
+        "email"
+    ],
+    "mfaLambdaRole": "lockea135e34ac_totp_lambda_role",
+    "mfaLambdaLogPolicy": "lockea135e34ac_totp_lambda_log_policy",
+    "mfaPassRolePolicy": "lockea135e34ac_totp_pass_role_policy",
+    "mfaLambdaIAMPolicy": "lockea135e34ac_totp_lambda_iam_policy",
+    "userpoolClientLambdaRole": "lockea135e34ac_userpoolclient_lambda_role",
+    "userpoolClientLogPolicy": "lockea135e34ac_userpoolclient_lambda_log_policy",
+    "userpoolClientLambdaPolicy": "lockea135e34ac_userpoolclient_lambda_iam_policy",
+    "userpoolClientSetAttributes": false,
+    "resourceName": "lockeandco135e34ac",
+    "authSelections": "identityPoolAndUserPool",
+    "authRoleName": {
+        "Ref": "AuthRoleName"
+    },
+    "unauthRoleName": {
+        "Ref": "UnauthRoleName"
+    },
+    "authRoleArn": {
+        "Fn::GetAtt": [
+            "AuthRole",
+            "Arn"
+        ]
+    },
+    "unauthRoleArn": {
+        "Fn::GetAtt": [
+            "UnauthRole",
+            "Arn"
+        ]
+    },
+    "useDefault": "defaultSocial",
+    "hostedUI": true,
+    "usernameAttributes": [
+        "email"
+    ],
+    "hostedUIDomainName": "lockeandco135e34ac-135e34ac",
+    "authProvidersUserPool": [
+        "Facebook",
+        "Google"
+    ],
+    "hostedUIProviderMeta": "[{\"ProviderName\":\"Facebook\",\"authorize_scopes\":\"public_profile,email\",\"AttributeMapping\":{\"birthdate\":\"birthday\",\"email\":\"email\",\"username\":\"id\"}},{\"ProviderName\":\"Google\",\"authorize_scopes\":\"openid profile email\",\"AttributeMapping\":{\"birthdate\":\"birthdays\",\"email\":\"email\",\"username\":\"sub\"}}]",
+    "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"https://www.lockeand.co/redirect/\",\"http://localhost:3000/redirect/\"],\"LogoutURLs\":[\"https://www.lockeand.co/signout/\",\"http://localhost:3000/signout/\"]}"
+}

@@ -8,7 +8,7 @@ import Checkbox from '@material-ui/core/Checkbox'
 
 const styles = theme => ({
   button: {
-    margin: theme.spacing.unit,
+    margin: theme.spacing(1),
     opacity: 'unset',
   },
   input: {
@@ -16,14 +16,14 @@ const styles = theme => ({
     opacity: 'unset',
   },
   yesButton: {
-    margin: theme.spacing.unit,
+    margin: theme.spacing(1),
     backgroundColor: 'rgba(195, 109, 21, 1)',
     color: 'rgb(36, 55, 70)',
     fontWeight: 600,
     opacity: 'unset',
   },
   noButton: {
-    margin: theme.spacing.unit,
+    margin: theme.spacing(1),
     backgroundColor: 'rgba(36, 55, 70, 1)',
     color: 'rgb(195, 109, 21)',
     fontWeight: 600,

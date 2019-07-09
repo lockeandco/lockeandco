@@ -44,6 +44,7 @@
     "react-dom": "^16.8.6",
     "react-easy-swipe": "^0.0.16",
     "react-fns": "^1.4.0",
+    "react-google-recaptcha": "^1.0.5",
     "react-jss": "^8.6.1",
     "react-mailchimp-subscribe": "^2.0.2",
     "react-pose": "^2.2.0",

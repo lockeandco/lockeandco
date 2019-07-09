@@ -16,7 +16,7 @@ import theme from '../src/theme'
 
 
 let Amplify
-//
+
 if (typeof window !== 'undefined') {
   Amplify = require('aws-amplify').default
   console.log(Amplify)

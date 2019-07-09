@@ -14,7 +14,9 @@ const Layout = dynamic(() => import('../components/Layout.jsx'), {
 })
 import theme from '../src/theme'
 
+
 let Amplify
+//h
 if (typeof window !== 'undefined') {
   Amplify = require('aws-amplify').default
   console.log(Amplify)

@@ -1,21 +1,3 @@
-# Next.js example
+# Locke+Co
 
-## How to use
-
-Download the example [or clone the repo](https://github.com/mui-org/material-ui):
-
-```bash
-curl https://codeload.github.com/mui-org/material-ui/tar.gz/master | tar -xz --strip=2  material-ui-master/examples/nextjs
-cd nextjs
-```
-
-Install it and run:
-
-```bash
-npm install
-npm run dev
-```
-
-## The idea behind the example
-
-[Next.js](https://github.com/zeit/next.js) is a framework for server-rendered React apps.
+[![Netlify Status](https://api.netlify.com/api/v1/badges/652f2d67-fda7-4d19-a156-b52da6b491eb/deploy-status)](https://app.netlify.com/sites/ecstatic-stonebraker-290921/deploys)

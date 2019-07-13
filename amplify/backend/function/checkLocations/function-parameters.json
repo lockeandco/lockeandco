@@ -1,0 +1,62 @@
+{
+    "permissions": {
+        "auth": {
+            "lockeandco135e34ac": [
+                "create",
+                "read",
+                "update",
+                "delete"
+            ]
+        },
+        "analytics": {
+            "lockeandco": [
+                "create",
+                "read",
+                "update",
+                "delete"
+            ]
+        },
+        "api": {
+            "lockeandco": [
+                "create",
+                "read",
+                "update",
+                "delete"
+            ]
+        },
+        "storage": {
+            "lockeandco": [
+                "create",
+                "read",
+                "update",
+                "delete"
+            ]
+        },
+        "function": {
+            "messagefromwebform": [
+                "create",
+                "read",
+                "update",
+                "delete"
+            ],
+            "getLocations": [
+                "create",
+                "read",
+                "update",
+                "delete"
+            ],
+            "updateLocations": [
+                "create",
+                "read",
+                "update",
+                "delete"
+            ],
+            "getLastCheck": [
+                "create",
+                "read",
+                "update",
+                "delete"
+            ]
+        }
+    }
+}

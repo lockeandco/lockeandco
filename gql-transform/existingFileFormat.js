@@ -198,7 +198,6 @@ fs.readFile('./citiesNew.json', (err, data) => {
         )(v)
       )
     )
-    
 
     // fs.writeFileSync('./partsas1.json', data.toString())
     fs.writeFileSync('formattedLocationsNew2.json', JSON.stringify(addresses))

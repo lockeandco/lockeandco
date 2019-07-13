@@ -21,6 +21,10 @@
 			"Type": "String",
 			"Default": "apilockeandcoGraphQLAPIIdOutput"
 		},
+		"apilockeandcoGraphQLAPIEndpointOutput": {
+			"Type": "String",
+			"Default": "apilockeandcoGraphQLAPIEndpointOutput"
+		},
 		"storagelockeandcoName": {
 			"Type": "String",
 			"Default": "storagelockeandcoName"
@@ -28,6 +32,10 @@
 		"storagelockeandcoArn": {
 			"Type": "String",
 			"Default": "storagelockeandcoArn"
+		},
+		"functioncheckLocationsName": {
+			"Type": "String",
+			"Default": "functioncheckLocationsName"
 		}
 	},
 	"Conditions": {
@@ -52,12 +60,12 @@
 				"FunctionName": {
 					"Fn::If": [
 						"ShouldNotCreateEnvResources",
-						"messagefromwebform",
+						"updateLocations",
 						{
 							"Fn::Join": [
 								"",
 								[
-									"messagefromwebform",
+									"updateLocations",
 									"-",
 									{
 										"Ref": "env"
@@ -72,9 +80,6 @@
 						"ENV": {
 							"Ref": "env"
 						},
-						"REGION": {
-							"Ref": "AWS::Region"
-						},
 						"AUTH_LOCKEANDCO135E34AC_USERPOOLID": {
 							"Ref": "authlockeandco135e34acUserPoolId"
 						},
@@ -87,11 +92,20 @@
 						"API_LOCKEANDCO_GRAPHQLAPIIDOUTPUT": {
 							"Ref": "apilockeandcoGraphQLAPIIdOutput"
 						},
+						"API_LOCKEANDCO_GRAPHQLAPIENDPOINTOUTPUT": {
+							"Ref": "apilockeandcoGraphQLAPIEndpointOutput"
+						},
 						"STORAGE_LOCKEANDCO_NAME": {
 							"Ref": "storagelockeandcoName"
 						},
 						"STORAGE_LOCKEANDCO_ARN": {
 							"Ref": "storagelockeandcoArn"
+						},
+						"FUNCTION_CHECKLOCATIONS_NAME": {
+							"Ref": "functioncheckLocationsName"
+						},
+						"REGION": {
+							"Ref": "AWS::Region"
 						}
 					}
 				},
@@ -105,7 +119,7 @@
 				"Timeout": "25",
 				"Code": {
 					"S3Bucket": "lockeandco-production-20190705123627-deployment",
-					"S3Key": "amplify-builds/messagefromwebform-456369365a7951655573-build.zip"
+					"S3Key": "amplify-builds/updateLocations-5944713756726a514a31-build.zip"
 				}
 			}
 		},
@@ -115,12 +129,12 @@
 				"RoleName": {
 					"Fn::If": [
 						"ShouldNotCreateEnvResources",
-						"lockeandcoLambdaRolea74b75e4",
+						"lockeandcoLambdaRole886faaa0",
 						{
 							"Fn::Join": [
 								"",
 								[
-									"lockeandcoLambdaRolea74b75e4",
+									"lockeandcoLambdaRole886faaa0",
 									"-",
 									{
 										"Ref": "env"
@@ -279,14 +293,24 @@
 								"cognito-idp:UpdateGroup",
 								"cognito-idp:AdminUpdateAuthEventFeedback",
 								"cognito-idp:UpdateDeviceStatus",
-								"cognito-idp:UpdateUserPool"
+								"cognito-idp:UpdateUserPool",
+								"cognito-idp:DeleteUserPoolDomain",
+								"cognito-idp:DeleteResourceServer",
+								"cognito-idp:DeleteGroup",
+								"cognito-idp:AdminDeleteUserAttributes",
+								"cognito-idp:DeleteUserPoolClient",
+								"cognito-idp:DeleteUserAttributes",
+								"cognito-idp:DeleteUserPool",
+								"cognito-idp:AdminDeleteUser",
+								"cognito-idp:DeleteIdentityProvider",
+								"cognito-idp:DeleteUser"
 							],
 							"Resource": [
 								{
 									"Fn::Join": [
 										"",
 										[
-											"arn:aws:cognito-idp::",
+											"arn:aws:cognito-idp:",
 											{
 												"Ref": "AWS::Region"
 											},
@@ -311,7 +335,8 @@
 								"mobiletargeting:Send*",
 								"mobiletargeting:Get*",
 								"mobiletargeting:List*",
-								"mobiletargeting:Update*"
+								"mobiletargeting:Update*",
+								"mobiletargeting:Delete*"
 							],
 							"Resource": [
 								{
@@ -343,7 +368,8 @@
 								"appsync:GraphQL",
 								"appsync:Get*",
 								"appsync:List*",
-								"appsync:Update*"
+								"appsync:Update*",
+								"appsync:Delete*"
 							],
 							"Resource": [
 								{
@@ -361,7 +387,8 @@
 											":apis/",
 											{
 												"Ref": "apilockeandcoGraphQLAPIIdOutput"
-											}
+											},
+											"/*"
 										]
 									]
 								}
@@ -380,7 +407,8 @@
 								"dynamodb:Scan",
 								"dynamodb:Query",
 								"dynamodb:Update*",
-								"dynamodb:RestoreTable*"
+								"dynamodb:RestoreTable*",
+								"dynamodb:Delete*"
 							],
 							"Resource": [
 								{

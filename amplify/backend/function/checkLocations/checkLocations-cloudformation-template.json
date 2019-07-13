@@ -21,6 +21,10 @@
 			"Type": "String",
 			"Default": "apilockeandcoGraphQLAPIIdOutput"
 		},
+		"apilockeandcoGraphQLAPIEndpointOutput": {
+			"Type": "String",
+			"Default": "apilockeandcoGraphQLAPIEndpointOutput"
+		},
 		"storagelockeandcoName": {
 			"Type": "String",
 			"Default": "storagelockeandcoName"
@@ -28,6 +32,26 @@
 		"storagelockeandcoArn": {
 			"Type": "String",
 			"Default": "storagelockeandcoArn"
+		},
+		"functionmessagefromwebformName": {
+			"Type": "String",
+			"Default": "functionmessagefromwebformName"
+		},
+		"functioncheckLocationsName": {
+			"Type": "String",
+			"Default": "functioncheckLocationsName"
+		},
+		"functiongetLocationsName": {
+			"Type": "String",
+			"Default": "functiongetLocationsName"
+		},
+		"functionupdateLocationsName": {
+			"Type": "String",
+			"Default": "functionupdateLocationsName"
+		},
+		"functiongetLastCheckName": {
+			"Type": "String",
+			"Default": "functiongetLastCheckName"
 		}
 	},
 	"Conditions": {
@@ -52,12 +76,12 @@
 				"FunctionName": {
 					"Fn::If": [
 						"ShouldNotCreateEnvResources",
-						"messagefromwebform",
+						"checkLocations",
 						{
 							"Fn::Join": [
 								"",
 								[
-									"messagefromwebform",
+									"checkLocations",
 									"-",
 									{
 										"Ref": "env"
@@ -72,9 +96,6 @@
 						"ENV": {
 							"Ref": "env"
 						},
-						"REGION": {
-							"Ref": "AWS::Region"
-						},
 						"AUTH_LOCKEANDCO135E34AC_USERPOOLID": {
 							"Ref": "authlockeandco135e34acUserPoolId"
 						},
@@ -87,11 +108,32 @@
 						"API_LOCKEANDCO_GRAPHQLAPIIDOUTPUT": {
 							"Ref": "apilockeandcoGraphQLAPIIdOutput"
 						},
+						"API_LOCKEANDCO_GRAPHQLAPIENDPOINTOUTPUT": {
+							"Ref": "apilockeandcoGraphQLAPIEndpointOutput"
+						},
 						"STORAGE_LOCKEANDCO_NAME": {
 							"Ref": "storagelockeandcoName"
 						},
 						"STORAGE_LOCKEANDCO_ARN": {
 							"Ref": "storagelockeandcoArn"
+						},
+						"FUNCTION_MESSAGEFROMWEBFORM_NAME": {
+							"Ref": "functionmessagefromwebformName"
+						},
+						"FUNCTION_CHECKLOCATIONS_NAME": {
+							"Ref": "functioncheckLocationsName"
+						},
+						"FUNCTION_GETLOCATIONS_NAME": {
+							"Ref": "functiongetLocationsName"
+						},
+						"FUNCTION_UPDATELOCATIONS_NAME": {
+							"Ref": "functionupdateLocationsName"
+						},
+						"FUNCTION_GETLASTCHECK_NAME": {
+							"Ref": "functiongetLastCheckName"
+						},
+						"REGION": {
+							"Ref": "AWS::Region"
 						}
 					}
 				},
@@ -105,7 +147,7 @@
 				"Timeout": "25",
 				"Code": {
 					"S3Bucket": "lockeandco-production-20190705123627-deployment",
-					"S3Key": "amplify-builds/messagefromwebform-456369365a7951655573-build.zip"
+					"S3Key": "amplify-builds/checkLocations-7a773039324e33726c7a-build.zip"
 				}
 			}
 		},
@@ -115,12 +157,12 @@
 				"RoleName": {
 					"Fn::If": [
 						"ShouldNotCreateEnvResources",
-						"lockeandcoLambdaRolea74b75e4",
+						"lockeandcoLambdaRole466dadb3",
 						{
 							"Fn::Join": [
 								"",
 								[
-									"lockeandcoLambdaRolea74b75e4",
+									"lockeandcoLambdaRole466dadb3",
 									"-",
 									{
 										"Ref": "env"
@@ -279,14 +321,24 @@
 								"cognito-idp:UpdateGroup",
 								"cognito-idp:AdminUpdateAuthEventFeedback",
 								"cognito-idp:UpdateDeviceStatus",
-								"cognito-idp:UpdateUserPool"
+								"cognito-idp:UpdateUserPool",
+								"cognito-idp:DeleteUserPoolDomain",
+								"cognito-idp:DeleteResourceServer",
+								"cognito-idp:DeleteGroup",
+								"cognito-idp:AdminDeleteUserAttributes",
+								"cognito-idp:DeleteUserPoolClient",
+								"cognito-idp:DeleteUserAttributes",
+								"cognito-idp:DeleteUserPool",
+								"cognito-idp:AdminDeleteUser",
+								"cognito-idp:DeleteIdentityProvider",
+								"cognito-idp:DeleteUser"
 							],
 							"Resource": [
 								{
 									"Fn::Join": [
 										"",
 										[
-											"arn:aws:cognito-idp::",
+											"arn:aws:cognito-idp:",
 											{
 												"Ref": "AWS::Region"
 											},
@@ -311,7 +363,8 @@
 								"mobiletargeting:Send*",
 								"mobiletargeting:Get*",
 								"mobiletargeting:List*",
-								"mobiletargeting:Update*"
+								"mobiletargeting:Update*",
+								"mobiletargeting:Delete*"
 							],
 							"Resource": [
 								{
@@ -343,7 +396,8 @@
 								"appsync:GraphQL",
 								"appsync:Get*",
 								"appsync:List*",
-								"appsync:Update*"
+								"appsync:Update*",
+								"appsync:Delete*"
 							],
 							"Resource": [
 								{
@@ -361,7 +415,8 @@
 											":apis/",
 											{
 												"Ref": "apilockeandcoGraphQLAPIIdOutput"
-											}
+											},
+											"/*"
 										]
 									]
 								}
@@ -380,11 +435,152 @@
 								"dynamodb:Scan",
 								"dynamodb:Query",
 								"dynamodb:Update*",
-								"dynamodb:RestoreTable*"
+								"dynamodb:RestoreTable*",
+								"dynamodb:Delete*"
 							],
 							"Resource": [
 								{
 									"Ref": "storagelockeandcoArn"
+								}
+							]
+						},
+						{
+							"Effect": "Allow",
+							"Action": [
+								"lambda:Create*",
+								"lambda:Put*",
+								"lambda:Add*",
+								"lambda:Get*",
+								"lambda:List*",
+								"lambda:Invoke*",
+								"lambda:Update*",
+								"lambda:Delete*",
+								"lambda:Remove*"
+							],
+							"Resource": [
+								{
+									"Fn::Join": [
+										"",
+										[
+											"arn:aws:lambda:",
+											{
+												"Ref": "AWS::Region"
+											},
+											":",
+											{
+												"Ref": "AWS::AccountId"
+											},
+											":function:",
+											{
+												"Ref": "functionmessagefromwebformName"
+											}
+										]
+									]
+								}
+							]
+						},
+						{
+							"Effect": "Allow",
+							"Action": [
+								"lambda:Create*",
+								"lambda:Put*",
+								"lambda:Add*",
+								"lambda:Get*",
+								"lambda:List*",
+								"lambda:Invoke*",
+								"lambda:Update*",
+								"lambda:Delete*",
+								"lambda:Remove*"
+							],
+							"Resource": [
+								{
+									"Fn::Join": [
+										"",
+										[
+											"arn:aws:lambda:",
+											{
+												"Ref": "AWS::Region"
+											},
+											":",
+											{
+												"Ref": "AWS::AccountId"
+											},
+											":function:",
+											{
+												"Ref": "functiongetLocationsName"
+											}
+										]
+									]
+								}
+							]
+						},
+						{
+							"Effect": "Allow",
+							"Action": [
+								"lambda:Create*",
+								"lambda:Put*",
+								"lambda:Add*",
+								"lambda:Get*",
+								"lambda:List*",
+								"lambda:Invoke*",
+								"lambda:Update*",
+								"lambda:Delete*",
+								"lambda:Remove*"
+							],
+							"Resource": [
+								{
+									"Fn::Join": [
+										"",
+										[
+											"arn:aws:lambda:",
+											{
+												"Ref": "AWS::Region"
+											},
+											":",
+											{
+												"Ref": "AWS::AccountId"
+											},
+											":function:",
+											{
+												"Ref": "functionupdateLocationsName"
+											}
+										]
+									]
+								}
+							]
+						},
+						{
+							"Effect": "Allow",
+							"Action": [
+								"lambda:Create*",
+								"lambda:Put*",
+								"lambda:Add*",
+								"lambda:Get*",
+								"lambda:List*",
+								"lambda:Invoke*",
+								"lambda:Update*",
+								"lambda:Delete*",
+								"lambda:Remove*"
+							],
+							"Resource": [
+								{
+									"Fn::Join": [
+										"",
+										[
+											"arn:aws:lambda:",
+											{
+												"Ref": "AWS::Region"
+											},
+											":",
+											{
+												"Ref": "AWS::AccountId"
+											},
+											":function:",
+											{
+												"Ref": "functiongetLastCheckName"
+											}
+										]
+									]
 								}
 							]
 						}

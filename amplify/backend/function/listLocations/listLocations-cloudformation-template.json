@@ -5,10 +5,6 @@
 		"env": {
 			"Type": "String"
 		},
-		"apilockeandcoGraphQLAPIIdOutput": {
-			"Type": "String",
-			"Default": "apilockeandcoGraphQLAPIIdOutput"
-		},
 		"storagelockeandcoName": {
 			"Type": "String",
 			"Default": "storagelockeandcoName"
@@ -40,12 +36,12 @@
 				"FunctionName": {
 					"Fn::If": [
 						"ShouldNotCreateEnvResources",
-						"getLastCheck",
+						"listLocations",
 						{
 							"Fn::Join": [
 								"",
 								[
-									"getLastCheck",
+									"listLocations",
 									"-",
 									{
 										"Ref": "env"
@@ -63,9 +59,6 @@
 						"REGION": {
 							"Ref": "AWS::Region"
 						},
-						"API_LOCKEANDCO_GRAPHQLAPIIDOUTPUT": {
-							"Ref": "apilockeandcoGraphQLAPIIdOutput"
-						},
 						"STORAGE_LOCKEANDCO_NAME": {
 							"Ref": "storagelockeandcoName"
 						},
@@ -80,11 +73,11 @@
 						"Arn"
 					]
 				},
-				"Runtime": "nodejs8.10",
+				"Runtime": "nodejs10.x",
 				"Timeout": "25",
 				"Code": {
 					"S3Bucket": "lockeandco-production-20190705123627-deployment",
-					"S3Key": "amplify-builds/getLastCheck-1563073271-latest-build.zip"
+					"S3Key": "amplify-builds/listLocations-446f66334c7a5965517a-build.zip"
 				}
 			}
 		},
@@ -94,12 +87,12 @@
 				"RoleName": {
 					"Fn::If": [
 						"ShouldNotCreateEnvResources",
-						"lockeandcoLambdaRolef3880d33",
+						"lockeandcoLambdaRole3641e539",
 						{
 							"Fn::Join": [
 								"",
 								[
-									"lockeandcoLambdaRolef3880d33",
+									"lockeandcoLambdaRole3641e539",
 									"-",
 									{
 										"Ref": "env"
@@ -188,38 +181,6 @@
 						{
 							"Effect": "Allow",
 							"Action": [
-								"appsync:Create*",
-								"appsync:StartSchemaCreation",
-								"appsync:GraphQL",
-								"appsync:Get*",
-								"appsync:List*",
-								"appsync:Update*"
-							],
-							"Resource": [
-								{
-									"Fn::Join": [
-										"",
-										[
-											"arn:aws:appsync:",
-											{
-												"Ref": "AWS::Region"
-											},
-											":",
-											{
-												"Ref": "AWS::AccountId"
-											},
-											":apis/",
-											{
-												"Ref": "apilockeandcoGraphQLAPIIdOutput"
-											}
-										]
-									]
-								}
-							]
-						},
-						{
-							"Effect": "Allow",
-							"Action": [
 								"dynamodb:Put*",
 								"dynamodb:Create*",
 								"dynamodb:BatchWriteItem",
@@ -260,6 +221,11 @@
 		"Region": {
 			"Value": {
 				"Ref": "AWS::Region"
+			}
+		},
+		"LambdaExecutionRole": {
+			"Value": {
+				"Ref": "LambdaExecutionRole"
 			}
 		}
 	}

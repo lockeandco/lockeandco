@@ -15,6 +15,9 @@
                 "lockeandco135e34ac": {
                     "hostedUIProviderCreds": "[{\"ProviderName\":\"Facebook\",\"client_id\":\"204710153787383\",\"client_secret\":\"e9e8d87566305e7e45d6eda6ecebba00\"},{\"ProviderName\":\"Google\",\"client_id\":\"919158524159-gnu8u03d7e9sku64qvr5iu991p36kodv.apps.googleusercontent.com\",\"client_secret\":\"_FU-y6aibL7hJeuP6CmTczTv\\\"\"}]"
                 }
+            },
+            "function": {
+                "messagefromwebform": {}
             }
         }
     }

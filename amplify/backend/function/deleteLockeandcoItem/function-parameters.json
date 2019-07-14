@@ -1,0 +1,10 @@
+{
+    "permissions": {
+        "storage": {
+            "lockeandco": [
+                "read",
+                "delete"
+            ]
+        }
+    }
+}

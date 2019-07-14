@@ -14,7 +14,7 @@ export const getLocation = `query GetLocation($id: ID!) {
     Site
   }
 }
-`
+`;
 export const listLocations = `query ListLocations(
   $filter: ModelLocationFilterInput
   $limit: Int
@@ -35,14 +35,14 @@ export const listLocations = `query ListLocations(
     nextToken
   }
 }
-`
+`;
 export const getLockeandcoItem = `query GetLockeandcoItem($itemId: String!, $itemTypeTarget: String!) {
   getLockeandcoItem(itemId: $itemId, itemTypeTarget: $itemTypeTarget) {
     itemId
     itemTypeTarget
   }
 }
-`
+`;
 export const listLockeandcoItems = `query ListLockeandcoItems(
   $filter: TableLockeandcoItemFilterInput
   $limit: Int
@@ -56,4 +56,12 @@ export const listLockeandcoItems = `query ListLockeandcoItems(
     nextToken
   }
 }
-`
+`;
+export const getLastCheck = `query GetLastCheck($itemId: String!, $itemTypeTarget: String!) {
+  getLastCheck(itemId: $itemId, itemTypeTarget: $itemTypeTarget) {
+    itemId
+    itemTypeTarget
+    date
+  }
+}
+`;

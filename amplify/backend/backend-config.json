@@ -1,198 +1,120 @@
 {
-    "auth": {
-        "lockeandco135e34ac": {
-            "service": "Cognito",
-            "providerPlugin": "awscloudformation"
-        }
-    },
-    "analytics": {
-        "lockeandco": {
-            "service": "Pinpoint",
-            "providerPlugin": "awscloudformation"
-        }
-    },
-    "api": {
-        "lockeandco": {
-            "service": "AppSync",
-            "providerPlugin": "awscloudformation",
-            "output": {
-                "securityType": "API_KEY"
-            }
-        }
-    },
-    "storage": {
-        "lockeandco": {
-            "service": "DynamoDB",
-            "providerPlugin": "awscloudformation"
-        }
-    },
-    "function": {
-        "messagefromwebform": {
-            "service": "Lambda",
-            "providerPlugin": "awscloudformation",
-            "build": true,
-            "dependsOn": [
-                {
-                    "category": "auth",
-                    "resourceName": "lockeandco135e34ac",
-                    "attributes": [
-                        "UserPoolId"
-                    ]
-                },
-                {
-                    "category": "analytics",
-                    "resourceName": "lockeandco",
-                    "attributes": [
-                        "Id",
-                        "Region"
-                    ]
-                },
-                {
-                    "category": "api",
-                    "resourceName": "lockeandco",
-                    "attributes": [
-                        "GraphQLAPIIdOutput"
-                    ]
-                },
-                {
-                    "category": "storage",
-                    "resourceName": "lockeandco",
-                    "attributes": [
-                        "Name",
-                        "Arn"
-                    ]
-                }
-            ]
-        },
-        "checkLocations": {
-            "service": "Lambda",
-            "providerPlugin": "awscloudformation",
-            "build": true,
-            "dependsOn": [
-                {
-                    "category": "auth",
-                    "resourceName": "lockeandco135e34ac",
-                    "attributes": [
-                        "UserPoolId"
-                    ]
-                },
-                {
-                    "category": "analytics",
-                    "resourceName": "lockeandco",
-                    "attributes": [
-                        "Id",
-                        "Region"
-                    ]
-                },
-                {
-                    "category": "function",
-                    "resourceName": "messagefromwebform",
-                    "attributes": [
-                        "Name"
-                    ]
-                },
-                {
-                    "category": "function",
-                    "resourceName": "getLocations",
-                    "attributes": [
-                        "Name"
-                    ]
-                },
-                {
-                    "category": "function",
-                    "resourceName": "updateLocations",
-                    "attributes": [
-                        "Name"
-                    ]
-                },
-                {
-                    "category": "function",
-                    "resourceName": "getLastCheck",
-                    "attributes": [
-                        "Name"
-                    ]
-                }
-            ]
-        },
-        "getLocations": {
-            "service": "Lambda",
-            "providerPlugin": "awscloudformation",
-            "build": true,
-            "dependsOn": [
-                {
-                    "category": "auth",
-                    "resourceName": "lockeandco135e34ac",
-                    "attributes": [
-                        "UserPoolId"
-                    ]
-                },
-                {
-                    "category": "analytics",
-                    "resourceName": "lockeandco",
-                    "attributes": [
-                        "Id",
-                        "Region"
-                    ]
-                },
-                {
-                    "category": "function",
-                    "resourceName": "updateLocations",
-                    "attributes": [
-                        "Name"
-                    ]
-                }
-            ]
-        },
-        "updateLocations": {
-            "service": "Lambda",
-            "providerPlugin": "awscloudformation",
-            "build": true,
-            "dependsOn": [
-                {
-                    "category": "auth",
-                    "resourceName": "lockeandco135e34ac",
-                    "attributes": [
-                        "UserPoolId"
-                    ]
-                },
-                {
-                    "category": "analytics",
-                    "resourceName": "lockeandco",
-                    "attributes": [
-                        "Id",
-                        "Region"
-                    ]
-                }
-            ]
-        },
-        "getLastCheck": {
-            "service": "Lambda",
-            "providerPlugin": "awscloudformation",
-            "build": true,
-            "dependsOn": [
-                {
-                    "category": "auth",
-                    "resourceName": "lockeandco135e34ac",
-                    "attributes": [
-                        "UserPoolId"
-                    ]
-                },
-                {
-                    "category": "analytics",
-                    "resourceName": "lockeandco",
-                    "attributes": [
-                        "Id",
-                        "Region"
-                    ]
-                },
-                {
-                    "category": "function",
-                    "resourceName": "updateLocations",
-                    "attributes": [
-                        "Name"
-                    ]
-                }
-            ]
-        }
-    }
+	"auth": {
+		"lockeandco135e34ac": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation"
+		}
+	},
+	"analytics": {
+		"lockeandco": {
+			"service": "Pinpoint",
+			"providerPlugin": "awscloudformation"
+		}
+	},
+	"api": {
+		"lockeandco": {
+			"service": "AppSync",
+			"providerPlugin": "awscloudformation",
+			"output": {
+				"securityType": "API_KEY"
+			}
+		}
+	},
+	"storage": {
+		"lockeandco": {
+			"service": "DynamoDB",
+			"providerPlugin": "awscloudformation"
+		}
+	},
+	"function": {
+		"messagefromwebform": {
+			"service": "Lambda",
+			"providerPlugin": "awscloudformation",
+			"build": true,
+			"dependsOn": [
+				{
+					"category": "auth",
+					"resourceName": "lockeandco135e34ac",
+					"attributes": [
+						"UserPoolId"
+					]
+				},
+				{
+					"category": "analytics",
+					"resourceName": "lockeandco",
+					"attributes": [
+						"Id",
+						"Region"
+					]
+				},
+				{
+					"category": "api",
+					"resourceName": "lockeandco",
+					"attributes": [
+						"GraphQLAPIIdOutput"
+					]
+				},
+				{
+					"category": "storage",
+					"resourceName": "lockeandco",
+					"attributes": [
+						"Name",
+						"Arn"
+					]
+				}
+			]
+		},
+		"listLocations": {
+			"service": "Lambda",
+			"providerPlugin": "awscloudformation",
+			"build": true,
+			"dependsOn": [
+				{
+					"category": "storage",
+					"resourceName": "lockeandco",
+					"attributes": [
+						"Name",
+						"Arn"
+					]
+				}
+			]
+		},
+		"deleteLockeandcoItem": {
+			"service": "Lambda",
+			"providerPlugin": "awscloudformation",
+			"build": true,
+			"dependsOn": [
+				{
+					"category": "storage",
+					"resourceName": "lockeandco",
+					"attributes": [
+						"Name",
+						"Arn"
+					]
+				}
+			]
+		},
+		"getLastCheck": {
+			"service": "Lambda",
+			"providerPlugin": "awscloudformation",
+			"build": true,
+			"dependsOn": [
+				{
+					"category": "api",
+					"resourceName": "lockeandco",
+					"attributes": [
+						"GraphQLAPIIdOutput"
+					]
+				},
+				{
+					"category": "storage",
+					"resourceName": "lockeandco",
+					"attributes": [
+						"Name",
+						"Arn"
+					]
+				}
+			]
+		}
+	}
 }

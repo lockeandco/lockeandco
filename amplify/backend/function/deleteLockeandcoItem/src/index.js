@@ -2,7 +2,6 @@
 You can access the following resource attributes as environment variables from your Lambda function
 var environment = process.env.ENV
 var region = process.env.REGION
-var apiLockeandcoGraphQLAPIIdOutput = process.env.API_LOCKEANDCO_GRAPHQLAPIIDOUTPUT
 var storageLockeandcoName = process.env.STORAGE_LOCKEANDCO_NAME
 var storageLockeandcoArn = process.env.STORAGE_LOCKEANDCO_ARN
 

@@ -14,7 +14,7 @@ export const createLocation = `mutation CreateLocation($input: CreateLocationInp
     Site
   }
 }
-`
+`;
 export const updateLocation = `mutation UpdateLocation($input: UpdateLocationInput!) {
   updateLocation(input: $input) {
     PlaceId
@@ -28,7 +28,7 @@ export const updateLocation = `mutation UpdateLocation($input: UpdateLocationInp
     Site
   }
 }
-`
+`;
 export const deleteLocation = `mutation DeleteLocation($input: DeleteLocationInput!) {
   deleteLocation(input: $input) {
     PlaceId
@@ -42,28 +42,44 @@ export const deleteLocation = `mutation DeleteLocation($input: DeleteLocationInp
     Site
   }
 }
-`
+`;
+export const createLastCheck = `mutation CreateLastCheck($input: CreateLastCheckInput!) {
+  createLastCheck(input: $input) {
+    itemId
+    itemTypeTarget
+    date
+  }
+}
+`;
+export const updateLastCheck = `mutation UpdateLastCheck($input: UpdateLastCheckInput!) {
+  updateLastCheck(input: $input) {
+    itemId
+    itemTypeTarget
+    date
+  }
+}
+`;
 export const createLockeandcoItem = `mutation CreateLockeandcoItem($input: CreateLockeandcoItemInput!) {
   createLockeandcoItem(input: $input) {
     itemId
     itemTypeTarget
   }
 }
-`
+`;
 export const updateLockeandcoItem = `mutation UpdateLockeandcoItem($input: UpdateLockeandcoItemInput!) {
   updateLockeandcoItem(input: $input) {
     itemId
     itemTypeTarget
   }
 }
-`
+`;
 export const deleteLockeandcoItem = `mutation DeleteLockeandcoItem($input: DeleteLockeandcoItemInput!) {
   deleteLockeandcoItem(input: $input) {
     itemId
     itemTypeTarget
   }
 }
-`
+`;
 export const createMessage = `mutation CreateMessage($input: CreateMessageInput!) {
   createMessage(input: $input) {
     itemId
@@ -74,4 +90,4 @@ export const createMessage = `mutation CreateMessage($input: CreateMessageInput!
     Body
   }
 }
-`
+`;

@@ -179,19 +179,19 @@ input UpdateLastCheckInput {
 
 type Mutation {
 	createLocation(input: CreateLocationInput!): Location
-	updateLocation(input: UpdateLocationInput!): Location @function(name: "getLocations-${env}", region: "us-west-2")
+	updateLocation(input: UpdateLocationInput!): Location #@function(name: "updateLocations-${env}", region: "us-west-2")
 	deleteLocation(input: DeleteLocationInput!): Location
 	createLastCheck(input: CreateLastCheckInput!): LastCheck
 	updateLastCheck(input: UpdateLastCheckInput!): LastCheck
 	createLockeandcoItem(input: CreateLockeandcoItemInput!): LockeandcoItem
 	updateLockeandcoItem(input: UpdateLockeandcoItemInput!): LockeandcoItem
-	deleteLockeandcoItem(input: DeleteLockeandcoItemInput!): LockeandcoItem
+	deleteLockeandcoItem(input: DeleteLockeandcoItemInput!): LockeandcoItem @function(name: "deleteLockeandcoItem-${env}", region: "us-west-2")
 	createMessage(input: CreateMessageInput!): Message @function(name: "messagefromwebform-${env}", region: "us-west-2")
 }
 
 type Query {
 	getLocation(id: ID!): Location
-	listLocations(filter: ModelLocationFilterInput, limit: Int, nextToken: String): ModelLocationConnection @function(name: "getLocations-${env}", region: "us-west-2")
+	listLocations(filter: ModelLocationFilterInput, limit: Int, nextToken: String): ModelLocationConnection @function(name: "listLocations-${env}", region: "us-west-2")
 	getLockeandcoItem(itemId: String!, itemTypeTarget: String!): LockeandcoItem
 	listLockeandcoItems(filter: TableLockeandcoItemFilterInput, limit: Int, nextToken: String): LockeandcoItemConnection
 	getLastCheck(itemId: String!, itemTypeTarget: String!): LastCheck @function(name: "getLastCheck-${env}", region: "us-west-2")

@@ -5,10 +5,6 @@
 		"env": {
 			"Type": "String"
 		},
-		"apilockeandcoGraphQLAPIIdOutput": {
-			"Type": "String",
-			"Default": "apilockeandcoGraphQLAPIIdOutput"
-		},
 		"storagelockeandcoName": {
 			"Type": "String",
 			"Default": "storagelockeandcoName"
@@ -40,12 +36,12 @@
 				"FunctionName": {
 					"Fn::If": [
 						"ShouldNotCreateEnvResources",
-						"getLastCheck",
+						"deleteLockeandcoItem",
 						{
 							"Fn::Join": [
 								"",
 								[
-									"getLastCheck",
+									"deleteLockeandcoItem",
 									"-",
 									{
 										"Ref": "env"
@@ -62,9 +58,6 @@
 						},
 						"REGION": {
 							"Ref": "AWS::Region"
-						},
-						"API_LOCKEANDCO_GRAPHQLAPIIDOUTPUT": {
-							"Ref": "apilockeandcoGraphQLAPIIdOutput"
 						},
 						"STORAGE_LOCKEANDCO_NAME": {
 							"Ref": "storagelockeandcoName"
@@ -84,7 +77,7 @@
 				"Timeout": "25",
 				"Code": {
 					"S3Bucket": "lockeandco-production-20190705123627-deployment",
-					"S3Key": "amplify-builds/getLastCheck-1563073271-latest-build.zip"
+					"S3Key": "amplify-builds/deleteLockeandcoItem-1563071486-latest-build.zip"
 				}
 			}
 		},
@@ -94,12 +87,12 @@
 				"RoleName": {
 					"Fn::If": [
 						"ShouldNotCreateEnvResources",
-						"lockeandcoLambdaRolef3880d33",
+						"lockeandcoLambdaRolee0c6f6ec",
 						{
 							"Fn::Join": [
 								"",
 								[
-									"lockeandcoLambdaRolef3880d33",
+									"lockeandcoLambdaRolee0c6f6ec",
 									"-",
 									{
 										"Ref": "env"
@@ -188,49 +181,13 @@
 						{
 							"Effect": "Allow",
 							"Action": [
-								"appsync:Create*",
-								"appsync:StartSchemaCreation",
-								"appsync:GraphQL",
-								"appsync:Get*",
-								"appsync:List*",
-								"appsync:Update*"
-							],
-							"Resource": [
-								{
-									"Fn::Join": [
-										"",
-										[
-											"arn:aws:appsync:",
-											{
-												"Ref": "AWS::Region"
-											},
-											":",
-											{
-												"Ref": "AWS::AccountId"
-											},
-											":apis/",
-											{
-												"Ref": "apilockeandcoGraphQLAPIIdOutput"
-											}
-										]
-									]
-								}
-							]
-						},
-						{
-							"Effect": "Allow",
-							"Action": [
-								"dynamodb:Put*",
-								"dynamodb:Create*",
-								"dynamodb:BatchWriteItem",
 								"dynamodb:Get*",
 								"dynamodb:BatchGetItem",
 								"dynamodb:List*",
 								"dynamodb:Describe*",
 								"dynamodb:Scan",
 								"dynamodb:Query",
-								"dynamodb:Update*",
-								"dynamodb:RestoreTable*"
+								"dynamodb:Delete*"
 							],
 							"Resource": [
 								{

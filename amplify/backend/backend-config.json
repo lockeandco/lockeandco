@@ -115,6 +115,50 @@
 					]
 				}
 			]
+		},
+		"updateLocation": {
+			"service": "Lambda",
+			"providerPlugin": "awscloudformation",
+			"build": true,
+			"dependsOn": [
+				{
+					"category": "api",
+					"resourceName": "lockeandco",
+					"attributes": [
+						"GraphQLAPIIdOutput"
+					]
+				},
+				{
+					"category": "storage",
+					"resourceName": "lockeandco",
+					"attributes": [
+						"Name",
+						"Arn"
+					]
+				}
+			]
+		},
+		"checkLocations": {
+			"service": "Lambda",
+			"providerPlugin": "awscloudformation",
+			"build": true,
+			"dependsOn": [
+				{
+					"category": "api",
+					"resourceName": "lockeandco",
+					"attributes": [
+						"GraphQLAPIIdOutput"
+					]
+				},
+				{
+					"category": "storage",
+					"resourceName": "lockeandco",
+					"attributes": [
+						"Name",
+						"Arn"
+					]
+				}
+			]
 		}
 	}
 }

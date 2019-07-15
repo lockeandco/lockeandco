@@ -1,1 +1,22 @@
-[{"name":"Uncorked Kitchen & Wine Bar","site":"http://www.uncorkedkitchen.com/‎","address":"8171+S+Chester+St+Ste+A+Centennial+CO+80112","formatted_address":"8171 S Chester St Ste A, Centennial, CO 80112, USA","location":{"lat":39.5687259,"lng":-104.8810822},"city":"Centennial","place_id":"EjNTdGUgQSwgODE3MSBTIENoZXN0ZXIgU3QsIENlbnRlbm5pYWwsIENPIDgwMTEyLCBVU0EiIRofChYKFAoSCdm7ZY63hWyHESbAcirr8DuDEgVTdGUgQQ"},{"name":"Sobo Liquors","address":"2035+S+Broadway+Denver+CO+80210","formatted_address":"2035 S Broadway, Denver, CO 80210, USA","location":{"lat":39.6796281,"lng":-104.9878777},"city":"Denver","place_id":"ChIJm9iMBLV_bIcReALOh9bl34k"}]
+[{
+    "name": "Uncorked Kitchen & Wine Bar",
+    "site": "http://www.uncorkedkitchen.com/‎",
+    "address": "8171+S+Chester+St+Ste+A+Centennial+CO+80112",
+    "formatted_address": "8171 S Chester St Ste A, Centennial, CO 80112, USA",
+    "location": {
+        "lat": 39.5687259,
+        "lng": -104.8810822
+    },
+    "city": "Centennial",
+    "place_id": "EjNTdGUgQSwgODE3MSBTIENoZXN0ZXIgU3QsIENlbnRlbm5pYWwsIENPIDgwMTEyLCBVU0EiIRofChYKFAoSCdm7ZY63hWyHESbAcirr8DuDEgVTdGUgQQ"
+}, {
+    "name": "Sobo Liquors",
+    "address": "2035+S+Broadway+Denver+CO+80210",
+    "formatted_address": "2035 S Broadway, Denver, CO 80210, USA",
+    "location": {
+        "lat": 39.6796281,
+        "lng": -104.9878777
+    },
+    "city": "Denver",
+    "place_id": "ChIJm9iMBLV_bIcReALOh9bl34k"
+}]

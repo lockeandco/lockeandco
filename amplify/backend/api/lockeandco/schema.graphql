@@ -179,7 +179,7 @@ input UpdateLastCheckInput {
 
 type Mutation {
 	createLocation(input: CreateLocationInput!): Location
-	updateLocation(input: UpdateLocationInput!): Location #@function(name: "updateLocations-${env}", region: "us-west-2")
+	updateLocation(input: UpdateLocationInput!): Location @function(name: "updateLocation-${env}", region: "us-west-2")
 	deleteLocation(input: DeleteLocationInput!): Location
 	createLastCheck(input: CreateLastCheckInput!): LastCheck
 	updateLastCheck(input: UpdateLastCheckInput!): LastCheck

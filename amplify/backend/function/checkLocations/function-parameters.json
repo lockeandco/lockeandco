@@ -1,0 +1,18 @@
+{
+    "permissions": {
+        "api": {
+            "lockeandco": [
+                "create",
+                "read",
+                "update"
+            ]
+        },
+        "storage": {
+            "lockeandco": [
+                "create",
+                "read",
+                "update"
+            ]
+        }
+    }
+}

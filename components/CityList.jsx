@@ -28,20 +28,7 @@ import {
   prop,
   ascend,
 } from 'ramda'
-import cities from '../lib/cities.json'
 import PlacesSearch from './MaterialFormiklDownshift'
-
-// const citiesF = cities.map(x => {
-//   return Object.assign(
-//     {},
-//     { city: toLower(head(x.formatted_address.split(','))) },
-//     { location: x.location }
-//   )
-// })
-
-// const citiesD = citiesF.map(x => {
-//   return Object.assign({}, { label: x.city }, { id: x.location })
-// })
 
 const styles = theme => ({
   root: {
@@ -164,8 +151,8 @@ function CityList(props) {
 
   const sortedLocs = sort(ascend(prop('city')))(locs)
   const showCity = city
-    ? sortedLocs.filter(
-        l => (l.city ? toLower(l.city) === toLower(city) : true)
+    ? sortedLocs.filter(l =>
+        l.city ? toLower(l.city) === toLower(city) : true
       )
     : sortedLocs
 
@@ -177,10 +164,6 @@ function CityList(props) {
           menuClasses={classes.menuItem}
           handleChange={item => {
             console.log('ITEM', item)
-            // const g = handleClick(
-            //   locs.reduce((d, c) => (c.city === item ? c.location : d))
-            // )
-            // console.log(getPosition(item))
             if (item) {
               const newSelectedItem = Object.assign({}, getPosition(item))
               const posLoc = newSelectedItem.location

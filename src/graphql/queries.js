@@ -3,15 +3,17 @@
 
 export const getLocation = `query GetLocation($id: ID!) {
   getLocation(id: $id) {
-    PlaceId
-    FormattedAddress
-    Location {
+    itemId
+    itemTypeTarget
+    place_id
+    formatted_address
+    location {
       lat
       lng
     }
-    City
-    BusinessName
-    Site
+    city
+    name
+    site
   }
 }
 `;
@@ -22,15 +24,17 @@ export const listLocations = `query ListLocations(
 ) {
   listLocations(filter: $filter, limit: $limit, nextToken: $nextToken) {
     items {
-      PlaceId
-      FormattedAddress
-      Location {
+      itemId
+      itemTypeTarget
+      place_id
+      formatted_address
+      location {
         lat
         lng
       }
-      City
-      BusinessName
-      Site
+      city
+      name
+      site
     }
     nextToken
   }

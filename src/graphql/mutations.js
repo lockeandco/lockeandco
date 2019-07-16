@@ -3,43 +3,49 @@
 
 export const createLocation = `mutation CreateLocation($input: CreateLocationInput!) {
   createLocation(input: $input) {
-    PlaceId
-    FormattedAddress
-    Location {
+    itemId
+    itemTypeTarget
+    place_id
+    formatted_address
+    location {
       lat
       lng
     }
-    City
-    BusinessName
-    Site
+    city
+    name
+    site
   }
 }
 `;
 export const updateLocation = `mutation UpdateLocation($input: UpdateLocationInput!) {
   updateLocation(input: $input) {
-    PlaceId
-    FormattedAddress
-    Location {
+    itemId
+    itemTypeTarget
+    place_id
+    formatted_address
+    location {
       lat
       lng
     }
-    City
-    BusinessName
-    Site
+    city
+    name
+    site
   }
 }
 `;
 export const deleteLocation = `mutation DeleteLocation($input: DeleteLocationInput!) {
   deleteLocation(input: $input) {
-    PlaceId
-    FormattedAddress
-    Location {
+    itemId
+    itemTypeTarget
+    place_id
+    formatted_address
+    location {
       lat
       lng
     }
-    City
-    BusinessName
-    Site
+    city
+    name
+    site
   }
 }
 `;

@@ -1,10 +1,12 @@
 type Location {
-	PlaceId: String
-	FormattedAddress: String
-	Location: LatLng
-	City: String
-	BusinessName: String
-	Site: AWSURL
+	itemId: String
+	itemTypeTarget: String
+	place_id: String
+	formatted_address: String
+	location: LatLng
+	city: String
+	name: String
+	site: AWSURL
 }
 
 type Message {
@@ -32,24 +34,26 @@ type LatLng {
 }
 
 input LatLngInput {
-		lat: Float
+	lat: Float
 	lng: Float
 }
 
 type City {
-	FormattedAddress: String
-	Location: LatLng
+	itemId: String
+	itemTypeTarget: String
+	formatted_address: String
+	location: LatLng
 }
 
 input CreateLocationInput {
 	itemId: String!
 	itemTypeTarget: String!
-	PlaceId: String
-	FormattedAddress: String
-	Location: LatLngInput
-	City: String
-	BusinessName: String
-	Site: AWSURL
+	place_id: String
+	formatted_address: String
+	location: LatLngInput
+	city: String
+	name: String
+	site: AWSURL
 }
 
 input CreateLockeandcoItemInput {
@@ -58,7 +62,7 @@ input CreateLockeandcoItemInput {
 }
 
 input DeleteLocationInput {
-	PlaceId: String!
+	place_id: String!
 }
 
 input DeleteLockeandcoItemInput {
@@ -125,12 +129,12 @@ type ModelLocationConnection {
 }
 
 input ModelLocationFilterInput {
-	PlaceId: ModelStringFilterInput
-	FormattedAddress: ModelStringFilterInput
-	Location: ModelLatLngFilterInput
-	BusinessName:  ModelStringFilterInput
-	City: ModelStringFilterInput
-	Site:   ModelStringFilterInput
+	place_id: ModelStringFilterInput
+	formatted_address: ModelStringFilterInput
+	location: ModelLatLngFilterInput
+	name:  ModelStringFilterInput
+	city: ModelStringFilterInput
+	site:   ModelStringFilterInput
 	and: [ModelLocationFilterInput]
 	or: [ModelLocationFilterInput]
 	not: ModelLocationFilterInput
@@ -277,12 +281,12 @@ input TableStringFilterInput {
 input UpdateLocationInput {
 	itemId: String!
 	itemTypeTarget: String!
-	PlaceId: String
-	FormattedAddress: String
-	Location: LatLngInput
-	City: String
-	BusinessName: String
-	Site: AWSURL
+	place_id: String
+	formatted_address: String
+	location: LatLngInput
+	city: String
+	name: String
+	site: AWSURL
 }
 
 input UpdateLockeandcoItemInput {

@@ -3,43 +3,49 @@
 
 export const onCreateLocation = `subscription OnCreateLocation {
   onCreateLocation {
-    PlaceId
-    FormattedAddress
-    Location {
+    itemId
+    itemTypeTarget
+    place_id
+    formatted_address
+    location {
       lat
       lng
     }
-    City
-    BusinessName
-    Site
+    city
+    name
+    site
   }
 }
 `;
 export const onUpdateLocation = `subscription OnUpdateLocation {
   onUpdateLocation {
-    PlaceId
-    FormattedAddress
-    Location {
+    itemId
+    itemTypeTarget
+    place_id
+    formatted_address
+    location {
       lat
       lng
     }
-    City
-    BusinessName
-    Site
+    city
+    name
+    site
   }
 }
 `;
 export const onDeleteLocation = `subscription OnDeleteLocation {
   onDeleteLocation {
-    PlaceId
-    FormattedAddress
-    Location {
+    itemId
+    itemTypeTarget
+    place_id
+    formatted_address
+    location {
       lat
       lng
     }
-    City
-    BusinessName
-    Site
+    city
+    name
+    site
   }
 }
 `;

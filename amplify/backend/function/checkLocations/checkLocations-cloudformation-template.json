@@ -84,7 +84,7 @@
 				"Timeout": "25",
 				"Code": {
 					"S3Bucket": "lockeandco-production-20190705123627-deployment",
-					"S3Key": "amplify-builds/checkLocations-1563076464-latest-build.zip"
+					"S3Key": "amplify-builds/checkLocations-1563170299-latest-build.zip"
 				}
 			}
 		},

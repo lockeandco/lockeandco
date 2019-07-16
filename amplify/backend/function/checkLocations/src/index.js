@@ -37,7 +37,6 @@ const xmlOptions = {
   tagValueProcessor: a => he.decode(a),
 }
 
-const tObj = xmlData => parser.getTraversalObj(xmlData, xmlOptions)
 const jsonObj = xmlData => parser.parse(xmlData, xmlOptions)
 
 const lcKey = {
@@ -93,7 +92,7 @@ const convertXml = R.compose(
   jsonObj
 )
 
-const createItems = R.compose(
+const createItem = R.compose(
   R.head,
   R.chain(x => {
     const attrs = R.mergeAll(x)
@@ -118,7 +117,9 @@ const createItems = R.compose(
   }),
   R.path(['results'])
 )
+
 function publishToSQS(item) {
+  const sqs = new AWS.SQS()
   const itemParams = {
     MessageBody: item,
     QueueUrl: qUrl,
@@ -143,12 +144,12 @@ async function getAddressComponents(list, items = []) {
   } else {
     const location = R.head(list)
     const address = R.path(['address'], location)
-    await unfetch(url(address))
+    await fetch(url(address))
       .then(l => l.json())
       .then(f => {
         const item = Object.assign({}, location, { ...createItem(f) })
         publishToSQS(item)
-        getAddressComponents(R.tail(list), append(item, items))
+        getAddressComponents(R.tail(list), R.append(item, items))
       })
       .catch(console.log)
   }
@@ -169,14 +170,9 @@ const qUrl = `https://sqs.us-west-2.amazonaws.com/840164070895/processLocations`
 
 exports.handler = async function(event, context) {
   const lastCheck = await ddb
-    .get(params)
+    .get(lcParams)
     .promise()
-    .then(
-      R.compose(
-        lc,
-        R.path(['Item', 'Date'])
-      )
-    )
+    .then(R.path(['Item', 'Date']))
     .catch(x => x)
 
   console.log(JSON.stringify(event, null, 2))
@@ -191,7 +187,8 @@ exports.handler = async function(event, context) {
   const newLastCheck = format(Date.now(), 'YYYYMMDDHHMM')
   if (Array.isArray(fetchLocations) && fetchLocations.length > 1) {
     const updateLastCheck = await updateDDb(newLastCheck)
-    context.done(null, `Processed: ${fetchLocation.length} at ${newLastCheck}`)
+    console.log(updateLastCheck)
+    context.done(null, `Processed: ${fetchLocations.length} at ${newLastCheck}`)
   } else {
     context.done(null, 'No Items Processed')
   }

@@ -39,7 +39,7 @@ const style = theme => ({
     marginTop: 20,
     [theme.breakpoints.down('xs')]: {
       marginTop: 'calc(100vh * .10)',
-      fontsize: '1.8rem'
+      fontsize: '1.8rem',
     },
     //textOverflow: 'ellipsis',
   },
@@ -60,9 +60,7 @@ const H1 = withStyles(style)(props => {
 const H2 = withStyles(style)(props => {
   const { classes, ...other } = props
   console.log('h2')
-  return (
-    <Typography variant="h6" className={classes.typoHeader} {...other} />
-  )
+  return <Typography variant="h6" className={classes.typoHeader} {...other} />
 })
 const H3 = withStyles(style)(props => {
   const { classes, ...other } = props

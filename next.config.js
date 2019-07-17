@@ -18,13 +18,13 @@ module.exports = phase => {
 
   console.log(`isDev:${isDev}  isProd:${isProd}   isStaging:${isStaging}`)
 
-  // const env = {
-  //   AWSCONFIG: `${process.env.AWSCONFIG}`,
-  // }
+  const env = {
+    AWSCONFIG: `${process.env.AWSCONFIG}`,
+  }
 
   // next.config.js object
   return {
-    //env,
+    env,
     ...withMDX({
       pageExtensions: ['js', 'jsx', 'md', 'mdx'],
       webpack: function(config, { isServer }) {

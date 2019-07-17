@@ -25,8 +25,8 @@ if (typeof window !== 'undefined') {
   const { getLocations } = require('../lib/api')
   getLocs = getLocations
   //console.log(Amplify)
-  //Amplify.configure(JSON.parse(process.env.AWSCONFIG))
-  Amplify.configure(config)
+  Amplify.configure(JSON.parse(process.env.AWSCONFIG))
+  // Amplify.configure(config)
 
   const expiration = new Date(Date.now() + 1000 * 60 * 1)
 

@@ -36,3 +36,4 @@ aws-exports.js
 awsconfiguration.json
 
 **/aws-exports.js
+**/team-provider-info.json

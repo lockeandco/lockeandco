@@ -24,6 +24,8 @@ const AWS = require('aws-sdk')
 
 const ddb = new AWS.DynamoDB.DocumentClient()
 
+const { mapsKey, Authorization, credentials } = process.env
+
 const xmlOptions = {
   ignoreAttributes: true,
   ignoreNameSpace: false,
@@ -49,7 +51,7 @@ const lcParams = {
   Key: lcKey,
 }
 const url = address =>
-  `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=AIzaSyCAHEdspo9nrGHO9GqZxKwPXcjmOWr6mY4`
+  `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${mapsKey}`
 
 const lcUpdateParams = nlc => ({
   TableName: process.env.STORAGE_LOCKEANDCO_NAME,
@@ -193,9 +195,9 @@ async function getAddressComponents(list, items = []) {
 }
 const fetchOptions = {
   headers: {
-    Authorization: 'Basic MDg3ZWI3NmI5ZGZlODMzOTNmMmE1YTA0Y2Y1NDA1YmI6WA==',
+    Authorization: Authorization,
   },
-  credentials: 'include',
+  credentials: credentials,
 }
 
 const highrise = lc =>

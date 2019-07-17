@@ -9,7 +9,7 @@ import { instanceOf } from 'prop-types'
 import dynamic from 'next/dynamic'
 import { toLower, compose, path, tap } from 'ramda'
 import Head from 'next/head'
-import config from '../src/aws-exports'
+// import config from '../src/aws-exports'
 const Layout = dynamic(() => import('../components/Layout.jsx'), {
   ssr: false,
 })

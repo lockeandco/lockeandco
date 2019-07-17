@@ -54,7 +54,7 @@ const url = address =>
 const lcUpdateParams = nlc => ({
   TableName: process.env.STORAGE_LOCKEANDCO_NAME,
   Key: lcKey,
-  UpdateExpression: 'set #data = :nlc',
+  UpdateExpression: 'set #date = :nlc',
   ExpressionAttributeNames: { '#date': 'Date' },
   ExpressionAttributeValues: {
     ':nlc': nlc,
@@ -71,12 +71,24 @@ const getAddressComponentValue = nameType => typeName => a => {
 const convertXml = R.compose(
   R.map(
     R.compose(
-      R.over(R.lensProp('address'), x =>
-        R.compose(
-          R.join('+'),
-          R.split(' '),
-          R.replace('#', '')
-        )(`${x.street}+${x.city}+${x.state}+${x.zip}`)
+      R.over(
+        R.lensProp('address'),
+        R.ifElse(
+          isTruthy,
+          R.compose(
+            R.join('+'),
+            R.map(
+              R.compose(
+                R.trim,
+                R.replace(' ', '+'),
+                R.replace('#', '')
+              )
+            ),
+            R.values,
+            R.pick(['street', 'city', 'state', 'zip'])
+          ),
+          R.identity
+        )
       ),
       R.over(R.lensProp('site'), R.path(['url'])),
       renameKeys({ addresses: 'address', 'web-address': 'site' }),
@@ -87,8 +99,14 @@ const convertXml = R.compose(
       R.over(R.lensProp('contact-data'), R.pick(['web-addresses', 'addresses']))
     )
   ),
-  R.map(R.pick(['name', 'contact-data'])),
+  R.ifElse(isNilOrEmpty, R.always([]), R.map(R.pick(['name', 'contact-data']))),
   R.path(['companies', 'company']),
+  R.tap(
+    R.compose(
+      console.log,
+      R.ifElse(isTruthy, R.identity, R.always('somethinghappened'))
+    )
+  ),
   jsonObj
 )
 
@@ -118,17 +136,21 @@ const createItem = R.compose(
   R.path(['results'])
 )
 
-function publishToSQS(item) {
+const qUrl = `https://sqs.us-west-2.amazonaws.com/840164070895/processLocations`
+
+async function publishToSQS(item) {
   const sqs = new AWS.SQS()
+
   const itemParams = {
-    MessageBody: item,
+    MessageBody: JSON.stringify(item),
     QueueUrl: qUrl,
     DelaySeconds: 0,
   }
-  sqs.sendMessage(itemParams, function(err, data) {
-    if (err) console.log(err, err.stack)
-    else console.log(data) // successful response
-  })
+  return await sqs
+    .sendMessage(itemParams)
+    .promise()
+    .then(R.tap(console.log))
+    .catch(R.tap(console.log))
 }
 
 async function updateDDb(item) {
@@ -138,23 +160,37 @@ async function updateDDb(item) {
     .then(x => x)
     .catch(x => x)
 }
+
+const getAddress = R.compose(
+  R.path(['address']),
+  R.head
+)
+
+let fetchedLocations = []
+
 async function getAddressComponents(list, items = []) {
   if (isNilOrEmpty(list)) {
-    return await items
+    console.log('No items to process')
   } else {
-    const location = R.head(list)
-    const address = R.path(['address'], location)
-    await fetch(url(address))
+    await fetch(url(R.path(['address'], R.head(list))))
       .then(l => l.json())
-      .then(f => {
-        const item = Object.assign({}, location, { ...createItem(f) })
-        publishToSQS(item)
-        getAddressComponents(R.tail(list), R.append(item, items))
+      .then(async f => {
+        const item = Object.assign({}, R.head(list), { ...createItem(f) })
+        await publishToSQS(item)
+        return await item
       })
-      .catch(console.log)
+      .then(async item => {
+        fetchedLocations = R.append(item, fetchedLocations)
+        await getAddressComponents(R.tail(list), R.append(item, items))
+      })
+      .catch(
+        R.compose(
+          getAddressComponents([], items),
+          R.tap(console.log)
+        )
+      )
   }
 }
-
 const fetchOptions = {
   headers: {
     Authorization: 'Basic MDg3ZWI3NmI5ZGZlODMzOTNmMmE1YTA0Y2Y1NDA1YmI6WA==',
@@ -165,9 +201,6 @@ const fetchOptions = {
 const highrise = lc =>
   `https://lockecodistilling.highrisehq.com/companies.xml?since=${lc}&criteria[carry_us]=YES`
 
-//Better add to process.Env
-const qUrl = `https://sqs.us-west-2.amazonaws.com/840164070895/processLocations`
-
 exports.handler = async function(event, context) {
   const lastCheck = await ddb
     .get(lcParams)
@@ -175,21 +208,42 @@ exports.handler = async function(event, context) {
     .then(R.path(['Item', 'Date']))
     .catch(x => x)
 
-  console.log(JSON.stringify(event, null, 2))
+  // console.log(JSON.stringify(event, null, 2))
+  console.log(lastCheck)
 
-  const fetchLocations = await fetch(highrise(lastCheck), fetchOptions)
+  return await fetch(highrise(lastCheck), fetchOptions)
     .then(x => x.text())
-    .then(convertXml)
-    .then(getAddressComponents)
+    .then(
+      R.pipe(
+        convertXml,
+        R.ifElse(
+          isNilOrEmpty,
+          R.always([]),
+          R.pipe(
+            getAddressComponents,
+            R.then(async () => {
+              // console.log('fl', await fetchedLocations)
+              const newLastCheck = format(Date.now(), 'YYYYMMDDHHMM')
+              if (
+                Array.isArray(fetchedLocations) &&
+                fetchedLocations.length > 1
+              ) {
+                const updateLastCheck = await updateDDb(newLastCheck)
+                console.log(updateLastCheck)
+                console.log(
+                  `Processed: ${fetchedLocations.length} at ${newLastCheck}`
+                )
+                return await fetchedLocations
+              } else {
+                // context.done(null, 'No Items Processed')
+                return await fetchedLocations
+              }
+            })
+          )
+        )
+      )
+    )
     .catch(console.log)
 
   //Better Practice Add to SNS/SQS to trigger Lambda
-  const newLastCheck = format(Date.now(), 'YYYYMMDDHHMM')
-  if (Array.isArray(fetchLocations) && fetchLocations.length > 1) {
-    const updateLastCheck = await updateDDb(newLastCheck)
-    console.log(updateLastCheck)
-    context.done(null, `Processed: ${fetchLocations.length} at ${newLastCheck}`)
-  } else {
-    context.done(null, 'No Items Processed')
-  }
 }

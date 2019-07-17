@@ -12,8 +12,9 @@ const { renameKeysWith } = require('ramda-adjunct')
 const AWS = require('aws-sdk')
 
 const ddb = new AWS.DynamoDB.DocumentClient()
-const args = R.path(['payload', 'arguments'])
+const args = R.path(['arguments', 'input'])
 const setUpdateExpression = R.compose(
+  R.concat('set'),
   R.converge(
     R.compose(
       R.join(','),
@@ -21,20 +22,22 @@ const setUpdateExpression = R.compose(
     ),
     [R.map(R.concat('#')), R.map(R.concat(':'))]
   ),
-  R.keys
+  R.keys,
+  R.omit(['itemId', 'itemTypeTarget'])
 )
 
 const setExpressionAttributeNames = R.compose(
   R.converge(R.zipObj, [R.map(R.concat('#')), R.identity]),
-  R.keys
+  R.keys,
+  R.omit(['itemId', 'itemTypeTarget'])
 )
-//To make generic, could use type from resolver
-const setKey = item => ({
-  itemId: item.placeId,
-  itemTypeTarget: `Location|${item.city}`,
-})
 
-const setExpressionAttributeValues = renameKeysWith(R.concat(':'))
+const setKey = R.pick(['itemId', 'itemTypeTarget'])
+
+const setExpressionAttributeValues = R.compose(
+  renameKeysWith(R.concat(':')),
+  R.omit(['itemId', 'itemTypeTarget'])
+)
 
 function updateParams(item) {
   return {
@@ -55,9 +58,14 @@ async function updateDDb(params) {
 
 const processItem = R.compose(
   updateDDb,
+  R.tap(console.log),
   updateParams
 )
 exports.handler = async function(event, context) {
+  console.log(JSON.stringify(event, null, 2))
   const item = args(event)
-  return await processItem(item)
+  console.log(JSON.stringify(item, null, 2))
+  const result = await processItem(item)
+  console.log(result)
+  return item
 }

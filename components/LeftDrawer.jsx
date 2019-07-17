@@ -82,9 +82,8 @@ class LeftDrawer extends React.Component {
       this.props.allCookies.isVerified === 'true'
         ? 'peek'
         : this.state.open
-          ? 'open'
-          : 'close'
-    //console.log(this.props.allCookies.isVerified === 'true')
+        ? 'open'
+        : 'close'
 
     const items = [
       <IconButton
@@ -128,6 +127,7 @@ class LeftDrawer extends React.Component {
         Router={Router}
       />,
     ]
+    console.log(this.props)
     return (
       <Fragment>
         <IconButton
@@ -135,8 +135,8 @@ class LeftDrawer extends React.Component {
             route !== '/find-us'
               ? () => Router.push('/find-us')
               : this.state.open === undefined
-                ? () => this.setState({ open: false })
-                : () => this.toggleDrawer()
+              ? () => this.setState({ open: false })
+              : () => this.toggleDrawer()
           }
         >
           <MapSearch
@@ -145,8 +145,8 @@ class LeftDrawer extends React.Component {
               color: this.state.open
                 ? '#C36D15'
                 : this.state.open === undefined && route === '/find-us'
-                  ? '#D4C201'
-                  : '#E2DED5',
+                ? '#D4C201'
+                : '#E2DED5',
               fontWeight: 'bold',
               position: 'relative',
               fontSize: '20px !important',

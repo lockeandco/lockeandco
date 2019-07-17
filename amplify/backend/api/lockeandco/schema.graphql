@@ -195,10 +195,11 @@ type Mutation {
 
 type Query {
 	getLocation(id: ID!): Location
-	listLocations(filter: ModelLocationFilterInput, limit: Int, nextToken: String): ModelLocationConnection @function(name: "listLocations-${env}", region: "us-west-2")
+	listLocations(filter: ModelLocationFilterInput, limit: Int, nextToken: String): ModelLocationConnection 
 	getLockeandcoItem(itemId: String!, itemTypeTarget: String!): LockeandcoItem
 	listLockeandcoItems(filter: TableLockeandcoItemFilterInput, limit: Int, nextToken: String): LockeandcoItemConnection
 	getLastCheck(itemId: String!, itemTypeTarget: String!): LastCheck @function(name: "getLastCheck-${env}", region: "us-west-2")
+	listLocationsByCity(filter: TableLockeandcoItemFilterInput, limit: Int, nextToken: String): [LocationsByCity] @function(name: "listLocations-${env}", region: "us-west-2")
 }
 
 type Subscription {
@@ -216,7 +217,7 @@ type Subscription {
 		@aws_subscribe(mutations: ["deleteLockeandcoItem"])
 	onCreateMessage: Message
 		@aws_subscribe(mutations: ["createMessage"])
-}
+}	
 
 input TableBooleanFilterInput {
 	ne: Boolean
@@ -292,4 +293,12 @@ input UpdateLocationInput {
 input UpdateLockeandcoItemInput {
 	itemId: String!
 	itemTypeTarget: String!
+}
+
+type LocationsByCity {
+	list: [Location]
+	total: Int
+	formatted_address: String
+	city: String
+	location: LatLng
 }

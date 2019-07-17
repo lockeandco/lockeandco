@@ -13,7 +13,6 @@ import Router from 'next/router'
 import Hidden from '@material-ui/core/Hidden'
 import LeftDrawer from './LeftDrawer'
 
-
 const styles = theme => ({
   button: {
     margin: theme.spacing.unit,
@@ -124,7 +123,7 @@ function TextButtons(props) {
           placement={'bottom'}
           classes={{ tooltip: classes.tooltip }}
         >
-          <LeftDrawer Router={Router} {...other}/>
+          <LeftDrawer Router={Router} {...other} />
         </Tooltip>
       </Hidden>
     </Paper>

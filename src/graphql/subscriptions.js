@@ -16,7 +16,7 @@ export const onCreateLocation = `subscription OnCreateLocation {
     site
   }
 }
-`;
+`
 export const onUpdateLocation = `subscription OnUpdateLocation {
   onUpdateLocation {
     itemId
@@ -32,7 +32,7 @@ export const onUpdateLocation = `subscription OnUpdateLocation {
     site
   }
 }
-`;
+`
 export const onDeleteLocation = `subscription OnDeleteLocation {
   onDeleteLocation {
     itemId
@@ -48,28 +48,28 @@ export const onDeleteLocation = `subscription OnDeleteLocation {
     site
   }
 }
-`;
+`
 export const onCreateLockeandcoItem = `subscription OnCreateLockeandcoItem($itemId: String, $itemTypeTarget: String) {
   onCreateLockeandcoItem(itemId: $itemId, itemTypeTarget: $itemTypeTarget) {
     itemId
     itemTypeTarget
   }
 }
-`;
+`
 export const onUpdateLockeandcoItem = `subscription OnUpdateLockeandcoItem($itemId: String, $itemTypeTarget: String) {
   onUpdateLockeandcoItem(itemId: $itemId, itemTypeTarget: $itemTypeTarget) {
     itemId
     itemTypeTarget
   }
 }
-`;
+`
 export const onDeleteLockeandcoItem = `subscription OnDeleteLockeandcoItem($itemId: String, $itemTypeTarget: String) {
   onDeleteLockeandcoItem(itemId: $itemId, itemTypeTarget: $itemTypeTarget) {
     itemId
     itemTypeTarget
   }
 }
-`;
+`
 export const onCreateMessage = `subscription OnCreateMessage {
   onCreateMessage {
     itemId
@@ -80,4 +80,4 @@ export const onCreateMessage = `subscription OnCreateMessage {
     Body
   }
 }
-`;
+`

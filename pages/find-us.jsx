@@ -13,12 +13,17 @@ import Zoom from '@material-ui/core/Zoom'
 import CommonHeader from '../components/MobileScrollingHeader'
 import { config } from 'react-spring'
 import withPageTransition from '../components/withPageTransition'
-import lockeColocs from '../lib/formatLocNext'
-import { pluck, flatten } from 'ramda'
+import { pluck, flatten, map, omit, tap } from 'ramda'
 
-const lockeCoAvailable = flatten(pluck('list', lockeColocs))
+const lockeCoAvailable = compose(
+  flatten,
+  pluck(['list'])
+)
 
-// console.log(lockeCoAvailable)
+const lockeCoCities = compose(
+  flatten,
+  map(omit(['list']))
+)
 
 const styles = theme => ({
   container: {
@@ -54,6 +59,7 @@ const FindUs = props => {
     position,
     zoom,
     classes,
+    lockeColocs,
     ...other
   } = props
 
@@ -76,7 +82,7 @@ const FindUs = props => {
       gMap={
         <FindUsMap
           {...other}
-          locs={lockeCoAvailable}
+          locs={lockeCoAvailable(lockeColocs)}
           zoom={zoom}
           expandList={expandList}
           city={city}
@@ -155,7 +161,7 @@ const FindUs = props => {
 
               <CityList
                 {...other}
-                locs={lockeColocs}
+                lockeColocs={lockeColocs}
                 expandList={expandList}
                 city={city}
                 zoom={zoom}

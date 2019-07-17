@@ -7,7 +7,19 @@ import { Button } from 'primereact/button'
 import { Checkbox } from 'primereact/checkbox'
 import { Growl } from 'primereact/growl'
 import { GoogleApiWrapper } from 'google-maps-react'
-import { reject, map, compose, isEmpty, isNil, tap } from 'ramda'
+import {
+  reject,
+  map,
+  compose,
+  isEmpty,
+  isNil,
+  flatten,
+  omit,
+  path,
+  pluck,
+  tap,
+} from 'ramda'
+
 class GMapDemo extends Component {
   constructor(props) {
     super(props)
@@ -115,6 +127,7 @@ class GMapDemo extends Component {
   onZoomChanged(d) {}
   onOverlayClick(event) {
     const { locs, setPositionAndZoom, setStore, expandList } = this.props
+
     const title = event.overlay.getTitle()
     const item = locs.reduce((x, y) => (y.name === title ? y : x))
     // console.log(event.map)
@@ -141,6 +154,7 @@ class GMapDemo extends Component {
       },
       title: this.state.markerTitle,
       draggable: this.state.draggableMarker,
+      animation: google.maps.Animation.DROP,
     })
 
     this.setState({
@@ -178,7 +192,8 @@ class GMapDemo extends Component {
                 return marker
               }),
               reject(isNil),
-              reject(isEmpty)
+              reject(isEmpty),
+              tap(console.log)
             )(locs),
           ]
         : [],

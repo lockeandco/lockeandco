@@ -27,9 +27,21 @@ import {
   sort,
   prop,
   ascend,
+  omit,
+  over,
+  lensProp,
 } from 'ramda'
 import PlacesSearch from './MaterialFormiklDownshift'
 
+const lockeCoAvailable = compose(
+  flatten,
+  pluck(['list'])
+)
+
+const lockeCoCities = compose(
+  flatten,
+  map(omit(['list']))
+)
 const styles = theme => ({
   root: {
     width: '100%',
@@ -104,7 +116,7 @@ const chevrons = '<<'
 function CityList(props) {
   const {
     classes,
-    locs,
+    lockeColocs,
     expandList,
     open,
     toggleDrawer,
@@ -119,6 +131,9 @@ function CityList(props) {
     selectedItem,
   } = props
 
+  const locs = lockeColocs
+
+  console.log('LOCOCAOSOCS', locs)
   const citiesD = compose(
     map(l => Object.assign({}, { label: toLower(l.name) }, { id: l.place_id })),
     reject(isEmpty),
@@ -149,7 +164,10 @@ function CityList(props) {
         : x
     }, selectedItem)
 
-  const sortedLocs = sort(ascend(prop('city')))(locs)
+  const sortedLocs = compose(
+    map(over(lensProp('city'), toLower)),
+    sort(ascend(prop('city')))
+  )(locs)
   const showCity = city
     ? sortedLocs.filter(l =>
         l.city ? toLower(l.city) === toLower(city) : true

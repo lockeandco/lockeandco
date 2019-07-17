@@ -11,7 +11,10 @@ import MenuButtons from './FindUsTextButtons'
 import RightDrawer from './RightDrawer'
 import Router from 'next/router'
 
-
+const lockeCoCities = compose(
+  flatten,
+  map(omit(['list']))
+)
 
 const styles = {
   root: {
@@ -28,13 +31,17 @@ const styles = {
 }
 
 function TopMenu(props) {
-  const { classes, route, ...other } = props
-
+  const { classes, route, lockeColocs, ...other } = props
+  console.log(lockeColocs)
   return (
     <div className={classes.root}>
       <Toolbar className={classes.toolBar} disableGutters={true}>
         <Hidden smDown>
-          <MenuButtons route={route} Router={Router} />
+          <MenuButtons
+            route={route}
+            Router={Router}
+            citiesF={lockeCoCities(lockeColocs)}
+          />
         </Hidden>
       </Toolbar>
     </div>

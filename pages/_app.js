@@ -7,20 +7,32 @@ import { CookiesProvider } from 'react-cookie'
 import { withCookies, Cookies } from 'react-cookie'
 import { instanceOf } from 'prop-types'
 import dynamic from 'next/dynamic'
-import { toLower, compose } from 'ramda'
+import { toLower, compose, path, tap } from 'ramda'
 import Head from 'next/head'
+import config from '../src/aws-exports'
 const Layout = dynamic(() => import('../components/Layout.jsx'), {
   ssr: false,
 })
 import theme from '../src/theme'
-
-
+const getItems = path(['data', 'listLocationsByCity'])
 let Amplify
+let getLocs
+const expiration = new Date(Date.now() + 1000 * 60 * 1)
 
 if (typeof window !== 'undefined') {
   Amplify = require('aws-amplify').default
-  console.log(Amplify)
-  Amplify.configure(JSON.parse(process.env.AWSCONFIG))
+
+  const { getLocations } = require('../lib/api')
+  getLocs = getLocations
+  //console.log(Amplify)
+  //Amplify.configure(JSON.parse(process.env.AWSCONFIG))
+  Amplify.configure(config)
+
+  const expiration = new Date(Date.now() + 1000 * 60 * 1)
+
+  // Set item with priority. Priority should be between 1 and 5.
+
+  // Set item with an expiration time
 
   Amplify.Analytics.autoTrack('pageView', {
     // REQUIRED, turn on/off the auto tracking
@@ -65,6 +77,28 @@ class MyApp extends App {
 
     const { cookies } = props
     this.state = {
+      lockeColocs: {
+        list: [
+          {
+            formatted_address: '3320 Youngfield St, Wheat Ridge, CO 80033, USA',
+            location: {
+              lat: 39.7634547,
+              lng: -105.1410719,
+            },
+            city: 'Wheat Ridge',
+            place_id: 'ChIJPd14g86Fa4cRtzz3w0mKhN0',
+            name: 'Applejack Wine & Spirits',
+            site: 'https://applejack.com/',
+          },
+        ],
+        total: 1,
+        formatted_address: 'Wheat Ridge, CO, USA',
+        city: 'wheat ridge',
+        location: {
+          lat: 39.766098,
+          lng: -105.0772063,
+        },
+      },
       isVerified: cookies.get('isVerified') || false,
       rememberme: cookies.get('rememberme') || false,
       test: {
@@ -84,6 +118,7 @@ class MyApp extends App {
     this.setPosition = this.setPosition.bind(this)
     this.setPositionAndZoom = this.setPositionAndZoom.bind(this)
     this.setStore = this.setStore.bind(this)
+    this.getCoLocs = this.getCoLocs.bind(this)
   }
   componentDidMount() {
     // Remove the server-side injected CSS.
@@ -91,6 +126,7 @@ class MyApp extends App {
     if (jssStyles) {
       jssStyles.parentNode.removeChild(jssStyles)
     }
+    this.getCoLocs()
   }
   static propTypes = {
     cookies: instanceOf(Cookies).isRequired,
@@ -108,6 +144,27 @@ class MyApp extends App {
 
     await cookies.set('rememberme', remember, { path: '/' })
     this.setState({ remember })
+  }
+
+  async getCoLocs() {
+    if (typeof window !== undefined) {
+      console.log('geting locs')
+      const locs = await getLocs()
+        .then(
+          compose(
+            tap(console.log),
+            getItems
+          )
+        )
+        .catch(tap(console.log))
+
+      this.setState({
+        lockeColocs: await Amplify.Cache.getItem('locations', {
+          callback: () => locs,
+          expires: expiration.getTime(),
+        }),
+      })
+    }
   }
 
   handleTest(p) {
@@ -161,7 +218,7 @@ class MyApp extends App {
   handleTest = this.handleTest.bind(this)
   render() {
     const { Component, pageProps, router, cookies } = this.props
-
+    console.log('LCS', this.state.lockeColocs)
     return (
       <Container>
         <Head>

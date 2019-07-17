@@ -16,7 +16,7 @@ export const getLocation = `query GetLocation($id: ID!) {
     site
   }
 }
-`;
+`
 export const listLocations = `query ListLocations(
   $filter: ModelLocationFilterInput
   $limit: Int
@@ -39,14 +39,14 @@ export const listLocations = `query ListLocations(
     nextToken
   }
 }
-`;
+`
 export const getLockeandcoItem = `query GetLockeandcoItem($itemId: String!, $itemTypeTarget: String!) {
   getLockeandcoItem(itemId: $itemId, itemTypeTarget: $itemTypeTarget) {
     itemId
     itemTypeTarget
   }
 }
-`;
+`
 export const listLockeandcoItems = `query ListLockeandcoItems(
   $filter: TableLockeandcoItemFilterInput
   $limit: Int
@@ -60,7 +60,7 @@ export const listLockeandcoItems = `query ListLockeandcoItems(
     nextToken
   }
 }
-`;
+`
 export const getLastCheck = `query GetLastCheck($itemId: String!, $itemTypeTarget: String!) {
   getLastCheck(itemId: $itemId, itemTypeTarget: $itemTypeTarget) {
     itemId
@@ -68,4 +68,33 @@ export const getLastCheck = `query GetLastCheck($itemId: String!, $itemTypeTarge
     date
   }
 }
-`;
+`
+export const listLocationsByCity = `query ListLocationsByCity(
+  $filter: TableLockeandcoItemFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listLocationsByCity(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    list {
+      itemId
+      itemTypeTarget
+      place_id
+      formatted_address
+      location {
+        lat
+        lng
+      }
+      city
+      name
+      site
+    }
+    total
+    formatted_address
+    city
+    location {
+      lat
+      lng
+    }
+  }
+}
+`

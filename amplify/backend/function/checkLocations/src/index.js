@@ -15,6 +15,8 @@ const {
   spreadPath,
   isNilOrEmpty,
   renameKeys,
+  noop,
+  isArray,
 } = require('ramda-adjunct')
 const fetch = require('isomorphic-unfetch')
 const parser = require('fast-xml-parser')
@@ -82,33 +84,64 @@ const convertXml = R.compose(
             R.map(
               R.compose(
                 R.trim,
-                R.replace(' ', '+'),
                 R.replace('#', '')
               )
             ),
             R.values,
             R.pick(['street', 'city', 'state', 'zip'])
           ),
-          R.identity
+          noop
         )
       ),
       R.over(R.lensProp('site'), R.path(['url'])),
-      renameKeys({ addresses: 'address', 'web-address': 'site' }),
+      R.over(
+        R.lensProp('carry'),
+        R.ifElse(
+          isTruthy,
+          R.compose(
+            R.cond([
+              [R.equals('y'), R.T],
+              [R.equals('yes'), R.T],
+              [R.equals('true'), R.T],
+              [R.T, R.F],
+            ]),
+            R.toLower
+          ),
+          noop
+        )
+      ),
+      renameKeys({
+        addresses: 'address',
+        'web-address': 'site',
+        'CARRY US': 'carry',
+        '# of Bottles': 'bottleCount',
+        TYPE: 'inventoryType',
+      }),
       spreadPath(['addresses']),
+      spreadPath(['subject_data']),
+      R.over(
+        R.lensProp('subject_data'),
+        R.ifElse(
+          isTruthy,
+          R.compose(
+            R.mergeAll,
+            R.map(x =>
+              Object.assign({}, { [x['subject_field_label']]: x['value'] })
+            ),
+            R.ifElse(isArray, R.identity, R.of)
+          ),
+          noop
+        )
+      ),
+      spreadPath(['subject_datas']),
       spreadPath(['web-addresses']),
       R.reject(isNilOrEmpty),
       spreadPath(['contact-data']),
       R.over(R.lensProp('contact-data'), R.pick(['web-addresses', 'addresses']))
     )
   ),
-  R.ifElse(isNilOrEmpty, R.always([]), R.map(R.pick(['name', 'contact-data']))),
+  R.map(R.pick(['name', 'contact-data', 'subject_datas'])),
   R.path(['companies', 'company']),
-  R.tap(
-    R.compose(
-      console.log,
-      R.ifElse(isTruthy, R.identity, R.always('somethinghappened'))
-    )
-  ),
   jsonObj
 )
 
@@ -224,7 +257,6 @@ exports.handler = async function(event, context) {
           R.pipe(
             getAddressComponents,
             R.then(async () => {
-              // console.log('fl', await fetchedLocations)
               const newLastCheck = format(Date.now(), 'YYYYMMDDHHMM')
               if (
                 Array.isArray(fetchedLocations) &&
@@ -237,7 +269,6 @@ exports.handler = async function(event, context) {
                 )
                 return await fetchedLocations
               } else {
-                // context.done(null, 'No Items Processed')
                 return await fetchedLocations
               }
             })

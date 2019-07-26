@@ -16,6 +16,7 @@
 .env.production.local
 .env
 
+
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
@@ -29,12 +30,11 @@ amplify/\#current-cloud-backend
 amplify/.config/local-*
 amplify/backend/amplify-meta.json
 amplify/backend/awscloudformation
-amplify/team-provider-info.json
+team-provider-info.**
 build/
 dist/
 node_modules/
 aws-exports.js
 awsconfiguration.json
-team-provider-info.json
 **/aws-exports.js
-**/team-provider-info.json
+

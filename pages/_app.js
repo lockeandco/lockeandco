@@ -65,12 +65,6 @@ if (typeof window !== 'undefined') {
 }
 // import Layout from '../components/Layout.jsx'
 
-const handleRouteChange = url => {
-  console.log('App is changing to: ', url)
-}
-const handleHistoryChange = url => {
-  console.log('App is changing to: ', url)
-}
 class MyApp extends App {
   constructor(props) {
     super(props)

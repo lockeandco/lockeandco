@@ -57,11 +57,13 @@ const createList = cities =>
     R.tap(console.log)
   )
 const LocationParams = {
-  TableName: process.env.STORAGE_LOCKEANDCO_NAME,
+  TableName: 'lockeandco-production', //process.env.STORAGE_LOCKEANDCO_NAME,
   IndexName: 'itemTypeTarget-itemId-index',
   KeyConditionExpression: 'itemTypeTarget = :location',
+  FilterExpression: 'carry = :true',
   ExpressionAttributeValues: {
     ':location': 'Location',
+    ':true': true,
   },
 }
 const CityParams = {

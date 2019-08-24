@@ -3,12 +3,11 @@ const {
   PHASE_DEVELOPMENT_SERVER,
   PHASE_PRODUCTION_BUILD,
 } = require('next/constants')
-const withMDX = require('@zeit/next-mdx')({
-  extension: /.mdx?$/,
-})
+const withMDX = require('@next/mdx')({ extension: /.mdx?$/ })
 
 module.exports = phase => {
-  // when started in development mode `next dev` or `npm run dev` regardless of the value of STAGING environmental variable
+  // when started in development mode `next dev` or `npm run dev` regardless of
+  // the value of STAGING environmental variable
 
   const isDev = phase === PHASE_DEVELOPMENT_SERVER
   // when `next build` or `npm run build` is used
@@ -30,9 +29,7 @@ module.exports = phase => {
       webpack: function(config, { isServer }) {
         if (!isServer) {
           config.plugins.push(
-            new CopyWebpackPlugin(['./static/favicon.ico'], {
-              debug: 'debug',
-            })
+            new CopyWebpackPlugin(['./static/favicon.ico'], { debug: 'debug' })
           )
         }
         return config

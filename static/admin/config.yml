@@ -36,4 +36,4 @@ collections:
             - { label: "Name", name: "name", widget: "string"}
             - { label: "Description", name: "description", widget: "markdown"} 
             - { label: "Ingredients", name: "ingredients", widget: "markdown"} 
-            - { label: "Preparation", name: "ingredients", widget: "markdown"}                
+            - { label: "Preparation", name: "preparation", widget: "markdown"}                

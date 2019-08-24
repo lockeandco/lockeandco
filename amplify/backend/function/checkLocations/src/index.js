@@ -16,7 +16,7 @@ const {
   isNilOrEmpty,
   renameKeys,
   noop,
-  isArray,
+  isArray
 } = require('ramda-adjunct')
 const fetch = require('isomorphic-unfetch')
 const parser = require('fast-xml-parser')
@@ -53,7 +53,7 @@ const lcParams = {
   Key: lcKey,
 }
 const url = address =>
-  `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${mapsKey}`
+  R.tap(console.log,`https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${mapsKey}`)
 
 const lcUpdateParams = nlc => ({
   TableName: process.env.STORAGE_LOCKEANDCO_NAME,
@@ -205,12 +205,15 @@ let fetchedLocations = []
 
 async function getAddressComponents(list, items = []) {
   if (isNilOrEmpty(list)) {
-    console.log('No items to process')
+    console.log('No items to process', await list.length, await items.length )
+    
   } else {
     await fetch(url(R.path(['address'], R.head(list))))
       .then(l => l.json())
+      .then(R.tap(console.log))
       .then(async f => {
         const item = Object.assign({}, R.head(list), { ...createItem(f) })
+        console.log(`ITEM`,item)
         await publishToSQS(item)
         return await item
       })
@@ -235,6 +238,7 @@ const fetchOptions = {
 
 const highrise = lc =>
   `https://lockecodistilling.highrisehq.com/companies.xml?since=${lc}&criteria[carry_us]=YES`
+ // `https://lockecodistilling.highrisehq.com/companies.xml?since=${20190707154546}&criteria[carry_us]=YES`
 
 exports.handler = async function(event, context) {
   const lastCheck = await ddb
@@ -250,13 +254,15 @@ exports.handler = async function(event, context) {
     .then(x => x.text())
     .then(
       R.pipe(
+        R.tap(console.log),
         convertXml,
         R.ifElse(
           isNilOrEmpty,
           R.always([]),
           R.pipe(
             getAddressComponents,
-            R.then(async () => {
+            R.then(async fl => {
+              console.log('fl', await fl)
               const newLastCheck = format(Date.now(), 'YYYYMMDDHHMM')
               if (
                 Array.isArray(fetchedLocations) &&
@@ -269,6 +275,7 @@ exports.handler = async function(event, context) {
                 )
                 return await fetchedLocations
               } else {
+                // context.done(null, 'No Items Processed')
                 return await fetchedLocations
               }
             })

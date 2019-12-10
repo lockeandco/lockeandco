@@ -1,36 +1,36 @@
 
 @font-face {
     font-family: OldGrowth;
-    src: url('/static/OldGrowth-Regular.otf');
+    src: url('/OldGrowth-Regular.otf');
   }
   @font-face {
     font-family: Flama;
-    src: url('/static/Flama Regular.otf');
+    src: url('/Flama Regular.otf');
   }
 @font-face {
     font-family: Flama;
-    src: url('/static/Flama-Bold.otf');
+    src: url('/Flama-Bold.otf');
     font-weight: bold;
 }
 @font-face {
     font-family: Flama;
-    src: url('/static/Flama-Medium.otf');
+    src: url('/Flama-Medium.otf');
     font-weight: 500;
 }
 @font-face {
     font-family: Flama;
-    src: url('/static/Flama-Light.otf');
+    src: url('/Flama-Light.otf');
     font-weight: 100;
 }
 @font-face {
     font-family: Flama;
-    src: url('/static/Flama-LightItalic.otf');
+    src: url('/Flama-LightItalic.otf');
     font-weight: 100;
     font-style: italic
 }
 @font-face {
     font-family: Flama;
-    src: url('/static/Flama-MediumItal.otf');
+    src: url('/Flama-MediumItal.otf');
     font-weight: 500;
     font-style: italic
 }

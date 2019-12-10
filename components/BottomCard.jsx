@@ -32,7 +32,7 @@ const styles = theme => ({
     position: 'fixed',
     backgroundPosition: 'center center',
     backgroundSize: 'contain, cover',
-    //backgroundImage: `url(/static/hearFromYou.png)`,
+    //backgroundImage: `url(/hearFromYou.png)`,
     background: `rgb(226, 222, 213)`,
     display: 'flex',
     alignItems: 'center',
@@ -87,7 +87,7 @@ function SimpleCard(props) {
           onClick={() => Router.push('/contact-us')}
           className={classes.button}
         >
-          <Avatar src="/static/leaf.png" />
+          <Avatar src="/leaf.png" />
           <ListItemText
             disableTypography
             primary="we'd love to hear from you"

@@ -96,7 +96,7 @@ class LeftDrawer extends React.Component {
       <div style={{ position: 'relative', marginBottom: 10, marginTop: 20 }}>
         <Tooltip TransitionComponent={Zoom} title={'Reset Map'}>
           <img
-            src="/static/Bottle.png"
+            src="/Bottle.png"
             className={classes.bottle}
             onClick={() => {
               this.props.expandList('')

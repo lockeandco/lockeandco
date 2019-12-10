@@ -31,7 +31,7 @@ const styles = {
     position: 'fixed',
     backgroundPosition: 'center center',
     backgroundSize: 'contain, cover',
-    //backgroundImage: `url(/static/hearFromYou.png)`,
+    //backgroundImage: `url(/hearFromYou.png)`,
     background: `#D6D1C4`,
   },
 }

@@ -1,5 +1,5 @@
 import React from 'react'
-import App, { Container } from 'next/app'
+import App from 'next/app'
 import { ThemeProvider } from '@material-ui/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import Router from 'next/router'
@@ -27,6 +27,7 @@ if (typeof window !== 'undefined') {
   //console.log(Amplify)
 
   Amplify.configure(JSON.parse(process.env.AWSCONFIG))
+  console.log('CONFIG', process.env.AWSCONFIG)
   // Amplify.configure(config)
 
   const expiration = new Date(Date.now() + 1000 * 60 * 1)
@@ -215,7 +216,7 @@ class MyApp extends App {
     const { Component, pageProps, router, cookies } = this.props
     console.log('LCS', this.state.lockeColocs)
     return (
-      <Container>
+<>
         <Head>
           <title>Locke & Co Distillery</title>
         </Head>
@@ -238,7 +239,7 @@ class MyApp extends App {
             </Layout>
           </ThemeProvider>
         </CookiesProvider>
-      </Container>
+      </>
     )
   }
 }

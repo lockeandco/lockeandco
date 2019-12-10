@@ -82,7 +82,7 @@ class GMapDemo extends Component {
       //     position: item.location,
       //     title: item.name,
       //     icon: {
-      //       url: '/static/plus.png',
+      //       url: '/plus.png',
       //       // size: new google.maps.Size(20, 20),
       //       scaledSize: new google.maps.Size(20, 20),
       //     },
@@ -184,7 +184,7 @@ class GMapDemo extends Component {
                   position: l.location,
                   title: l.name,
                   icon: {
-                    url: '/static/plus.png',
+                    url: '/plus.png',
                     anchorPoint: new google.maps.Point(0, -200),
                     scaledSize: new google.maps.Size(20, 20),
                   },

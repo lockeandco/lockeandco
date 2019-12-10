@@ -102,7 +102,7 @@ const FindUs = props => {
               <div style={{ position: 'relative', marginBottom: 10 }}>
                 <Tooltip TransitionComponent={Zoom} title={'Reset Map'}>
                   <img
-                    src="/static/Bottle.png"
+                    src="/Bottle.png"
                     className={classes.bottle}
                     style={{
                       height: 250,

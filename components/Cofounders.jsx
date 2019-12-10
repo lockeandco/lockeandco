@@ -22,11 +22,11 @@ const coFounderCopy = classes => (
       The process of distilling has brought with it valuable perspective. After
       years focused on business development, management and client service, as
       well as giving back (
-      <Link href={'/co-founders/rick'} prefetch>
+      <Link href={'/co-founders/rick'} >
         <a className={classes.typo}>Rick</a>
       </Link>{' '}
       serves on Denver Museum of Nature & Science’s Giving Club Council;{' '}
-      <Link href={'/co-founders/owen'} prefetch>
+      <Link href={'/co-founders/owen'} >
         <a className={classes.typo}>Owen </a>
       </Link>{' '}
       on the board of nonprofit Geneva Glen Camp) both established successful
@@ -64,15 +64,15 @@ const CoFounders = props => {
         {...other}
         pictures={{
           left: {
-            url: `/static/Bonfire_in_the_Woods.jpg`,
+            url: `/Bonfire_in_the_Woods.jpg`,
             size: '100%',
           },
           rightTop: {
-            url: `/static/Group_Dinner_Table.jpg`,
+            url: `/Group_Dinner_Table.jpg`,
             size: `50%`,
           },
           rightBottom: {
-            url: `/static/Woman_in_Hammock.jpg`,
+            url: `/Woman_in_Hammock.jpg`,
             size: `50%`,
           },
         }}
@@ -81,7 +81,7 @@ const CoFounders = props => {
           component: (
             <CardBackground
               {...other}
-              media={'/static/Owen+Rick.jpg'}
+              media={'/Owen+Rick.jpg'}
               content={coFounderCopy}
               links={{
                 left: {

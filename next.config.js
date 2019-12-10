@@ -30,9 +30,14 @@ module.exports = phase => {
       webpack: function(config, { isServer }) {
         if (!isServer) {
           config.plugins.push(
-            new CopyWebpackPlugin(['./static/favicon.ico'], { debug: 'debug' })
+            new CopyWebpackPlugin(['./public/favicon.ico'], { debug: 'debug' })
           )
         }
+        config.module.rules.push({
+          test: /\.md$/,
+          loader: 'frontmatter-markdown-loader',
+          options: { mode: ['react-component'] },
+        })
         return config
       },
     }),

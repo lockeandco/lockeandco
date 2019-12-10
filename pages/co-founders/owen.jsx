@@ -72,15 +72,15 @@ const styles = theme => ({
 //         {...other}
 //         pictures={{
 //           left: {
-//             url: `/static/Bonfire_in_the_Woods.jpg`,
+//             url: `/Bonfire_in_the_Woods.jpg`,
 //             size: '100%',
 //           },
 //           rightTop: {
-//             url: `/static/Group_Dinner_Table.jpg`,
+//             url: `/Group_Dinner_Table.jpg`,
 //             size: `50%`,
 //           },
 //           rightBottom: {
-//             url: `/static/Woman_in_Hammock.jpg`,
+//             url: `/Woman_in_Hammock.jpg`,
 //             size: `50%`,
 //           },
 //         }}
@@ -116,7 +116,7 @@ const styles = theme => ({
 //                 </Typography>
 //                 <div style={{ textAlign: 'center' }}>
 //                   <img
-//                     src="/static/Owen+Rick.jpg"
+//                     src="/Owen+Rick.jpg"
 //                     width="90%"
 //                     height="auto"
 //                     style={{

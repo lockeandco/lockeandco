@@ -55,7 +55,7 @@ const CheckAge = withStyles(styles)(props => {
           backgroundColor: 'transparent',
           backgroundPosition: 'center',
           backgroundSize: 'cover',
-          backgroundImage: `url(/static/Seal_Blue.png)`,
+          backgroundImage: `url(/Seal_Blue.png)`,
           backgroundRepeat: 'no-repeat',
           zIndex: -1000,
         }}
@@ -63,8 +63,8 @@ const CheckAge = withStyles(styles)(props => {
       <Page
         {...other}
         pictures={{
-          left: `/static/Golden_Aspen_Tree_Grove.jpg`,
-          right: `/static/tools.jpg`,
+          left: `/Golden_Aspen_Tree_Grove.jpg`,
+          right: `/tools.jpg`,
         }}
       >
         <Typography variant="body1" className={classes.typoHeader}>

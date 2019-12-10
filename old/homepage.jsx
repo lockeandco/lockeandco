@@ -70,7 +70,7 @@ const Homepage = props => {
           backgroundColor: 'transparent',
           backgroundPosition: 'center',
           backgroundSize: 'cover',
-          backgroundImage: `url(/static/Seal_Blue.png)`,
+          backgroundImage: `url(/Seal_Blue.png)`,
           backgroundRepeat: 'no-repeat',
           zIndex: -1000,
         }}
@@ -78,7 +78,7 @@ const Homepage = props => {
       <Page
         {...other}
         pictures={{
-          left: `/static/Snow_Hikers.jpg`,
+          left: `/Snow_Hikers.jpg`,
         }}
       >
         <div style={{ textAlign: 'center', paddingTop: '15%' }}>

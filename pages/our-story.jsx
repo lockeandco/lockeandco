@@ -55,15 +55,15 @@ import { branch } from 'recompose'
 //       {...other}
 //       pictures={{
 //         left: {
-//           url: `/static/Man_Looking_Over_Cliff.jpg`,
+//           url: `/Man_Looking_Over_Cliff.jpg`,
 //           size: '100%',
 //         },
 //         rightTop: {
-//           url: `/static/Moonshine_Jars.jpg`,
+//           url: `/Moonshine_Jars.jpg`,
 //           size: '55%',
 //         },
 //         rightBottom: {
-//           url: `/static/Group_with_Sparklers.jpg`,
+//           url: `/Group_with_Sparklers.jpg`,
 //           size: '45%',
 //         },
 //       }}

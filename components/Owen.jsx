@@ -30,15 +30,15 @@ const Owen = props => {
         {...other}
         pictures={{
           left: {
-            url: `/static/Bottle_Flyfishing.jpg`,
+            url: `/Bottle_Flyfishing.jpg`,
             size: '100%',
           },
           rightTop: {
-            url: `/static/Woman_with_Camera_in_Woods.jpg`,
+            url: `/Woman_with_Camera_in_Woods.jpg`,
             size: `60%`,
           },
           rightBottom: {
-            url: `/static/Weathered_CO_Flag.jpg`,
+            url: `/Weathered_CO_Flag.jpg`,
             size: `40%`,
           },
         }}
@@ -47,7 +47,7 @@ const Owen = props => {
           component: (
             <CardBackground
               {...other}
-              media={'/static/Owen.jpg'}
+              media={'/Owen.jpg'}
               content={owenBio}
               title={`Owen Locke`}
               links={{

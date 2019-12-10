@@ -89,7 +89,7 @@ const Homepage = props => {
       {...other}
       pictures={{
         left: {
-          url: `/static/Snow_Hikers.jpg`,
+          url: `/Snow_Hikers.jpg`,
           size: `100%`,
         },
         right: {
@@ -173,7 +173,7 @@ const Homepage = props => {
               }}
             >
               <img
-                src="/static/Bottle.png"
+                src="/Bottle.png"
                 className={classes.bottle}
                 style={
                   {

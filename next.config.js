@@ -4,6 +4,7 @@ const {
   PHASE_PRODUCTION_BUILD,
 } = require('next/constants')
 const withMDX = require('@next/mdx')({ extension: /.mdx?$/ })
+require('dotenv').config()
 
 module.exports = phase => {
   // when started in development mode `next dev` or `npm run dev` regardless of

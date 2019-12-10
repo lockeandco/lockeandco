@@ -25,6 +25,7 @@ if (typeof window !== 'undefined') {
   const { getLocations } = require('../lib/api')
   getLocs = getLocations
   //console.log(Amplify)
+
   Amplify.configure(JSON.parse(process.env.AWSCONFIG))
   // Amplify.configure(config)
 

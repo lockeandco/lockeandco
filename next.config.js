@@ -3,7 +3,13 @@ const {
   PHASE_DEVELOPMENT_SERVER,
   PHASE_PRODUCTION_BUILD,
 } = require('next/constants')
-const withMDX = require('@next/mdx')({ extension: /.mdx?$/ })
+const frontmatter = require('remark-frontmatter')
+const withMDX = require('@next/mdx')({
+  extension: /\.mdx$/,
+  options: {
+    mdPlugins: [frontmatter],
+  },
+})
 require('dotenv').config()
 
 module.exports = phase => {
@@ -26,7 +32,7 @@ module.exports = phase => {
   return {
     env,
     ...withMDX({
-      pageExtensions: ['js', 'jsx', 'md', 'mdx'],
+      pageExtensions: ['js', 'jsx', 'mdx'],
       webpack: function(config, { isServer }) {
         if (!isServer) {
           config.plugins.push(

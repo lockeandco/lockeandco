@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback, useReducer, useState } from 'react'
 import App from 'next/app'
 import { ThemeProvider } from '@material-ui/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
@@ -67,6 +67,56 @@ if (typeof window !== 'undefined') {
 }
 // import Layout from '../components/Layout.jsx'
 
+// const [cookies, setCookie, removeCookie] = useCookies(['isVerified', 'rememberMe'])
+
+function MywApp(props) {
+  useEffect(() => {
+    // Remove the server-side injected CSS.
+    const jssStyles = document.querySelector('#jss-server-side')
+    if (jssStyles) {
+      jssStyles.parentNode.removeChild(jssStyles)
+    }
+  }, [])
+
+  const [cookies, setCookie, removeCookie] = useCookies([
+    'isVerified',
+    'rememberMe',
+  ])
+
+  const [lockeColocs, setLockeColocs] = useState({
+    lockeColocs: {
+      list: [
+        {
+          formatted_address: '3320 Youngfield St, Wheat Ridge, CO 80033, USA',
+          location: {
+            lat: 39.7634547,
+            lng: -105.1410719,
+          },
+          city: 'Wheat Ridge',
+          place_id: 'ChIJPd14g86Fa4cRtzz3w0mKhN0',
+          name: 'Applejack Wine & Spirits',
+          site: 'https://applejack.com/',
+        },
+      ],
+      total: 1,
+      formatted_address: 'Wheat Ridge, CO, USA',
+      city: 'wheat ridge',
+      location: {
+        lat: 39.766098,
+        lng: -105.0772063,
+      },
+    },
+  })
+
+  const [test, handleTest] = useState({
+    lat: 39.743642,
+    lng: -104.9854807,
+  })
+
+  const [city, expandList] = useState({})
+  const isVerified = cookies.get('isVerified') || false
+  const rememberme = cookies.get('rememberme') || false
+}
 class MyApp extends App {
   constructor(props) {
     super(props)
@@ -216,7 +266,7 @@ class MyApp extends App {
     const { Component, pageProps, router, cookies } = this.props
     console.log('LCS', this.state.lockeColocs)
     return (
-<>
+      <>
         <Head>
           <title>Locke & Co Distillery</title>
         </Head>

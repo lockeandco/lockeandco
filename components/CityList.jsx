@@ -140,7 +140,14 @@ function CityList(props) {
     map(l => Object.assign({}, { label: toLower(l.name) }, { id: l.place_id })),
     reject(isEmpty),
     reject(isNil),
-    sort(ascend(prop('name'))),
+    // sort(ascend(prop('name'))),
+    sortBy(
+      compose(
+        ifElse(test(/^(the )/g), replace(/^(the )/g, ''), identity),
+        toLower,
+        prop('name')
+      )
+    ),
     flatten,
     pluck('list')
   )(locs)
@@ -184,12 +191,12 @@ function CityList(props) {
         <PlacesSearch
           menuClasses={classes.menuItem}
           handleChange={item => {
-            console.log('ITEM', item)
+            // console.log('ITEM', item)
             if (item) {
               const newSelectedItem = Object.assign({}, getPosition(item))
               const posLoc = newSelectedItem.location
 
-              console.log(posLoc)
+              // console.log(posLoc)
               expandList(getCity(item))
               setPositionAndZoom({
                 position: posLoc || {
@@ -261,7 +268,6 @@ function CityList(props) {
               {Array.isArray(item.list) &&
                 sortBy(
                   compose(
-                    tap(console.log),
                     ifElse(test(/^(the )/g), replace(/^(the )/g, ''), identity),
                     toLower,
                     prop('name')

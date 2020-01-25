@@ -53,6 +53,7 @@
     "react-fns": "^1.4.0",
     "react-google-recaptcha": "^1.0.5",
     "react-jss": "^8.6.1",
+    "react-lorem-ipsum": "^1.4.4",
     "react-mailchimp-subscribe": "^2.0.2",
     "react-pose": "^2.2.0",
     "react-responsive": "^5.0.0",

@@ -3,17 +3,24 @@ import App from 'next/app'
 import { ThemeProvider } from '@material-ui/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import Router from 'next/router'
-import { CookiesProvider } from 'react-cookie'
-import { withCookies, Cookies } from 'react-cookie'
+import { withCookies, Cookies, CookiesProvider, useCookies } from 'react-cookie'
 import { instanceOf } from 'prop-types'
 import dynamic from 'next/dynamic'
 import { toLower, compose, path, tap } from 'ramda'
 import Head from 'next/head'
 // import config from '../src/aws-exports'
+import theme from '../src/theme'
+
+const EXANDLIST = `EXPANDLIST`
+const SETPOSITIONANDZOOM = `SETPOSITIONANDZOOM`
+const SETPOSITION = `SETPOSITION`
+
 const Layout = dynamic(() => import('../components/Layout.jsx'), {
   ssr: false,
 })
-import theme from '../src/theme'
+
+const stateUpdater = f => p => f(p)
+
 const getItems = path(['data', 'listLocationsByCity'])
 let Amplify
 let getLocs
@@ -27,7 +34,7 @@ if (typeof window !== 'undefined') {
   //console.log(Amplify)
 
   Amplify.configure(JSON.parse(process.env.AWSCONFIG))
-  console.log('CONFIG', process.env.AWSCONFIG)
+  console.log('CONFIG', JSON.parse(process.env.AWSCONFIG))
   // Amplify.configure(config)
 
   const expiration = new Date(Date.now() + 1000 * 60 * 1)
@@ -65,11 +72,17 @@ if (typeof window !== 'undefined') {
     },
   })
 }
-// import Layout from '../components/Layout.jsx'
-
-// const [cookies, setCookie, removeCookie] = useCookies(['isVerified', 'rememberMe'])
 
 function MywApp(props) {
+  const { Component, pageProps, router } = props
+
+  const [isVerified, setVerified] = useState(false)
+  const [rememberMe, setRememberMe] = useState(false)
+  const [cookies, setCookie, removeCookie] = useCookies([
+    'isVerified',
+    'rememberMe',
+  ])
+
   useEffect(() => {
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector('#jss-server-side')
@@ -78,10 +91,12 @@ function MywApp(props) {
     }
   }, [])
 
-  const [cookies, setCookie, removeCookie] = useCookies([
-    'isVerified',
-    'rememberMe',
-  ])
+  useEffect(() => {
+    const ageVerification = cookies.get('isVerified')
+    const rememberStatus = cookies.get('rememberme')
+    setVerified(ageVerification)
+    setRememberMe(rememberStatus)
+  }, [])
 
   const [lockeColocs, setLockeColocs] = useState({
     lockeColocs: {
@@ -108,14 +123,60 @@ function MywApp(props) {
     },
   })
 
-  const [test, handleTest] = useState({
+  async function handleVerified(verified) {
+    await cookies.set('isVerified', verified, { path: '/' })
+    setVerified(verified)
+  }
+
+  const [city, cityList] = useState({})
+
+  const [test, updateTest] = useState({
     lat: 39.743642,
     lng: -104.9854807,
   })
 
-  const [city, expandList] = useState({})
-  const isVerified = cookies.get('isVerified') || false
-  const rememberme = cookies.get('rememberme') || false
+  const [selectedItem, setSelectedItem] = useState({})
+
+  const [{ position, zoom }, setPandZ] = useState({
+    zoom: 10,
+    position: {
+      lat: 39.743642,
+      lng: -104.9854807,
+    },
+  })
+
+  const expandList = stateUpdater(cityList)
+  const handleTest = stateUpdater(updateTest)
+  const setPositionAndZoom = stateUpdater(setPandZ)
+  const setZoom = z => setPositionAndZoom({ position: position, zoom: z })
+  const setPosition = p => setPositionAndZoom({ position: p, zoom: zoom })
+
+  return (
+    <React.Fragment>
+      <Head>
+        <title>Locke & Co Distillery</title>
+      </Head>
+      <CookiesProvider>
+        <ThemeProvider theme={theme}>
+          {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+          <CssBaseline />
+          <Layout
+            {...pageProps}
+            {...router}
+            {...getStateAndHelpers()}
+            testP={test}
+          >
+            <Component
+              {...pageProps}
+              {...router}
+              {...getStateAndHelpers()}
+              testP={test}
+            />
+          </Layout>
+        </ThemeProvider>
+      </CookiesProvider>
+    </React.Fragment>
+  )
 }
 class MyApp extends App {
   constructor(props) {
@@ -196,12 +257,7 @@ class MyApp extends App {
     if (typeof window !== undefined) {
       console.log('geting locs')
       const locs = await getLocs()
-        .then(
-          compose(
-            tap(console.log),
-            getItems
-          )
-        )
+        .then(compose(tap(console.log), getItems))
         .catch(tap(console.log))
 
       this.setState({

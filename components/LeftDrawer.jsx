@@ -69,10 +69,7 @@ class LeftDrawer extends React.Component {
     }))
   handleClick = location =>
     this.toggleDrawer
-      ? compose(
-          this.toggleDrawer,
-          tap(this.props.handleTest)
-        )(location)
+      ? compose(this.toggleDrawer, tap(this.props.handleTest))(location)
       : this.props.handleTest(location)
   render() {
     const { classes, route, Router, ...other } = this.props
@@ -127,7 +124,7 @@ class LeftDrawer extends React.Component {
         Router={Router}
       />,
     ]
-    console.log(this.props)
+    // console.log(this.props)
     return (
       <Fragment>
         <IconButton

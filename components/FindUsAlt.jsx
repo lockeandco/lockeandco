@@ -23,7 +23,7 @@ import {
 class GMapDemo extends Component {
   constructor(props) {
     super(props)
-    console.log('GMAPS DEMO', props)
+    // console.log('GMAPS DEMO', props)
     this.state = {
       dialogVisible: false,
       markerTitle: '',
@@ -53,19 +53,44 @@ class GMapDemo extends Component {
     ${site ? `<a href=${site} target='_blank'>Homepage` : ''}
     </div>`
   }
-  componentDidUpdate(prev, next) {
-    // console.log(prev)
-    // console.log(next)
-    // console.log(this.props)
-    console.log(prev.position !== this.props.position)
+  componentDidUpdate(prev, next, snapshot) {
+    const { locs } = this.props
+
+    if (Array.isArray(prev.locs) && prev.locs.length < 2 && locs.length > 0) {
+      console.log('Updating Overlay')
+      this.setState({
+        overlays: locs
+          ? [
+              ...compose(
+                map(l => {
+                  const marker = new google.maps.Marker({
+                    position: l.location,
+                    title: l.name,
+                    icon: {
+                      url: '/plus.png',
+                      anchorPoint: new google.maps.Point(0, -200),
+                      scaledSize: new google.maps.Size(20, 20),
+                    },
+                  })
+                  return marker
+                }),
+                reject(isNil),
+                reject(isEmpty)
+                // tap(console.log)
+              )(locs),
+            ]
+          : [],
+      })
+    }
+
     const gm = this.gmap.getMap()
 
     if (prev.position !== this.props.position) {
-      console.log('Setting Position')
+      // console.log('Setting Position')
       gm.setCenter(this.props.position)
     }
     if (prev.zoom !== this.props.zoom) {
-      console.log('Setting Zoom')
+      // console.log('Setting Zoom')
       gm.setZoom(this.props.zoom)
     }
     if (prev.zoom === 14 && prev.zoom > this.props.zoom) {
@@ -87,17 +112,16 @@ class GMapDemo extends Component {
       //       scaledSize: new google.maps.Size(20, 20),
       //     },
       //   })
-      console.log(next.overlays)
       if (Array.isArray(next.overlays)) {
         const itemOverlay =
           Array.isArray(next.overlays) &&
-          next.overlays.reduce((x, y) => (y.name === item.name ? y : x))
+          next.overlays.reduce((x, y) => (y.name === item.name ? y : x), '')
 
-        console.log(itemOverlay)
-        //   console.log(newMarker)
-        console.log(itemOverlay.getPosition())
-        //   console.log(newMarker.getPosition())
-        console.log('ITEM', item)
+        // console.log(itemOverlay)
+        // //   console.log(newMarker)
+        // console.log(itemOverlay.getPosition())
+        // //   console.log(newMarker.getPosition())
+        // console.log('ITEM', item)
         //   gm.setCenter(itemOverlay.getPosition())
 
         this.infoWindow = this.infoWindow || new google.maps.InfoWindow()
@@ -140,7 +164,7 @@ class GMapDemo extends Component {
         position: item.location,
         zoom: 14,
       })
-      console.log(item.city)
+      // console.log(item.city)
       expandList(item.city || '')
       setStore(item)
     }
@@ -192,8 +216,8 @@ class GMapDemo extends Component {
                 return marker
               }),
               reject(isNil),
-              reject(isEmpty),
-              tap(console.log)
+              reject(isEmpty)
+              // tap(console.log)
             )(locs),
           ]
         : [],

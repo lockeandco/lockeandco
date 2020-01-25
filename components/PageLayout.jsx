@@ -57,10 +57,9 @@ const Page = props => {
             height: '100%',
           }}
         >
-          {header &&
-            header.component && (
-              <Header100 headerText={header.component.props.headerText} />
-            )}
+          {header && header.component && (
+            <Header100 headerText={header.component.props.headerText} />
+          )}
           {text && text.component}
         </Grid>
       </Hidden>
@@ -80,8 +79,9 @@ const Page = props => {
           }}
         >
           {text && text.position === 'left' && text.component}
-          {text &&
-            text.position !== 'left' && <div style={{ overflow: 'auto' }} />}
+          {text && text.position !== 'left' && (
+            <div style={{ overflow: 'auto' }} />
+          )}
         </Grid>
         {rightSize < 1 || rightSize > 12 ? null : (
           <Grid item sm={rightSize || 6}>

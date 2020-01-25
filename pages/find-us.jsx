@@ -15,15 +15,9 @@ import { config } from 'react-spring'
 import withPageTransition from '../components/withPageTransition'
 import { pluck, flatten, map, omit, tap } from 'ramda'
 
-const lockeCoAvailable = compose(
-  flatten,
-  pluck(['list'])
-)
+const lockeCoAvailable = compose(flatten, pluck(['list']))
 
-const lockeCoCities = compose(
-  flatten,
-  map(omit(['list']))
-)
+const lockeCoCities = compose(flatten, map(omit(['list'])))
 
 const styles = theme => ({
   container: {
@@ -180,7 +174,6 @@ const FindUs = props => {
   )
 }
 
-export default compose(
-  checkCookie,
-  withStyles(styles)
-)(FindUs)
+FindUs.getInitialProps = async () => {}
+
+export default compose(checkCookie, withStyles(styles))(FindUs)

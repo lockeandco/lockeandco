@@ -39,6 +39,11 @@ const links = [
     order: 0,
   },
   {
+    name: 'recipes',
+    link: '/recipes',
+    order: 0,
+  },
+  {
     name: 'co-founders',
     link: '/co-founders',
     order: 1,

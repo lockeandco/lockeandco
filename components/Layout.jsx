@@ -21,7 +21,7 @@ const styles = theme => ({
     backgroundColor: 'transparent',
     backgroundPosition: 'center',
     backgroundSize: 'cover',
-    backgroundImage: `url(/static/Seal_Blue.jpg)`,
+    backgroundImage: `url(/Seal_Blue.jpg)`,
     backgroundRepeat: 'no-repeat',
     zIndex: -1000,
   },

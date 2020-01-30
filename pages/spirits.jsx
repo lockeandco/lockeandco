@@ -111,15 +111,15 @@ const Spirits = props => {
       {...other}
       pictures={{
         left: {
-          url: `/static/Bottle_Creek.jpg`,
+          url: `/Bottle_Creek.jpg`,
           size: '100%',
         },
         rightTop: {
-          url: `/static/Aspen_Logs.jpg`,
+          url: `/Aspen_Logs.jpg`,
           size: '50%',
         },
         rightBottom: {
-          url: `/static/Close_Up_Aspen_Leaves.jpg`,
+          url: `/Close_Up_Aspen_Leaves.jpg`,
           size: '50%',
         },
       }}

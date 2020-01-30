@@ -17,12 +17,12 @@ const ourStoryCopy = classes => (
     <Typography variant="body1" paragraph className={classes.typo}>
       The Locke’s family roots in Colorado moonshining go back several
       generations.{' '}
-      <Link href={'/co-founders/owen'} prefetch>
+      <Link href={'/co-founders/owen'} >
         <a className={classes.typo}>Owen Locke</a>
       </Link>{' '}
       kept the craft tradition alive with an early knack for brewing that
       continued through college to graduate school, where he reconnected with{' '}
-      <Link href={'/co-founders/rick'} prefetch>
+      <Link href={'/co-founders/rick'} >
         <a className={classes.typo}>Rick Talley</a>
       </Link>
     </Typography>
@@ -51,15 +51,15 @@ const OurStory = props => {
         {...other}
         pictures={{
           left: {
-            url: `/static/Man_Looking_Over_Cliff.jpg`,
+            url: `/Man_Looking_Over_Cliff.jpg`,
             size: '100%',
           },
           rightTop: {
-            url: `/static/Moonshine_Jars.jpg`,
+            url: `/Moonshine_Jars.jpg`,
             size: '55%',
           },
           rightBottom: {
-            url: `/static/Group_with_Sparklers.jpg`,
+            url: `/Group_with_Sparklers.jpg`,
             size: '45%',
           },
         }}

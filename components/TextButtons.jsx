@@ -39,6 +39,11 @@ const links = [
     order: 0,
   },
   {
+    name: 'recipes',
+    link: '/recipes',
+    order: 0,
+  },
+  {
     name: 'co-founders',
     link: '/co-founders',
     order: 1,
@@ -78,7 +83,7 @@ function TextButtons(props) {
                   route === item.link ? classes.paperActive : classes.paper
                 }
               >
-                <Link href={`${item.link}`} prefetch>
+                <Link href={`${item.link}`} >
                   <Button className={classes.button}>{item.name}</Button>
                 </Link>
               </Paper>

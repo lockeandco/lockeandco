@@ -28,15 +28,15 @@ const Rick = props => {
         {...other}
         pictures={{
           left: {
-            url: `/static/Axebottle.jpg`,
+            url: `/Axebottle.jpg`,
             size: '100%',
           },
           rightTop: {
-            url: `/static/Two_Men_Cheersing.jpg`,
+            url: `/Two_Men_Cheersing.jpg`,
             size: `60%`,
           },
           rightBottom: {
-            url: `/static/Weathered_CO_Flag.jpg`,
+            url: `/Weathered_CO_Flag.jpg`,
             size: `40%`,
           },
         }}
@@ -45,7 +45,7 @@ const Rick = props => {
           component: (
             <CardBackground
               {...other}
-              media={'/static/Rick.jpg'}
+              media={'/Rick.jpg'}
               content={rickBio}
               title={`Rick Talley`}
               links={{

@@ -15,15 +15,9 @@ import { config } from 'react-spring'
 import withPageTransition from '../components/withPageTransition'
 import { pluck, flatten, map, omit, tap } from 'ramda'
 
-const lockeCoAvailable = compose(
-  flatten,
-  pluck(['list'])
-)
+const lockeCoAvailable = compose(flatten, pluck(['list']))
 
-const lockeCoCities = compose(
-  flatten,
-  map(omit(['list']))
-)
+const lockeCoCities = compose(flatten, map(omit(['list'])))
 
 const styles = theme => ({
   container: {
@@ -102,7 +96,7 @@ const FindUs = props => {
               <div style={{ position: 'relative', marginBottom: 10 }}>
                 <Tooltip TransitionComponent={Zoom} title={'Reset Map'}>
                   <img
-                    src="/static/Bottle.png"
+                    src="/Bottle.png"
                     className={classes.bottle}
                     style={{
                       height: 250,
@@ -180,7 +174,6 @@ const FindUs = props => {
   )
 }
 
-export default compose(
-  checkCookie,
-  withStyles(styles)
-)(FindUs)
+FindUs.getInitialProps = async () => {}
+
+export default compose(checkCookie, withStyles(styles))(FindUs)

@@ -60,7 +60,7 @@ class InteractiveGrid extends React.Component {
                 style={{ 
                   backgroundPosition: 'center',
                   backgroundSize: 'cover',
-                  backgroundImage: `url(/static/Bottle_Flyfishing.jpg)`,
+                  backgroundImage: `url(/Bottle_Flyfishing.jpg)`,
                   backgroundRepeat: 'no-repeat',
                 }}
               >
@@ -73,7 +73,7 @@ class InteractiveGrid extends React.Component {
                 style={{
                   backgroundPosition: 'center',
                   backgroundSize: 'cover',
-                  backgroundImage: `url(/static/Bottle_Cheersing.jpg)`,
+                  backgroundImage: `url(/Bottle_Cheersing.jpg)`,
                   backgroundRepeat: 'no-repeat',
                 }}
               >

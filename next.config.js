@@ -3,7 +3,14 @@ const {
   PHASE_DEVELOPMENT_SERVER,
   PHASE_PRODUCTION_BUILD,
 } = require('next/constants')
-const withMDX = require('@next/mdx')({ extension: /.mdx?$/ })
+const frontmatter = require('remark-frontmatter')
+const withMDX = require('@next/mdx')({
+  extension: /\.mdx$/,
+  options: {
+    mdPlugins: [frontmatter],
+  },
+})
+require('dotenv').config()
 
 module.exports = phase => {
   // when started in development mode `next dev` or `npm run dev` regardless of
@@ -25,13 +32,18 @@ module.exports = phase => {
   return {
     env,
     ...withMDX({
-      pageExtensions: ['js', 'jsx', 'md', 'mdx'],
+      pageExtensions: ['js', 'jsx', 'mdx'],
       webpack: function(config, { isServer }) {
         if (!isServer) {
           config.plugins.push(
-            new CopyWebpackPlugin(['./static/favicon.ico'], { debug: 'debug' })
+            new CopyWebpackPlugin(['./public/favicon.ico'], { debug: 'debug' })
           )
         }
+        config.module.rules.push({
+          test: /\.md$/,
+          loader: 'frontmatter-markdown-loader',
+          options: { mode: ['react-component'] },
+        })
         return config
       },
     }),

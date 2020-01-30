@@ -25,23 +25,24 @@ import {
   isEmpty,
   map,
   sort,
+  sortBy,
   prop,
   ascend,
   omit,
   over,
   lensProp,
+  test,
+  replace,
+  ifElse,
+  slice,
+  identity,
 } from 'ramda'
 import PlacesSearch from './MaterialFormiklDownshift'
 
-const lockeCoAvailable = compose(
-  flatten,
-  pluck(['list'])
-)
+const lockeCoAvailable = compose(flatten, pluck(['list']))
 
-const lockeCoCities = compose(
-  flatten,
-  map(omit(['list']))
-)
+const lockeCoCities = compose(flatten, map(omit(['list'])))
+
 const styles = theme => ({
   root: {
     width: '100%',
@@ -133,12 +134,20 @@ function CityList(props) {
 
   const locs = lockeColocs
 
-  console.log('LOCOCAOSOCS', locs)
+  // console.log('LOCOCAOSOCS', locs)
+
   const citiesD = compose(
     map(l => Object.assign({}, { label: toLower(l.name) }, { id: l.place_id })),
     reject(isEmpty),
     reject(isNil),
-    sort(ascend(prop('name'))),
+    // sort(ascend(prop('name'))),
+    sortBy(
+      compose(
+        ifElse(test(/^(the )/g), replace(/^(the )/g, ''), identity),
+        toLower,
+        prop('name')
+      )
+    ),
     flatten,
     pluck('list')
   )(locs)
@@ -174,19 +183,20 @@ function CityList(props) {
       )
     : sortedLocs
 
-  console.log('SHOWCITy', showCity)
+  // console.log('SHOWCITy', showCity)
+
   return (
     <React.Fragment>
       <div className={classes.downshiftMargin}>
         <PlacesSearch
           menuClasses={classes.menuItem}
           handleChange={item => {
-            console.log('ITEM', item)
+            // console.log('ITEM', item)
             if (item) {
               const newSelectedItem = Object.assign({}, getPosition(item))
               const posLoc = newSelectedItem.location
 
-              console.log(posLoc)
+              // console.log(posLoc)
               expandList(getCity(item))
               setPositionAndZoom({
                 position: posLoc || {
@@ -217,7 +227,8 @@ function CityList(props) {
           <React.Fragment key={item.city || Math.random() * 32}>
             <ListItem
               onClick={() => {
-                console.log(item)
+                // console.log(item)
+
                 if (item.city && toLower(item.city) !== toLower(city)) {
                   expandList(item.city)
                   setPositionAndZoom({ position: item.location, zoom: 12 })
@@ -255,18 +266,26 @@ function CityList(props) {
             </ListItem>
             <Collapse in={city === item.city} timeout="auto">
               {Array.isArray(item.list) &&
-                item.list.map(store => {
+                sortBy(
+                  compose(
+                    ifElse(test(/^(the )/g), replace(/^(the )/g, ''), identity),
+                    toLower,
+                    prop('name')
+                  ),
+                  item.list
+                ).map(store => {
                   return (
                     <List
-                      key={store.name || Math.random() * 64}
+                      key={store.itemId || Math.random() * 64}
                       component="div"
                       disablePadding
                     >
                       <ListItem
                         button
                         onClick={() => {
-                          console.log(store)
+                          // console.log(store)
                           // expandList(item.city)
+
                           setPositionAndZoom({
                             position: store.location,
                             zoom: 14,
@@ -307,15 +326,3 @@ CityList.propTypes = {
 }
 
 export default withStyles(styles)(CityList)
-
-// <ListItemIcon>
-// <span
-//   style={{
-//     marginRight: 'unset',
-//     color: '#E2DED5',
-//     fontFamily: 'OldGrowth',
-//   }}
-// >
-//   {chevrons}
-// </span>
-// </ListItemIcon>

@@ -65,7 +65,7 @@ style={{padding: 'unset'}}
                     className={classes.paper}
                     style={{ backgroundPosition: 'center',
                     backgroundSize: 'cover',
-                    backgroundImage: `url(/static/AxeBottle.jpg)`,
+                    backgroundImage: `url(/AxeBottle.jpg)`,
                     backgroundRepeat: 'no-repeat'}}
                   >
                     {`1`}
@@ -77,7 +77,7 @@ style={{padding: 'unset'}}
                   className={classes.paper}
                   style={{ height: '50%', backgroundPosition: 'center',
                   backgroundSize: 'cover',
-                  backgroundImage: `url(/static/Bottle_Handrail.jpg)`,
+                  backgroundImage: `url(/Bottle_Handrail.jpg)`,
                   backgroundRepeat: 'no-repeat'}}
                 >
                   {`2`}
@@ -86,7 +86,7 @@ style={{padding: 'unset'}}
                 className={classes.paper}
                 style={{ height: '50%',backgroundPosition: 'center',
                 backgroundSize: 'cover',
-                backgroundImage: `url(/static/Bottle_Creek.jpg)`,
+                backgroundImage: `url(/Bottle_Creek.jpg)`,
                 backgroundRepeat: 'no-repeat'}}
               >
                 {`3`}

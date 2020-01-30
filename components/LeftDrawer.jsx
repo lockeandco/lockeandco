@@ -69,10 +69,7 @@ class LeftDrawer extends React.Component {
     }))
   handleClick = location =>
     this.toggleDrawer
-      ? compose(
-          this.toggleDrawer,
-          tap(this.props.handleTest)
-        )(location)
+      ? compose(this.toggleDrawer, tap(this.props.handleTest))(location)
       : this.props.handleTest(location)
   render() {
     const { classes, route, Router, ...other } = this.props
@@ -96,7 +93,7 @@ class LeftDrawer extends React.Component {
       <div style={{ position: 'relative', marginBottom: 10, marginTop: 20 }}>
         <Tooltip TransitionComponent={Zoom} title={'Reset Map'}>
           <img
-            src="/static/Bottle.png"
+            src="/Bottle.png"
             className={classes.bottle}
             onClick={() => {
               this.props.expandList('')
@@ -127,7 +124,7 @@ class LeftDrawer extends React.Component {
         Router={Router}
       />,
     ]
-    console.log(this.props)
+    // console.log(this.props)
     return (
       <Fragment>
         <IconButton

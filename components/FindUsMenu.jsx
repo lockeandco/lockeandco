@@ -11,10 +11,7 @@ import MenuButtons from './FindUsTextButtons'
 import RightDrawer from './RightDrawer'
 import Router from 'next/router'
 
-const lockeCoCities = compose(
-  flatten,
-  map(omit(['list']))
-)
+const lockeCoCities = compose(flatten, map(omit(['list'])))
 
 const styles = {
   root: {

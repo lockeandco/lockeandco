@@ -176,7 +176,7 @@ const IntegrationDownshift = props => {
               InputProps: getInputProps({
                 disableUnderline: true,
                 endAdornment: (
-                  <InputAdornment variant="standard" position="end">
+                  <InputAdornment position="end">
                     {selectedItem ? (
                       <IconButton
                         aria-label="Clear Client List"

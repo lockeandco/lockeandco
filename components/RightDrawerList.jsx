@@ -109,7 +109,7 @@ const linkList = [
 
 function RightDrawerList(props) {
   const { classes, toggleDrawer, route, Router } = props
-  console.log('RDL', props)
+  // console.log('RDL', props)
   return (
     <div className={classes.root}>
       <List component="nav">

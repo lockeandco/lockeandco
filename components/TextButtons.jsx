@@ -11,7 +11,7 @@ import { title } from 'change-case'
 
 const styles = theme => ({
   button: {
-    margin: theme.spacing.unit,
+    margin: theme.spacing(1),
     color: '#E2DED5',
     fontFamily: 'OldGrowth',
     textTransform: 'unset',
@@ -65,7 +65,7 @@ const addDash = str =>
   str.split(' ').length > 1 ? str.split(' ').join('-') : str
 function TextButtons(props) {
   const { classes, route, Router } = props
-  console.log('TEXTBUTTON', props)
+
   return (
     <React.Fragment>
       <Grid

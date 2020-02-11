@@ -134,7 +134,7 @@ function CityList(props) {
 
   const locs = lockeColocs
 
-  // console.log('LOCOCAOSOCS', locs)
+
 
   const citiesD = compose(
     map(l => Object.assign({}, { label: toLower(l.name) }, { id: l.place_id })),

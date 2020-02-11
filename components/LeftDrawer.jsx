@@ -84,9 +84,8 @@ class LeftDrawer extends React.Component {
 
     const items = [
       <IconButton
-        color="inherit"
         onClick={() => this.setState({ open: false })}
-        style={{ display: 'flex' }}
+        style={{ display: 'flex', color: "#C36D15" }}
       >
         <MenuBackIcon />
       </IconButton>,

@@ -18,7 +18,7 @@ const styles = theme => ({
     height: '100vh',
   },
   paper: {
-    //padding: theme.spacing.unit * 2,
+    //padding: theme.spacing(2),
     height: '100%',
     color: theme.palette.text.secondary,
     flexGrow: 1,

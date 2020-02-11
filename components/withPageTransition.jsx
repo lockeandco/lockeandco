@@ -42,7 +42,7 @@ const withPageTransitions = p => Component => {
     return (
       <Content2 reset native state="start" impl={TimingAnimation}>
         {({ x, y, ...other }) => {
-          console.log({ ...other })
+          // console.log({ ...other })
           return (
             <animated.div
               style={{

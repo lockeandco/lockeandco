@@ -40,7 +40,7 @@ const styles = theme => ({
   },
   paper: {
     //  display: 'flex',
-    //padding: theme.spacing.unit * 2,
+    //padding: theme.spacing(2),
     //height: '100%',
     //color: theme.palette.text.secondary,
     flexGrow: 1,
@@ -63,7 +63,7 @@ const styles = theme => ({
     //flexDirection: 'column',
     //boxShadow: `0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)`,
     boxShadow: 'unset',
-    //margin: theme.spacing.unit,
+    //margin: theme.spacing(1),
     color: '#E2DED5',
     fontFamily: 'Flama',
     overflow: 'auto',

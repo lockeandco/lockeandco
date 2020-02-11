@@ -20,18 +20,18 @@ import Typography from '@material-ui/core/Typography'
 
 const styles = theme => ({
   button: {
-    margin: theme.spacing.unit * 4,
+    margin: theme.spacing(4),
     color: 'rgb(36, 55, 70)',
     fontFamily: 'OldGrowth',
     fontWeight: 'bold',
   },
   [theme.breakpoints.down('sm')]: {
-    margin: theme.spacing.unit * 2,
+    margin: theme.spacing(2),
   },
   iconButton: {
-    margin: theme.spacing.unit * 2,
+    margin: theme.spacing(2),
     [theme.breakpoints.down('sm')]: {
-      margin: theme.spacing.unit * 1,
+      margin: theme.spacing(1),
     },
   },
   paper: {
@@ -48,13 +48,13 @@ const styles = theme => ({
   //     textAlign: 'center',
   //   },
   //   buttonActive: {
-  //     margin: theme.spacing.unit,
+  //     margin: theme.spacing(1),
   //     color: '#E2DED5',
   //     fontFamily: 'Flama',
   //   },
   socialIcons: {
     float: 'left',
-    margin: theme.spacing.unit,
+    margin: theme.spacing(1),
     color: 'rgb(36, 55, 70)',
     fontWeight: 'bold',
     position: 'relative',

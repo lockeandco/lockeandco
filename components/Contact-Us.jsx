@@ -38,8 +38,8 @@ const useStyles = makeStyles(theme =>
       background: 'rgba(226, 222, 213, 0.95)',
     },
     textField: {
-      //marginLeft: theme.spacing.unit,
-      // marginRight: theme.spacing.unit,
+      //marginLeft: theme.spacing(1),
+      // marginRight: theme.spacing(1),
     },
     textFieldNoFw: {
       minWidth: 300,

@@ -7,6 +7,7 @@ import { withCookies, Cookies, CookiesProvider, useCookies } from 'react-cookie'
 import { instanceOf } from 'prop-types'
 import dynamic from 'next/dynamic'
 import { toLower, compose, path, tap, thunkify } from 'ramda'
+import { isFalsy, isTruthy } from 'ramda-adjunct'
 import Head from 'next/head'
 import theme from '../src/theme'
 
@@ -25,6 +26,8 @@ const SETVERIFIED = 'SETVERIFIED'
 const SETREMEMBERME = 'SETREMEMBERME'
 const SETLOCS = 'SETLOCS'
 const SETCITY = 'SETCITY'
+const SETAMPLIFY = 'SETAMPLIFY'
+const SETGETLOCS = 'SETGETLOCS'
 
 const appInitialState = {
   //SETLOCS
@@ -70,6 +73,8 @@ const appInitialState = {
   },
   //SETSELECTEDITEM
   selectedItem: {},
+  Amplify: null,
+  getLocs: null,
 }
 
 const appReducer = (state, action) => {
@@ -98,6 +103,10 @@ const appReducer = (state, action) => {
       return { ...state, isVerified: action.payload }
     case SETTEST:
       return { ...state, test: action.payload }
+    case SETAMPLIFY:
+      return { ...state, Amplify: action.payload }
+    case SETGETLOCS:
+      return { ...state, getLocs: action.payload }
     default:
       //ADD Some sort of error logic as this should never be triggered
       return state
@@ -107,77 +116,80 @@ const appReducer = (state, action) => {
 const expiration = new Date(Date.now() + 1000 * 60 * 1)
 const getItems = path(['data', 'listLocationsByCity'])
 
-// Set this through useEffect (or Nossr, or useLayoutEffect, or ...) and useState (useReducer)
-let Amplify
-let getLocs
-
-if (typeof window !== 'undefined') {
-  Amplify = require('aws-amplify').default
-
-  const { getLocations } = require('../lib/api')
-  getLocs = getLocations
-  //console.log(Amplify)
-
-  // Amplify.configure(JSON.parse(process.env.AWSCONFIG))
-
-  Amplify.Analytics.autoTrack('pageView', {
-    // REQUIRED, turn on/off the auto tracking
-    enable: true,
-    // OPTIONAL, the event name, by default is 'pageView'
-    eventName: 'pageView',
-    // OPTIONAL, the attributes of the event, you can either pass an object or a function
-    // which allows you to define dynamic attributes
-    attributes: {
-      attr: 'attr',
-    },
-    // when using function
-    // attributes: () => {
-    //    const attr = somewhere();
-    //    return {
-    //        myAttr: attr
-    //    }
-    // },
-    // OPTIONAL, by default is 'multiPageApp'
-    // you need to change it to 'SPA' if your app is a single-page app like React
-    type: 'multiPageApp',
-    // OPTIONAL, the service provider, by default is the AWS Pinpoint
-    provider: 'AWSPinpoint',
-    // OPTIONAL, to get the current page url
-    getUrl: () => {
-      // the default function
-      return window.location.origin + window.location.pathname
-    },
-  })
-}
-
 function MywApp(props) {
   const { Component, pageProps, router, ...other } = props
   const [appState, setAppState] = useReducer(appReducer, appInitialState)
   const updateState = thunkify(setAppState)
 
+  async function getCoLocs() {
+    if (typeof window !== undefined && isTruthy(appState.getLocs)) {
+      const locs = await appState
+        .getLocs()
+        // .then(compose(tap(console.log), getItems))
+        .then(getItems)
+        .catch(tap(console.log))
+      const cachedLocs = await appState.Amplify.Cache.getItem('locations', {
+        callback: () => locs,
+        expires: expiration.getTime(),
+      })
+
+      setAppState({
+        type: SETLOCS,
+        payload: isFalsy(cachedLocs) ? appInitialState.lockeColocs : cachedLocs,
+      })
+    }
+  }
   const [cookies, setCookie, removeCookie] = useCookies([
     'isVerified',
     'rememberMe',
   ])
 
-  console.log('COOKIES', cookies)
-
-  async function getCoLocs() {
-    if (typeof window !== undefined) {
-      console.log('geting locs')
-      const locs = await getLocs()
-        .then(compose(tap(console.log), getItems))
-        .catch(tap(console.log))
-
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const Amplify = require('aws-amplify').default
+      Amplify.configure(JSON.parse(process.env.AWSCONFIG))
       setAppState({
-        type: SETLOCS,
-        lockeColocs: await Amplify.Cache.getItem('locations', {
-          callback: () => locs,
-          expires: expiration.getTime(),
-        }),
+        type: SETAMPLIFY,
+        payload: Amplify,
       })
     }
-  }
+  }, [])
+  useEffect(() => {
+    if (isFalsy(appState.Amplify)) {
+      return
+    } else {
+      appState.Amplify.Analytics.autoTrack('pageView', {
+        // REQUIRED, turn on/off the auto tracking
+        enable: true,
+        // OPTIONAL, the event name, by default is 'pageView'
+        eventName: 'pageView',
+        // OPTIONAL, the attributes of the event, you can either pass an object or a function
+        // which allows you to define dynamic attributes
+        attributes: {
+          attr: 'attr',
+        },
+        // when using function
+        // attributes: () => {
+        //    const attr = somewhere();
+        //    return {
+        //        myAttr: attr
+        //    }
+        // },
+        // OPTIONAL, by default is 'multiPageApp'
+        // you need to change it to 'SPA' if your app is a single-page app like React
+        type: 'multiPageApp',
+        // OPTIONAL, the service provider, by default is the AWS Pinpoint
+        provider: 'AWSPinpoint',
+        // OPTIONAL, to get the current page url
+        getUrl: () => {
+          // the default function
+          return window.location.origin + window.location.pathname
+        },
+      })
+      const { getLocations: getLocs } = require('../lib/api')
+      setAppState({ type: SETGETLOCS, payload: getLocs })
+    }
+  }, [appState.Amplify])
 
   useEffect(() => {
     // Remove the server-side injected CSS.
@@ -191,7 +203,7 @@ function MywApp(props) {
     //add Event listener callback? later!!!!
     const ageVerification = !!cookies['isVerified']
     updateState({ type: SETVERIFIED, payload: ageVerification })
-  }, [])
+  }, [appState.isVerified])
 
   useEffect(() => {
     //add Event listener callback? later!!!!
@@ -201,7 +213,7 @@ function MywApp(props) {
 
   useEffect(() => {
     getCoLocs()
-  }, [appState.rememberme])
+  }, [appState.getLocs])
 
   const helpers = {
     expandList: o =>

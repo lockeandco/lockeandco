@@ -12,7 +12,7 @@ import Link from 'next/link'
 
 const styles = theme => ({
   button: {
-    margin: theme.spacing.unit,
+    margin: theme.spacing(1),
     color: '#E2DED5',
     fontFamily: 'OldGrowth',
     fontWeight: 'bold',
@@ -34,7 +34,7 @@ const styles = theme => ({
 
   socialIcons: {
     float: 'left',
-    margin: theme.spacing.unit * 2,
+    margin: theme.spacing(2),
     color: '#E2DED5',
     fontWeight: 'bold',
     position: 'relative',

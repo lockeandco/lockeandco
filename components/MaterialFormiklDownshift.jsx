@@ -166,7 +166,7 @@ const IntegrationDownshift = props => {
         selectedItem,
         clearSelection,
       }) => {
-        console.log('SelectedItem', selectedItem)
+        // console.log('SelectedItem', selectedItem)
         return (
           <div className={classes.container}>
             {renderInput({

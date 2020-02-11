@@ -92,15 +92,15 @@ const styles = theme => ({
     flex: '1 1 auto',
   },
   button: {
-    margin: theme.spacing.unit,
+    margin: theme.spacing(1),
     color: '#E2DED5',
     textShadow: '1px 1px rgb(36, 55, 70)',
   },
   leftIcon: {
-    marginRight: theme.spacing.unit,
+    marginRight: theme.spacing(1),
   },
   rightIcon: {
-    marginLeft: theme.spacing.unit,
+    marginLeft: theme.spacing(1),
   },
   iconSmall: {
     fontSize: 20,

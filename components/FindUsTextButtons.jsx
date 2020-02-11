@@ -20,7 +20,7 @@ import { title } from 'change-case'
 
 const styles = theme => ({
   button: {
-    margin: theme.spacing.unit,
+    margin: theme.spacing(1),
     color: '#E2DED5',
     fontFamily: 'flama',
     textTransform: 'unset',

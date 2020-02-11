@@ -8,7 +8,7 @@ import IconButton from '@material-ui/core/IconButton'
 
 const styles = theme => ({
   button: {
-    margin: theme.spacing.unit,
+    margin: theme.spacing(1),
     color: '#E2DED5',
     fontFamily: 'Flama',
     fontWeight: 'bold',
@@ -26,13 +26,13 @@ const styles = theme => ({
     textAlign: 'center',
   },
   buttonActive: {
-    margin: theme.spacing.unit,
+    margin: theme.spacing(1),
     color: '#E2DED5',
     fontFamily: 'Flama',
   },
   socialIcons: {
     float: 'left',
-    margin: theme.spacing.unit,
+    margin: theme.spacing(1),
     color: '#E2DED5',
     fontWeight: 'bold',
     position: 'relative',

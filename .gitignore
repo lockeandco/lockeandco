@@ -38,3 +38,6 @@ aws-exports.js
 awsconfiguration.json
 **/aws-exports.js
 
+staging_content/Locke + Co Recipes.pdf
+staging_content/*
+**/Locke + Co Recipes.pdf

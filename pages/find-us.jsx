@@ -14,6 +14,8 @@ import CommonHeader from '../components/MobileScrollingHeader'
 import { config } from 'react-spring'
 import withPageTransition from '../components/withPageTransition'
 import { pluck, flatten, map, omit, tap } from 'ramda'
+import CircularProgress from '@material-ui/core/CircularProgress'
+import Box from '@material-ui/core/Box'
 
 const lockeCoAvailable = compose(flatten, pluck(['list']))
 
@@ -153,19 +155,25 @@ const FindUs = props => {
                 you can find locke + co. spirits at the following retailers and
                 establishments:
               </Typography>
-
-              <CityList
-                {...other}
-                lockeColocs={lockeColocs}
-                expandList={expandList}
-                city={city}
-                zoom={zoom}
-                position={position}
-                setZoom={setZoom}
-                setPosition={setPosition}
-                setPositionAndZoom={setPositionAndZoom}
-                setStore={setStore}
-              />
+              {Array.isArray(lockeColocs.list) &&
+              lockeColocs.list.length < 2 ? (
+                <Box mt={10}>
+                  <CircularProgress />
+                </Box>
+              ) : (
+                <CityList
+                  {...other}
+                  lockeColocs={lockeColocs}
+                  expandList={expandList}
+                  city={city}
+                  zoom={zoom}
+                  position={position}
+                  setZoom={setZoom}
+                  setPosition={setPosition}
+                  setPositionAndZoom={setPositionAndZoom}
+                  setStore={setStore}
+                />
+              )}
             </div>
           </React.Fragment>
         ),

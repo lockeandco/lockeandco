@@ -29,13 +29,13 @@ const styles = theme => ({
 
 const Layout = props => {
   const theme = useTheme()
-  const { classes, ...other } = props
+  const { classes, children, ...other } = props
 
   return (
     <Fragment>
       <div className={classes.background} />
       <Menu {...other} />
-      {props.children}
+      {children}
       <Bottom {...other} />
     </Fragment>
   )

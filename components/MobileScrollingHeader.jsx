@@ -17,7 +17,7 @@ const MobileScrollingHeader = props => {
   const {
     classes,
     headerText,
-    height,
+    height = 'auto',
     direction,
     alignItems,
     override,

@@ -78,6 +78,7 @@ const appInitialState = {
 }
 
 const appReducer = (state, action) => {
+  console.log(action)
   switch (action.type) {
     case EXPANDLIST:
       return { ...state, city: action.payload }
@@ -85,7 +86,7 @@ const appReducer = (state, action) => {
       return {
         ...state,
         zoom: action.payload.zoom,
-        postiion: action.payload.zoom,
+        position: action.payload.position,
       }
     case SETPOSITION:
       return { ...state, position: action.payload }
@@ -202,14 +203,14 @@ function MywApp(props) {
   useEffect(() => {
     //add Event listener callback? later!!!!
     const ageVerification = !!cookies['isVerified']
-    updateState({ type: SETVERIFIED, payload: ageVerification })
-  }, [appState.isVerified])
+    setAppState({ type: SETVERIFIED, payload: ageVerification })
+  }, [])
 
   useEffect(() => {
     //add Event listener callback? later!!!!
     const rememberStatus = !!cookies['rememberme']
     setAppState({ type: SETREMEMBERME, payload: rememberStatus })
-  }, [appState.isVerified])
+  }, [])
 
   useEffect(() => {
     getCoLocs()
@@ -220,10 +221,11 @@ function MywApp(props) {
       setAppState({ type: EXPANDLIST, payload: toLower(String(o)) }),
     setZoom: z => setAppState({ type: SETZOOM, payload: z }),
     setPosition: z => setAppState({ type: SETPOSITION, payload: p }),
-    setPositionAndZoom: ({ position, zoom }) => ({
-      type: SETPOSITIONANDZOOM,
-      payload: { position, zoom },
-    }),
+    setPositionAndZoom: ({ position, zoom }) =>
+      setAppState({
+        type: SETPOSITIONANDZOOM,
+        payload: { position, zoom },
+      }),
     handleTest: t => setAppState({ type: SETTEST, payload: t }),
     setStore: s => setAppState({ type: SETSELECTEDITEM, payload: s }),
     ...appState,
@@ -233,6 +235,7 @@ function MywApp(props) {
     handleRemember: remember =>
       setCookie('remmeberMe', remember, { path: '/' }),
   }
+  console.log(appState)
 
   return (
     <React.Fragment>

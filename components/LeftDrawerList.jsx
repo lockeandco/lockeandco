@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core/styles'
 import classNames from 'classnames'
 import CityList from './CityList'
+import CircularProgress from '@material-ui/core/CircularProgress'
 
 const styles = theme => ({
   root: {
@@ -44,13 +45,18 @@ function LeftDrawerList(props) {
     },
     ...other
   } = props
+  console.log('lop', lockeColocs)
   return (
     <div className={classes.root}>
-      <CityList
-        {...other}
-        toggleDrawer={toggleDrawer}
-        lockeColocs={lockeColocs}
-      />
+      {Array.isArray(lockeColocs.list) && lockeColocs.list.length < 2 ? (
+        <CircularProgress />
+      ) : (
+        <CityList
+          {...other}
+          toggleDrawer={toggleDrawer}
+          lockeColocs={lockeColocs}
+        />
+      )}
     </div>
   )
 }

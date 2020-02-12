@@ -46,7 +46,7 @@ class GMapDemo extends Component {
 
   setInfoWindowContent(item) {
     const { name, site, formatted_address } = item
-    console.log(item)
+    // console.log(item)
     return `<div>
     <h4>${name}</h4>
     <h5>${formatted_address}<h5>
@@ -86,11 +86,11 @@ class GMapDemo extends Component {
     const gm = this.gmap.getMap()
 
     if (prev.position !== this.props.position) {
-      // console.log('Setting Position')
+      console.log('Setting Position')
       gm.setCenter(this.props.position)
     }
     if (prev.zoom !== this.props.zoom) {
-      // console.log('Setting Zoom')
+      console.log('Setting Zoom')
       gm.setZoom(this.props.zoom)
     }
     if (prev.zoom === 14 && prev.zoom > this.props.zoom) {

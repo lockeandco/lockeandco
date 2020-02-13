@@ -67,7 +67,7 @@ const CustomForm = () => (
   <MailchimpSubscribe
     url={url}
     render={({ subscribe, status, message }) => {
-      console.log(message)
+
       const close = () => Router.push('/')
       return (
         <div>

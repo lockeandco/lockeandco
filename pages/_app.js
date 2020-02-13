@@ -20,6 +20,7 @@ import CheckAge from '../components/CheckAge'
 import theme from '../src/theme'
 import createPersistedState from 'use-persisted-state'
 import { AnimatePresence, motion } from 'framer-motion'
+import { registerServiceWorker } from '../lib/sw_helpers'
 
 const Layout = dynamic(() => import('../components/Layout.jsx'), {
   ssr: false,
@@ -155,11 +156,10 @@ const useIsVerified = inititalState => {
 function MywApp(props) {
   const { Component, pageProps, router, ...other } = props
   const [appState, setAppState] = useReducer(appReducer, appInitialState)
+  const [isVerified, setVerified] = useState(false)
 
   const { rememberMe, handleRemember } = useRememberMe(false)
   const { verified, handleVerified } = useIsVerified(0)
-
-  const isVerified = checkVerified(verified)(rememberMe)
 
   async function getCoLocs() {
     if (typeof window !== undefined && isTruthy(appState.getLocs)) {
@@ -179,8 +179,16 @@ function MywApp(props) {
       })
     }
   }
-
   useEffect(() => {
+    // Register Service Worker
+    registerServiceWorker()
+    // Remove the server-side injected CSS.
+    const jssStyles = document.querySelector('#jss-server-side')
+    if (jssStyles) {
+      jssStyles.parentNode.removeChild(jssStyles)
+    }
+
+    // Add Amplify
     const Amplify = require('aws-amplify').default
     Amplify.configure(JSON.parse(process.env.AWSCONFIG))
     setAppState({
@@ -226,16 +234,12 @@ function MywApp(props) {
   }, [appState.Amplify])
 
   useEffect(() => {
-    // Remove the server-side injected CSS.
-    const jssStyles = document.querySelector('#jss-server-side')
-    if (jssStyles) {
-      jssStyles.parentNode.removeChild(jssStyles)
-    }
-  }, [])
-
-  useEffect(() => {
     getCoLocs()
   }, [appState.getLocs])
+
+  useEffect(() => {
+    setVerified(checkVerified(verified)(rememberMe))
+  }, [verified])
 
   const helpers = {
     expandList: o =>
@@ -256,7 +260,7 @@ function MywApp(props) {
     allCookies: { isVerified, rememberMe },
   }
 
-  console.log(appState)
+  // console.log(appState)
 
   return (
     <React.Fragment>

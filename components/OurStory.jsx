@@ -43,7 +43,7 @@ const styles = theme => ({})
 
 const OurStory = props => {
   const { classes, ...other } = props
-  console.log('Our Story', props)
+
   return (
     <Fragment>
       <Page

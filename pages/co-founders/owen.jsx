@@ -164,4 +164,4 @@ class SwipeComponent extends React.Component {
   }
 }
 
-export default compose()(SwipeComponent)
+export default SwipeComponent

@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import Page from '../components/Page1x100'
-import checkCookie from '../components/NoCookie'
+
 import cookie from 'cookie'
 import Check from '../components/NoCookie'
 import Router from 'next/router'

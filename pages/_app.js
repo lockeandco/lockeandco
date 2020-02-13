@@ -3,13 +3,24 @@ import App from 'next/app'
 import { ThemeProvider } from '@material-ui/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import Router from 'next/router'
-import { withCookies, Cookies, CookiesProvider, useCookies } from 'react-cookie'
+import { CookiesProvider, useCookies } from 'react-cookie'
 import { instanceOf } from 'prop-types'
 import dynamic from 'next/dynamic'
 import { toLower, compose, path, tap, thunkify } from 'ramda'
 import { isFalsy, isTruthy } from 'ramda-adjunct'
 import Head from 'next/head'
+import {
+  addDays,
+  addHours,
+  differenceInDays,
+  differenceInHours,
+  toDate,
+  parseISO,
+} from 'date-fns'
+import CheckAge from '../components/CheckAge'
 import theme from '../src/theme'
+import createPersistedState from 'use-persisted-state'
+import { AnimatePresence, motion } from 'framer-motion'
 
 const Layout = dynamic(() => import('../components/Layout.jsx'), {
   ssr: false,
@@ -53,10 +64,6 @@ const appInitialState = {
       lng: -105.0772063,
     },
   },
-  //SETVERIFIED
-  isVerified: false,
-  //SETREMEMBERME
-  rememberme: false,
   //SETTEST
   test: {
     lat: 39.743642,
@@ -98,8 +105,6 @@ const appReducer = (state, action) => {
       return { ...state, selectedItem: action.payload }
     case SETLOCS:
       return { ...state, lockeColocs: action.payload }
-    case SETREMEMBERME:
-      return { ...state, rememberme: action.payload }
     case SETVERIFIED:
       return { ...state, isVerified: action.payload }
     case SETTEST:
@@ -117,10 +122,45 @@ const appReducer = (state, action) => {
 const expiration = new Date(Date.now() + 1000 * 60 * 1)
 const getItems = path(['data', 'listLocationsByCity'])
 
+const useRemember = createPersistedState('rememberMe')
+const useAgeVerification = createPersistedState('isVerified')
+
+const checkVerified = verified => remember =>
+  !!remember
+    ? differenceInDays(Date.now(), parseISO(verified)) < 30
+    : differenceInHours(Date.now(), parseISO(verified)) < 1
+
+const useRememberMe = inititalState => {
+  const [rememberMe, setRememberMe] = useRemember(inititalState)
+
+  return {
+    rememberMe: Boolean(rememberMe),
+    handleRemember: remember => setRememberMe(remember),
+  }
+}
+
+const useIsVerified = inititalState => {
+  const [verified, setVerificationState] = useAgeVerification(inititalState)
+
+  return {
+    verified: verified,
+    handleVerified: rememberMe => () => {
+      const date = !!rememberMe
+        ? addDays(Date.now(), 30)
+        : addHours(Date.now(), 1)
+      setVerificationState(date)
+    },
+  }
+}
+
 function MywApp(props) {
   const { Component, pageProps, router, ...other } = props
   const [appState, setAppState] = useReducer(appReducer, appInitialState)
-  const updateState = thunkify(setAppState)
+
+  const { rememberMe, handleRemember } = useRememberMe(false)
+  const { verified, handleVerified } = useIsVerified(0)
+
+  const isVerified = checkVerified(verified)(rememberMe)
 
   async function getCoLocs() {
     if (typeof window !== undefined && isTruthy(appState.getLocs)) {
@@ -146,14 +186,12 @@ function MywApp(props) {
   ])
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const Amplify = require('aws-amplify').default
-      Amplify.configure(JSON.parse(process.env.AWSCONFIG))
-      setAppState({
-        type: SETAMPLIFY,
-        payload: Amplify,
-      })
-    }
+    const Amplify = require('aws-amplify').default
+    Amplify.configure(JSON.parse(process.env.AWSCONFIG))
+    setAppState({
+      type: SETAMPLIFY,
+      payload: Amplify,
+    })
   }, [])
   useEffect(() => {
     if (isFalsy(appState.Amplify)) {
@@ -200,21 +238,9 @@ function MywApp(props) {
     }
   }, [])
 
-  useEffect(() => {
-    //add Event listener callback? later!!!!
-    const ageVerification = !!cookies['isVerified']
-    setAppState({ type: SETVERIFIED, payload: ageVerification })
-  }, [])
-
-  useEffect(() => {
-    //add Event listener callback? later!!!!
-    const rememberStatus = !!cookies['rememberme']
-    setAppState({ type: SETREMEMBERME, payload: rememberStatus })
-  }, [])
-
-  useEffect(() => {
-    getCoLocs()
-  }, [appState.getLocs])
+  // useEffect(() => {
+  //   getCoLocs()
+  // }, [appState.getLocs])
 
   const helpers = {
     expandList: o =>
@@ -230,11 +256,11 @@ function MywApp(props) {
     setStore: s => setAppState({ type: SETSELECTEDITEM, payload: s }),
     ...appState,
     ...other,
-    handleVerified: verified =>
-      setCookie('isVerified', verified, { path: '/' }),
-    handleRemember: remember =>
-      setCookie('remmeberMe', remember, { path: '/' }),
+    isVerified,
+    rememberMe,
+    allCookies: { isVerified, rememberMe },
   }
+
   console.log(appState)
 
   return (
@@ -246,18 +272,34 @@ function MywApp(props) {
         <ThemeProvider theme={theme}>
           {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
           <CssBaseline />
-          <Layout {...pageProps} {...router} {...helpers} testP={appState.test}>
-            <Component
-              {...pageProps}
-              {...router}
-              {...helpers}
-              testP={appState.test}
+          {isVerified ? (
+            <AnimatePresence exitBeforeEnter>
+              <Layout
+                {...pageProps}
+                {...router}
+                {...helpers}
+                testP={appState.test}
+              >
+                <Component
+                  {...pageProps}
+                  {...router}
+                  {...helpers}
+                  testP={appState.test}
+                  key={router.route}
+                />
+              </Layout>
+            </AnimatePresence>
+          ) : (
+            <CheckAge
+              handleVerified={handleVerified}
+              handleRememberMe={handleRemember}
+              rememberMe={rememberMe}
             />
-          </Layout>
+          )}
         </ThemeProvider>
       </CookiesProvider>
     </React.Fragment>
   )
 }
 
-export default compose(withCookies)(MywApp)
+export default MywApp

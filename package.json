@@ -48,7 +48,6 @@
     "ramda": "^0.26.1",
     "ramda-adjunct": "^2.16.1",
     "react": "^16.8.6",
-    "react-cookie": "^4.0.1",
     "react-dom": "^16.8.6",
     "react-easy-swipe": "^0.0.16",
     "react-fns": "^1.4.0",

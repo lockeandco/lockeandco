@@ -156,11 +156,10 @@ const useIsVerified = inititalState => {
 function MywApp(props) {
   const { Component, pageProps, router, ...other } = props
   const [appState, setAppState] = useReducer(appReducer, appInitialState)
+  const [isVerified, setVerified] = useState(false)
 
   const { rememberMe, handleRemember } = useRememberMe(false)
   const { verified, handleVerified } = useIsVerified(0)
-
-  const isVerified = checkVerified(verified)(rememberMe)
 
   async function getCoLocs() {
     if (typeof window !== undefined && isTruthy(appState.getLocs)) {
@@ -237,6 +236,10 @@ function MywApp(props) {
   useEffect(() => {
     getCoLocs()
   }, [appState.getLocs])
+
+  useEffect(() => {
+    setVerified(checkVerified(verified)(rememberMe))
+  }, [verified])
 
   const helpers = {
     expandList: o =>

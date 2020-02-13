@@ -144,7 +144,7 @@ const socialIcons = [
 
 function TextButtons(props) {
   const { classes } = props
-  console.log(props)
+
   return (
     <Paper className={classes.paper}>
       <Typography variant="h4" className={classes.typo}>

@@ -84,7 +84,7 @@ const appInitialState = {
 }
 
 const appReducer = (state, action) => {
-  console.log(action)
+  // console.log(action)
   switch (action.type) {
     case EXPANDLIST:
       return { ...state, city: action.payload }

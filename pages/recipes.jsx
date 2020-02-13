@@ -38,7 +38,7 @@ const useStyles = makeStyles(theme => ({
 const spring = {
   type: 'spring',
   tension: 380,
-  friction: 220,
+  friction: 460,
   damping: 200,
   stiffness: 10,
 }
@@ -50,7 +50,7 @@ const FramerHeader = props => {
   const { width } = size
   const test = transform(0, [width, -width], [0, 1])
   const [tX, cycleX] = useCycle(width, -width, 0)
-  const x = useSpring(-width, spring)
+  const translateX = useSpring(0, spring)
   const controls = useAnimation()
   const firstLine = useAnimation()
 
@@ -71,7 +71,7 @@ const FramerHeader = props => {
 
   return (
     <React.Fragment>
-      <motion.div
+      <motion.span
         positionTransition={spring}
         ref={ref}
         className={classes.typoBigHeader}
@@ -80,10 +80,9 @@ const FramerHeader = props => {
           translateX: 0,
         }}
         animate={firstLine}
-        positionTransition={spring}
       >
         so many ways to enjoy locke + co
-      </motion.div>
+      </motion.span>
       <motion.div
         initial={{
           opacity: 0,
@@ -91,7 +90,6 @@ const FramerHeader = props => {
         className={classes.typoBigHeader}
         custom={2}
         animate={controls}
-        layoutTransition={spring}
       >
         a taste for all seasons
       </motion.div>
@@ -104,6 +102,7 @@ const FramerHeader = props => {
         custom={3}
         animate={controls}
         positionTransition={spring}
+        style={{ translateX }}
       >
         recipes coming soon!
       </motion.div>

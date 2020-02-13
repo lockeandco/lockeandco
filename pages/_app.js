@@ -3,7 +3,6 @@ import App from 'next/app'
 import { ThemeProvider } from '@material-ui/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import Router from 'next/router'
-import { CookiesProvider, useCookies } from 'react-cookie'
 import { instanceOf } from 'prop-types'
 import dynamic from 'next/dynamic'
 import { toLower, compose, path, tap, thunkify } from 'ramda'
@@ -180,10 +179,6 @@ function MywApp(props) {
       })
     }
   }
-  const [cookies, setCookie, removeCookie] = useCookies([
-    'isVerified',
-    'rememberMe',
-  ])
 
   useEffect(() => {
     const Amplify = require('aws-amplify').default
@@ -238,9 +233,9 @@ function MywApp(props) {
     }
   }, [])
 
-  // useEffect(() => {
-  //   getCoLocs()
-  // }, [appState.getLocs])
+  useEffect(() => {
+    getCoLocs()
+  }, [appState.getLocs])
 
   const helpers = {
     expandList: o =>
@@ -268,36 +263,35 @@ function MywApp(props) {
       <Head>
         <title>Locke & Co Distillery</title>
       </Head>
-      <CookiesProvider>
-        <ThemeProvider theme={theme}>
-          {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-          <CssBaseline />
-          {isVerified ? (
-            <AnimatePresence exitBeforeEnter>
-              <Layout
+
+      <ThemeProvider theme={theme}>
+        {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+        <CssBaseline />
+        {isVerified ? (
+          <AnimatePresence exitBeforeEnter>
+            <Layout
+              {...pageProps}
+              {...router}
+              {...helpers}
+              testP={appState.test}
+            >
+              <Component
                 {...pageProps}
                 {...router}
                 {...helpers}
                 testP={appState.test}
-              >
-                <Component
-                  {...pageProps}
-                  {...router}
-                  {...helpers}
-                  testP={appState.test}
-                  key={router.route}
-                />
-              </Layout>
-            </AnimatePresence>
-          ) : (
-            <CheckAge
-              handleVerified={handleVerified}
-              handleRememberMe={handleRemember}
-              rememberMe={rememberMe}
-            />
-          )}
-        </ThemeProvider>
-      </CookiesProvider>
+                key={router.route}
+              />
+            </Layout>
+          </AnimatePresence>
+        ) : (
+          <CheckAge
+            handleVerified={handleVerified}
+            handleRememberMe={handleRemember}
+            rememberMe={rememberMe}
+          />
+        )}
+      </ThemeProvider>
     </React.Fragment>
   )
 }

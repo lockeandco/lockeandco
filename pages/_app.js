@@ -14,7 +14,7 @@ import {
   differenceInDays,
   differenceInHours,
   toDate,
-  parseISO,
+  parseJSON,
 } from 'date-fns'
 import CheckAge from '../components/CheckAge'
 import theme from '../src/theme'
@@ -125,11 +125,11 @@ const getItems = path(['data', 'listLocationsByCity'])
 const useRemember = createPersistedState('rememberMe')
 const useAgeVerification = createPersistedState('isVerified')
 
-const checkVerified = verified => remember =>
-  !!remember
-    ? differenceInDays(Date.now(), parseISO(verified)) < 30
-    : differenceInHours(Date.now(), parseISO(verified)) < 1
-
+const checkVerified = verified => remember => {
+  return !!remember
+    ? differenceInDays(Date.now(), parseJSON(verified)) < 0
+    : differenceInHours(Date.now(), parseJSON(verified)) < 1
+}
 const useRememberMe = inititalState => {
   const [rememberMe, setRememberMe] = useRemember(inititalState)
 
@@ -146,8 +146,8 @@ const useIsVerified = inititalState => {
     verified: verified,
     handleVerified: rememberMe => () => {
       const date = !!rememberMe
-        ? addDays(Date.now(), 30)
-        : addHours(Date.now(), 1)
+        ? addDays(new Date(Date.now()), 30)
+        : addHours(new Date(Date.now()), 1)
       setVerificationState(date)
     },
   }
@@ -159,7 +159,7 @@ function MywApp(props) {
   const [isVerified, setVerified] = useState(false)
 
   const { rememberMe, handleRemember } = useRememberMe(false)
-  const { verified, handleVerified } = useIsVerified(0)
+  const { verified, handleVerified } = useIsVerified(new Date(Date.now))
 
   async function getCoLocs() {
     if (typeof window !== undefined && isTruthy(appState.getLocs)) {
@@ -259,8 +259,6 @@ function MywApp(props) {
     rememberMe,
     allCookies: { isVerified, rememberMe },
   }
-
-  // console.log(appState)
 
   return (
     <React.Fragment>

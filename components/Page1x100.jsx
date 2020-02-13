@@ -54,5 +54,4 @@ PageLayout1x100.propTypes = {
 
 export default compose(
   withStyles(styles),
-  withTransition
 )(PageLayout1x100)

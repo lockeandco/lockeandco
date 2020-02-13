@@ -1,11 +1,10 @@
 import React, { Fragment } from 'react'
 import Page from '../components/PageLayout'
 import compose from 'ramda/src/compose'
-import checkCookie from '../components/NoCookie'
 import { withStyles } from '@material-ui/core/styles'
 import Subscribe from '../components/MailChimpsubscribe'
 import SocialButtons from '../components/SocialButtons2'
-import withPageTransition from '../components/withPageTransition'
+
 const styles = theme => ({
   container: {
     margin: '130px 10px 95px 10px ',
@@ -20,11 +19,6 @@ const styles = theme => ({
       textAlign: 'center',
       backgroundColor: 'unset',
     },
-    // [theme.breakpoints.down('sm')]: {
-    //   marginTop: 130,
-    //   textAlign: 'center',
-    //   //backgroundColor: 'unset',
-    // },
   },
 })
 
@@ -59,11 +53,4 @@ const StayConnected = props => {
   )
 }
 
-export default compose(
-  checkCookie,
-  withStyles(styles),
-  withPageTransition({
-    yPosition: { from: 0, to: 0 },
-    xPosition: { from: 0, to: 0 },
-  })
-)(StayConnected)
+export default compose(withStyles(styles))(StayConnected)

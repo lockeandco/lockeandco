@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react'
 import Page from '../components/PageLayoutWithMaps'
-import checkCookie from '../components/NoCookie'
 import { withStyles } from '@material-ui/core/styles'
 import Background from '../components/TransitionBackground'
 import compose from 'ramda/src/compose'
@@ -12,7 +11,6 @@ import Tooltip from '@material-ui/core/Tooltip'
 import Zoom from '@material-ui/core/Zoom'
 import CommonHeader from '../components/MobileScrollingHeader'
 import { config } from 'react-spring'
-import withPageTransition from '../components/withPageTransition'
 import { pluck, flatten, map, omit, tap } from 'ramda'
 import CircularProgress from '@material-ui/core/CircularProgress'
 import Box from '@material-ui/core/Box'
@@ -182,6 +180,6 @@ const FindUs = props => {
   )
 }
 
-FindUs.getInitialProps = async () => {}
+// FindUs.getInitialProps = async () => {}
 
-export default compose(checkCookie, withStyles(styles))(FindUs)
+export default compose(withStyles(styles))(FindUs)

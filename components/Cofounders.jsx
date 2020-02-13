@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react'
 import Page from '../components/PageLayout'
 import compose from 'ramda/src/compose'
-import checkCookie from '../components/NoCookie'
 import { withStyles } from '@material-ui/core/styles'
 import Background from '../components/TransitionBackground'
 import Paper from '@material-ui/core/Paper'
@@ -107,6 +106,5 @@ const CoFounders = props => {
   )
 }
 export default compose(
-  checkCookie,
   withStyles(styles)
 )(CoFounders)

@@ -3,14 +3,11 @@ import Page from '../components/PageLayout'
 import Paper from '@material-ui/core/Paper'
 import Headers from '../components/MobileScrollingHeader'
 import Typography from '@material-ui/core/Typography'
-import { withStyles, makeStyles } from '@material-ui/core/styles'
+import { makeStyles } from '@material-ui/core/styles'
 import Box from '@material-ui/core/Box'
-import Background from '../components/TransitionBackground'
 import compose from 'ramda/src/compose'
-import checkCookie from '../components/NoCookie'
 import Hidden from '@material-ui/core/Hidden'
 import { config } from 'react-spring'
-import withPageTransition from '../components/withPageTransition'
 import {
   motion,
   useAnimation,
@@ -42,36 +39,48 @@ const spring = {
   type: 'spring',
   tension: 380,
   friction: 220,
+  damping: 200,
+  stiffness: 10,
 }
 const FramerHeader = props => {
   const classes = useStyles()
-  const x = useSpring(0, spring)
+
   const ref = React.useRef(null)
   const size = useComponentSize(ref)
   const { width } = size
   const test = transform(0, [width, -width], [0, 1])
   const [tX, cycleX] = useCycle(width, -width, 0)
-
+  const x = useSpring(-width, spring)
   const controls = useAnimation()
+  const firstLine = useAnimation()
+
+  useEffect(() => {
+    firstLine.start(i => ({
+      translateX: -width,
+      transition: { delay: 3.2, duration: 10 },
+    }))
+  }, [width])
 
   useEffect(() => {
     controls.start(i => ({
-      opacity: i < 3 ? [1, 1] : [0, 1, 1, 1],
-      translateX: i < 3 ? [width, -width] : [width, -width, width, 0],
-      transition: { delay: i < 3 ? i * 4.2 : i * 5.2, duration: i * 4 },
+      opacity: i < 3 ? [1, 1] : [0, 1],
+      translateX: i < 3 ? [width, -width] : [width, 0],
+      transition: { delay: i < 3 ? i * 4.2 : i * 3.2, duration: i * 6 },
     }))
   }, [width])
-  console.log(width)
+
   return (
     <React.Fragment>
       <motion.div
+        positionTransition={spring}
         ref={ref}
         className={classes.typoBigHeader}
         custom={1}
         initial={{
-          opacity: 1,
+          translateX: 0,
         }}
-        animate={controls}
+        animate={firstLine}
+        positionTransition={spring}
       >
         so many ways to enjoy locke + co
       </motion.div>
@@ -82,6 +91,7 @@ const FramerHeader = props => {
         className={classes.typoBigHeader}
         custom={2}
         animate={controls}
+        layoutTransition={spring}
       >
         a taste for all seasons
       </motion.div>
@@ -93,32 +103,12 @@ const FramerHeader = props => {
         className={classes.typoBigHeader}
         custom={3}
         animate={controls}
+        positionTransition={spring}
       >
         recipes coming soon!
       </motion.div>
     </React.Fragment>
   )
-
-  //   return (
-  //     <motion.div
-  //       ref={ref}
-  //       initial={{
-  //         opacity: 1,
-  //         translateX: 0,
-  //       }}
-  //       animate={{
-  //         translateX: [width, -width, 0],
-  //         opacity: [0, 1],
-  //       }}
-  //       className={classes.typoBigHeader}
-  //       transition={{
-  //         duration: 10,
-  //         loop: 3,
-  //       }}
-  //     >
-  //       locke+co for all seasons and tastes. recipes coming soon!
-  //     </motion.div>
-  //   )
 }
 const Recipes = props => {
   const { classes, ...other } = props
@@ -161,11 +151,4 @@ const Recipes = props => {
   )
 }
 
-export default compose(
-  checkCookie,
-  //   withStyles(styles),
-  withPageTransition({
-    yPosition: { from: 0, to: 0 },
-    xPosition: { from: 0, to: 0 },
-  })
-)(Recipes)
+export default Recipes

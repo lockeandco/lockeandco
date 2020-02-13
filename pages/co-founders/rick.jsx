@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react'
 import Page from '../../components/PageLayout'
 import compose from 'ramda/src/compose'
-import checkCookie from '../../components/NoCookie'
 import { withStyles } from '@material-ui/core/styles'
 import Background from '../../components/TransitionBackground'
 import Paper from '@material-ui/core/Paper'
@@ -11,7 +10,7 @@ import CommonHeader from '../../components/MobileScrollingHeader'
 import Rick from '../../components/Rick'
 import Swipeable from 'react-swipeable'
 import Router from 'next/router'
-import withPageTransition from '../../components/withPageTransition'
+
 const styles = theme => ({
   // demo: {
   //   maxHeight: `80%`,
@@ -165,10 +164,4 @@ class SwipeComponent extends React.Component {
   }
 }
 
-export default compose(
-  checkCookie,
-  withPageTransition({
-    yPosition: { from: 0, to: 0 },
-    xPosition: { from: 0, to: 0 },
-  })
-)(SwipeComponent)
+export default SwipeComponent

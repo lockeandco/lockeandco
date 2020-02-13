@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react'
 import Page from '../components/PageLayout'
 import compose from 'ramda/src/compose'
-import checkCookie from '../components/NoCookie'
 import { withStyles } from '@material-ui/core/styles'
 import Background from '../components/TransitionBackground'
 import Grid from '@material-ui/core/Grid'
@@ -10,7 +9,7 @@ import Headers from '../components/ScrollingHeaders'
 import Typography from '@material-ui/core/Typography'
 import CommonHeader from '../components/MobileScrollingHeader'
 import Hidden from '@material-ui/core/Hidden'
-import withPageTransition from '../components/withPageTransition'
+
 const styles = theme => ({
   paperMdUp: {
     flexGrow: 1,
@@ -176,10 +175,5 @@ const Spirits = props => {
 }
 
 export default compose(
-  checkCookie,
-  withStyles(styles),
-  withPageTransition({
-    yPosition: { from: 0, to: 0 },
-    xPosition: { from: 0, to: 0 },
-  })
+  withStyles(styles)
 )(Spirits)

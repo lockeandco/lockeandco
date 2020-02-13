@@ -6,10 +6,9 @@ import Typography from '@material-ui/core/Typography'
 import { withStyles } from '@material-ui/core/styles'
 import Background from '../components/TransitionBackground'
 import compose from 'ramda/src/compose'
-import checkCookie from '../components/NoCookie'
 import Hidden from '@material-ui/core/Hidden'
 import { config } from 'react-spring'
-import withPageTransition from '../components/withPageTransition'
+
 const styles = theme => ({})
 const Merchandise = props => {
   const { classes, ...other } = props
@@ -99,10 +98,5 @@ const Merchandise = props => {
 }
 
 export default compose(
-  checkCookie,
-  withStyles(styles),
-  withPageTransition({
-    yPosition: { from: 0, to: 0 },
-    xPosition: { from: 0, to: 0 },
-  })
+  withStyles(styles)
 )(Merchandise)

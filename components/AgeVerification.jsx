@@ -42,13 +42,14 @@ const styles = theme => ({
 function ContainedButtons(props) {
   const { classes, rememberMe, handleRememberMe, handleVerified } = props
 
+
   return (
     <React.Fragment>
       <div>
         <Button
           variant="contained"
           className={classes.yesButton}
-          onClick={handleVerified}
+          onClick={handleVerified(rememberMe)}
         >
           Heck Yes!
         </Button>
@@ -70,7 +71,7 @@ function ContainedButtons(props) {
             <Checkbox
               checked={rememberMe}
               value="rememberMe"
-              onChange={() => handleRememberMe(rememberMe)}
+              onChange={() => handleRememberMe(!rememberMe)}
             />
           }
           classes={{

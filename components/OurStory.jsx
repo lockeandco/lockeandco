@@ -3,7 +3,6 @@
 import React, { Fragment } from 'react'
 import Page from '../components/PageLayout'
 import compose from 'ramda/src/compose'
-import checkCookie from '../components/NoCookie'
 import { withStyles } from '@material-ui/core/styles'
 import Background from '../components/TransitionBackground'
 import Paper from '@material-ui/core/Paper'
@@ -17,12 +16,12 @@ const ourStoryCopy = classes => (
     <Typography variant="body1" paragraph className={classes.typo}>
       The Locke’s family roots in Colorado moonshining go back several
       generations.{' '}
-      <Link href={'/co-founders/owen'} >
+      <Link href={'/co-founders/owen'}>
         <a className={classes.typo}>Owen Locke</a>
       </Link>{' '}
       kept the craft tradition alive with an early knack for brewing that
       continued through college to graduate school, where he reconnected with{' '}
-      <Link href={'/co-founders/rick'} >
+      <Link href={'/co-founders/rick'}>
         <a className={classes.typo}>Rick Talley</a>
       </Link>
     </Typography>
@@ -96,7 +95,4 @@ const OurStory = props => {
     </Fragment>
   )
 }
-export default compose(
-  checkCookie,
-  withStyles(styles)
-)(OurStory)
+export default compose(withStyles(styles))(OurStory)

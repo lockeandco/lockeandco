@@ -169,7 +169,7 @@ const ContactUs = props => {
               }}
               InputLabelProps={{
                 shrink: true,
-                color: '#243746',
+                //color: '#243746',
               }}
             >
               <MenuItem value="">

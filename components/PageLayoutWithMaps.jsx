@@ -10,6 +10,7 @@ import { withWindowSize } from 'react-fns'
 import withTransition from './withTransition'
 import Typography from '@material-ui/core/Typography'
 import Header100 from './MobileScrollingHeader'
+import { motion } from 'framer-motion'
 
 const styles = theme => ({
   demo: {
@@ -31,40 +32,47 @@ const Page = props => {
     gMap,
   } = props
   return (
-    <Grid
-      container
-      spacing={0}
-      className={classes.demo}
-      alignItems="stretch"
-      direction="row"
-      justify="center"
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 2 }}
     >
-      <Grid item xs={12} md={leftSize || 6}>
-        {gMap}
-      </Grid>
-      <Hidden smDown>
-        <Grid
-          item
-          sm={rightSize || 6}
-          xs={12}
-          style={{
-            paddingBottom: '300px',
-            height: `98vh`,
-            backgroundPosition: 'center',
-            backgroundSize: 'cover',
-            backgroundImage: `url(${
-              pictures.rightTop ? pictures.rightTop.url : ``
-            })`,
-            backgroundRepeat: 'no-repeat',
-            backgroundColor: `${backgroundColorRight}`,
-            overflow: 'scroll'
-          }}
-        >
-          {header && header.position === 'rightTop' && header.component}{' '}
-          {text && text.position === 'rightTop' && text.component}{' '}
+      <Grid
+        container
+        spacing={0}
+        className={classes.demo}
+        alignItems="stretch"
+        direction="row"
+        justify="center"
+      >
+        <Grid item xs={12} md={leftSize || 6}>
+          {gMap}
         </Grid>
-      </Hidden>
-    </Grid>
+        <Hidden smDown>
+          <Grid
+            item
+            sm={rightSize || 6}
+            xs={12}
+            style={{
+              paddingBottom: '300px',
+              height: `98vh`,
+              backgroundPosition: 'center',
+              backgroundSize: 'cover',
+              backgroundImage: `url(${
+                pictures.rightTop ? pictures.rightTop.url : ``
+              })`,
+              backgroundRepeat: 'no-repeat',
+              backgroundColor: `${backgroundColorRight}`,
+              overflow: 'scroll',
+            }}
+          >
+            {header && header.position === 'rightTop' && header.component}{' '}
+            {text && text.position === 'rightTop' && text.component}{' '}
+          </Grid>
+        </Hidden>
+      </Grid>
+    </motion.div>
   )
 }
 

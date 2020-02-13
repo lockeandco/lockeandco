@@ -15,6 +15,7 @@ import { equals, compose, tap } from 'ramda'
 import Tooltip from '@material-ui/core/Tooltip'
 import Zoom from '@material-ui/core/Zoom'
 import MenuBackIcon from 'mdi-material-ui/Backburger'
+import { isFalsy } from 'ramda-adjunct'
 
 const styles = {
   list: {
@@ -76,7 +77,7 @@ class LeftDrawer extends React.Component {
     const state =
       this.state.open === undefined &&
       route === '/find-us' &&
-      this.props.allCookies.isVerified === 'true'
+      this.props.isVerified === 'true'
         ? 'peek'
         : this.state.open
         ? 'open'
@@ -85,7 +86,7 @@ class LeftDrawer extends React.Component {
     const items = [
       <IconButton
         onClick={() => this.setState({ open: false })}
-        style={{ display: 'flex', color: "#C36D15" }}
+        style={{ display: 'flex', color: '#C36D15' }}
       >
         <MenuBackIcon />
       </IconButton>,
@@ -130,8 +131,8 @@ class LeftDrawer extends React.Component {
           onClick={
             route !== '/find-us'
               ? () => Router.push('/find-us')
-              : this.state.open === undefined
-              ? () => this.setState({ open: false })
+              : isFalsy(this.state.open)
+              ? () => this.setState({ open: true })
               : () => this.toggleDrawer()
           }
         >

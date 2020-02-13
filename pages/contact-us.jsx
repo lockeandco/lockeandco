@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react'
 import Page from '../components/PageLayout'
-import checkCookie from '../components/NoCookie'
 import Router from 'next/router'
 import Headers from '../components/ScrollingHeaders'
 import Typography from '@material-ui/core/Typography'
@@ -13,7 +12,6 @@ import CommonHeader from '../components/MobileScrollingHeader'
 import Grid from '@material-ui/core/Grid'
 import TextField from '@material-ui/core/TextField'
 import Paper from '@material-ui/core/Paper'
-import withPageTransition from '../components/withPageTransition'
 import dynamic from 'next/dynamic'
 
 const CU = dynamic(() => import('../components/Contact-Us'), { ssr: false })
@@ -210,10 +208,5 @@ const Homepage = props => {
 }
 
 export default compose(
-  checkCookie,
-  withStyles(styles),
-  withPageTransition({
-    yPosition: { from: 0, to: 0 },
-    xPosition: { from: 0, to: 0 },
-  })
+  withStyles(styles)
 )(Homepage)

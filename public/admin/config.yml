@@ -1,5 +1,5 @@
 backend:
-  name: git-gateway
+  name: test-repo
   branch: staging
 media_folder: public/images/uploads
 collections:
@@ -9,7 +9,7 @@ collections:
       create: true
       label_singular: "Recipe"
       fields: 
-            - { label: "Title", title: "name", widget: "string"}
+            - { label: "Title", name: "title", widget: "string"}
             - { label: "Description", name: "description", widget: "markdown"} 
             - { label: "Ingredients", name: "ingredients", widget: "markdown"} 
             - { label: "Preparation", name: "preparation", widget: "markdown"}      

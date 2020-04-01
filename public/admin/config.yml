@@ -1,6 +1,6 @@
 backend:
   name: git-gateway
-  branch: master
+  branch: staging
 media_folder: public/images/uploads
 collections:
     - label: "Recipes"

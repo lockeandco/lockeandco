@@ -3,15 +3,32 @@ backend:
   branch: staging
 media_folder: public/images/uploads
 collections:
-    - label: "Recipes"
-      name: "Recipes"
-      folder: "content/recipes"
-      create: true
-      label_singular: "Recipe"
-      fields: 
-            - { label: "Title", name: "title", widget: "string"}
-            - { label: "Description", name: "description", widget: "markdown"} 
-            - { label: "Ingredients", name: "ingredients", widget: "markdown"} 
-            - { label: "Preparation", name: "preparation", widget: "markdown"}      
-
-          
+  - label: "Recipes"
+    name: "Recipes"
+    folder: "content/recipes"
+    create: true
+    label_singular: "Recipe"
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "markdown" }
+      - { label: "Ingredients", name: "ingredients", widget: "markdown" }
+      - { label: "Preparation", name: "preparation", widget: "markdown" }
+      - { label: "Tags", name: "tags", widget: "list" }
+      - {
+          label: "Season",
+          name: "season",
+          wdget: "select",
+          options: ["Winter", "Spring", "Summer", "Fall"],
+        }
+      - {
+          label: "Source",
+          name: "source",
+          widget: "object",
+          required: false,
+          fields":
+            [
+              { label: "name", name: "name", widget: "text" , default: "Locke + Co"},
+              { label: "url", name: "url", widget: "text" , default: "https://lockeandcodistilling.com"},
+              { label: "note", name: "note", widget: "text", default: "in house"},
+            ],
+        }

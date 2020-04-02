@@ -25,7 +25,7 @@ collections:
           name: "source",
           widget: "object",
           required: false,
-          fields":
+          fields:
             [
               { label: "name", name: "name", widget: "text" , default: "Locke + Co"},
               { label: "url", name: "url", widget: "text" , default: "https://lockeandcodistilling.com"},

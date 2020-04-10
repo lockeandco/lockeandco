@@ -5,22 +5,23 @@ media_folder: public/images/uploads
 collections:
   - label: "Recipes"
     name: "Recipes"
-    folder: "content/recipes"
+    file: "content/recipes.md"
     create: true
     label_singular: "Recipe"
-    fields:
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Description", name: "description", widget: "markdown", required: false }
-      - { label: "Ingredients", name: "ingredients", widget: "markdown" }
-      - { label: "Preparation", name: "preparation", widget: "markdown" }
-      - { label: "Tags", name: "tags", widget: "list" }
-      - {
+    fields: [
+   [
+      { label: "Title", name: "title", widget: "string" },
+      { label: "Description", name: "description", widget: "markdown", required: false },
+      { label: "Ingredients", name: "ingredients", widget: "markdown" },
+      { label: "Preparation", name: "preparation", widget: "markdown" },
+      { label: "Tags", name: "tags", widget: "list" },
+      {
           label: "Season",
           name: "season",
           widget: "select",
           options: ["Winter", "Spring", "Summer", "Fall"],
-        }
-      - {
+        },
+      {
           label: "Source",
           name: "source",
           widget: "object",
@@ -31,4 +32,5 @@ collections:
               { label: "url", name: "url", widget: "text" , default: "https://lockeandcodistilling.com"},
               { label: "note", name: "note", widget: "text", default: "in house"},
             ],
-        }
+        }]]
+  - {label: "Location", name: "location", widget: "map" }                

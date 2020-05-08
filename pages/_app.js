@@ -25,8 +25,10 @@ import { registerServiceWorker } from '../lib/sw_helpers'
 const Layout = dynamic(() => import('../components/Layout.jsx'), {
   ssr: false,
 })
+import Router from 'next/router'
+import { initGA, logPageView } from '../utils/analytics'
 
-const EXPANDLIST = `EXPANDLIST`
+const EXPANDLIST = 'EXPANDLIST'
 const SETZOOM = 'SETZOOM'
 const SETPOSITION = 'SETPOSITION'
 const SETPOSITIONANDZOOM = `SETPOSITIONANDZOOM`
@@ -187,7 +189,6 @@ function MywApp(props) {
     if (jssStyles) {
       jssStyles.parentNode.removeChild(jssStyles)
     }
-
     // Add Amplify
     const Amplify = require('aws-amplify').default
     Amplify.configure(JSON.parse(process.env.AWSCONFIG))
@@ -232,6 +233,12 @@ function MywApp(props) {
       setAppState({ type: SETGETLOCS, payload: getLocs })
     }
   }, [appState.Amplify])
+
+  useEffect(() => {
+    initGA()
+    logPageView()
+    Router.events.on('routeChangeComplete', logPageView)
+  })
 
   useEffect(() => {
     getCoLocs()

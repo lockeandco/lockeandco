@@ -1,5 +1,5 @@
 backend:
-  name: git-gateway
+  name: test-repo
   branch: staging
 media_folder: public/images/uploads
 collections:
@@ -35,8 +35,18 @@ collections:
         }]    
   - label: "Recipes Titles"
     name: "recipe_titles"
-    widget: "relation"
-    collection: "recipes"
-    searchFields: ["name"]
-    valueField: "name"
-    displayFields: ["title", "season","tags"]            
+    files: 
+      - label: "Recipe Cards Page"
+        name: "all_recipes"
+        file: "../content/allrecipes.md"
+        fields:
+          - label: "All Recipes Titles"
+            name: "all_recipe_titles"
+            widget: "relation"
+            collection: "recipes"
+            searchFields: ["title"]
+            valueField: "title"
+            displayFields: ["title", "season", "tags"]
+
+      
+   

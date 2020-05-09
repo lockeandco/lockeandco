@@ -4,11 +4,10 @@ backend:
 media_folder: public/images/uploads
 collections:
   - label: "Recipes"
-    name: "Recipes"
+    name: "recipes"
     folder: "../content/recipes"
     create: true
     label_singular: "Recipe"
-    widget: "object"
     fields: [
       { label: "Image", name: "image", widget: "image" },
       { label: "Title", name: "title", widget: "string" },
@@ -36,9 +35,9 @@ collections:
         }]
   - {label: "Location", name: "location", widget: "map" }    
   - label: "recipes titles"
-    name: "title"
+    name: "recipe titles"
     widget: "relation"
-    collection: "Recipes"
-    searchFields: ["title"]
-    valueField: "title"
+    collection: "recipes"
+    searchFields: ["name"]
+    valueField: "name"
     displayFields: ["title", "season","tags"]            

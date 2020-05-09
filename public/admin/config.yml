@@ -34,4 +34,11 @@ collections:
               { label: "note", name: "note", widget: "text", default: "in house"},
             ],
         }]
-  - {label: "Location", name: "location", widget: "map" }                
+  - {label: "Location", name: "location", widget: "map" }    
+  - label: "recipes titles"
+    name: "title"
+    widget: "relation"
+    collection: "Recipes"
+    searchFields: ["title"]
+    valueField: "title"
+    displayFields: ["title", "season","tags"]            

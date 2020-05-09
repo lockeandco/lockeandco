@@ -32,10 +32,9 @@ collections:
               { label: "url", name: "url", widget: "text" , default: "https://lockeandcodistilling.com"},
               { label: "note", name: "note", widget: "text", default: "in house"},
             ],
-        }]
-  - {label: "Location", name: "location", widget: "map" }    
-  - label: "recipes titles"
-    name: "recipe titles"
+        }]    
+  - label: "Recipes Titles"
+    name: "recipe_titles"
     widget: "relation"
     collection: "recipes"
     searchFields: ["name"]

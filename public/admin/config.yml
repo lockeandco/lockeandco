@@ -5,7 +5,7 @@ media_folder: public/images/uploads
 collections:
   - label: "Recipes"
     name: "recipes"
-    folder: "../content/recipes"
+    folder: "../content/recipes/"
     create: true
     label_singular: "Recipe"
     fields: [

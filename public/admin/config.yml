@@ -5,7 +5,7 @@ media_folder: public/images/uploads
 collections:
   - label: "Recipes"
     name: "recipes"
-    folder: "../content/recipes/"
+    folder: "content/recipes"
     create: true
     label_singular: "Recipe"
     fields: [
@@ -38,7 +38,7 @@ collections:
     files: 
       - label: "Recipe Cards Page"
         name: "all_recipes"
-        file: "../content/allrecipes.md"
+        file: "content/allrecipes.md"
         fields:
           - label: "All Recipes Titles"
             name: "all_recipe_titles"

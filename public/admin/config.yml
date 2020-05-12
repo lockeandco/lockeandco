@@ -49,7 +49,7 @@ collections:
             displayFields: ["title", "season", "tags"]
   - label: "Summer Recipes"
     name: "summer_recipes"
-    folder: "_posts"
+    folder: "content/recipes"
     create: true
     filter: {field: "season", value: "Summer"}
     fields:

@@ -39,6 +39,7 @@ class MyDocument extends Document {
             integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ"
             crossOrigin="anonymous"
           />
+          <script src="https://unpkg.com/@google/markerclustererplus@4.0.1/dist/markerclustererplus.min.js"></script>
         </Head>
         <body>
           <Main />

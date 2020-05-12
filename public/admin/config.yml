@@ -42,7 +42,6 @@ collections:
     fields:
       - {label: "Image", name: "image", widget: "image"}
       - {label: "Title", name: "title", widget: "string"}
-      - {label: "Content", name: "body", widget: "markdown"}
       - {label: "Tags", name: "tags", widget: "list"}
   - label: "All Recipes"
     name: "all_recipes"
@@ -52,7 +51,6 @@ collections:
     fields:
       - {label: "Image", name: "image", widget: "image"}
       - {label: "Title", name: "title", widget: "string"}
-      - {label: "Content", name: "body", widget: "markdown"}
       - {label: "Tags", name: "tags", widget: "list"}
           
    

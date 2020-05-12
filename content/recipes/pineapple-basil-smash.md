@@ -1,5 +1,6 @@
 ---
 title: Pineapple Basil Smash
+type: recipe
 ingredients: |-
   * 2.5oz Locke + Co Rye
   * 6 pineapple chunks

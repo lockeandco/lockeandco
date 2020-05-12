@@ -1,5 +1,6 @@
 ---
 image: /public/images/uploads/chef-russell-jackson-s-boulevardier.png
+type: recipe
 title: Test
 description: Teste
 ingredients: test

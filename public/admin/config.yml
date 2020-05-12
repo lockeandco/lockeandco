@@ -47,6 +47,15 @@ collections:
             searchFields: ["title"]
             valueField: "title"
             displayFields: ["title", "season", "tags"]
-
+  - label: "Summer Recipes"
+    name: "summer_recipes"
+    folder: "_posts"
+    create: true
+    filter: {field: "season", value: "Summer"}
+    fields:
+      - {label: "Image", name: "image", widget: "image"}
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Content", name: "body", widget: "markdown"}
+      - {label: "Tags", name: "tags", widget: "list"}
       
    

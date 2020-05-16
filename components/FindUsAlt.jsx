@@ -50,14 +50,15 @@ class GMapDemo extends Component {
     return `<div>
     <h4>${name}</h4>
     <h5>${formatted_address}<h5>
-    ${site ? `<a href=${site} target='_blank'>Homepage` : ''}
+    <p>${site ? `<a href=${site} target='_blank'>Homepage ->` : ''}</p>
     </div>`
   }
   componentDidUpdate(prev, next, snapshot) {
     const { locs } = this.props
     const gm = this.gmap.getMap()
+    let markerClusterer
+
     if (Array.isArray(prev.locs) && prev.locs.length < 2 && locs.length > 0) {
-      console.log('Updating Overlay')
       this.setState({
         overlays:
           // locs
@@ -84,29 +85,42 @@ class GMapDemo extends Component {
           [],
       })
     }
-    const markerClusterer = new MarkerClusterer(
-      gm,
-      [
-        ...compose(
-          map(l => {
-            const marker = new google.maps.Marker({
-              position: l.location,
-              title: l.name,
-              icon: {
-                url: '/plus.png',
-                anchorPoint: new google.maps.Point(0, -200),
-                scaledSize: new google.maps.Size(20, 20),
-              },
-            })
-            return marker
-          }),
-          reject(isNil),
-          reject(isEmpty)
-          // tap(console.log)
-        )(locs),
-      ],
-      { imagePath: 'https://lockeandcodistilling.com/m'}
-    )
+
+    const overlays = [
+      ...compose(
+        map(l => {
+          const marker = new google.maps.Marker({
+            position: l.location,
+            title: l.name,
+            icon: {
+              url: '/plus.png',
+              anchorPoint: new google.maps.Point(0, -200),
+              scaledSize: new google.maps.Size(30, 30),
+            },
+          })
+          return marker
+        }),
+        reject(isNil),
+        reject(isEmpty)
+        // tap(console.log)
+      )(locs),
+    ]
+
+    overlays.forEach(overlay => {
+      overlay.addListener('click', event => {
+        this.onOverlayClick({
+          originalEvent: event,
+          overlay: overlay,
+          map: gm,
+        })
+      })
+    })
+
+    markerClusterer = new MarkerClusterer(gm, overlays, {
+      imagePath:
+        'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m',
+    })
+
     if (prev.position !== this.props.position) {
       console.log('Setting Position')
       gm.setCenter(this.props.position)
@@ -156,6 +170,10 @@ class GMapDemo extends Component {
         // gm.setZoom(this.props.zoom)
       }
     }
+    if (markerClusterer) {
+      const markersClusterers = markerClusterer.getClusters()
+      markerClusterer.getClusters()
+    }
   }
   onMapClick(event) {
     this.setState({
@@ -167,7 +185,7 @@ class GMapDemo extends Component {
         lat: 39.743642,
         lng: -104.9854807,
       },
-      zoom: 8,
+      zoom: 14,
     })
   }
   onZoomChanged(d) {}
@@ -184,7 +202,7 @@ class GMapDemo extends Component {
       this.infoWindow.open(event.map, event.overlay)
       setPositionAndZoom({
         position: item.location,
-        zoom: 14,
+        // zoom: 14,
       })
       // console.log(item.city)
       expandList(item.city || '')
@@ -218,7 +236,7 @@ class GMapDemo extends Component {
         lat: 39.743642,
         lng: -104.9854807,
       },
-      zoom = 10,
+      zoom = 3,
     } = this.props
 
     this.setState({
@@ -258,7 +276,6 @@ class GMapDemo extends Component {
     }
     return (
       <GMap
-        overlays={this.state.overlays}
         ref={el => (this.gmap = el)}
         options={options}
         style={{
@@ -278,5 +295,5 @@ class GMapDemo extends Component {
 
 export default GoogleApiWrapper({
   apiKey: 'AIzaSyCAHEdspo9nrGHO9GqZxKwPXcjmOWr6mY4',
-  v: '3.33',
+  v: '3.40',
 })(GMapDemo)

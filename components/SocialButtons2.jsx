@@ -9,7 +9,7 @@ import Icon from '@material-ui/core/Icon'
 import Tooltip from '@material-ui/core/Tooltip'
 import classNames from 'classnames'
 import {
-	FacebookBox as Facebook,
+	Facebook,
 	Twitter,
 	Instagram,
 	MapSearch,

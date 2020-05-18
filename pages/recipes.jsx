@@ -16,6 +16,9 @@ import {
 	useCycle,
 } from 'framer-motion'
 import useComponentSize from '@rehooks/component-size'
+import * as Recipes from '../content/recipes/pineapple-basil-smash.md'
+
+console.log(Recipes)
 
 const useStyles = makeStyles(theme => ({
 	typoBigHeader: {

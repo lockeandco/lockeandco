@@ -56,15 +56,6 @@ collections:
             ],
         },
       ]
-  - label: "Summer Recipes"
-    name: "summer_recipes"
-    folder: "content/recipes"
-    create: true
-    filter: { field: "season", value: "Summer" }
-    fields:
-      - { label: "Image", name: "image", widget: "image" }
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Tags", name: "tags", widget: "list" }
   - label: "All Recipes"
     name: "all_recipes"
     folder: "content/recipes"
@@ -74,3 +65,16 @@ collections:
       - { label: "Image", name: "image", widget: "image" }
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Tags", name: "tags", widget: "list" }
+  - label: Father
+    name: father
+    file: content/allrecipes.md
+    fields:
+        - label: Children
+          name: children
+          widget: list
+          fields:
+              - label: Child
+                name: child
+                widget: relation
+                collection: recipes
+                valueField: title

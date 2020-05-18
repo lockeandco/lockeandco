@@ -1,7 +1,7 @@
-import React, { Fragment } from 'react'
+import React, {Fragment} from 'react'
 import Page from '../components/PageLayout'
 import compose from 'ramda/src/compose'
-import { withStyles } from '@material-ui/core/styles'
+import {withStyles} from '@material-ui/core/styles'
 import Background from '../components/TransitionBackground'
 import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
@@ -20,58 +20,57 @@ as its simple balance to act on its own.`
 const styles = theme => ({})
 
 const Rick = props => {
-  const { classes, ...other } = props
-  return (
-    <Fragment>
-      <Page
-        {...other}
-        pictures={{
-          left: {
-            url: `/Axebottle.jpg`,
-            size: '100%',
-          },
-          rightTop: {
-            url: `/Two_Men_Cheersing.jpg`,
-            size: `60%`,
-          },
-          rightBottom: {
-            url: `/Weathered_CO_Flag.jpg`,
-            size: `40%`,
-          },
-        }}
-        text={{
-          position: 'left',
-          component: (
-            <CardBackground
-              {...other}
-              media={'/Rick.jpg'}
-              content={rickBio}
-              title={`Rick Talley`}
-              links={{
-                left: {
-                  title: 'Owen',
-                  link: '/co-founders/owen',
-                },
-                right: {
-                  title: 'Co-Founders',
-                  link: '/co-founders',
-                },
-              }}
-            />
-          ),
-        }}
-        header={{
-          position: 'rightTop',
-          component: (
-            <CommonHeader
-              height="100%"
-              alignItems="flex-end"
-              headerText={`official sponsors of a good time`}
-            />
-          ),
-        }}
-      />
-    </Fragment>
-  )
+	const {classes, ...other} = props
+	return (
+		<Page
+			{...other}
+			pictures={{
+				left: {
+					url: `/Axebottle.jpg`,
+					size: '100%',
+				},
+				rightTop: {
+					url: `/Two_Men_Cheersing.jpg`,
+					size: `60%`,
+				},
+				rightBottom: {
+					url: `/Weathered_CO_Flag.jpg`,
+					size: `40%`,
+				},
+			}}
+			text={{
+				position: 'left',
+				component: (
+					<CardBackground
+						{...other}
+						media="/Rick.jpg"
+						content={rickBio}
+						title="Rick Talley"
+						links={{
+							left: {
+								title: 'Owen',
+								link: '/co-founders/owen',
+							},
+							right: {
+								title: 'Co-Founders',
+								link: '/co-founders',
+							},
+						}}
+					/>
+				),
+			}}
+			header={{
+				position: 'rightTop',
+				component: (
+					<CommonHeader
+						height="100%"
+						alignItems="flex-end"
+						headerText="official sponsors of a good time"
+					/>
+				),
+			}}
+		/>
+	)
 }
+
 export default compose(withStyles(styles))(Rick)

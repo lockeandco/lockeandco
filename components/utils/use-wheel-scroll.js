@@ -1,12 +1,12 @@
-import { RefObject } from 'react'
-import { useDomEvent, MotionValue } from 'framer-motion'
-import { spring } from 'popmotion'
-import { mix } from '@popmotion/popcorn'
-import { debounce } from 'lodash'
+import {RefObject} from 'react'
+import {useDomEvent, MotionValue} from 'framer-motion'
+import {spring} from 'popmotion'
+import {mix} from '@popmotion/popcorn'
+import {debounce} from 'lodash'
 
 interface Constraints {
-  top: number;
-  bottom: number;
+	top: number;
+	bottom: number;
 }
 
 // Absolute distance a wheel scroll event can travel outside of
@@ -17,22 +17,22 @@ const deltaThreshold = 5
 const elasticFactor = 0.2
 
 function springTo(value: MotionValue, from: number, to: number) {
-  if (value.isAnimating()) return
+	if (value.isAnimating()) return
 
-  value.start(complete => {
-    const animation = spring({
-      from,
-      to,
-      velocity: value.getVelocity(),
-      stiffness: 400,
-      damping: 40,
-    }).start({
-      update: (v: number) => value.set(v),
-      complete,
-    })
+	value.start(complete => {
+		const animation = spring({
+			from,
+			to,
+			velocity: value.getVelocity(),
+			stiffness: 400,
+			damping: 40,
+		}).start({
+			update: (v: number) => value.set(v),
+			complete,
+		})
 
-    return () => animation.stop()
-  })
+		return () => animation.stop()
+	})
 }
 
 const debouncedSpringTo = debounce(springTo, 100)
@@ -61,52 +61,52 @@ const debouncedSpringTo = debounce(springTo, 100)
  * @param isActive - `true` if this listener should fire.
  */
 export function useWheelScroll(
-  ref: RefObject<Element>,
-  y: MotionValue<number>,
-  constraints: Constraints | null,
-  onWheelCallback: (e: WheelEvent) => void,
-  isActive: boolean
+	ref: RefObject<Element>,
+	y: MotionValue<number>,
+	constraints: Constraints | null,
+	onWheelCallback: (e: WheelEvent) => void,
+	isActive: boolean
 ) {
-  const onWheel = (event: WheelEvent) => {
-    event.preventDefault()
+	const onWheel = (event: WheelEvent) => {
+		event.preventDefault()
 
-    const currentY = y.get()
-    let newY = currentY - event.deltaY
-    let startedAnimation = false
-    const isWithinBounds =
-      constraints && newY >= constraints.top && newY <= constraints.bottom
+		const currentY = y.get()
+		let newY = currentY - event.deltaY
+		let startedAnimation = false
+		const isWithinBounds =
+			constraints && newY >= constraints.top && newY <= constraints.bottom
 
-    if (constraints && !isWithinBounds) {
-      newY = mix(currentY, newY, elasticFactor)
+		if (constraints && !isWithinBounds) {
+			newY = mix(currentY, newY, elasticFactor)
 
-      if (newY < constraints.top) {
-        if (event.deltaY <= deltaThreshold) {
-          springTo(y, newY, constraints.top)
-          startedAnimation = true
-        } else {
-          debouncedSpringTo(y, newY, constraints.top)
-        }
-      }
+			if (newY < constraints.top) {
+				if (event.deltaY <= deltaThreshold) {
+					springTo(y, newY, constraints.top)
+					startedAnimation = true
+				} else {
+					debouncedSpringTo(y, newY, constraints.top)
+				}
+			}
 
-      if (newY > constraints.bottom) {
-        if (event.deltaY >= -deltaThreshold) {
-          springTo(y, newY, constraints.bottom)
-          startedAnimation = true
-        } else {
-          debouncedSpringTo(y, newY, constraints.bottom)
-        }
-      }
-    }
+			if (newY > constraints.bottom) {
+				if (event.deltaY >= -deltaThreshold) {
+					springTo(y, newY, constraints.bottom)
+					startedAnimation = true
+				} else {
+					debouncedSpringTo(y, newY, constraints.bottom)
+				}
+			}
+		}
 
-    if (!startedAnimation) {
-      y.stop()
-      y.set(newY)
-    } else {
-      debouncedSpringTo.cancel()
-    }
+		if (!startedAnimation) {
+			y.stop()
+			y.set(newY)
+		} else {
+			debouncedSpringTo.cancel()
+		}
 
-    onWheelCallback(event)
-  }
+		onWheelCallback(event)
+	}
 
-  useDomEvent(ref, 'wheel', isActive && onWheel, { passive: false })
+	useDomEvent(ref, 'wheel', isActive && onWheel, {passive: false})
 }

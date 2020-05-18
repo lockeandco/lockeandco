@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { withStyles } from '@material-ui/core/styles'
+import {withStyles} from '@material-ui/core/styles'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
@@ -12,30 +12,30 @@ import IconButton from '@material-ui/core/IconButton'
 import Collapse from '@material-ui/core/Collapse'
 import Icon from '@material-ui/core/Icon'
 import classNames from 'classnames'
-import { ChevronDoubleLeft } from 'mdi-material-ui'
+import {ChevronDoubleLeft} from 'mdi-material-ui'
 import {
-  tap,
-  compose,
-  head,
-  toLower,
-  pluck,
-  flatten,
-  reject,
-  isNil,
-  isEmpty,
-  map,
-  sort,
-  sortBy,
-  prop,
-  ascend,
-  omit,
-  over,
-  lensProp,
-  test,
-  replace,
-  ifElse,
-  slice,
-  identity,
+	tap,
+	compose,
+	head,
+	toLower,
+	pluck,
+	flatten,
+	reject,
+	isNil,
+	isEmpty,
+	map,
+	sort,
+	sortBy,
+	prop,
+	ascend,
+	omit,
+	over,
+	lensProp,
+	test,
+	replace,
+	ifElse,
+	slice,
+	identity,
 } from 'ramda'
 import PlacesSearch from './MaterialFormiklDownshift'
 
@@ -44,285 +44,283 @@ const lockeCoAvailable = compose(flatten, pluck(['list']))
 const lockeCoCities = compose(flatten, map(omit(['list'])))
 
 const styles = theme => ({
-  root: {
-    width: '100%',
-    height: '100%',
-    minHeight: '100vh',
-    maxWidth: 300,
-    backgroundColor: `#D6D1C4`,
-  },
-  listItemText: {
-    color: '#E2DED5',
-    fontFamily: 'OldGrowth',
-    fontWeight: 'bold',
-    textTransform: 'unset',
-    fontSize: '0.6em',
-    //padding: 'unset',
-  },
-  listItemTextActive: {
-    color: 'rgb(212, 194, 1)',
-    fontFamily: 'OldGrowth',
-    fontWeight: 'bold',
-    textTransform: 'unset',
-    fontSize: '0.6em',
-    //padding: 'unset',
-  },
-  insetItemText: {
-    color: '#E2DED5',
-    fontFamily: 'OldGrowth',
-    fontWeight: 'bold',
-    textTransform: 'unset',
-    fontSize: '0.5em',
-    //padding: 'unset',
-  },
-  iconColor: {
-    color: '#C36D15',
-  },
-  button: {
-    color: 'rgb(36, 55, 70)',
-    fontFamily: 'OldGrowth',
-    fontWeight: 'bold',
-    textTransform: 'unset',
-    fontSize: '0.6em',
-  },
-  inset: {
-    '&:first-child': {
-      paddingLeft: 15,
-    },
-  },
-  buttonActive: {
-    backgroundColor: '#243746',
-    '&:hover': {
-      backgroundColor: '#243746',
-    },
-    color: '#E2DED5',
-    fontFamily: 'OldGrowth',
-    fontWeight: 'bold',
-    textTransform: 'unset',
-    fontSize: '0.7em',
-  },
-  downshiftMargin: {
-    marginTop: 10,
-    marginBottom: 10,
-  },
-  menuItem: {
-    fontFamily: 'OldGrowth',
-    fontWeight: 'bold',
-    textTransform: 'unset',
-    fontSize: '0.6em',
-    color: '#243746',
-  },
+	root: {
+		width: '100%',
+		height: '100%',
+		minHeight: '100vh',
+		maxWidth: 300,
+		backgroundColor: `#D6D1C4`,
+	},
+	listItemText: {
+		color: '#E2DED5',
+		fontFamily: 'OldGrowth',
+		fontWeight: 'bold',
+		textTransform: 'unset',
+		fontSize: '0.6em',
+		// Padding: 'unset',
+	},
+	listItemTextActive: {
+		color: 'rgb(212, 194, 1)',
+		fontFamily: 'OldGrowth',
+		fontWeight: 'bold',
+		textTransform: 'unset',
+		fontSize: '0.6em',
+		// Padding: 'unset',
+	},
+	insetItemText: {
+		color: '#E2DED5',
+		fontFamily: 'OldGrowth',
+		fontWeight: 'bold',
+		textTransform: 'unset',
+		fontSize: '0.5em',
+		// Padding: 'unset',
+	},
+	iconColor: {
+		color: '#C36D15',
+	},
+	button: {
+		color: 'rgb(36, 55, 70)',
+		fontFamily: 'OldGrowth',
+		fontWeight: 'bold',
+		textTransform: 'unset',
+		fontSize: '0.6em',
+	},
+	inset: {
+		'&:first-child': {
+			paddingLeft: 15,
+		},
+	},
+	buttonActive: {
+		backgroundColor: '#243746',
+		'&:hover': {
+			backgroundColor: '#243746',
+		},
+		color: '#E2DED5',
+		fontFamily: 'OldGrowth',
+		fontWeight: 'bold',
+		textTransform: 'unset',
+		fontSize: '0.7em',
+	},
+	downshiftMargin: {
+		marginTop: 10,
+		marginBottom: 10,
+	},
+	menuItem: {
+		fontFamily: 'OldGrowth',
+		fontWeight: 'bold',
+		textTransform: 'unset',
+		fontSize: '0.6em',
+		color: '#243746',
+	},
 })
 const chevrons = '<<'
-function CityList(props) {
-  const {
-    classes,
-    lockeColocs,
-    expandList,
-    open,
-    toggleDrawer,
-    handleClick,
-    route,
-    Router,
-    city,
-    setZoom,
-    setPosition,
-    setPositionAndZoom,
-    setStore,
-    selectedItem,
-  } = props
+const CityList = props => {
+	const {
+		classes,
+		lockeColocs,
+		expandList,
+		open,
+		toggleDrawer,
+		handleClick,
+		route,
+		Router,
+		city,
+		setZoom,
+		setPosition,
+		setPositionAndZoom,
+		setStore,
+		selectedItem,
+	} = props
 
-  const locs = lockeColocs
+	const locs = lockeColocs
 
+	const citiesD = compose(
+		map(l => Object.assign({}, {label: toLower(l.name)}, {id: l.place_id})),
+		reject(isEmpty),
+		reject(isNil),
+		// Sort(ascend(prop('name'))),
+		sortBy(
+			compose(
+				ifElse(test(/^(the )/g), replace(/^(the )/g, ''), identity),
+				toLower,
+				prop('name')
+			)
+		),
+		flatten,
+		pluck('list')
+	)(locs)
 
+	const getCity = loc =>
+		locs.reduce((x, y) => {
+			return Array.isArray(y.list) &&
+				y.list.reduce(
+					(w, z) => (toLower(loc) === toLower(z.name) ? z.name : w),
+					''
+				)
+				? y.city
+				: x
+		}, city)
+	const getPosition = loc =>
+		locs.reduce((x, y) => {
+			return Array.isArray(y.list) &&
+				y.list.reduce((w, z) => (toLower(loc) === toLower(z.name) ? z : w), '')
+				? y.list.reduce(
+						(w, z) => (toLower(loc) === toLower(z.name) ? z : w),
+						{}
+				  )
+				: x
+		}, selectedItem)
 
-  const citiesD = compose(
-    map(l => Object.assign({}, { label: toLower(l.name) }, { id: l.place_id })),
-    reject(isEmpty),
-    reject(isNil),
-    // sort(ascend(prop('name'))),
-    sortBy(
-      compose(
-        ifElse(test(/^(the )/g), replace(/^(the )/g, ''), identity),
-        toLower,
-        prop('name')
-      )
-    ),
-    flatten,
-    pluck('list')
-  )(locs)
+	const sortedLocs = compose(
+		map(over(lensProp('city'), toLower)),
+		sort(ascend(prop('city')))
+	)(locs)
+	const showCity = city
+		? sortedLocs.filter(l =>
+				l.city ? toLower(l.city) === toLower(city) : true
+		  )
+		: sortedLocs
 
-  const getCity = loc =>
-    locs.reduce((x, y) => {
-      return Array.isArray(y.list) &&
-        y.list.reduce(
-          (w, z) => (toLower(loc) === toLower(z.name) ? z.name : w),
-          ''
-        )
-        ? y.city
-        : x
-    }, city)
-  const getPosition = loc =>
-    locs.reduce((x, y) => {
-      return Array.isArray(y.list) &&
-        y.list.reduce((w, z) => (toLower(loc) === toLower(z.name) ? z : w), '')
-        ? y.list.reduce(
-            (w, z) => (toLower(loc) === toLower(z.name) ? z : w),
-            {}
-          )
-        : x
-    }, selectedItem)
+	// Console.log('SHOWCITy', showCity)
 
-  const sortedLocs = compose(
-    map(over(lensProp('city'), toLower)),
-    sort(ascend(prop('city')))
-  )(locs)
-  const showCity = city
-    ? sortedLocs.filter(l =>
-        l.city ? toLower(l.city) === toLower(city) : true
-      )
-    : sortedLocs
+	return (
+		<>
+			<div className={classes.downshiftMargin}>
+				<PlacesSearch
+					menuClasses={classes.menuItem}
+					handleChange={item => {
+						// Console.log('ITEM', item)
+						if (item) {
+							const newSelectedItem = Object.assign({}, getPosition(item))
+							const posLoc = newSelectedItem.location
 
-  // console.log('SHOWCITy', showCity)
+							// Console.log(posLoc)
+							expandList(getCity(item))
+							setPositionAndZoom({
+								position: posLoc || {
+									lat: 39.743642,
+									lng: -104.9854807,
+								},
+								zoom: 14,
+							})
+							setStore(newSelectedItem)
+							toggleDrawer && toggleDrawer()
+						} else {
+							expandList('')
+							setPositionAndZoom({
+								position: {
+									lat: 39.743642,
+									lng: -104.9854807,
+								},
+								zoom: 10,
+							})
+							setStore({})
+						}
+					}}
+					items={citiesD}
+				/>
+			</div>
+			<List>
+				{showCity.map(item => (
+					<React.Fragment key={item.city || Math.random() * 32}>
+						<ListItem
+							key={item.city || Math.random() * 32}
+							button
+							// OnClick={() => {
+							//   console.log('ITMs', item)
+							//   console.log('Loc', item.location)
+							//   handleClick
+							//     ? handleClick(item.location)
+							//     : props.handleTest(item.location)
+							// }}
+							style={{textAlign: 'left'}}
+							onClick={() => {
+								// Console.log(item)
 
-  return (
-    <React.Fragment>
-      <div className={classes.downshiftMargin}>
-        <PlacesSearch
-          menuClasses={classes.menuItem}
-          handleChange={item => {
-            // console.log('ITEM', item)
-            if (item) {
-              const newSelectedItem = Object.assign({}, getPosition(item))
-              const posLoc = newSelectedItem.location
+								if (item.city && toLower(item.city) !== toLower(city)) {
+									expandList(item.city)
+									setPositionAndZoom({position: item.location, zoom: 12})
+								} else {
+									expandList('')
+									setPositionAndZoom({
+										position: {
+											lat: 39.743642,
+											lng: -104.9854807,
+										},
+										zoom: 10,
+									})
+								}
+							}}
+						>
+							<ListItemText
+								primaryTypographyProps={{
+									className:
+										item.city && toLower(item.city) !== toLower(city)
+											? classes.listItemText
+											: classes.listItemTextActive,
+								}}
+								primary={`${item.city || 'no city'} (${item.total})`}
+							/>
+						</ListItem>
+						<Collapse in={city === item.city} timeout="auto">
+							{Array.isArray(item.list) &&
+								sortBy(
+									compose(
+										ifElse(test(/^(the )/g), replace(/^(the )/g, ''), identity),
+										toLower,
+										prop('name')
+									),
+									item.list
+								).map(store => {
+									return (
+										<List
+											key={store.itemId || Math.random() * 64}
+											disablePadding
+											component="div"
+										>
+											<ListItem
+												button
+												onClick={() => {
+													// Console.log(store)
+													// expandList(item.city)
 
-              // console.log(posLoc)
-              expandList(getCity(item))
-              setPositionAndZoom({
-                position: posLoc || {
-                  lat: 39.743642,
-                  lng: -104.9854807,
-                },
-                zoom: 14,
-              })
-              setStore(newSelectedItem)
-              toggleDrawer && toggleDrawer()
-            } else {
-              expandList('')
-              setPositionAndZoom({
-                position: {
-                  lat: 39.743642,
-                  lng: -104.9854807,
-                },
-                zoom: 10,
-              })
-              setStore({})
-            }
-          }}
-          items={citiesD}
-        />
-      </div>
-      <List>
-        {showCity.map(item => (
-          <React.Fragment key={item.city || Math.random() * 32}>
-            <ListItem
-              onClick={() => {
-                // console.log(item)
-
-                if (item.city && toLower(item.city) !== toLower(city)) {
-                  expandList(item.city)
-                  setPositionAndZoom({ position: item.location, zoom: 12 })
-                } else {
-                  expandList('')
-                  setPositionAndZoom({
-                    position: {
-                      lat: 39.743642,
-                      lng: -104.9854807,
-                    },
-                    zoom: 10,
-                  })
-                }
-              }}
-              key={item.city || Math.random() * 32}
-              // onClick={() => {
-              //   console.log('ITMs', item)
-              //   console.log('Loc', item.location)
-              //   handleClick
-              //     ? handleClick(item.location)
-              //     : props.handleTest(item.location)
-              // }}
-              button
-              style={{ textAlign: 'left' }}
-            >
-              <ListItemText
-                primaryTypographyProps={{
-                  className:
-                    item.city && toLower(item.city) !== toLower(city)
-                      ? classes.listItemText
-                      : classes.listItemTextActive,
-                }}
-                primary={`${item.city || 'no city'} (${item.total})`}
-              />
-            </ListItem>
-            <Collapse in={city === item.city} timeout="auto">
-              {Array.isArray(item.list) &&
-                sortBy(
-                  compose(
-                    ifElse(test(/^(the )/g), replace(/^(the )/g, ''), identity),
-                    toLower,
-                    prop('name')
-                  ),
-                  item.list
-                ).map(store => {
-                  return (
-                    <List
-                      key={store.itemId || Math.random() * 64}
-                      component="div"
-                      disablePadding
-                    >
-                      <ListItem
-                        button
-                        onClick={() => {
-                          // console.log(store)
-                          // expandList(item.city)
-
-                          setPositionAndZoom({
-                            position: store.location,
-                            zoom: 14,
-                          })
-                          setStore(store || {})
-                          toggleDrawer && toggleDrawer()
-                        }}
-                      >
-                        <ListItemText
-                          inset
-                          classes={{
-                            inset: classes.inset,
-                          }}
-                          primaryTypographyProps={{
-                            className:
-                              store.name &&
-                              selectedItem.name &&
-                              toLower(store.name) === toLower(selectedItem.name)
-                                ? classes.listItemTextActive
-                                : classes.listItemText,
-                          }}
-                          primary={toLower(store.name)}
-                        />
-                      </ListItem>
-                    </List>
-                  )
-                })}
-            </Collapse>
-          </React.Fragment>
-        ))}
-      </List>
-    </React.Fragment>
-  )
+													setPositionAndZoom({
+														position: store.location,
+														zoom: 14,
+													})
+													setStore(store || {})
+													toggleDrawer && toggleDrawer()
+												}}
+											>
+												<ListItemText
+													inset
+													classes={{
+														inset: classes.inset,
+													}}
+													primaryTypographyProps={{
+														className:
+															store.name &&
+															selectedItem.name &&
+															toLower(store.name) === toLower(selectedItem.name)
+																? classes.listItemTextActive
+																: classes.listItemText,
+													}}
+													primary={toLower(store.name)}
+												/>
+											</ListItem>
+										</List>
+									)
+								})}
+						</Collapse>
+					</React.Fragment>
+				))}
+			</List>
+		</>
+	)
 }
 
 CityList.propTypes = {
-  classes: PropTypes.object.isRequired,
+	classes: PropTypes.object.isRequired,
 }
 
 export default withStyles(styles)(CityList)

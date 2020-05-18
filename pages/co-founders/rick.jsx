@@ -1,7 +1,7 @@
-import React, { Fragment } from 'react'
+import React, {Fragment} from 'react'
 import Page from '../../components/PageLayout'
 import compose from 'ramda/src/compose'
-import { withStyles } from '@material-ui/core/styles'
+import {withStyles} from '@material-ui/core/styles'
 import Background from '../../components/TransitionBackground'
 import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
@@ -12,58 +12,58 @@ import Swipeable from 'react-swipeable'
 import Router from 'next/router'
 
 const styles = theme => ({
-  // demo: {
-  //   maxHeight: `80%`,
-  //   flexGrow: 0,
-  //   minHeight: '100vh',
-  // },
-  paper: {
-    flexGrow: 1,
-    borderRadius: 'unset',
-    backgroundColor: 'transparent',
-    overflow: 'auto',
-    // textOverflow: 'ellipsis',
-    margin: 10,
-    borderRadius: 0,
-    paddingBottom: 200,
-    boxShadow: 'unset',
-    color: '#E2DED5',
-    fontFamily: 'Flama',
-    [theme.breakpoints.down('sm')]: {
-      maxHeight: 'calc(.6 * 100vh)',
-      // overflow: 'scroll',
-    },
-    [theme.breakpoints.up('md')]: {
-      flexGrow: 1,
-      borderRadius: 'unset',
-      backgroundColor: 'transparent',
-      overflow: 'auto',
-      paddingRight: `10%`,
-      paddingLeft: `10%`,
-      paddingTop: 150,
-    },
-  },
-  card: {
-    minWidth: 200,
-    backgroundColor: 'rgba(0,0,0,.7)',
-    borderRadius: 0,
-    padding: '1em',
-    boxShadow: `0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)`,
-    // [theme.breakpoints.down('sm')]: {
-    //   maxHeight: 'calc(.6 * 100vh)',
-    // //  overflow: 'scroll',
-    // },
-  },
-  typo: {
-    color: '#E2DED5',
-    fontFamily: 'Flama',
-    [theme.breakpoints.up('sm')]: {
-      fontSize: '1.1rem',
-    },
-  },
+	// Demo: {
+	//   maxHeight: `80%`,
+	//   flexGrow: 0,
+	//   minHeight: '100vh',
+	// },
+	paper: {
+		flexGrow: 1,
+		borderRadius: 'unset',
+		backgroundColor: 'transparent',
+		overflow: 'auto',
+		// TextOverflow: 'ellipsis',
+		margin: 10,
+		borderRadius: 0,
+		paddingBottom: 200,
+		boxShadow: 'unset',
+		color: '#E2DED5',
+		fontFamily: 'Flama',
+		[theme.breakpoints.down('sm')]: {
+			maxHeight: 'calc(.6 * 100vh)',
+			// Overflow: 'scroll',
+		},
+		[theme.breakpoints.up('md')]: {
+			flexGrow: 1,
+			borderRadius: 'unset',
+			backgroundColor: 'transparent',
+			overflow: 'auto',
+			paddingRight: `10%`,
+			paddingLeft: `10%`,
+			paddingTop: 150,
+		},
+	},
+	card: {
+		minWidth: 200,
+		backgroundColor: 'rgba(0,0,0,.7)',
+		borderRadius: 0,
+		padding: '1em',
+		boxShadow: `0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12)`,
+		// [theme.breakpoints.down('sm')]: {
+		//   maxHeight: 'calc(.6 * 100vh)',
+		// //  overflow: 'scroll',
+		// },
+	},
+	typo: {
+		color: '#E2DED5',
+		fontFamily: 'Flama',
+		[theme.breakpoints.up('sm')]: {
+			fontSize: '1.1rem',
+		},
+	},
 })
 
-// const CoFounders = props => {
+// Const CoFounders = props => {
 //   const { classes, ...other } = props
 //   return (
 //     <Fragment>
@@ -141,27 +141,27 @@ const styles = theme => ({
 // }
 
 class SwipeComponent extends React.Component {
-  onSwipedLeft(e, absX) {
-    console.log("You're Swiping to the Left...", e, absX)
-    Router.push('/co-founders')
-  }
+	onSwipedLeft(e, absX) {
+		console.log("You're Swiping to the Left...", e, absX)
+		Router.push('/co-founders')
+	}
 
-  onSwipedRight(e, deltaX, deltaY, isFlick, velocity) {
-    console.log('You Swiped...', e, deltaX, deltaY, isFlick, velocity)
-    Router.push('/co-founders/owen')
-  }
+	onSwipedRight(e, deltaX, deltaY, isFlick, velocity) {
+		console.log('You Swiped...', e, deltaX, deltaY, isFlick, velocity)
+		Router.push('/co-founders/owen')
+	}
 
-  render() {
-    const { classes, ...other } = this.props
-    return (
-      <Swipeable
-        onSwipedLeft={this.onSwipedLeft}
-        onSwipedRight={this.onSwipedRight}
-      >
-        <Rick {...other} />
-      </Swipeable>
-    )
-  }
+	render() {
+		const {classes, ...other} = this.props
+		return (
+			<Swipeable
+				onSwipedLeft={this.onSwipedLeft}
+				onSwipedRight={this.onSwipedRight}
+			>
+				<Rick {...other} />
+			</Swipeable>
+		)
+	}
 }
 
 export default SwipeComponent

@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { withStyles } from '@material-ui/core/styles'
+import {withStyles} from '@material-ui/core/styles'
 import Grid from '@material-ui/core/Grid'
 import FormControl from '@material-ui/core/FormControl'
 import FormLabel from '@material-ui/core/FormLabel'
@@ -11,99 +11,100 @@ import Paper from '@material-ui/core/Paper'
 import Hidden from '@material-ui/core/Hidden'
 
 const styles = theme => ({
-  root: {
-    flexGrow: 1,
-  },
-  demo: {
-    height: '100vh',
-  },
-  paper: {
-    //padding: theme.spacing(2),
-    height: '100%',
-    color: theme.palette.text.secondary,
-    flexGrow: 1,
-    borderRadius: 'unset'
-  },
+	root: {
+		flexGrow: 1,
+	},
+	demo: {
+		height: '100vh',
+	},
+	paper: {
+		// Padding: theme.spacing(2),
+		height: '100%',
+		color: theme.palette.text.secondary,
+		flexGrow: 1,
+		borderRadius: 'unset',
+	},
 })
 
 class InteractiveGrid extends React.Component {
-  state = {
-    direction: 'column',
-    justify: 'center',
-    alignItems: 'stretch',
-    alignContent: 'stretch',
-  }
+	state = {
+		direction: 'column',
+		justify: 'center',
+		alignItems: 'stretch',
+		alignContent: 'stretch',
+	}
 
-  handleChange = key => (event, value) => {
-    this.setState({
-      [key]: value,
-    })
-  }
+	handleChange = key => (event, value) => {
+		this.setState({
+			[key]: value,
+		})
+	}
 
-  render() {
-    const { classes } = this.props
-    const { alignItems, direction, justify, alignContent } = this.state
-    return (
-        <Grid container className={classes.root}> 
-          <Grid item xs={12}>
-            <Grid
-            container
-            spacing={16}
-            className={classes.demo}
-            alignItems={alignItems}
-            direction={'row'}
-            justify={justify}
-          alignContent={alignContent}
-          >
-          <Grid
-          item
-          xs={12} sm={6}
-style={{padding: 'unset'}}
-        >
+	render() {
+		const {classes} = this.props
+		const {alignItems, direction, justify, alignContent} = this.state
+		return (
+			<Grid container className={classes.root}>
+				<Grid item xs={12}>
+					<Grid
+						container
+						spacing={16}
+						className={classes.demo}
+						alignItems={alignItems}
+						direction="row"
+						justify={justify}
+						alignContent={alignContent}
+					>
+						<Grid item xs={12} sm={6} style={{padding: 'unset'}}>
+							<Paper
+								className={classes.paper}
+								style={{
+									backgroundPosition: 'center',
+									backgroundSize: 'cover',
+									backgroundImage: `url(/AxeBottle.jpg)`,
+									backgroundRepeat: 'no-repeat',
+								}}
+							>
+								1
+							</Paper>
+						</Grid>
+						<Hidden xsDown>
+							<Grid item xs={12} sm={6} style={{padding: 'unset'}}>
+								<Paper
+									className={classes.paper}
+									style={{
+										height: '50%',
+										backgroundPosition: 'center',
+										backgroundSize: 'cover',
+										backgroundImage: `url(/Bottle_Handrail.jpg)`,
+										backgroundRepeat: 'no-repeat',
+									}}
+								>
+									2
+								</Paper>
+								<Paper
+									className={classes.paper}
+									style={{
+										height: '50%',
+										backgroundPosition: 'center',
+										backgroundSize: 'cover',
+										backgroundImage: `url(/Bottle_Creek.jpg)`,
+										backgroundRepeat: 'no-repeat',
+									}}
+								>
+									3
+								</Paper>
+							</Grid>
+						</Hidden>
+					</Grid>
+				</Grid>
+			</Grid>
+		)
+	}
+}
 
-                  <Paper
-                    className={classes.paper}
-                    style={{ backgroundPosition: 'center',
-                    backgroundSize: 'cover',
-                    backgroundImage: `url(/AxeBottle.jpg)`,
-                    backgroundRepeat: 'no-repeat'}}
-                  >
-                    {`1`}
-                  </Paper>
-                  </Grid>
-                  <Hidden xsDown>
-            <Grid item  xs={12} sm={6} style={{padding: 'unset'}}>
-                <Paper
-                  className={classes.paper}
-                  style={{ height: '50%', backgroundPosition: 'center',
-                  backgroundSize: 'cover',
-                  backgroundImage: `url(/Bottle_Handrail.jpg)`,
-                  backgroundRepeat: 'no-repeat'}}
-                >
-                  {`2`}
-                </Paper>
-              <Paper
-                className={classes.paper}
-                style={{ height: '50%',backgroundPosition: 'center',
-                backgroundSize: 'cover',
-                backgroundImage: `url(/Bottle_Creek.jpg)`,
-                backgroundRepeat: 'no-repeat'}}
-              >
-                {`3`}
-              </Paper>
-              </Grid>
-      </Hidden>
-            </Grid>
-          </Grid>
+InteractiveGrid.propTypes = {
+	classes: PropTypes.object.isRequired,
+}
 
-          
-        </Grid>
-      );
-    }
-  }
-  
-  InteractiveGrid.propTypes = {
-    classes: PropTypes.object.isRequired,
-  };
-  
-  export default withStyles(styles)(InteractiveGrid);
+export default withStyles(styles)(InteractiveGrid)

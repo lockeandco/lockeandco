@@ -8,6 +8,110 @@
       "git add"
     ]
   },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "babel": {
+    "presets": [
+      "next/babel",
+      "@babel/preset-flow"
+    ],
+    "plugins": [
+      "@babel/plugin-proposal-export-default-from"
+    ]
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "**/*.{js,jsx,ts,tsx}",
+      "!**/*.d.ts",
+      "!**/node_modules/**"
+    ],
+    "setupFilesAfterEnv": [
+      "<rootDir>/setupTests.js"
+    ],
+    "testPathIgnorePatterns": [
+      "/node_modules/",
+      "/.next/"
+    ],
+    "transform": {
+      "^.+\\.(js|jsx|ts|tsx)$": "<rootDir>/node_modules/babel-jest",
+      "^.+\\.css$": "<rootDir>/config/jest/cssTransform.js"
+    },
+    "transformIgnorePatterns": [
+      "/node_modules/",
+      "^.+\\.module\\.(css|sass|scss)$"
+    ],
+    "moduleNameMapper": {
+      "^.+\\.module\\.(css|sass|scss)$": "identity-obj-proxy"
+    },
+    "testResultsProcessor": "./node_modules/jest-junit-reporter",
+    "coverageReporters": [
+      "cobertura"
+    ]
+  },
+  "xo": {
+    "semicolon": false,
+    "prettier": true,
+    "parser": "babel-eslint",
+    "plugins": [
+      "ramda",
+      "jest"
+    ],
+    "extends": [
+      "xo-react",
+      "plugin:ramda/recommended",
+      "plugin:jest/recommended",
+      "plugin:jest/style"
+    ],
+    "rules": {
+      "react/react-in-jsx-scope": "off",
+      "react/jsx-pascal-case": [
+        "warn",
+        {
+          "allowAllCaps": true,
+          "ignore": []
+        }
+      ],
+      "unicorn/filename-case": [
+        "error",
+        {
+          "cases": {
+            "kebabCase": true,
+            "camelCase": true,
+            "pascalCase": true
+          }
+        }
+      ]
+    },
+    "ignores": [
+      ".dockerignore",
+      "**/node_modules /**",
+      "**/bower_components /**",
+      "flow-typed/**",
+      "coverage/**",
+      "{tmp,temp}/**",
+      "**/*.min.js",
+      "vendor/**",
+      "dist/**",
+      "tap-snapshots/*.js",
+      "deprecated/**",
+      ".next/**",
+      "src/generated/**",
+      "src/api/graphql/**"
+    ],
+    "env": [
+      "es2020",
+      "node",
+      "browser"
+    ]
+  },
+  "prettier": {
+    "singleQuote": true,
+    "semi": false,
+    "trailingComma": "es5"
+  },
   "dependencies": {
     "@aws-amplify/cache": "^1.0.28",
     "@material-ui/core": "^4.2.0",
@@ -73,26 +177,57 @@
     "yup": "^0.27.0"
   },
   "devDependencies": {
+    "@apollo/react-testing": "^3.1.3",
+    "@babel/plugin-proposal-export-default-from": "^7.2.0",
+    "@babel/plugin-transform-flow-strip-types": "^7.4.4",
+    "@babel/preset-flow": "^7.0.0",
+    "@graphql-codegen/cli": "^1.12.1",
+    "@graphql-codegen/flow": "1.12.1",
+    "@graphql-codegen/flow-operations": "1.12.1",
+    "@graphql-codegen/fragment-matcher": "1.12.1",
+    "@graphql-codegen/introspection": "1.12.1",
+    "@testing-library/jest-dom": "^5.1.1",
+    "@testing-library/react": "^9.5.0",
+    "@testing-library/react-hooks": "^3.2.1",
     "@zeit/next-mdx": "^1.2.0",
-    "babel-eslint": "^8.2.3",
+    "babel-eslint": "^10.1.0",
+    "babel-jest": "^25.1.0",
+    "babel-plugin-styled-components": "^1.10.7",
     "copy-webpack-plugin": "^4.5.2",
     "create-react-app": "^1.5.2",
-    "eslint": "^4.19.1",
+    "cross-env": "^7.0.0",
+    "cz-conventional-changelog": "3.0.2",
+    "cz-emoji": "^1.2.1",
+    "eslint": "^6.8.0",
     "eslint-config-airbnb": "^16.1.0",
-    "eslint-config-prettier": "^2.9.0",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-config-xo-react": "^0.23.0",
     "eslint-plugin-better": "^0.1.5",
-    "eslint-plugin-import": "^2.12.0",
-    "eslint-plugin-jest": "^21.17.0",
-    "eslint-plugin-jsx-a11y": "^6.0.3",
-    "eslint-plugin-prettier": "^2.6.0",
-    "eslint-plugin-react": "^7.10.0",
+    "eslint-plugin-graphql": "^3.1.1",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jest": "^23.8.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-node": "^10.0.0",
+    "eslint-plugin-prettier": "^3.0.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-ramda": "^2.5.1",
+    "eslint-plugin-react": "^7.16.0",
+    "eslint-plugin-react-hooks": "^2.5.0",
+    "flow-bin": "^0.100.0",
     "fs-extra": "^8.1.0",
-    "husky": "^0.14.3",
+    "husky": ">=4",
     "isomorphic-unfetch": "^3.0.0",
+    "jest": "^25.1.0",
+    "jest-junit-reporter": "^1.1.0",
     "json-server": "^0.14.0",
-    "lint-staged": "^7.1.2",
+    "lint-staged": "^10.0.8",
+    "npm-run-all": "^4.1.5",
+    "patch-package": "^6.2.0",
+    "postinstall-postinstall": "^2.0.0",
     "prettier": "^1.13.3",
-    "workbox-webpack-plugin": "^5.0.0"
+    "react-test-renderer": "^16.13.0",
+    "workbox-webpack-plugin": "^5.0.0",
+    "xo": "^0.30.0"
   },
   "scripts": {
     "dev": "next",

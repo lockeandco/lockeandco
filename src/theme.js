@@ -1,5 +1,5 @@
-import { createMuiTheme } from '@material-ui/core/styles'
-import { red } from '@material-ui/core/colors'
+import {createMuiTheme} from '@material-ui/core/styles'
+import {red} from '@material-ui/core/colors'
 
 // Blue
 // (36, 55, 70) - #243746
@@ -14,21 +14,21 @@ import { red } from '@material-ui/core/colors'
 
 // Create a theme instance.
 const theme = createMuiTheme({
-  palette: {
-    primary: {
-      light: '#58687c',
-      main: '#C36D15',
-      dark: '#041828',
-    },
-    secondary: {
-      light: '#c3452e',
-      main: '#C36D15',
-      dark: '#590000',
-    },
-  },
-  nprogress: {
-    color: '#8C0C04',
-  },
+	palette: {
+		primary: {
+			light: '#58687c',
+			main: '#C36D15',
+			dark: '#041828',
+		},
+		secondary: {
+			light: '#c3452e',
+			main: '#C36D15',
+			dark: '#590000',
+		},
+	},
+	nprogress: {
+		color: '#8C0C04',
+	},
 })
 
 export default theme

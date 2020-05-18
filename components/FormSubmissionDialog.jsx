@@ -6,47 +6,47 @@ import DialogContent from '@material-ui/core/DialogContent'
 import DialogContentText from '@material-ui/core/DialogContentText'
 import DialogTitle from '@material-ui/core/DialogTitle'
 import Slide from '@material-ui/core/Slide'
-import { useRouter } from 'next/router'
+import {useRouter} from 'next/router'
 
 const Transition = React.forwardRef(function Transition(props, ref) {
-  return <Slide direction="down" ref={ref} {...props} />
+	return <Slide ref={ref} direction="down" {...props} />
 })
 
 export default function AlertDialogSlide(props) {
-  const [open, setOpen] = React.useState(false)
-  const router = useRouter()
+	const [open, setOpen] = React.useState(false)
+	const router = useRouter()
 
-  function handleClose() {
-    setOpen(false)
-    props.handleReset()
-    router.push('/stay-connected')
-  }
+	function handleClose() {
+		setOpen(false)
+		props.handleReset()
+		router.push('/stay-connected')
+	}
 
-  return (
-    <div>
-      <Dialog
-        open={open || props.open}
-        TransitionComponent={Transition}
-        keepMounted
-        onClose={handleClose}
-        aria-labelledby="alert-dialog-slide-title"
-        aria-describedby="alert-dialog-slide-description"
-      >
-        <DialogTitle id="alert-dialog-slide-title">
-          {`Thank you for contacting us, ${props.Name}`}
-        </DialogTitle>
-        <DialogContent>
-          <DialogContentText id="alert-dialog-slide-description">
-            {`Your message has been received and we will respond within 24 hours.
+	return (
+		<div>
+			<Dialog
+				keepMounted
+				open={open || props.open}
+				TransitionComponent={Transition}
+				aria-labelledby="alert-dialog-slide-title"
+				aria-describedby="alert-dialog-slide-description"
+				onClose={handleClose}
+			>
+				<DialogTitle id="alert-dialog-slide-title">
+					{`Thank you for contacting us, ${props.Name}`}
+				</DialogTitle>
+				<DialogContent>
+					<DialogContentText id="alert-dialog-slide-description">
+						{`Your message has been received and we will respond within 24 hours.
             Thank you for contacting us!`}
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose} color="primary">
-            OK
-          </Button>
-        </DialogActions>
-      </Dialog>
-    </div>
-  )
+					</DialogContentText>
+				</DialogContent>
+				<DialogActions>
+					<Button color="primary" onClick={handleClose}>
+						OK
+					</Button>
+				</DialogActions>
+			</Dialog>
+		</div>
+	)
 }

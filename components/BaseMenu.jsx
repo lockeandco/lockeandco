@@ -9,19 +9,19 @@ import MenuIcon from '@material-ui/icons/Menu'
 import CustomCard from './Cards'
 import MenuButtons from './TextButtons'
 
-const BaseMenu = ({ classes, route, children }) => (
-  <div className={classes.root}>
-    <CustomCard />
-    <AppBar position="fixed" className={classes.appBar}>
-      <Toolbar className={classes.toolBar} disableGutters={true}>
-        {children}
-      </Toolbar>
-    </AppBar>
-  </div>
+const BaseMenu = ({classes, route, children}) => (
+	<div className={classes.root}>
+		<CustomCard />
+		<AppBar position="fixed" className={classes.appBar}>
+			<Toolbar disableGutters className={classes.toolBar}>
+				{children}
+			</Toolbar>
+		</AppBar>
+	</div>
 )
 
 ButtonAppBar.propTypes = {
-  classes: PropTypes.object.isRequired,
+	classes: PropTypes.object.isRequired,
 }
 
 export default BaseMenu

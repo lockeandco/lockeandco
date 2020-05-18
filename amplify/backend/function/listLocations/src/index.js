@@ -22,75 +22,65 @@ const R = require('ramda')
 const ddb = new AWS.DynamoDB.DocumentClient()
 
 const formattedCities = R.compose(
-  R.uniqBy(
-    R.compose(
-      R.toLower,
-      R.path(['city'])
-    )
-  ),
-  R.path(['Items']),
-  R.tap(console.log)
+	R.uniqBy(R.compose(R.toLower, R.path(['city']))),
+	R.path(['Items']),
+	R.tap(console.log)
 )
 
 const byCity = R.groupBy(R.path(['city']))
 
 const createList = cities =>
-  R.compose(
-    R.values,
-    R.mapObjIndexed((v, k, o) => {
-      const ct = cities.filter(c => R.toLower(c.city) === R.toLower(k))
-      return ct.length === 1 ? Object.assign({}, v, ct[0]) : v
-    }),
-    R.map(x => {
-      return Object.assign(
-        {},
-        {
-          list: x,
-        },
-        {
-          total: x.length,
-        }
-      )
-    }),
-    byCity,
-    R.path(['Items']),
-    R.tap(console.log)
-  )
-const LocationParams = {
-  TableName: 'lockeandco-production', //process.env.STORAGE_LOCKEANDCO_NAME,
-  IndexName: 'itemTypeTarget-itemId-index',
-  KeyConditionExpression: 'itemTypeTarget = :location',
-  FilterExpression: 'carry = :true',
-  ExpressionAttributeValues: {
-    ':location': 'Location',
-    ':true': true,
-  },
+	R.compose(
+		R.values,
+		R.mapObjIndexed((v, k, o) => {
+			const ct = cities.filter(c => R.toLower(c.city) === R.toLower(k))
+			return ct.length === 1 ? Object.assign({}, v, ct[0]) : v
+		}),
+		R.map(x => {
+			return Object.assign(
+				{},
+				{
+					list: x,
+				},
+				{
+					total: x.length,
+				}
+			)
+		}),
+		byCity,
+		R.path(['Items']),
+		R.tap(console.log)
+	)
+const LocationParameters = {
+	TableName: 'lockeandco-production', // Process.env.STORAGE_LOCKEANDCO_NAME,
+	IndexName: 'itemTypeTarget-itemId-index',
+	KeyConditionExpression: 'itemTypeTarget = :location',
+	FilterExpression: 'carry = :true',
+	ExpressionAttributeValues: {
+		':location': 'Location',
+		':true': true,
+	},
 }
-const CityParams = {
-  TableName: process.env.STORAGE_LOCKEANDCO_NAME,
-  IndexName: 'itemTypeTarget-itemId-index',
-  KeyConditionExpression: 'itemTypeTarget = :city',
-  ExpressionAttributeValues: {
-    ':city': 'City',
-  },
+const CityParameters = {
+	TableName: process.env.STORAGE_LOCKEANDCO_NAME,
+	IndexName: 'itemTypeTarget-itemId-index',
+	KeyConditionExpression: 'itemTypeTarget = :city',
+	ExpressionAttributeValues: {
+		':city': 'City',
+	},
 }
 
 exports.handler = async function(event, context) {
-  return await ddb
-    .query(CityParams)
-    .promise()
-    .then(formattedCities)
-    .then(
-      async cities =>
-        await ddb
-          .query(LocationParams)
-          .promise()
-          .then(
-            R.compose(
-              R.tap(console.log),
-              createList(cities)
-            )
-          )
-          .catch(R.tap(console.log))
-    )
+	return await ddb
+		.query(CityParameters)
+		.promise()
+		.then(formattedCities)
+		.then(
+			async cities =>
+				await ddb
+					.query(LocationParameters)
+					.promise()
+					.then(R.compose(R.tap(console.log), createList(cities)))
+					.catch(R.tap(console.log))
+		)
 }

@@ -1,48 +1,48 @@
-export const GoogleApi = function(opts) {
-  opts = opts || {}
+export const GoogleApi = function(options) {
+	options = options || {}
 
-  if (!opts.hasOwnProperty('apiKey')) {
-    throw new Error('You must pass an apiKey to use GoogleApi')
-  }
+	if (!options.hasOwnProperty('apiKey')) {
+		throw new Error('You must pass an apiKey to use GoogleApi')
+	}
 
-  const apiKey = opts.apiKey
-  const libraries = opts.libraries || ['places']
-  const client = opts.client
-  const URL = opts.url || 'https://maps.googleapis.com/maps/api/js'
+	const apiKey = options.apiKey
+	const libraries = options.libraries || ['places']
+	const client = options.client
+	const URL = options.url || 'https://maps.googleapis.com/maps/api/js'
 
-  const googleVersion = opts.version || '3.31'
+	const googleVersion = options.version || '3.31'
 
-  let script = null
-  let google = (typeof window !== 'undefined' && window.google) || null
-  let loading = false
-  let channel = null
-  let language = opts.language
-  let region = opts.region || null
+	const script = null
+	const google = (typeof window !== 'undefined' && window.google) || null
+	const loading = false
+	const channel = null
+	const language = options.language
+	const region = options.region || null
 
-  let onLoadEvents = []
+	const onLoadEvents = []
 
-  const url = () => {
-    let url = URL
-    let params = {
-      key: apiKey,
-      callback: 'CALLBACK_NAME',
-      libraries: libraries.join(','),
-      client: client,
-      v: googleVersion,
-      channel: channel,
-      language: language,
-      region: region,
-    }
+	const url = () => {
+		const url = URL
+		const parameters = {
+			key: apiKey,
+			callback: 'CALLBACK_NAME',
+			libraries: libraries.join(','),
+			client,
+			v: googleVersion,
+			channel,
+			language,
+			region,
+		}
 
-    let paramStr = Object.keys(params)
-      .filter(k => !!params[k])
-      .map(k => `${k}=${params[k]}`)
-      .join('&')
+		const parameterString = Object.keys(parameters)
+			.filter(k => Boolean(parameters[k]))
+			.map(k => `${k}=${parameters[k]}`)
+			.join('&')
 
-    return `${url}?${paramStr}`
-  }
+		return `${url}?${parameterString}`
+	}
 
-  return url()
+	return url()
 }
 
 export default GoogleApi

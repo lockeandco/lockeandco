@@ -25,31 +25,31 @@ var storageLockeandcoArn = process.env.STORAGE_LOCKEANDCO_ARN
 Amplify Params - DO NOT EDIT */
 
 const AWS = require('aws-sdk')
-const { path, pick } = require('ramda')
+const {path, pick} = require('ramda')
 
 const SNS = new AWS.SNS({
-  region: 'us-east-1',
+	region: 'us-east-1',
 })
 
 exports.handler = async function (event, context ) { //eslint-disable-line
 
-  const date = new Date(Date.now()).toString()
-  const inputs = path(['arguments', 'input'])(event)
-  const message = pick(['Name', 'Email', 'Type', 'Body'])(inputs)
-  const params = {
-    Message: JSON.stringify(message, null, 2),
-    Subject: `Message from Website Received: ${date}`,
-    TopicArn: 'arn:aws:sns:us-east-1:840164070895:LockeCoWebForm',
-  }
-  console.log(JSON.stringify(event, null, 2))
-  console.log(JSON.stringify(inputs, null, 2))
+	const date = new Date(Date.now()).toString()
+	const inputs = path(['arguments', 'input'])(event)
+	const message = pick(['Name', 'Email', 'Type', 'Body'])(inputs)
+	const parameters = {
+		Message: JSON.stringify(message, null, 2),
+		Subject: `Message from Website Received: ${date}`,
+		TopicArn: 'arn:aws:sns:us-east-1:840164070895:LockeCoWebForm',
+	}
+	console.log(JSON.stringify(event, null, 2))
+	console.log(JSON.stringify(inputs, null, 2))
 
-  const g = await SNS.publish(params)
-    .promise()
-    .then(x => x)
-    .catch(x => x)
+	const g = await SNS.publish(parameters)
+		.promise()
+		.then(x => x)
+		.catch(error => error)
 
-  console.log(g)
+	console.log(g)
 
-  return inputs
+	return inputs
 }

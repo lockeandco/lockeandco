@@ -16,7 +16,7 @@ export const createLocation = `mutation CreateLocation($input: CreateLocationInp
     site
   }
 }
-`;
+`
 export const updateLocation = `mutation UpdateLocation($input: UpdateLocationInput!) {
   updateLocation(input: $input) {
     itemId
@@ -32,7 +32,7 @@ export const updateLocation = `mutation UpdateLocation($input: UpdateLocationInp
     site
   }
 }
-`;
+`
 export const deleteLocation = `mutation DeleteLocation($input: DeleteLocationInput!) {
   deleteLocation(input: $input) {
     itemId
@@ -48,7 +48,7 @@ export const deleteLocation = `mutation DeleteLocation($input: DeleteLocationInp
     site
   }
 }
-`;
+`
 export const createLastCheck = `mutation CreateLastCheck($input: CreateLastCheckInput!) {
   createLastCheck(input: $input) {
     itemId
@@ -56,7 +56,7 @@ export const createLastCheck = `mutation CreateLastCheck($input: CreateLastCheck
     date
   }
 }
-`;
+`
 export const updateLastCheck = `mutation UpdateLastCheck($input: UpdateLastCheckInput!) {
   updateLastCheck(input: $input) {
     itemId
@@ -64,28 +64,28 @@ export const updateLastCheck = `mutation UpdateLastCheck($input: UpdateLastCheck
     date
   }
 }
-`;
+`
 export const createLockeandcoItem = `mutation CreateLockeandcoItem($input: CreateLockeandcoItemInput!) {
   createLockeandcoItem(input: $input) {
     itemId
     itemTypeTarget
   }
 }
-`;
+`
 export const updateLockeandcoItem = `mutation UpdateLockeandcoItem($input: UpdateLockeandcoItemInput!) {
   updateLockeandcoItem(input: $input) {
     itemId
     itemTypeTarget
   }
 }
-`;
+`
 export const deleteLockeandcoItem = `mutation DeleteLockeandcoItem($input: DeleteLockeandcoItemInput!) {
   deleteLockeandcoItem(input: $input) {
     itemId
     itemTypeTarget
   }
 }
-`;
+`
 export const createMessage = `mutation CreateMessage($input: CreateMessageInput!) {
   createMessage(input: $input) {
     itemId
@@ -96,4 +96,4 @@ export const createMessage = `mutation CreateMessage($input: CreateMessageInput!
     Body
   }
 }
-`;
+`

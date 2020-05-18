@@ -1,115 +1,116 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { arePathsEqual } from '../lib/arePathsEqual'
-import { camelize } from '../lib/String'
+import {arePathsEqual} from '../lib/arePathsEqual'
+import {camelize} from '../lib/String'
 const evtNames = ['click', 'mouseout', 'mouseover']
 
 const wrappedPromise = function() {
-  var wrappedPromise = {},
-    promise = new Promise(function(resolve, reject) {
-      wrappedPromise.resolve = resolve
-      wrappedPromise.reject = reject
-    })
-  wrappedPromise.then = promise.then.bind(promise)
-  wrappedPromise.catch = promise.catch.bind(promise)
-  wrappedPromise.promise = promise
+	const wrappedPromise = {}
+	const promise = new Promise(function(resolve, reject) {
+		wrappedPromise.resolve = resolve
+		wrappedPromise.reject = reject
+	})
+	wrappedPromise.then = promise.then.bind(promise)
+	wrappedPromise.catch = promise.catch.bind(promise)
+	wrappedPromise.promise = promise
 
-  return wrappedPromise
+	return wrappedPromise
 }
 
 export class Polygon extends React.Component {
-  componentDidMount() {
-    this.polygonPromise = wrappedPromise()
-    this.renderPolygon()
-  }
+	componentDidMount() {
+		this.polygonPromise = wrappedPromise()
+		this.renderPolygon()
+	}
 
-  componentDidUpdate(prevProps) {
-    if (
-      this.props.map !== prevProps.map ||
-      !arePathsEqual(this.props.paths, prevProps.paths)
-    ) {
-      if (this.polygon) {
-        this.polygon.setMap(null)
-      }
-      this.renderPolygon()
-    }
-  }
+	componentDidUpdate(previousProps) {
+		if (
+			this.props.map !== previousProps.map ||
+			!arePathsEqual(this.props.paths, previousProps.paths)
+		) {
+			if (this.polygon) {
+				this.polygon.setMap(null)
+			}
 
-  componentWillUnmount() {
-    if (this.polygon) {
-      this.polygon.setMap(null)
-    }
-  }
+			this.renderPolygon()
+		}
+	}
 
-  renderPolygon() {
-    const {
-      map,
-      google,
-      paths,
-      strokeColor,
-      strokeOpacity,
-      strokeWeight,
-      fillColor,
-      fillOpacity,
-      ...props
-    } = this.props
+	componentWillUnmount() {
+		if (this.polygon) {
+			this.polygon.setMap(null)
+		}
+	}
 
-    if (!google) {
-      return null
-    }
+	renderPolygon() {
+		const {
+			map,
+			google,
+			paths,
+			strokeColor,
+			strokeOpacity,
+			strokeWeight,
+			fillColor,
+			fillOpacity,
+			...props
+		} = this.props
 
-    const params = {
-      map,
-      paths,
-      strokeColor,
-      strokeOpacity,
-      strokeWeight,
-      fillColor,
-      fillOpacity,
-      ...props,
-    }
+		if (!google) {
+			return null
+		}
 
-    this.polygon = new google.maps.Polygon(params)
+		const parameters = {
+			map,
+			paths,
+			strokeColor,
+			strokeOpacity,
+			strokeWeight,
+			fillColor,
+			fillOpacity,
+			...props,
+		}
 
-    evtNames.forEach(e => {
-      this.polygon.addListener(e, this.handleEvent(e))
-    })
+		this.polygon = new google.maps.Polygon(parameters)
 
-    this.polygonPromise.resolve(this.polygon)
-  }
+		evtNames.forEach(e => {
+			this.polygon.addListener(e, this.handleEvent(e))
+		})
 
-  getPolygon() {
-    return this.polygonPromise
-  }
+		this.polygonPromise.resolve(this.polygon)
+	}
 
-  handleEvent(evt) {
-    return e => {
-      const evtName = `on${camelize(evt)}`
-      if (this.props[evtName]) {
-        this.props[evtName](this.props, this.polygon, e)
-      }
-    }
-  }
+	getPolygon() {
+		return this.polygonPromise
+	}
 
-  render() {
-    return null
-  }
+	handleEvent(evt) {
+		return e => {
+			const evtName = `on${camelize(evt)}`
+			if (this.props[evtName]) {
+				this.props[evtName](this.props, this.polygon, e)
+			}
+		}
+	}
+
+	render() {
+		return null
+	}
 }
 
 Polygon.propTypes = {
-  paths: PropTypes.array,
-  strokeColor: PropTypes.string,
-  strokeOpacity: PropTypes.number,
-  strokeWeight: PropTypes.number,
-  fillColor: PropTypes.string,
-  fillOpacity: PropTypes.number,
+	paths: PropTypes.array,
+	strokeColor: PropTypes.string,
+	strokeOpacity: PropTypes.number,
+	strokeWeight: PropTypes.number,
+	fillColor: PropTypes.string,
+	fillOpacity: PropTypes.number,
 }
 
 evtNames.forEach(e => (Polygon.propTypes[e] = PropTypes.func))
 
 Polygon.defaultProps = {
-  name: 'Polygon',
+	name: 'Polygon',
 }
 
 export default Polygon

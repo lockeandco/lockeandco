@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react'
-import Page from '../components/PageLayout'
+import Page from '../../components/PageLayout'
 import Paper from '@material-ui/core/Paper'
-import Headers from '../components/MobileScrollingHeader'
+import Headers from '../../components/MobileScrollingHeader'
 import Typography from '@material-ui/core/Typography'
 import {makeStyles} from '@material-ui/core/styles'
 import Box from '@material-ui/core/Box'
@@ -16,9 +16,8 @@ import {
 	useCycle,
 } from 'framer-motion'
 import useComponentSize from '@rehooks/component-size'
-import * as RecipesC from '../content/recipes/pineapple-basil-smash.md'
+import RecipesCardList from '../../components/Card/reference/'
 
-console.log(RecipesC)
 
 const useStyles = makeStyles(theme => ({
 	typoBigHeader: {
@@ -45,6 +44,22 @@ const spring = {
 	damping: 200,
 	stiffness: 10,
 }
+
+const importRecipes = async () => {
+  // https://webpack.js.org/guides/dependency-management/#requirecontext
+  const markdownFiles = require
+    .context('../../content/recipes', false, /\.md$/)
+    .keys()
+	.map(relativePath => relativePath.substring(2))
+	
+  return Promise.all(
+    markdownFiles.map(async path => {
+      const markdown = await import(`../../content/recipes/${path}`)
+      return { ...markdown, slug: path.substring(0, path.length - 3) }
+    })
+  )
+}
+
 const FramerHeader = props => {
 	const classes = useStyles()
 
@@ -73,55 +88,23 @@ const FramerHeader = props => {
 	}, [width])
 
 	return (
-		<>
-			<motion.span
-				ref={ref}
-				positionTransition={spring}
-				className={classes.typoBigHeader}
-				custom={1}
-				initial={{
-					translateX: 0,
-				}}
-				animate={firstLine}
-			>
-				so many ways to enjoy locke + co
-			</motion.span>
-			<motion.div
-				initial={{
-					opacity: 0,
-				}}
-				className={classes.typoBigHeader}
-				custom={2}
-				animate={controls}
-			>
-				a taste for all seasons
-			</motion.div>
 
-			<motion.div
-				initial={{
-					opacity: 0,
-				}}
-				className={classes.typoBigHeader}
-				custom={3}
-				animate={controls}
-				positionTransition={spring}
-				style={{translateX}}
-			>
-				recipes coming soon!
-			</motion.div>
-		</>
+			<RecipesCardList { ...props} />
+
 	)
 }
 
-const Recipes = props => {
-	const {classes, ...other} = props
+const RecipesPage = props => {
+	const {classes, recipesList, ...other} = props
+
+	console.log('RECIPES', recipesList)
 	return (
 		<Page
 			{...other}
 			pictures={{
 				left: {
-					url: `/Group_Dinner_Table.jpg`,
-					size: `100%`,
+					url: ``,
+					size: 0,
 				},
 				right: {
 					url: ``,
@@ -135,17 +118,15 @@ const Recipes = props => {
 				component: (
 					<div
 						style={{
-							textAlign: 'center',
 							display: 'flex',
-							top: '40%',
-							position: 'fixed',
+							top: '20%',
 						}}
 					>
 						<Hidden smUp>
 							<FramerHeader />
 						</Hidden>
 						<Hidden xsDown>
-							<FramerHeader />
+							<FramerHeader {...props} />
 						</Hidden>
 					</div>
 				),
@@ -154,4 +135,15 @@ const Recipes = props => {
 	)
 }
 
-export default Recipes
+export async function getStaticProps() {
+   
+const rawList = await importRecipes()
+const recipesList = await JSON.parse(JSON.stringify(rawList))
+
+  return {
+    props: {
+      recipesList,
+    }, 
+  }
+}
+export default RecipesPage

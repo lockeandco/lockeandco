@@ -2,11 +2,33 @@ backend:
   name: git-gateway
   branch: staging
 media_folder: public/images/uploads
+slug:
+  encoding: "ascii"
+  clean_accents: true
+  sanitize_replacement: "_"
 collections:
+  - name: 'pages'
+    label: 'Pages'
+    files:
+      - label: 'Owen'
+        name: 'owen'
+        file: 'content/cofounders/owen.md'
+        fields:
+          - { label: 'Title', name: 'title', widget: 'string' }
+          - { label: 'Publish Date', name: 'date', widget: 'datetime' }
+          - { label: 'Body', name: 'body', widget: 'markdown' }
+      - label: 'Rick'
+        name: 'rick'
+        file: 'content/cofounder.md'
+        fields:
+          - { label: 'Title', name: 'title', widget: 'string' }
+          - { label: 'Publish Date', name: 'date', widget: 'datetime' }
+          - { label: 'Body', name: 'body', widget: 'markdown' }
   - label: "Recipes"
     name: "recipes"
     folder: "content/recipes"
     create: true
+    slug: {{title}}
     label_singular: "Recipe"
     fields:
       [
@@ -56,25 +78,3 @@ collections:
             ],
         },
       ]
-  - label: "All Recipes"
-    name: "all_recipes"
-    folder: "content/recipes"
-    create: true
-    filter: { field: "type", value: "recipe" }
-    fields:
-      - { label: "Image", name: "image", widget: "image" }
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Tags", name: "tags", widget: "list" }
-  - label: Father
-    name: father
-    file: content/allrecipes.md
-    fields:
-        - label: Children
-          name: children
-          widget: list
-          fields:
-              - label: Child
-                name: child
-                widget: relation
-                collection: recipes
-                valueField: title

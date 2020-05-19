@@ -1,8 +1,7 @@
 import {memo, useRef} from 'react'
 import {motion, useMotionValue} from 'framer-motion'
-import {Link} from 'react-router-dom'
+import Link from '@material-ui/core/Link'
 import {useInvertedBorderRadius} from '../utils/use-inverted-border-radius'
-import {CardData} from '../types'
 import {ContentPlaceholder} from './ContentPlaceholder'
 import {Title} from './Title'
 import {Image} from './Image'
@@ -16,15 +15,19 @@ import {useWheelScroll} from '../utils/use-wheel-scroll'
 const dismissDistance = 150
 
 export const Card = memo(
-	({
+	(props) => {
+		const {		
 		isSelected,
 		id,
-		title,
+		// title,
 		category,
 		history,
 		pointOfInterest,
-		backgroundColor,
-	}) => {
+		backgroundColor ="#fff"} = props
+		console.log('CARDa PROPS', props)
+		
+		const title = props.attributes?.title
+
 		const y = useMotionValue(0)
 		const zIndex = useMotionValue(isSelected ? 2 : 0)
 
@@ -36,7 +39,7 @@ export const Card = memo(
 		const constraints = useScrollConstraints(cardRef, isSelected)
 
 		function checkSwipeToDismiss() {
-			y.get() > dismissDistance && history.push('/')
+			y.get() > dismissDistance
 		}
 
 		function checkZIndex(latest) {

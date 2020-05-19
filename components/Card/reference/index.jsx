@@ -1,15 +1,16 @@
 import {Header} from './Header'
 import {CardList} from './CardList'
 
-import './styles.css'
 
-const App = () => {
+
+const App = (props) => {
+
+	console.log('PROPS', props)
 	return (
 		<div className="container">
-			<Header />
-			<CardList />
+			<CardList cardData={props.recipesList}/>
 		</div>
 	)
 }
 
-return App
+export default App

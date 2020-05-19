@@ -8,15 +8,16 @@ export const Image = ({
 	backgroundColor,
 }) => {
 	const inverted = useInvertedScale()
-
+	const imagePath = id ? `images/uploads/${id}.jpg` : '/Bonfire_in_the_Woods2.jpg'
+	console.log(inverted)
 	return (
 		<motion.div
 			className="card-image-container"
-			style={{...inverted, backgroundColor, originX: 0, originY: 0}}
+			style={{...inverted, backgroundColor: 'transparent', originX: 0, originY: 0}}
 		>
 			<motion.img
 				className="card-image"
-				src={`images/${id}.jpg`}
+				src={imagePath}
 				alt=""
 				initial={false}
 				animate={isSelected ? {x: -20, y: -20} : {x: -pointOfInterest, y: 0}}

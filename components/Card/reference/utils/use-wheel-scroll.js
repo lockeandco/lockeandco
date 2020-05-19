@@ -1,5 +1,4 @@
-import {RefObject} from 'react'
-import {useDomEvent, MotionValue} from 'framer-motion'
+import {useDomEvent} from 'framer-motion'
 import {spring} from 'popmotion'
 import {mix} from '@popmotion/popcorn'
 import {debounce} from 'lodash'
@@ -57,13 +56,13 @@ const debouncedSpringTo = debounce(springTo, 100)
  * @param isActive - `true` if this listener should fire.
  */
 export function useWheelScroll(
-	ref: RefObject<Element>,
-	y: MotionValue<number>,
-	constraints: Constraints | null,
-	onWheelCallback: (e: WheelEvent) => void,
-	isActive: boolean
+	ref,
+	y,
+	constraints,
+	onWheelCallback,
+	isActive
 ) {
-	const onWheel = (event: WheelEvent) => {
+	const onWheel = (event) => {
 		event.preventDefault()
 
 		const currentY = y.get()

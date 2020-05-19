@@ -119,7 +119,7 @@ const RecipesPage = props => {
 					<div
 						style={{
 							display: 'flex',
-							top: '20%',
+							padding: `45px 0px`
 						}}
 					>
 						<Hidden smUp>

@@ -1,5 +1,6 @@
 import {motion, useInvertedScale} from 'framer-motion'
 import {closeSpring, openSpring} from './animations'
+import Typography from '@material-ui/core/Typography'
 
 export const Title = ({title, category, isSelected}) => {
 	const inverted = useInvertedScale()
@@ -16,7 +17,7 @@ export const Title = ({title, category, isSelected}) => {
 			style={{...inverted, originX: 0, originY: 0}}
 		>
 			<span className="category">{category}</span>
-			<h2>{title}</h2>
+			<Typography variant="h5" style={{ color: "#E2DED5"}}>{title}</Typography>
 		</motion.div>
 	)
 }

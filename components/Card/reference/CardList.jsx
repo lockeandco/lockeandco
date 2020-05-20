@@ -1,5 +1,6 @@
 import {Card} from './Card'
 import makeStyles from '@material-ui/styles/makeStyles'
+import {useRouter} from 'next/router'
 
  
 const useStyles = makeStyles(theme =>({
@@ -9,10 +10,12 @@ const useStyles = makeStyles(theme =>({
 		alignContent: 'flex-start',
 	}
 }))
-const List = ({cardData}) =>{
+const List = ({cardData, ...rest}) =>{
 	const classes = useStyles()
+	const router = useRouter()
+	const {pathname} = router
 
-	console.log('CardData', cardData)
+	console.log(pathname)
 	return (
 	<ul className={classes.cardList}>
 		{cardData.map((card,i) => (
@@ -20,6 +23,7 @@ const List = ({cardData}) =>{
 				key={card?.attributes?.title || Math.random() * 10090284276}
 				isSelected={i === 2}
 				{...card}
+				id={card?.attributes?.title}
 			/>
 		))}
 	</ul>

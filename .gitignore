@@ -43,3 +43,6 @@ staging_content/*
 **/Locke + Co Recipes.pdf
 deprecated/
 LockeandCo.code-workspace
+
+# Local Netlify folder
+.netlify

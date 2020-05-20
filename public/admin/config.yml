@@ -19,11 +19,60 @@ collections:
           - { label: 'Body', name: 'body', widget: 'markdown' }
       - label: 'Rick'
         name: 'rick'
-        file: 'content/cofounder.md'
+        file: 'content/cofounders/rick.md'
         fields:
           - { label: 'Title', name: 'title', widget: 'string' }
           - { label: 'Publish Date', name: 'date', widget: 'datetime' }
           - { label: 'Body', name: 'body', widget: 'markdown' }
+      - label: 'Co-founders'
+        name: 'co-founders'
+        file: 'content/cofounders/index.md'
+        fields:
+          - { label: 'Title', name: 'title', widget: 'string' }
+          - { label: 'Publish Date', name: 'date', widget: 'datetime' }
+          - { label: 'Body', name: 'body', widget: 'markdown' }
+      - label: 'Contact Us'
+        name: 'contact-us'
+        file: 'content/contact-us.md'
+        fields:
+          - { label: 'Title', name: 'title', widget: 'string' }
+          - { label: 'Publish Date', name: 'date', widget: 'datetime' }
+          - { label: 'Body', name: 'body', widget: 'markdown' }
+      - label: 'Home Page'
+        name: 'homepage'
+        file: 'content/index.md'
+        fields:
+          - { label: 'Title', name: 'title', widget: 'string' }
+          - { label: 'Publish Date', name: 'date', widget: 'datetime' }
+          - { label: 'Body', name: 'body', widget: 'markdown' }
+      - label: 'Merchandise'
+        name: 'merchandise'
+        file: 'content/merchandise.md'
+        fields:
+          - { label: 'Title', name: 'title', widget: 'string' }
+          - { label: 'Publish Date', name: 'date', widget: 'datetime' }
+          - { label: 'Body', name: 'body', widget: 'markdown' }
+      - label: 'Our Story'
+        name: 'our-story'
+        file: 'content/our-story.md'
+        fields:
+          - { label: 'Title', name: 'title', widget: 'string' }
+          - { label: 'Publish Date', name: 'date', widget: 'datetime' }
+          - { label: 'Body', name: 'body', widget: 'markdown' }
+      - label: 'Spirits'
+        name: 'spirits'
+        file: 'content/spirits.md'
+        fields:
+          - { label: 'Title', name: 'title', widget: 'string' }
+          - { label: 'Publish Date', name: 'date', widget: 'datetime' }
+          - { label: 'Body', name: 'body', widget: 'markdown' }
+      - label: 'Stay Connected'
+        name: 'stay-connected'
+        file: 'content/stay-connected.md'
+        fields:
+          - { label: 'Title', name: 'title', widget: 'string' }
+          - { label: 'Publish Date', name: 'date', widget: 'datetime' }
+          - { label: 'Body', name: 'body', widget: 'markdown' }        
   - label: "Recipes"
     name: "recipes"
     folder: "content/recipes"

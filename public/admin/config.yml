@@ -28,7 +28,7 @@ collections:
     name: "recipes"
     folder: "content/recipes"
     create: true
-    slug: {{title}}
+    slug: "{{title}}"
     label_singular: "Recipe"
     fields:
       [

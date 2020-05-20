@@ -15,17 +15,18 @@ import NextLink from 'next/link'
 const dismissDistance = 150
 
 export const Card = memo(
-	(props) => {
-		const {		
-		isSelected,
-		id,
-		// title,
-		category,
-		history,
-		pointOfInterest,
-		backgroundColor ="#fff"} = props
+	props => {
+		const {
+			isSelected,
+			id,
+			// Title,
+			category,
+			history,
+			pointOfInterest,
+			backgroundColor = '#fff',
+		} = props
 		console.log('CARDa PROPS', props)
-		
+
 		const title = props.attributes?.title
 
 		const y = useMotionValue(0)
@@ -77,16 +78,15 @@ export const Card = memo(
 						onUpdate={checkZIndex}
 					>
 						<LinkoRDiv as={`/recipes/${id}`} className="card-open-link">
-						<Image
-							id={id} 
-							isSelected={isSelected}
-							pointOfInterest={pointOfInterest}
-							backgroundColor={backgroundColor}
-						/>
+							<Image
+								id={id}
+								isSelected={isSelected}
+								pointOfInterest={pointOfInterest}
+								backgroundColor={backgroundColor}
+							/>
 						</LinkoRDiv>
 						<Title title={title} category={category} isSelected={isSelected} />
 						<ContentPlaceholder />
-						
 					</motion.div>
 				</div>
 			</li>
@@ -102,8 +102,5 @@ const Overlay = ({isSelected}) => (
 		transition={{duration: 0.2}}
 		style={{pointerEvents: isSelected ? 'auto' : 'none'}}
 		className="overlay"
-	>
-		<NextLink as="/recipes"></NextLink>
-	</motion.div>
-	</NextLink>
+	 />
 )

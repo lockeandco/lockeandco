@@ -8,12 +8,7 @@ import IconButton from '@material-ui/core/IconButton'
 import Icon from '@material-ui/core/Icon'
 import Tooltip from '@material-ui/core/Tooltip'
 import classNames from 'classnames'
-import {
-	Facebook,
-	Twitter,
-	Instagram,
-	MapSearch,
-} from 'mdi-material-ui'
+import {Facebook, Twitter, Instagram, MapSearch} from 'mdi-material-ui'
 import Router from 'next/router'
 import Hidden from '@material-ui/core/Hidden'
 import Typography from '@material-ui/core/Typography'

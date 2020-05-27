@@ -3,7 +3,6 @@ import {spring} from 'popmotion'
 import {mix} from '@popmotion/popcorn'
 import {debounce} from 'lodash'
 
-
 // Absolute distance a wheel scroll event can travel outside of
 // the defined constraints before we fire a "snap back" animation
 const deltaThreshold = 5
@@ -55,14 +54,8 @@ const debouncedSpringTo = debounce(springTo, 100)
  * @param constraints - top/bottom scroll constraints in pixels.
  * @param isActive - `true` if this listener should fire.
  */
-export function useWheelScroll(
-	ref,
-	y,
-	constraints,
-	onWheelCallback,
-	isActive
-) {
-	const onWheel = (event) => {
+export function useWheelScroll(ref, y, constraints, onWheelCallback, isActive) {
+	const onWheel = event => {
 		event.preventDefault()
 
 		const currentY = y.get()

@@ -1,14 +1,15 @@
 import {memo, useRef} from 'react'
 import {motion, useMotionValue} from 'framer-motion'
-import Box from '@material-ui/core/Box'
 import {useInvertedBorderRadius} from '../utils/use-inverted-border-radius'
 import {ContentPlaceholder} from './ContentPlaceholder'
 import {Title} from './Title'
+import {Tags} from './Tags'
 import {Image} from './Image'
 import {openSpring, closeSpring} from './animations'
 import {useScrollConstraints} from '../utils/use-scroll-constraints'
 import {useWheelScroll} from '../utils/use-wheel-scroll'
 import NextLink from 'next/link'
+import {useRouter} from 'next/router'
 
 // Distance in pixels a user has to scroll a card down before we recognise
 // a swipe-to dismiss action.
@@ -18,15 +19,15 @@ export const Card = memo(
 	props => {
 		const {
 			isSelected,
+			slug,
 			id,
 			// Title,
 			category,
-			history,
 			pointOfInterest,
 			backgroundColor = '#fff',
 		} = props
 		console.log('CARDa PROPS', props)
-
+		const router = useRouter()
 		const title = props.attributes?.title
 
 		const y = useMotionValue(0)
@@ -40,7 +41,7 @@ export const Card = memo(
 		const constraints = useScrollConstraints(cardRef, isSelected)
 
 		function checkSwipeToDismiss() {
-			y.get() > dismissDistance
+			y.get() > dismissDistance && router.push('/recipes')
 		}
 
 		function checkZIndex(latest) {
@@ -61,33 +62,42 @@ export const Card = memo(
 			isSelected
 		)
 
-		const LinkoRDiv = isSelected ? NextLink : Box
-
 		return (
 			<li ref={containerRef} className="card">
 				<Overlay isSelected={isSelected} />
 				<div className={`card-content-container ${isSelected && 'open'}`}>
-					<motion.div
-						ref={cardRef}
-						className="card-content"
-						style={{...inverted, zIndex, y}}
-						layoutTransition={isSelected ? openSpring : closeSpring}
-						drag={isSelected ? 'y' : false}
-						dragConstraints={constraints}
-						onDrag={checkSwipeToDismiss}
-						onUpdate={checkZIndex}
-					>
-						<LinkoRDiv as={`/recipes/${id}`} className="card-open-link">
+					<NextLink href={`/recipes?recipe=${slug}`} className="card-open-link">
+						<motion.div
+							ref={cardRef}
+							className="card-content"
+							style={{...inverted, zIndex, y}}
+							layoutTransition={isSelected ? openSpring : closeSpring}
+							drag={isSelected ? 'y' : false}
+							dragConstraints={constraints}
+							onDrag={checkSwipeToDismiss}
+							onUpdate={checkZIndex}
+						>
 							<Image
 								id={id}
 								isSelected={isSelected}
 								pointOfInterest={pointOfInterest}
 								backgroundColor={backgroundColor}
 							/>
-						</LinkoRDiv>
-						<Title title={title} category={category} isSelected={isSelected} />
-						<ContentPlaceholder />
-					</motion.div>
+
+							<Title
+								title={title}
+								category={category}
+								isSelected={isSelected}
+							/>
+							<ContentPlaceholder {...props} />
+
+							<Tags
+								title={title}
+								category={category}
+								isSelected={isSelected}
+							/>
+						</motion.div>
+					</NextLink>
 				</div>
 			</li>
 		)
@@ -102,5 +112,5 @@ const Overlay = ({isSelected}) => (
 		transition={{duration: 0.2}}
 		style={{pointerEvents: isSelected ? 'auto' : 'none'}}
 		className="overlay"
-	 />
+	/>
 )

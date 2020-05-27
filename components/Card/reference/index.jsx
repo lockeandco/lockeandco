@@ -1,14 +1,11 @@
 import {Header} from './Header'
 import {CardList} from './CardList'
 
-
-
-const App = (props) => {
-
-	console.log('PROPS', props)
+const App = props => {
+	const {recipesList: cardData, ...rest} = props
 	return (
 		<div className="container">
-			<CardList cardData={props.recipesList}/>
+			<CardList cardData={cardData} {...rest} />
 		</div>
 	)
 }

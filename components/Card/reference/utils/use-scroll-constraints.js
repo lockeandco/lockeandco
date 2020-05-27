@@ -4,12 +4,10 @@ import {useState, useEffect} from 'react'
  * Calculate the top/bottom scroll constraints of a full-screen element vs the viewport
  */
 export function useScrollConstraints(ref, measureConstraints) {
-	const [constraints, setConstraints] =
-		useState(
-		{
-			top: 0,
-			bottom: 0,
-		})
+	const [constraints, setConstraints] = useState({
+		top: 0,
+		bottom: 0,
+	})
 
 	useEffect(() => {
 		if (!measureConstraints) return

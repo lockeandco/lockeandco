@@ -145,7 +145,7 @@
     "jss": "^9.8.7",
     "keycode": "^2.2.0",
     "mdi-material-ui": "^6.1.0",
-    "next": "^9.1.5",
+    "next": "^9.4.2",
     "next-runtime-dotenv": "^1.0.1",
     "primereact": "^3.0.0-rc.1",
     "prop-types": "^15.6.2",

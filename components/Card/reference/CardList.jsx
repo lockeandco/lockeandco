@@ -2,41 +2,37 @@ import {Card} from './Card'
 import makeStyles from '@material-ui/styles/makeStyles'
 import {useRouter} from 'next/router'
 
- 
-const useStyles = makeStyles(theme =>({
-	cardList: { 
+const useStyles = makeStyles(theme => ({
+	cardList: {
 		display: 'flex',
 		flexWrap: 'wrap',
 		alignContent: 'flex-start',
-	}
+	},
 }))
-const List = ({cardData, ...rest}) =>{
+const List = ({cardData, query, ...rest}) => {
 	const classes = useStyles()
-	const router = useRouter()
-	const {pathname} = router
+	const {recipe} = query
 
-	console.log(pathname)
 	return (
-	<ul className={classes.cardList}>
-		{cardData.map((card,i) => (
-			<Card
-				key={card?.attributes?.title || Math.random() * 10090284276}
-				isSelected={i === 2}
-				{...card}
-				id={card?.attributes?.title}
-			/>
-		))}
-	</ul>
-)}
+		<ul className={classes.cardList}>
+			{cardData.map((card, i) => (
+				<Card
+					key={card?.attributes?.title || Math.random() * 10090284276}
+					isSelected={recipe === card.slug}
+					{...card}
+				/>
+			))}
+		</ul>
+	)
+}
 
-export const CardList = (props) => {
-	const {cardData = []} = props
+export const CardList = props => {
+	const {cardData = [], ...rest} = props
 	console.log('CardListProps', props)
-	return ( 
- <List cardData={cardData} />
-)}
+	return <List cardData={cardData} {...rest} />
+}
 
-// const cardData = [
+// Const cardData = [
 // 	// Photo by ivan Torres on Unsplash
 // 	{
 // 		id: 'c',

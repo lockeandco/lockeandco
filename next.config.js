@@ -33,6 +33,17 @@ module.exports = phase => {
 		env,
 		...withMDX({
 			pageExtensions: ['js', 'jsx', 'mdx'],
+			experimental: {
+				modern: true,
+				rewrites() {
+					return [
+						{
+							source: '/recipes{/}?',
+							destination: '/recipes/list',
+						},
+					]
+				},
+			},
 			webpack(config, {isServer}) {
 				if (!isServer) {
 					config.plugins.push(

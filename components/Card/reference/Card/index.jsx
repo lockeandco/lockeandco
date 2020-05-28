@@ -66,7 +66,7 @@ export const Card = memo(
 			<li ref={containerRef} className="card">
 				<Overlay isSelected={isSelected} />
 				<div className={`card-content-container ${isSelected && 'open'}`}>
-					<NextLink href={`/recipes?recipe=${slug}`} className="card-open-link">
+					<NextLink href={isSelected ? `/recipes` : `/recipes?recipe=${slug}`}>
 						<motion.div
 							ref={cardRef}
 							className="card-content"
@@ -91,11 +91,7 @@ export const Card = memo(
 							/>
 							<ContentPlaceholder {...props} />
 
-							<Tags
-								title={title}
-								category={category}
-								isSelected={isSelected}
-							/>
+							<Tags title={title} category={category} isSelected={isSelected} />
 						</motion.div>
 					</NextLink>
 				</div>

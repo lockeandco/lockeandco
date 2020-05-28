@@ -29,7 +29,7 @@ const StayConnected = props => {
 			{...other}
 			pictures={{
 				left: {
-					url: `/Truck.jpg`,
+					url: `/Truck1.jpg`,
 					size: `100%`,
 				},
 				rightTop: {

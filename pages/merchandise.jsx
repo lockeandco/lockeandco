@@ -18,15 +18,15 @@ const Merchandise = props => {
 			useTopRight
 			pictures={{
 				left: {
-					url: `/Ski_Goggles_Close_up.jpg`,
+					url: `/Ski_Goggles.jpg`,
 					size: '100%',
 				},
 				rightTop: {
-					url: `/Fishing.jpg`,
+					url: `/Fishing1.jpg`,
 					size: '65%',
 				},
 				rightBottom: {
-					url: `/Hats.jpg`,
+					url: `/Hats1.jpg`,
 					size: '35%',
 				},
 			}}

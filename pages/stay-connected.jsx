@@ -1,4 +1,3 @@
-import React, {Fragment} from 'react'
 import Page from '../components/PageLayout'
 import compose from 'ramda/src/compose'
 import {withStyles} from '@material-ui/core/styles'
@@ -29,7 +28,7 @@ const StayConnected = props => {
 			{...other}
 			pictures={{
 				left: {
-					url: `/Truck1.jpg`,
+					url: `/Truck.jpg`,
 					size: `100%`,
 				},
 				rightTop: {

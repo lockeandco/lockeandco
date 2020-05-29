@@ -10,6 +10,7 @@ const useStyles = makeStyles(() => ({
 		fontSize: `.8rem`,
 		fontStyle: 'italic',
 		color: '#E2DED5',
+		textShadow: '1px 1px rgb(36, 55, 70)',
 	},
 }))
 
@@ -17,7 +18,7 @@ export const Tags = ({title, category, isSelected}) => {
 	const inverted = useInvertedScale()
 	const classes = useStyles()
 	const x = isSelected ? 30 : 15
-	const y = 330
+	const y = isSelected ? 330 : 330
 
 	return (
 		<motion.div

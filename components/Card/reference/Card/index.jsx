@@ -24,7 +24,7 @@ export const Card = memo(
 			// Title,
 			category,
 			pointOfInterest,
-			backgroundColor = '#fff',
+			backgroundColor,
 		} = props
 		console.log('CARDa PROPS', props)
 		const router = useRouter()

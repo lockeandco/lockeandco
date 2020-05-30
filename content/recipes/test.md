@@ -1,6 +1,6 @@
 ---
-image: /public/images/uploads/chef-russell-jackson-s-boulevardier.png
 type: recipe
+image: /public/images/uploads/Two_Men_Cheersing.jpg
 title: Test
 description: Teste
 ingredients: test

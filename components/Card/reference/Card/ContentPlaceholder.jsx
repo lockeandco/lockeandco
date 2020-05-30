@@ -78,22 +78,30 @@ const ContentPlaceholder = React.memo(props => {
 					))}
 				</Grid>
 			</Grid>
+
 			<Grid container direction="column" className={classes.prepGrid}>
 				<Grid item>
-					<Typography
-						gutterBottom
-						variant="h5"
-						className={classes.contentHeaderOrange}
-					>
-						Cource
-					</Typography>
-				</Grid>
-				<Grid item>
-					{preparationList.map(step => (
-						<Typography key={step} paragraph variant="h6">
-							{step.slice(2, step.length)}
+					<Grid item>
+						<Typography
+							gutterBottom
+							variant="h6"
+							className={classes.contentHeaderOrange}
+						>
+							Source
 						</Typography>
-					))}
+					</Grid>
+					{source.name === 'Locke + Co' ? (
+						<Typography gutterBottom variant="body1">
+							A Locke + Co Original
+						</Typography>
+					) : (
+						<>
+							<Typography variant="body1">{source.name}</Typography>
+							<Typography gutterBottom variant="caption">
+								{source.url}
+							</Typography>
+						</>
+					)}
 				</Grid>
 			</Grid>
 		</motion.div>

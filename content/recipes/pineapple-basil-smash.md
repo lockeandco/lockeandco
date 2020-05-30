@@ -1,6 +1,7 @@
 ---
-title: Pineapple Basil Smash
 type: recipe
+image: /public/images/uploads/bonfire_in_the_woods2.jpg
+title: Pineapple Basil Smash
 ingredients: |-
   * 2.5oz Locke + Co Rye
   * 6 pineapple chunks
@@ -21,6 +22,5 @@ season: Summer
 source:
   name: Bird
   note: Restaurant on Old South Pearl Street
-  url: 'https://birddenver.com/'
+  url: https://birddenver.com/
 ---
-

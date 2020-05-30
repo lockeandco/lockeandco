@@ -4,21 +4,34 @@ import Typography from '@material-ui/core/Typography'
 import {makeStyles} from '@material-ui/styles'
 
 const useStyles = makeStyles(() => ({
-	title: {
+	tags: {
 		textTransform: 'lowercase',
-		fontFamily: 'OldGrowth',
-		fontSize: `.8rem`,
+		// FontFamily: 'OldGrowth',
+		// fontSize: `.8rem`,
 		fontStyle: 'italic',
 		color: '#E2DED5',
-		textShadow: '1px 1px rgb(36, 55, 70)',
+		textShadow: `-1px 1px 1px #243746,
+				  1px 1px 1px #243746,
+				  1px -1px 0 #243746,
+				  -1px -1px 0 #243746`,
 	},
+	// TagB: {
+	// 	background:
+	// 		'linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 70%, rgba(0,0,0,0) 100%)',
+	// 	bottom: 0,
+	// 	height: 48,
+	// 	position: 'absolute',
+	// 	alignItems: 'center',
+	// 	display: 'flex',
+	// 	width: '100%',
+	// },
 }))
 
-export const Tags = ({title, category, isSelected}) => {
+export const Tags = ({tags, isSelected}) => {
 	const inverted = useInvertedScale()
 	const classes = useStyles()
 	const x = isSelected ? 30 : 15
-	const y = isSelected ? 330 : 330
+	const y = isSelected ? 375 : 375
 
 	return (
 		<motion.div
@@ -27,11 +40,17 @@ export const Tags = ({title, category, isSelected}) => {
 			animate={{x, y}}
 			transition={isSelected ? openSpring : closeSpring}
 			transformTemplate={scaleTranslate}
-			style={{...inverted, originX: 0, originY: 0}}
+			style={{
+				...inverted,
+				originX: 0,
+				originY: 0,
+				// Background:
+				// 	'linear-gradient(to top, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.1) 70%, rgba(0,0,0,0) 100%)',
+				// width: '100%',
+			}}
 		>
-			<span className="category">{category}</span>
-			<Typography variant="h6" className={classes.title}>
-				Some Tags
+			<Typography variant="body1" className={classes.tags}>
+				{tags.join(', ')}
 			</Typography>
 		</motion.div>
 	)

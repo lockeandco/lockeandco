@@ -2,12 +2,34 @@ import {motion, useInvertedScale} from 'framer-motion'
 import {closeSpring, openSpring} from './animations'
 import Typography from '@material-ui/core/Typography'
 import {makeStyles} from '@material-ui/styles'
+// Import GridListTileBar from '@material-ui/core/GridListTileBar'
 
 const useStyles = makeStyles(() => ({
 	title: {
 		textTransform: 'lowercase',
 		fontFamily: 'OldGrowth',
 		color: '#E2DED5',
+		fontWeight: 700,
+		// TextShadow: `-1px 1px 1px #243746,
+		// 		  1px 1px 1px #243746,
+		// 		  1px -1px 0 #243746,
+		// 		  -1px -1px 0 #243746`,
+	},
+	titleBar: {
+		background: `linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, rgba(0,0,0,.3) 100%)`,
+		width: '100%',
+		height: '100px',
+		position: 'absolute',
+	},
+	category: {
+		fontWeight: 600,
+		textTransform: 'uppercase',
+		// FontFamily: 'OldGrowth',
+		color: '#E2DED5',
+		// TextShadow: `-1px 1px 1px #243746,
+		// 		  1px 1px 1px #243746,
+		// 		  1px -1px 0 #243746,
+		// 		  -1px -1px 0 #243746`,
 	},
 }))
 
@@ -18,19 +40,22 @@ export const Title = ({title, category, isSelected}) => {
 	const y = x
 
 	return (
-		<motion.div
-			className="title-container"
-			initial={false}
-			animate={{x, y}}
-			transition={isSelected ? openSpring : closeSpring}
-			transformTemplate={scaleTranslate}
-			style={{...inverted, originX: 0, originY: 0}}
-		>
-			<span className="category">{category}</span>
-			<Typography variant="h6" className={classes.title}>
-				{title}
-			</Typography>
-		</motion.div>
+		<div className={classes.titleBar}>
+			<motion.div
+				className="title-container"
+				initial={false}
+				animate={{x, y}}
+				transition={isSelected ? openSpring : closeSpring}
+				transformTemplate={scaleTranslate}
+				style={{...inverted, originX: 0, originY: 0}}
+			>
+				<span className={classes.category}>{category}</span>
+				{/* <GridListTileBar title={title} subtitle={<span> {category}</span>} /> */}
+				<Typography variant="h6" className={classes.title}>
+					{title}
+				</Typography>
+			</motion.div>
+		</div>
 	)
 }
 

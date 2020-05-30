@@ -2,18 +2,18 @@ import {motion, useInvertedScale} from 'framer-motion'
 import {closeSpring} from './animations'
 
 export const Image = ({
-	id,
+	recipeImage,
 	isSelected,
 	pointOfInterest = 0,
 	backgroundColor,
 }) => {
 	const inverted = useInvertedScale()
-	const imagePath = id
-		? `images/uploads/${id}.jpg`
-		: `/Bottle_Cheersing.jpg${
+	const imagePath = recipeImage
+		? `https://staging.lockeandcodistilling.com/${recipeImage}`
+		: `https://staging.lockeandcodistilling.com/Bottle_Cheersing.jpg${
 				isSelected
-					? '?nf_resize=smartcrop&w=500&h=300'
-					: '?nf_resize=fit&w=300&h=300'
+					? '?nf_resize=smartcrop&w=730&h=430'
+					: '?nf_resize=smartcrop&w=800&h=430'
 		  }`
 	console.log(inverted)
 	return (

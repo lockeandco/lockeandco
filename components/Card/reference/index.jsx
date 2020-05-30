@@ -5,7 +5,7 @@ import Box from '@material-ui/core/Box'
 const App = props => {
 	const {recipesList: cardData, ...rest} = props
 	return (
-		<Box mt={9}>
+		<Box mt={9} marginX="auto">
 			<Container maxWidth="lg">
 				<Header />
 				<CardList cardData={cardData} {...rest} />

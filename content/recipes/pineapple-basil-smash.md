@@ -1,6 +1,6 @@
 ---
 type: recipe
-image: /public/images/uploads/bonfire_in_the_woods2.jpg
+image: /public/images/uploads/Bonfire_in_the_Woods.jpg
 title: Pineapple Basil Smash
 ingredients: |-
   * 2.5oz Locke + Co Rye

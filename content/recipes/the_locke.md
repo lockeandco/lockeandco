@@ -1,6 +1,6 @@
 ---
 type: recipe
-image: /public/images/uploads/Two_Men_Cheersing.jpg
+image: /public/images/uploads/tools.jpg
 title: The Locke
 description: ""
 ingredients: |-

@@ -1,6 +1,6 @@
 ---
 type: recipe
-image: /public/images/uploads/Axebottle.jpg
+image: /public/images/uploads/tomas-jasovsky-zlz88br5ntk-unsplash.jpg
 title: "Apple-Cider Old Fashioned "
 description: ""
 ingredients: |-

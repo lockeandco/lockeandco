@@ -27,6 +27,6 @@ tags:
 season: Summer
 source:
   name: Chef Russell Jackson
-  url: http://chefrusselljackson.net/
-  note: made by chef russell jackson
+  url: https://about.me/russelljackson
+  note: created by chef russell jackson
 ---

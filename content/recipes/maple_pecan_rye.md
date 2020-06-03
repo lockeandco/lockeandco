@@ -1,11 +1,11 @@
 ---
 type: recipe
-image: /public/images/uploads/Man_Looking_Over_Cliff.jpg
+image: /public/images/uploads/deryn-macey-dfwhzhyali8-unsplash.jpg
 title: Maple Pecan Rye
 ingredients: |-
   * 2oz Locke + Co Rye
   * Orange zest
-  * 2 dashes Walnut bitters,
+  * 2 dashes Walnut bitters
   * 1/2oz Maple syrup 
   * 1oz Carpano Antica
   * Smoked and Candied Pecans

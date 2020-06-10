@@ -72,7 +72,11 @@ const ContentPlaceholder = React.memo(props => {
 				</Grid>
 				<Grid item>
 					{preparationList.map(step => (
-						<Typography key={step} paragraph variant="h6">
+						<Typography
+							key={step.concat(String(Math.random()))}
+							paragraph
+							variant="h6"
+						>
 							{step.slice(2, step.length)}
 						</Typography>
 					))}
@@ -98,7 +102,9 @@ const ContentPlaceholder = React.memo(props => {
 						<>
 							<Typography variant="body1">{source.name}</Typography>
 							<Typography gutterBottom variant="caption">
-								{source.url}
+								<a href={source.url} rel="nofollow ">
+									{source.url}
+								</a>
 							</Typography>
 						</>
 					)}

@@ -120,8 +120,9 @@ class GMapDemo extends Component {
 				})
 			})
 		})
-
+		console.log(this.props)
 		markerClusterer = new MarkerClusterer(gm, overlays, {
+			averageCenter: true,
 			imagePath:
 				'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/m',
 		})

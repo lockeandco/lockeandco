@@ -113,7 +113,7 @@ class LeftDrawer extends React.Component {
 									lat: 39.743642,
 									lng: -104.9854807,
 								},
-								zoom: 10,
+								zoom: 6,
 							})
 						}}
 					/>

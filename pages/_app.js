@@ -73,7 +73,7 @@ const appInitialState = {
 	// SETCITY
 	city: '',
 	// SETZOOM
-	zoom: 8,
+	zoom: 6,
 	// POSITIION
 	position: {
 		lat: 39.743642,

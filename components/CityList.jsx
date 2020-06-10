@@ -1,18 +1,10 @@
-import React from 'react'
+import {useMemo} from 'react'
 import PropTypes from 'prop-types'
 import {withStyles} from '@material-ui/core/styles'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
-import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
-import Divider from '@material-ui/core/Divider'
-import PeopleIcon from '@material-ui/icons/People'
-import DraftsIcon from '@material-ui/icons/Drafts'
-import IconButton from '@material-ui/core/IconButton'
 import Collapse from '@material-ui/core/Collapse'
-import Icon from '@material-ui/core/Icon'
-import classNames from 'classnames'
-import {ChevronDoubleLeft} from 'mdi-material-ui'
 import {
 	tap,
 	compose,
@@ -36,12 +28,11 @@ import {
 	ifElse,
 	slice,
 	identity,
+	when,
+	tryCatch,
 } from 'ramda'
+import {isNotNilOrEmpty} from 'ramda-adjunct'
 import PlacesSearch from './MaterialFormiklDownshift'
-
-const lockeCoAvailable = compose(flatten, pluck(['list']))
-
-const lockeCoCities = compose(flatten, map(omit(['list'])))
 
 const styles = theme => ({
 	root: {
@@ -132,23 +123,27 @@ const CityList = props => {
 		selectedItem,
 	} = props
 
-	const locs = lockeColocs
+	const locs = lockeColocs.filter(c => isNotNilOrEmpty(c.city))
 
-	const citiesD = compose(
-		map(l => Object.assign({}, {label: toLower(l.name)}, {id: l.place_id})),
-		reject(isEmpty),
-		reject(isNil),
-		// Sort(ascend(prop('name'))),
-		sortBy(
+	const citiesD = useMemo(
+		() =>
 			compose(
-				ifElse(test(/^(the )/g), replace(/^(the )/g, ''), identity),
-				toLower,
-				prop('name')
-			)
-		),
-		flatten,
-		pluck('list')
-	)(locs)
+				map(l => Object.assign({}, {label: toLower(l.name)}, {id: l.place_id})),
+				reject(isEmpty),
+				reject(isNil),
+				// Sort(ascend(prop('name'))),
+				sortBy(
+					compose(
+						when(test(/^(the )/g), replace(/^(the )/g, '')),
+						toLower,
+						prop('name')
+					)
+				),
+				flatten,
+				pluck('list')
+			)(locs),
+		[locs]
+	)
 
 	const getCity = loc =>
 		locs.reduce((x, y) => {
@@ -171,17 +166,20 @@ const CityList = props => {
 				: x
 		}, selectedItem)
 
-	const sortedLocs = compose(
-		map(over(lensProp('city'), toLower)),
-		sort(ascend(prop('city')))
-	)(locs)
+	const sortedLocs = useMemo(
+		() =>
+			compose(
+				map(over(lensProp('city'), compose(tryCatch(toLower, identity)))),
+
+				sort(ascend(prop('city')))
+			)(locs),
+		[locs]
+	)
 	const showCity = city
 		? sortedLocs.filter(l =>
 				l.city ? toLower(l.city) === toLower(city) : true
 		  )
 		: sortedLocs
-
-	// Console.log('SHOWCITy', showCity)
 
 	return (
 		<>

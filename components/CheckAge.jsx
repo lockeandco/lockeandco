@@ -1,5 +1,5 @@
 import React, {Fragment} from 'react'
-import Page from '../components/Page1x15050'
+import Page from '../deprecated/Page1x15050'
 import Typography from '@material-ui/core/Typography'
 import AgeVerification from './AgeVerification'
 import {withStyles} from '@material-ui/core/styles'

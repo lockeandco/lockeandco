@@ -79,7 +79,7 @@ const styles = theme => ({
 const socialIcons = [
 	{
 		icon: c => <Facebook className={c} />,
-		href: 'https://www.facebook.com/LockeandCoDistilling/',
+		href: 'https://www.facebook.com/LockeCoDistilling/',
 		name: 'Facebook',
 	},
 	{
@@ -89,7 +89,7 @@ const socialIcons = [
 	},
 	{
 		icon: c => <Twitter className={c} />,
-		href: 'https://twitter.com/LockeDistilling',
+		href: 'https://twitter.com/LockeCoDistill',
 		name: 'Twitter',
 	},
 	// {

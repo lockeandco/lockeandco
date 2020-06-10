@@ -13,6 +13,7 @@ import {
 	At,
 	Cart,
 	Email,
+	CardBulleted,
 } from 'mdi-material-ui'
 import Link from 'next/link'
 
@@ -63,39 +64,45 @@ const linkList = [
 		icon: <Keg style={{color: '#C36D15'}} />,
 	},
 	{
+		name: 'recipes',
+		link: '/recipes',
+		page: 1,
+		icon: <CardBulleted style={{color: '#C36D15'}} />,
+	},
+	{
 		name: 'co-founders',
 		link: '/co-founders',
-		page: 1,
+		page: 2,
 		icon: <AccountMultiple style={{color: '#C36D15'}} />,
 	},
 	{
 		name: 'our story',
 		link: '/our-story',
-		page: 2,
+		page: 3,
 		icon: <BookOpenPageVariant style={{color: '#C36D15'}} />,
 	},
 	{
 		name: 'find us',
 		link: '/find-us',
-		page: 3,
+		page: 4,
 		icon: <MapSearch style={{color: '#C36D15'}} />,
 	},
 	{
 		name: 'contact us',
 		link: '/contact-us',
-		page: 4,
+		page: 5,
 		icon: <Email style={{color: '#C36D15'}} />,
 	},
 	{
 		name: 'stay connected',
 		link: '/stay-connected',
-		page: 5,
+		page: 6,
 		icon: <At style={{color: '#C36D15'}} />,
 	},
 	{
 		name: 'merchandise',
 		link: '/merchandise',
-		page: 6,
+		page: 7,
 		icon: <Cart style={{color: '#C36D15'}} />,
 	},
 ]

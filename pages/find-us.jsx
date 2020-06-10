@@ -106,13 +106,13 @@ const FindUs = props => {
 										// backgroundColor: '#C36D15',
 									}}
 									onClick={() => {
-										scroll
+										// Scroll
 										setPositionAndZoom({
 											position: {
 												lat: 39.743642,
 												lng: -104.9854807,
 											},
-											zoom: 10,
+											zoom: 6,
 										})
 										expandList('')
 									}}

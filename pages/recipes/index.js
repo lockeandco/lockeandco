@@ -46,8 +46,8 @@ const RecipesPage = props => {
 			{...other}
 			pictures={{
 				left: {
-					url: ``,
-					size: 0,
+					url: `/test4.jpeg`,
+					size: `100%`,
 				},
 				right: {
 					url: ``,

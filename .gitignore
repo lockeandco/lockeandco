@@ -46,3 +46,4 @@ LockeandCo.code-workspace
 
 # Local Netlify folder
 .netlify
+.vscode/launch.json

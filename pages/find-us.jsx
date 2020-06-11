@@ -11,13 +11,11 @@ import Tooltip from '@material-ui/core/Tooltip'
 import Zoom from '@material-ui/core/Zoom'
 import CommonHeader from '../components/MobileScrollingHeader'
 import {config} from 'react-spring'
-import {pluck, flatten, map, omit, tap} from 'ramda'
+import {pluck, flatten} from 'ramda'
 import CircularProgress from '@material-ui/core/CircularProgress'
 import Box from '@material-ui/core/Box'
 
 const lockeCoAvailable = compose(flatten, pluck(['list']))
-
-const lockeCoCities = compose(flatten, map(omit(['list'])))
 
 const styles = theme => ({
 	container: {
@@ -80,7 +78,6 @@ const FindUs = props => {
 					zoom={zoom}
 					expandList={expandList}
 					city={city}
-					zoom={zoom}
 					position={position}
 					setZoom={setZoom}
 					setPosition={setPosition}

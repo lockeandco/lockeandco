@@ -9,10 +9,12 @@ ingredients: |-
   * 3/4 oz Fresh lime juice
   * 1 oz Fresh fuji apple juice 
   * 3/4 oz Champagne
-preparation: |-
-  1. Add all the ingredients except
-  the Champagne to a shaker and fill with ice.
+preparation: >-
+  1. Add all the ingredients, except the Champagne, to a shaker and fill with
+  ice.
+
   2. Shake, and strain into a tumbler filled with fresh ice.
+
   3. Top with the Champagne and garnish with some apple cubes.
 tags:
   - champagne

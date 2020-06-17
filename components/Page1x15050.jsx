@@ -36,8 +36,6 @@ const styles = theme => ({
 		// overflow: 'auto'
 		// minWidth: 300,
 		// display: 'flex',
-		backgroundColor: 'transparent',
-		borderRadius: 0,
 		// Opacity: 0.7,
 		paddingTop: '40%',
 		// FlexGrow: 1,
@@ -142,6 +140,7 @@ const PageLayout1x26040 = props => {
 
 PageLayout1x26040.propTypes = {
 	classes: PropTypes.object.isRequired,
+	pictures: PropTypes.object,
 }
 
 export default compose(withStyles(styles), withTransition)(PageLayout1x26040)

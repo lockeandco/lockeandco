@@ -31,7 +31,7 @@ export const Tags = ({tags, isSelected}) => {
 	const inverted = useInvertedScale()
 	const classes = useStyles()
 	const x = isSelected ? 30 : 15
-	const y = isSelected ? 375 : 375
+	const y = isSelected ? 350 : 350
 
 	return (
 		<motion.div

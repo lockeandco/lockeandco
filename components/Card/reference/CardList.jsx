@@ -7,6 +7,9 @@ const useStyles = makeStyles(theme => ({
 		display: 'flex',
 		flexWrap: 'wrap',
 		alignContent: 'flex-start',
+		listStyle: 'none',
+		margin: 0,
+		padding: 0,
 	},
 }))
 const List = ({cardData, query, ...rest}) => {

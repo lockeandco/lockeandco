@@ -29,9 +29,15 @@ const ContentPlaceholder = React.memo(props => {
 	const inverted = useInvertedScale()
 	const classes = useStyles()
 
-	console.log('CPOS', props)
 	const {
-		attributes: {ingredients, preparation, description, title, source},
+		attributes: {
+			ingredients,
+			preparation,
+			description,
+			title,
+			source,
+			featured,
+		},
 	} = props
 
 	const ingredientsList = ingredients.split(/\n/)

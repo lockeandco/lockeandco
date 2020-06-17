@@ -11,13 +11,9 @@ export const Image = ({
 	console.log(recipeImage)
 	const imagePath = recipeImage
 		? `https://staging.lockeandcodistilling.com/${recipeImage.concat(
-				isSelected
-					? '?nf_resize=smartcrop&w=730&h=430'
-					: '?nf_resize=smartcrop&w=800&h=430'
+				'?nf_resize=smartcrop&w=800&h=430'
 		  )}`
-		: `https://staging.lockeandcodistilling.com/Bottle_Cheersing.jpg${
-				isSelected ? '?nf_resize=fit&w=730&h=430' : '?nf_resize=fit&w=800&h=430'
-		  }`
+		: `https://staging.lockeandcodistilling.com/Bottle_Cheersing.jpg${'?nf_resize=fit&w=800&h=430'}`
 	console.log(inverted)
 	return (
 		<motion.div

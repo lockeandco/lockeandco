@@ -85,6 +85,7 @@ const SearchAppBar = props => {
 							<SearchIcon />
 						</div>
 						<InputBase
+							disabled
 							placeholder="Search…"
 							classes={{
 								root: classes.inputRoot,

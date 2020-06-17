@@ -122,6 +122,7 @@
     "@mdx-js/tag": "^0.15.0",
     "@next/mdx": "^9.0.5",
     "@rehooks/component-size": "^1.0.3",
+    "@rehooks/window-size": "^1.0.2",
     "atob": "^2.1.2",
     "autosuggest-highlight": "^3.1.1",
     "aws-amplify": "^1.1.29",

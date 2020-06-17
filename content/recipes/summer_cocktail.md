@@ -11,7 +11,9 @@ ingredients: |-
   * Lemon slice (or Peach if in season!) 
 preparation: |+
   1. Mix the Rye ginger beer and club soda in mixing glass. 
-  2. Add a splash of lemon juice and garnish with lemon wedge. 
+  2. Stir and pour over ice
+  3. Add a splash of lemon juice and garnish with lemon (or peach) wedge. 
+
 
 tags:
   - ginger beer

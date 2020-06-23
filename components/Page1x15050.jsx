@@ -108,7 +108,7 @@ const PageLayout1x26040 = props => {
 				</Grid>
 			</Grid>
 			<Hidden xsDown>
-				<Grid item xs={12} xs={6}>
+				<Grid item xs={12} sm={6}>
 					<Grid
 						container
 						spacing={0}

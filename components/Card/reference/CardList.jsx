@@ -10,6 +10,8 @@ const useStyles = makeStyles(theme => ({
 		listStyle: 'none',
 		margin: 0,
 		padding: 0,
+		height: 'calc(100vh - 300px)',
+		overflowY: 'scroll',
 	},
 }))
 const List = ({cardData, query, ...rest}) => {

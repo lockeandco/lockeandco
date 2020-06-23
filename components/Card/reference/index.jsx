@@ -13,9 +13,24 @@ const RecipeCards = props => {
 	return (
 		<Box mt={9} marginX="auto">
 			<Container maxWidth="lg">
-				<Header />
-				<FramerHeader />
-				<CardList cardData={recipesList} {...rest} />
+				<div
+					style={{
+						position: '-webkit-sticky',
+						position: 'sticky',
+						top: 45,
+					}}
+				>
+					<Header />
+					<FramerHeader />
+				</div>
+				<div
+					style={{
+						position: 'relative',
+						paddingTop: 15,
+					}}
+				>
+					<CardList cardData={recipesList} {...rest} />
+				</div>
 			</Container>
 		</Box>
 	)

@@ -163,7 +163,7 @@ const MywApp = props => {
 	const {rememberMe, handleRemember} = useRememberMe(false)
 	const {verified, handleVerified} = useIsVerified(new Date(Date.now))
 
-	async function getCoLocs() {
+	const getCoLocs = useCallback(async () => {
 		if (typeof window !== undefined && isTruthy(appState.getLocs)) {
 			const locs = await appState
 				.getLocs()
@@ -180,7 +180,7 @@ const MywApp = props => {
 				payload: isFalsy(cachedLocs) ? appInitialState.lockeColocs : cachedLocs,
 			})
 		}
-	}
+	}, [appState])
 
 	useEffect(() => {
 		// Register Service Worker
@@ -253,7 +253,7 @@ const MywApp = props => {
 
 	useEffect(() => {
 		getCoLocs()
-	}, [getCoLocs])
+	}, [appState.getLocs, getCoLocs])
 
 	useEffect(() => {
 		setVerified(checkVerified(verified)(rememberMe))

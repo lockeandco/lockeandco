@@ -5,7 +5,7 @@ import Document, {Head, Main, NextScript} from 'next/document'
 import flush from 'styled-jsx/server'
 import {createMuiTheme} from '@material-ui/core/styles'
 import theme from '../src/theme'
-
+import {GA_TRACKING_ID} from '../utils/analytics'
 class MyDocument extends Document {
 	render() {
 		const {pageContext} = this.props
@@ -40,6 +40,23 @@ class MyDocument extends Document {
 						crossOrigin="anonymous"
 					/>
 					<script src="https://unpkg.com/@google/markerclustererplus@4.0.1/dist/markerclustererplus.min.js" />
+					{/* Global Site Tag (gtag.js) - Google Analytics */}
+					<script
+						async
+						src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+					/>
+					<script
+						// eslint-disable-next-line react/no-danger
+						dangerouslySetInnerHTML={{
+							__html: ` window.dataLayer = window.dataLayer || [];
+            						  function gtag(){dataLayer.push(arguments);}
+            						  gtag('js', new Date());
+
+									  gtag('config', '${GA_TRACKING_ID}', {
+										  page_path: window.location.pathname,
+										});`,
+						}}
+					/>
 				</Head>
 				<body>
 					<Main />

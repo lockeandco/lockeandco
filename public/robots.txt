@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+Host: https://lockeandcodistilling.com
+Sitemap: https://lockeandcodistilling.com/sitemap.xml

@@ -1405,6 +1405,11 @@
     resolve-from "^5.0.0"
     resolve-global "^1.0.0"
 
+"@corex/deepmerge@^2.4.6":
+  version "2.4.6"
+  resolved "https://registry.yarnpkg.com/@corex/deepmerge/-/deepmerge-2.4.6.tgz#0dfc3973f41e88862825e8a2f1eb5f84ca5fe564"
+  integrity sha512-iSp8KAgtQBZpUrOnaKkn2oRMsSru50g5saizb4ZwGHccFylH7XrNvzuf86M94O/uqNkk9NxaCbkVC372ms2RPQ==
+
 "@emotion/hash@^0.8.0":
   version "0.8.0"
   resolved "https://registry.yarnpkg.com/@emotion/hash/-/hash-0.8.0.tgz#bbbff68978fefdbe68ccb533bc8cbe1d1afb5413"
@@ -11568,6 +11573,13 @@ next-runtime-dotenv@^1.0.1:
   integrity sha512-5Tnoey7U0JZb6M5StHtcFjT0ZBWXRbwnWZgbXqI+XKmMMUVH3lD1ogPSMoXMZcH2Q5stZUsyyfQfzDOIoHPBHw==
   dependencies:
     dotenv "^8.0.0"
+
+next-sitemap@^1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/next-sitemap/-/next-sitemap-1.2.2.tgz#dc90008c87e11633cd2eac74fde3bee5b11a2c93"
+  integrity sha512-X8Kt2ZgizM7KvmknPlqcYSs2akaFV6X90YYoYIwQc12J7X8Ow8f+hNt2rcG03d1JLvDgM9A/YfU6KrW1uefbKA==
+  dependencies:
+    "@corex/deepmerge" "^2.4.6"
 
 next-tick@~1.0.0:
   version "1.0.0"

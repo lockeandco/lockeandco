@@ -68,7 +68,7 @@ const styles = theme => ({
 })
 
 const PageLayout1x26040 = props => {
-	const {classes, pictures} = props
+	const {classes, pictures, children} = props
 	return (
 		<Grid
 			container
@@ -84,7 +84,7 @@ const PageLayout1x26040 = props => {
 					container
 					spacing={0}
 					className={classes.demo}
-					direction="column"
+					direction="row"
 					alignItems="stretch"
 					// Direction={'column'}
 					// wrap="nowrap"
@@ -103,7 +103,7 @@ const PageLayout1x26040 = props => {
 							textAlign: 'center',
 						}}
 					>
-						{props.children}
+						{children}
 					</Grid>
 				</Grid>
 			</Grid>
@@ -141,6 +141,7 @@ const PageLayout1x26040 = props => {
 PageLayout1x26040.propTypes = {
 	classes: PropTypes.object.isRequired,
 	pictures: PropTypes.object,
+	children: PropTypes.node,
 }
 
 export default compose(withStyles(styles), withTransition)(PageLayout1x26040)

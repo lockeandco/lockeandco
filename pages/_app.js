@@ -21,7 +21,7 @@ import theme from '../src/theme'
 import createPersistedState from 'use-persisted-state'
 import {AnimatePresence, motion} from 'framer-motion'
 import {registerServiceWorker} from '../lib/sw_helpers'
-import {initGA, logPageView} from '../utils/analytics'
+import {initGA, logPageView, pageview} from '../utils/analytics'
 
 const Layout = dynamic(() => import('../components/Layout.jsx'), {
 	ssr: false,
@@ -163,7 +163,7 @@ const MywApp = props => {
 	const {rememberMe, handleRemember} = useRememberMe(false)
 	const {verified, handleVerified} = useIsVerified(new Date(Date.now))
 
-	async function getCoLocs() {
+	const getCoLocs = useCallback(async () => {
 		if (typeof window !== undefined && isTruthy(appState.getLocs)) {
 			const locs = await appState
 				.getLocs()
@@ -180,7 +180,7 @@ const MywApp = props => {
 				payload: isFalsy(cachedLocs) ? appInitialState.lockeColocs : cachedLocs,
 			})
 		}
-	}
+	}, [appState])
 
 	useEffect(() => {
 		// Register Service Worker
@@ -240,14 +240,24 @@ const MywApp = props => {
 		logPageView()
 		Router.events.on('routeChangeComplete', logPageView)
 	})
+	useEffect(() => {
+		const handleRouteChange = url => {
+			pageview(url)
+		}
+
+		Router.events.on('routeChangeComplete', handleRouteChange)
+		return () => {
+			Router.events.off('routeChangeComplete', handleRouteChange)
+		}
+	}, [])
 
 	useEffect(() => {
 		getCoLocs()
-	}, [appState.getLocs])
+	}, [appState.getLocs, getCoLocs])
 
 	useEffect(() => {
 		setVerified(checkVerified(verified)(rememberMe))
-	}, [verified])
+	}, [verified, rememberMe])
 
 	const helpers = {
 		expandList: o =>

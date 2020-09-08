@@ -234,15 +234,11 @@ const MywApp = props => {
 			setAppState({type: SETGETLOCS, payload: getLocs})
 		}
 	}, [appState.Amplify])
-
 	useEffect(() => {
 		initGA()
-		logPageView()
-		Router.events.on('routeChangeComplete', logPageView)
-	})
-	useEffect(() => {
 		const handleRouteChange = url => {
 			pageview(url)
+			logPageView()
 		}
 
 		Router.events.on('routeChangeComplete', handleRouteChange)
@@ -263,7 +259,7 @@ const MywApp = props => {
 		expandList: o =>
 			setAppState({type: EXPANDLIST, payload: toLower(String(o))}),
 		setZoom: z => setAppState({type: SETZOOM, payload: z}),
-		setPosition: z => setAppState({type: SETPOSITION, payload: p}),
+		setPosition: z => setAppState({type: SETPOSITION, payload: z}),
 		setPositionAndZoom: ({position, zoom}) =>
 			setAppState({
 				type: SETPOSITIONANDZOOM,

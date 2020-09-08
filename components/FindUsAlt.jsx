@@ -306,5 +306,5 @@ class GMapDemo extends Component {
 
 export default GoogleApiWrapper({
 	apiKey: 'AIzaSyCAHEdspo9nrGHO9GqZxKwPXcjmOWr6mY4',
-	v: '3.40',
+	v: '3.42',
 })(GMapDemo)

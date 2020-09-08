@@ -149,7 +149,8 @@ const FindUs = props => {
 							you can find locke + co. spirits at the following retailers and
 							establishments:
 						</Typography>
-						{Array.isArray(lockeColocs.list) && lockeColocs.list.length < 2 ? (
+						{Array.isArray(lockeColocs?.list) &&
+						lockeColocs?.list?.length < 2 ? (
 							<Box mt={10}>
 								<CircularProgress />
 							</Box>
@@ -173,7 +174,5 @@ const FindUs = props => {
 		/>
 	)
 }
-
-// FindUs.getInitialProps = async () => {}
 
 export default compose(withStyles(styles))(FindUs)

@@ -2,8 +2,7 @@ import React, {useCallback, useReducer, useState, useEffect} from 'react'
 import App from 'next/app'
 import {ThemeProvider} from '@material-ui/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
-import Router from 'next/router'
-import {instanceOf} from 'prop-types'
+import NextRouter from 'next/router'
 import dynamic from 'next/dynamic'
 import {toLower, compose, path, tap, thunkify} from 'ramda'
 import {isFalsy, isTruthy} from 'ramda-adjunct'
@@ -120,7 +119,7 @@ const appReducer = (state, action) => {
 	}
 }
 
-const expiration = new Date(Date.now() + 1000 * 60 * 1)
+const expiration = new Date(Date.now() + 1000 * 60 * 5)
 const getItems = path(['data', 'listLocationsByCity'])
 
 const useRemember = createPersistedState('rememberMe')
@@ -163,24 +162,40 @@ const MywApp = props => {
 	const {rememberMe, handleRemember} = useRememberMe(false)
 	const {verified, handleVerified} = useIsVerified(new Date(Date.now))
 
+	const appAmplify = appState?.Amplify
+	const appGetLocs = appState?.getLocs
 	const getCoLocs = useCallback(async () => {
-		if (typeof window !== undefined && isTruthy(appState.getLocs)) {
-			const locs = await appState
-				.getLocs()
-				// .then(compose(tap(console.log), getItems))
-				.then(getItems)
-				.catch(tap(console.log))
-			const cachedLocs = await appState.Amplify.Cache.getItem('locations', {
-				callback: () => locs,
-				expires: expiration.getTime(),
-			})
+		console.log('Get Co Locs')
+		if (typeof window !== undefined && isTruthy(appGetLocs)) {
+			const locs = async () =>
+				appGetLocs()
+					.then(
+						compose(
+							tap(items =>
+								appAmplify.Cache.setItem('locations', items, {
+									expires: expiration.getTime(),
+								})
+							),
+							getItems
+						)
+					)
+					.catch(
+						tap(x => {
+							console.log(JSON.stringify(x, null, 2))
+							return []
+						})
+					)
+			const cachedLocs = await appAmplify.Cache.getItem('locations')
+
+			console.log(await appAmplify.Cache.getItem('locations'))
+			console.log(cachedLocs)
 
 			setAppState({
 				type: SETLOCS,
-				payload: isFalsy(cachedLocs) ? appInitialState.lockeColocs : cachedLocs,
+				payload: isFalsy(cachedLocs) ? await locs() : cachedLocs,
 			})
 		}
-	}, [appState])
+	}, [appGetLocs, appAmplify])
 
 	useEffect(() => {
 		// Register Service Worker
@@ -200,8 +215,7 @@ const MywApp = props => {
 		})
 	}, [])
 	useEffect(() => {
-		if (isFalsy(appState.Amplify)) {
-		} else {
+		if (isTruthy(appState.Amplify)) {
 			appState.Amplify.Analytics.autoTrack('pageView', {
 				// REQUIRED, turn on/off the auto tracking
 				enable: true,
@@ -241,15 +255,15 @@ const MywApp = props => {
 			logPageView()
 		}
 
-		Router.events.on('routeChangeComplete', handleRouteChange)
+		NextRouter.events.on('routeChangeComplete', handleRouteChange)
 		return () => {
-			Router.events.off('routeChangeComplete', handleRouteChange)
+			NextRouter.events.off('routeChangeComplete', handleRouteChange)
 		}
 	}, [])
 
 	useEffect(() => {
 		getCoLocs()
-	}, [appState.getLocs, getCoLocs])
+	}, [appGetLocs, getCoLocs])
 
 	useEffect(() => {
 		setVerified(checkVerified(verified)(rememberMe))
@@ -274,6 +288,7 @@ const MywApp = props => {
 		allCookies: {isVerified, rememberMe},
 	}
 
+	console.log('APp State', appState)
 	return (
 		<>
 			<Head>
@@ -281,7 +296,6 @@ const MywApp = props => {
 			</Head>
 
 			<ThemeProvider theme={theme}>
-				{/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
 				<CssBaseline />
 				{isVerified ? (
 					<AnimatePresence exitBeforeEnter>

@@ -23,7 +23,7 @@ import {
 	omit,
 	over,
 	lensProp,
-	test,
+	test as rtest,
 	replace,
 	ifElse,
 	slice,
@@ -111,7 +111,7 @@ const CityList = props => {
 		lockeColocs,
 		expandList,
 		open,
-		toggleDrawer,
+		toggleDrawer = () => null,
 		handleClick,
 		route,
 		Router,
@@ -123,7 +123,9 @@ const CityList = props => {
 		selectedItem,
 	} = props
 
-	const locs = lockeColocs.filter(c => isNotNilOrEmpty(c.city))
+	const locs = isNotNilOrEmpty(lockeColocs)
+		? lockeColocs?.filter(c => isNotNilOrEmpty(c.city))
+		: []
 
 	const citiesD = useMemo(
 		() =>
@@ -134,7 +136,7 @@ const CityList = props => {
 				// Sort(ascend(prop('name'))),
 				sortBy(
 					compose(
-						when(test(/^(the )/g), replace(/^(the )/g, '')),
+						when(rtest(/^(the )/g), replace(/^(the )/g, '')),
 						toLower,
 						prop('name')
 					)
@@ -146,7 +148,7 @@ const CityList = props => {
 	)
 
 	const getCity = loc =>
-		locs.reduce((x, y) => {
+		locs?.reduce((x, y) => {
 			return Array.isArray(y.list) &&
 				y.list.reduce(
 					(w, z) => (toLower(loc) === toLower(z.name) ? z.name : w),
@@ -156,7 +158,7 @@ const CityList = props => {
 				: x
 		}, city)
 	const getPosition = loc =>
-		locs.reduce((x, y) => {
+		locs?.reduce((x, y) => {
 			return Array.isArray(y.list) &&
 				y.list.reduce((w, z) => (toLower(loc) === toLower(z.name) ? z : w), '')
 				? y.list.reduce(
@@ -176,7 +178,7 @@ const CityList = props => {
 		[locs]
 	)
 	const showCity = city
-		? sortedLocs.filter(l =>
+		? sortedLocs?.filter(l =>
 				l.city ? toLower(l.city) === toLower(city) : true
 		  )
 		: sortedLocs
@@ -190,7 +192,7 @@ const CityList = props => {
 						// Console.log('ITEM', item)
 						if (item) {
 							const newSelectedItem = Object.assign({}, getPosition(item))
-							const posLoc = newSelectedItem.location
+							const posLoc = newSelectedItem?.location
 
 							// Console.log(posLoc)
 							expandList(getCity(item))
@@ -202,7 +204,7 @@ const CityList = props => {
 								zoom: 14,
 							})
 							setStore(newSelectedItem)
-							toggleDrawer && toggleDrawer()
+							toggleDrawer()
 						} else {
 							expandList('')
 							setPositionAndZoom({
@@ -264,7 +266,7 @@ const CityList = props => {
 							{Array.isArray(item.list) &&
 								sortBy(
 									compose(
-										ifElse(test(/^(the )/g), replace(/^(the )/g, ''), identity),
+										when(rtest(/^(the )/g), replace(/^(the )/g, '')),
 										toLower,
 										prop('name')
 									),
@@ -287,7 +289,7 @@ const CityList = props => {
 														zoom: 14,
 													})
 													setStore(store || {})
-													toggleDrawer && toggleDrawer()
+													toggleDrawer()
 												}}
 											>
 												<ListItemText
@@ -298,8 +300,9 @@ const CityList = props => {
 													primaryTypographyProps={{
 														className:
 															store.name &&
-															selectedItem.name &&
-															toLower(store.name) === toLower(selectedItem.name)
+															selectedItem?.name &&
+															toLower(store.name) ===
+																toLower(selectedItem?.name)
 																? classes.listItemTextActive
 																: classes.listItemText,
 													}}

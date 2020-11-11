@@ -20,7 +20,6 @@ import theme from '../src/theme'
 import createPersistedState from 'use-persisted-state'
 import {AnimatePresence, motion} from 'framer-motion'
 import {registerServiceWorker} from '../lib/sw_helpers'
-import {initGA, logPageView, pageview} from '../utils/analytics'
 
 const Layout = dynamic(() => import('../components/Layout.jsx'), {
 	ssr: false,
@@ -249,10 +248,9 @@ const MywApp = props => {
 		}
 	}, [appState.Amplify])
 	useEffect(() => {
-		initGA()
 		const handleRouteChange = url => {
-			pageview(url)
-			logPageView()
+			// eslint-disable-next-line no-unused-expressions
+			window?.dataLayer?.push({event: 'pageview', page: url})
 		}
 
 		NextRouter.events.on('routeChangeComplete', handleRouteChange)

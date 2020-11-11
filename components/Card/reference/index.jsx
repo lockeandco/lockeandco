@@ -37,6 +37,6 @@ const RecipeCards = props => {
 }
 
 RecipeCards.propTypes = {
-	recipesList: PropTypes.object,
+	recipesList: PropTypes.arrayOf(PropTypes.object),
 }
 export default RecipeCards

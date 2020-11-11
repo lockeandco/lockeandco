@@ -24,6 +24,7 @@ export const logException = (description = '', fatal = false) => {
 }
 
 export const GA_TRACKING_ID = 'G-185YV16D96'
+export const GTM_ID = 'GTM-5N87C2B'
 
 // https://developers.google.com/analytics/devguides/collection/gtagjs/pages
 export const pageview = url => {

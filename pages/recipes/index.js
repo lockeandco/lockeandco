@@ -40,7 +40,6 @@ const importRecipes = async () => {
 const RecipesPage = props => {
 	const {recipesList, ...other} = props
 
-	console.log('RECIPES', other)
 	return (
 		<Page
 			{...other}

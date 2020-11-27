@@ -15,9 +15,7 @@ preparation: >-
   2. Strain the mixture into a chilled coupe glass. 
 
   3. Garnish with the lemon twist and serve immediately.
-
-
-  Special equipment: 1 coupe glass
+notes: "Special equipment: 1 coupe glass"
 tags:
   - Angostura
   - vermouth

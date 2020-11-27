@@ -138,7 +138,7 @@
     "formik": "^1.5.7",
     "framer-motion": "^1.8.4",
     "frontmatter-markdown-loader": "^3.1.0",
-    "fuse.js": "^3.3.0",
+    "fuse.js": "^6.4.3",
     "google-map-react": "^1.1.2",
     "google-maps-react": "^2.0.2",
     "he": "^1.2.0",

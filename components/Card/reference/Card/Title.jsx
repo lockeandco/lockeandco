@@ -10,6 +10,7 @@ const useStyles = makeStyles(() => ({
 		fontFamily: 'OldGrowth',
 		color: '#E2DED5',
 		fontWeight: 700,
+		fontSize: '1.1rem',
 		// TextShadow: `-1px 1px 1px #243746,
 		// 		  1px 1px 1px #243746,
 		// 		  1px -1px 0 #243746,
@@ -18,7 +19,7 @@ const useStyles = makeStyles(() => ({
 	titleBar: {
 		background: `linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, rgba(0,0,0,.3) 100%)`,
 		width: '100%',
-		height: '100px',
+		height: '110px',
 		position: 'absolute',
 	},
 	category: {

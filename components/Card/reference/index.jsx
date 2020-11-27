@@ -5,6 +5,8 @@ import Container from '@material-ui/core/Container'
 import Box from '@material-ui/core/Box'
 import FramerHeader from '../../FramerHeader'
 import PropTypes from 'prop-types'
+import Fuse from 'fuse.js'
+
 const RecipeCards = props => {
 	const {recipesList, ...rest} = props
 

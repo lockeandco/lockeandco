@@ -35,6 +35,7 @@ const ContentPlaceholder = React.memo(props => {
 			preparation,
 			description,
 			title,
+			notes,
 			source,
 			featured,
 		},
@@ -49,6 +50,20 @@ const ContentPlaceholder = React.memo(props => {
 			style={{...inverted, originY: 0, originX: 0, color: '#243746'}}
 		>
 			<Grid container direction="column">
+				{description ? (
+					<Grid item>
+						<Typography
+							gutterBottom
+							variant="h5"
+							className={classes.contentHeaderOrange}
+						>
+							Description
+						</Typography>
+						<Typography paragraph variant="body1">
+							{description}
+						</Typography>
+					</Grid>
+				) : null}
 				<Grid item>
 					<Typography
 						gutterBottom
@@ -89,6 +104,20 @@ const ContentPlaceholder = React.memo(props => {
 				</Grid>
 			</Grid>
 
+			{notes ? (
+				<Grid item>
+					<Typography
+						gutterBottom
+						variant="h5"
+						className={classes.contentHeaderOrange}
+					>
+						Notes
+					</Typography>
+					<Typography paragraph variant="body1">
+						{notes}
+					</Typography>
+				</Grid>
+			) : null}
 			<Grid container direction="column" className={classes.prepGrid}>
 				<Grid item>
 					<Grid item>

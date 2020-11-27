@@ -92,6 +92,7 @@ collections:
         },
         { label: "Ingredients", name: "ingredients", widget: "text" },
         { label: "Preparation", name: "preparation", widget: "text" },
+        { label: "Notes", name: "notes", widget: "text" },
         { label: "Tags", name: "tags", widget: "list" },
         {
           label: "Season",

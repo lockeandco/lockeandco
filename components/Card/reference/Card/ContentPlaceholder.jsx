@@ -1,9 +1,11 @@
-import {LoremIpsum} from 'react-lorem-ipsum'
+import {memo} from 'react'
 import {motion, useInvertedScale} from 'framer-motion'
 import PropTypes from 'prop-types'
 import Typography from '@material-ui/core/Typography'
 import makeStyles from '@material-ui/styles/makeStyles'
 import Grid from '@material-ui/core/Grid'
+import {ifElse, split} from 'ramda'
+import {isNotNilOrEmpty} from 'ramda-adjunct'
 
 const useStyles = makeStyles(theme => ({
 	contentHeaderOrange: {
@@ -28,7 +30,9 @@ const useStyles = makeStyles(theme => ({
 	},
 }))
 
-const ContentPlaceholder = React.memo(props => {
+const splitValues = ifElse(isNotNilOrEmpty, split(/\n/), [])
+
+const ContentPlaceholder = memo(props => {
 	const inverted = useInvertedScale()
 	const classes = useStyles()
 
@@ -37,17 +41,17 @@ const ContentPlaceholder = React.memo(props => {
 			ingredients,
 			preparation,
 			description,
-			title,
+			// Title,
 			notes,
 			source,
-			featured,
+			// Featured,
 		},
 	} = props
 
-	const ingredientsList = ingredients.split(/\n/)
-	const preparationList = preparation.split(/\n/)
-	const notesList = notes.split(/\n/)
-	const descriptionList = description.split(/\n/)
+	const ingredientsList = splitValues(ingredients)
+	const preparationList = splitValues(preparation)
+	const notesList = splitValues(notes)
+	const descriptionList = splitValues(description)
 
 	return (
 		<motion.div

@@ -2,6 +2,7 @@
 type: recipe
 image: /public/images/uploads/1390961811377.jpeg
 title: Perfect Manhattan
+description: This is our staple cocktail at all tastings.
 ingredients: |-
   * 2 3/4 ounces rye whiskey
   * 1/2 ounce dry vermouth 
@@ -15,7 +16,12 @@ preparation: >-
   2. Strain the mixture into a chilled coupe glass. 
 
   3. Garnish with the lemon twist and serve immediately.
-notes: "Special equipment: 1 coupe glass"
+notes: >-
+  We age ours in a large carafe with charred aspen wood that had previously been
+  aging our whiskey to make it like a barrel aged cocktail.
+
+
+  Special equipment: 1 coupe glass
 tags:
   - Angostura
   - vermouth

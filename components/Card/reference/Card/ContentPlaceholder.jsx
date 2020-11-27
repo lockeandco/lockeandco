@@ -13,6 +13,9 @@ const useStyles = makeStyles(theme => ({
 	prepGrid: {
 		marginTop: 50,
 	},
+	bottomMargin: {
+		maringBottom: 30,
+	},
 	contentContainer: {
 		backgroundImage: "url('/recipe_seal.png')",
 		backgroundRepeat: 'no-repeat',
@@ -51,7 +54,7 @@ const ContentPlaceholder = React.memo(props => {
 			className={classes.contentContainer}
 			style={{...inverted, originY: 0, originX: 0, color: '#243746'}}
 		>
-			<Grid container direction="column">
+			<Grid container direction="column" className={classes.bottomMargin}>
 				{description ? (
 					<Grid item>
 						<Typography
@@ -68,6 +71,8 @@ const ContentPlaceholder = React.memo(props => {
 						))}
 					</Grid>
 				) : null}
+			</Grid>
+			<Grid container direction="column" className={classes.bottomMargin}>
 				<Grid item>
 					<Typography
 						gutterBottom
@@ -85,7 +90,7 @@ const ContentPlaceholder = React.memo(props => {
 					))}
 				</Grid>
 			</Grid>
-			<Grid container direction="column" className={classes.prepGrid}>
+			<Grid container direction="column" className={classes.bottomMargin}>
 				<Grid item>
 					<Typography
 						gutterBottom
@@ -109,19 +114,21 @@ const ContentPlaceholder = React.memo(props => {
 			</Grid>
 
 			{notes ? (
-				<Grid item>
-					<Typography
-						gutterBottom
-						variant="h5"
-						className={classes.contentHeaderOrange}
-					>
-						Notes
-					</Typography>
-					{notesList.map(note => (
-						<Typography key={note} paragraph variant="body1">
-							{note}
+				<Grid container direction="column" className={classes.bottomMargin}>
+					<Grid item>
+						<Typography
+							gutterBottom
+							variant="h5"
+							className={classes.contentHeaderOrange}
+						>
+							Notes
 						</Typography>
-					))}
+						{notesList.map(note => (
+							<Typography key={note} paragraph variant="body1">
+								{note}
+							</Typography>
+						))}
+					</Grid>
 				</Grid>
 			) : null}
 			<Grid container direction="column" className={classes.prepGrid}>

@@ -2,8 +2,11 @@
 type: recipe
 image: /public/images/uploads/sarah-gualtieri-gkx0f9ukcrq-unsplash.jpg
 title: Apple Cider Hot Toddy
-description: Warm and cozy, this Apple Cider Hot Toddy is perfect for sipping on
-  by the fire this holiday season.
+description: >-
+  Warm and cozy, this Apple Cider Hot Toddy is perfect for sipping on by the
+  fire this holiday season.
+
+  You can use hard apple cider for a strong treat!
 ingredients: |-
   * 4 ounces (1/2 cup) apple cider
   * 1 teaspoon lemon juice

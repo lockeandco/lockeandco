@@ -1,6 +1,6 @@
 ---
 type: recipe
-image: /public/images/uploads/apple-bourbon-hot-toddy-800x1200-735x1103.jpg
+image: /public/images/uploads/sarah-gualtieri-gkx0f9ukcrq-unsplash.jpg
 title: Apple Cider Hot Toddy
 description: Warm and cozy, this Apple Cider Hot Toddy is perfect for sipping on
   by the fire this holiday season.

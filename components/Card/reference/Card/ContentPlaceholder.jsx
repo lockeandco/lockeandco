@@ -43,6 +43,8 @@ const ContentPlaceholder = React.memo(props => {
 
 	const ingredientsList = ingredients.split(/\n/)
 	const preparationList = preparation.split(/\n/)
+	const notesList = notes.split(/\n/)
+	const descriptionList = description.split(/\n/)
 
 	return (
 		<motion.div
@@ -59,9 +61,11 @@ const ContentPlaceholder = React.memo(props => {
 						>
 							Description
 						</Typography>
-						<Typography paragraph variant="body1">
-							{description}
-						</Typography>
+						{descriptionList.map(line => (
+							<Typography key={line} paragraph variant="body1">
+								{line}
+							</Typography>
+						))}
 					</Grid>
 				) : null}
 				<Grid item>
@@ -113,9 +117,11 @@ const ContentPlaceholder = React.memo(props => {
 					>
 						Notes
 					</Typography>
-					<Typography paragraph variant="body1">
-						{notes}
-					</Typography>
+					{notesList.map(note => (
+						<Typography key={note} paragraph variant="body1">
+							{note}
+						</Typography>
+					))}
 				</Grid>
 			) : null}
 			<Grid container direction="column" className={classes.prepGrid}>

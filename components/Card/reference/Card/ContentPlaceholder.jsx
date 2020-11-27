@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import Typography from '@material-ui/core/Typography'
 import makeStyles from '@material-ui/styles/makeStyles'
 import Grid from '@material-ui/core/Grid'
-import {ifElse, split} from 'ramda'
+import {ifElse, split, filter, compose, tap, map, trim} from 'ramda'
 import {isNotNilOrEmpty, stubArray} from 'ramda-adjunct'
 
 const useStyles = makeStyles(theme => ({
@@ -38,7 +38,11 @@ const useStyles = makeStyles(theme => ({
 	},
 }))
 
-const splitValues = ifElse(isNotNilOrEmpty, split(/\n/), stubArray)
+const splitValues = ifElse(
+	isNotNilOrEmpty,
+	compose(filter(isNotNilOrEmpty), map(trim), split(/\n/)),
+	stubArray
+)
 
 const ContentPlaceholder = memo(props => {
 	const inverted = useInvertedScale()

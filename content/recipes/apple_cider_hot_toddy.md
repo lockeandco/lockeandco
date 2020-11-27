@@ -17,11 +17,9 @@ preparation: >-
   2. Bring to a boil over medium-low heat, then reduce heat and simmer for about five minutes. 
 
   3. Remove from heat, stir in the bourbon, and serve immediately.
-
-
-  Notes: 
-
-  Look for unfiltered apple cider if you can find it. It has a lot more apple-tastic flavor to it!
+notes: >-
+  Look for unfiltered apple cider if you can find it. It has a lot more
+  apple-tastic flavor to it!
 
 
   To make this for a crowd, use the following measurements: 1/2 gallon of apple cider, 1/4 cup lemon juice, 2/3 cup honey, 4 cinnamon sticks, 1 fifth bottle of bourbon. Makes 16 drinks. Keep simmering on the stove with a ladle and mugs nearby, or pour all into a slow cooker, and let cook on high for two hours before serving.

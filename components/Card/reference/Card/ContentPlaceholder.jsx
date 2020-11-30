@@ -107,6 +107,7 @@ const ContentPlaceholder = memo(props => {
 					<ul style={{paddingInlineStart: '20px'}}>
 						{ingredientsList.map(ingredient => (
 							<li
+								key={ingredient}
 								style={{
 									listStyleType: 'disc',
 								}}

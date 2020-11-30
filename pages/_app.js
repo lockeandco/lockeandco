@@ -186,8 +186,8 @@ const MywApp = props => {
 					)
 			const cachedLocs = await appAmplify.Cache.getItem('locations')
 
-			console.log(await appAmplify.Cache.getItem('locations'))
-			console.log(cachedLocs)
+			// Console.log(await appAmplify.Cache.getItem('locations'))
+			// console.log(cachedLocs)
 
 			setAppState({
 				type: SETLOCS,
@@ -286,7 +286,7 @@ const MywApp = props => {
 		allCookies: {isVerified, rememberMe},
 	}
 
-	console.log('APp State', appState)
+	// Console.log('APp State', appState)
 	return (
 		<>
 			<Head>

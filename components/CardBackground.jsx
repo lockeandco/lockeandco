@@ -40,10 +40,11 @@ const styles = theme => ({
 			borderRadius: 'unset',
 			backgroundColor: 'transparent',
 			overflow: 'auto',
-			paddingRight: `10%`,
-			paddingLeft: `10%`,
+			paddingRight: `5%`,
+			paddingLeft: `5%`,
 			paddingTop: 150,
-			margin: 10,
+			marginTop: 10,
+			marginBottom: 10,
 		},
 	},
 	card: {
@@ -108,16 +109,27 @@ const styles = theme => ({
 })
 
 const MediaCard = props => {
-	const {classes, title, content, links, media, mediaPosition = 'top'} = props
+	const {
+		classes,
+		title,
+		content,
+		links,
+		media,
+		mediaPosition = 'top',
+		mediaComponent = 'img',
+		mediaTitle = 'Owen Locke',
+		poster = '/poster.png',
+	} = props
 	return (
 		<Paper className={classes.paper}>
 			<Card className={classes.card}>
 				{media && mediaPosition === 'top' && (
 					<CardMedia
-						component="img"
+						{...(mediaComponent === 'video' ? {controls: true, poster} : {})}
+						component={mediaComponent}
 						className={classes.media}
-						image={media}
-						title="Owen Locke"
+						src={media}
+						title={mediaTitle}
 					/>
 				)}
 
@@ -174,6 +186,15 @@ MediaCard.propTypes = {
 	links: PropTypes.object.isRequired,
 	media: PropTypes.any,
 	mediaPosition: PropTypes.oneOf(['top', 'bottom']),
+	mediaComponent: PropTypes.oneOf([
+		'video',
+		'audio',
+		'picture',
+		'iframe',
+		'img',
+	]),
+	mediaTitle: PropTypes.string,
+	poster: PropTypes.string,
 }
 
 export default withStyles(styles)(MediaCard)

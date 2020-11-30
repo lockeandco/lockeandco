@@ -11,6 +11,7 @@ import Headers from './ScrollingHeaders'
 import CommonHeader from './MobileScrollingHeader'
 import CardBackground from './CardBackground'
 import Link from 'next/link'
+import ReactPlayer from 'react-player/file'
 const ourStoryCopy = classes => (
 	<>
 		<Typography paragraph variant="body1" className={classes.typo}>
@@ -66,6 +67,9 @@ const OurStory = props => {
 				component: (
 					<CardBackground
 						{...other}
+						media="/LockeCo_Full.mp4"
+						mediaComponent="video"
+						mediaTitle="Locke + Co Story"
 						content={ourStoryCopy}
 						links={{
 							left: {

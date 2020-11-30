@@ -25,8 +25,6 @@ const options = {
 const RecipeCards = props => {
 	const {recipesList, ...rest} = props
 
-	console.log(recipesList)
-
 	const [recipes, updateList] = useState(recipesList)
 
 	const recipeIndex = Fuse.createIndex(options.keys, recipesList)
@@ -45,7 +43,6 @@ const RecipeCards = props => {
 		[fuse, recipesList]
 	)
 
-	console.log('Recipes', recipes)
 	return (
 		<Box mt={9} marginX="auto">
 			<Container maxWidth="lg">

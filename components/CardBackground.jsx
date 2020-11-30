@@ -125,7 +125,9 @@ const MediaCard = props => {
 			<Card className={classes.card}>
 				{media && mediaPosition === 'top' && (
 					<CardMedia
-						{...(mediaComponent === 'video' ? {controls: true, poster} : {})}
+						{...(mediaComponent === 'video'
+							? {controls: true, poster, id: mediaTitle, type: 'video/mp4'}
+							: {})}
 						component={mediaComponent}
 						className={classes.media}
 						src={media}

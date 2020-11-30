@@ -67,7 +67,7 @@ const OurStory = props => {
 				component: (
 					<CardBackground
 						{...other}
-						media="/LockeCo_Full.mp4"
+						media="https://staging.lockeandcodistiling.com/images/uploads/LockeCo_Full.mp4"
 						mediaComponent="video"
 						mediaTitle="Locke + Co Story"
 						content={ourStoryCopy}

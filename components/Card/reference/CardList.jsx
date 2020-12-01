@@ -27,7 +27,7 @@ const List = ({cardData, query, ...rest}) => {
 			{cardData.map((card, i) => (
 				<Card
 					key={card?.attributes?.title || Math.random() * 10090284276}
-					isSelected={recipe === card.slug}
+					isSelected={recipe?.includes(card.slug)}
 					{...card}
 					backgroundColor={i % 2 === 1 ? BLUE : BIEGE}
 				/>

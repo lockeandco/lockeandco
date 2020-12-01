@@ -291,6 +291,13 @@ const MywApp = props => {
 		<>
 			<Head>
 				<title>Locke & Co Distillery</title>
+				<meta
+					name="viewport"
+					content={
+						'user-scalable=0, initial-scale=1, ' +
+						'minimum-scale=1, width=device-width, height=device-height'
+					}
+				/>
 			</Head>
 
 			<ThemeProvider theme={theme}>

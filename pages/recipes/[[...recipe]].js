@@ -1,8 +1,8 @@
 import Page from '../../components/PageLayout'
 import {makeStyles} from '@material-ui/core/styles'
 import RecipesCardList from '../../components/Card/reference'
-// Import fs from 'fs'
-// import path from 'path'
+import fs from 'fs'
+import path from 'path'
 
 const useStyles = makeStyles(theme => ({
 	typoBigHeader: {
@@ -72,23 +72,22 @@ const RecipesPage = props => {
 	)
 }
 
-// Export async function getStaticPaths() {
-// 	const paths = fs
-// 		.readdirSync(path.join(process.cwd(), 'content/recipes'))
-// 		.map(blogName => {
-// 			const trimmedName = blogName.slice(0, Math.max(0, blogName.length - 3))
-// 			return {
-// 				params: {slug: ['recipe', trimmedName]},
-// 			}
-// 		})
-// 		.concat({params: {slug: ['']}})
-// 	console.log('PATHS', JSON.stringify(paths))
+export async function getStaticPaths() {
+	const paths = fs
+		.readdirSync(path.join(process.cwd(), 'content/recipes'))
+		.map(blogName => {
+			const trimmedName = blogName.slice(0, Math.max(0, blogName.length - 3))
+			return {
+				params: {recipe: ['recipe', trimmedName]},
+			}
+		})
+		.concat({params: {recipe: ['']}})
 
-// 	return {
-// 		paths,
-// 		fallback: false, // Constrols wheter not predefined paths should be processed on demand, check for more info: https://nextjs.org/docs/basic-features/data-fetching#the-fallback-key-required
-// 	}
-// }
+	return {
+		paths,
+		fallback: false, // Constrols wheter not predefined paths should be processed on demand, check for more info: https://nextjs.org/docs/basic-features/data-fetching#the-fallback-key-required
+	}
+}
 
 export async function getStaticProps() {
 	const rawList = await importRecipes()

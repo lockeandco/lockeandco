@@ -70,7 +70,6 @@ const FramerHeader = props => {
 		sequence()
 	}, [sequence])
 
-	console.log(outerWidth, innerWidth)
 	return (
 		<Box display="flex" width="100%" height={70}>
 			<motion.div

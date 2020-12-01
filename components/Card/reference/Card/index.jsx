@@ -149,7 +149,7 @@ export const Card = memo(
 				<Overlay isSelected={isSelected} />
 				<div className={cardContentContainerStyle}>
 					<NextLink
-						href={isSelected ? `/recipes` : `/recipes?recipe=${slug}`}
+						href={isSelected ? `/recipes` : `/recipes/recipe/${slug}`}
 						scroll={false}
 					>
 						<motion.div

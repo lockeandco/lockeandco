@@ -10,6 +10,10 @@ import SearchIcon from '@material-ui/icons/Search'
 const useStyles = makeStyles(theme => ({
 	root: {
 		flexGrow: 1,
+		[theme.breakpoints.between('xs', 'md')]: {
+			width: `calc(100vw - 48px)`,
+		},
+		maxWidth: 1280,
 	},
 	menuButton: {
 		marginRight: theme.spacing(2),
@@ -64,6 +68,7 @@ const useStyles = makeStyles(theme => ({
 
 const SearchAppBar = props => {
 	const classes = useStyles()
+	const {searchList} = props
 
 	return (
 		<div className={classes.root}>
@@ -85,13 +90,13 @@ const SearchAppBar = props => {
 							<SearchIcon />
 						</div>
 						<InputBase
-							disabled
 							placeholder="Search…"
 							classes={{
 								root: classes.inputRoot,
 								input: classes.inputInput,
 							}}
 							inputProps={{'aria-label': 'search'}}
+							onChange={searchList}
 						/>
 					</div>
 				</Toolbar>

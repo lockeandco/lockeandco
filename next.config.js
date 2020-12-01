@@ -7,7 +7,7 @@ const frontmatter = require('remark-frontmatter')
 const withMDX = require('@next/mdx')({
 	extension: /\.mdx$/,
 	options: {
-		mdPlugins: [frontmatter],
+		remarkPlugins: [frontmatter],
 	},
 })
 require('dotenv').config()
@@ -35,14 +35,9 @@ module.exports = phase => {
 			pageExtensions: ['js', 'jsx', 'mdx'],
 			experimental: {
 				modern: true,
-				rewrites() {
-					return [
-						{
-							source: '/recipes{/}?',
-							destination: '/recipes/list',
-						},
-					]
-				},
+				// Rewrites() {
+				// 	return [{}]
+				// },
 			},
 			webpack(config, {isServer}) {
 				if (!isServer) {

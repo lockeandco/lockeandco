@@ -23,9 +23,8 @@ const styles = theme => ({
 		backgroundColor: 'transparent',
 		overflow: 'auto',
 		// TextOverflow: 'ellipsis',
-		margin: 20,
+		margin: 0,
 		boxShadow: 'unset',
-		borderRadius: 0,
 		paddingBottom: 200,
 		color: '#E2DED5',
 		fontFamily: 'Flama',
@@ -40,15 +39,16 @@ const styles = theme => ({
 			borderRadius: 'unset',
 			backgroundColor: 'transparent',
 			overflow: 'auto',
-			paddingRight: `10%`,
-			paddingLeft: `10%`,
+			paddingRight: `5%`,
+			paddingLeft: `5%`,
 			paddingTop: 150,
-			margin: 10,
+			marginTop: 10,
+			marginBottom: 10,
 		},
 	},
 	card: {
 		minWidth: 200,
-		maxWidth: 450,
+		// MaxWidth: 450,
 		backgroundColor: 'rgba(0,0,0,.5)',
 		// BorderRadius: 0,
 		// padding: '1em',
@@ -108,16 +108,29 @@ const styles = theme => ({
 })
 
 const MediaCard = props => {
-	const {classes, title, content, links, media, mediaPosition = 'top'} = props
+	const {
+		classes,
+		title,
+		content,
+		links,
+		media,
+		mediaPosition = 'top',
+		mediaComponent = 'img',
+		mediaTitle = 'Owen Locke',
+		poster = '/poster.png',
+	} = props
 	return (
 		<Paper className={classes.paper}>
 			<Card className={classes.card}>
 				{media && mediaPosition === 'top' && (
 					<CardMedia
-						component="img"
+						{...(mediaComponent === 'video'
+							? {controls: true, poster, id: mediaTitle, type: 'video/mp4'}
+							: {})}
+						component={mediaComponent}
 						className={classes.media}
-						image={media}
-						title="Owen Locke"
+						src={media}
+						title={mediaTitle}
 					/>
 				)}
 
@@ -174,6 +187,15 @@ MediaCard.propTypes = {
 	links: PropTypes.object.isRequired,
 	media: PropTypes.any,
 	mediaPosition: PropTypes.oneOf(['top', 'bottom']),
+	mediaComponent: PropTypes.oneOf([
+		'video',
+		'audio',
+		'picture',
+		'iframe',
+		'img',
+	]),
+	mediaTitle: PropTypes.string,
+	poster: PropTypes.string,
 }
 
 export default withStyles(styles)(MediaCard)

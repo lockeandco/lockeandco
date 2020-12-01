@@ -8,13 +8,13 @@ export const Image = ({
 	backgroundColor,
 }) => {
 	const inverted = useInvertedScale()
-	console.log(recipeImage)
+
 	const imagePath = recipeImage
 		? `https://staging.lockeandcodistilling.com/${recipeImage.concat(
 				'?nf_resize=smartcrop&w=800&h=430'
 		  )}`
 		: `https://staging.lockeandcodistilling.com/Bottle_Cheersing.jpg${'?nf_resize=fit&w=800&h=430'}`
-	console.log(inverted)
+
 	return (
 		<motion.div
 			className="card-image-container"

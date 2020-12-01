@@ -83,6 +83,7 @@ const styles = theme => ({
 
 const Homepage = props => {
 	const {classes, ...other} = props
+
 	return (
 		<Page
 			{...other}

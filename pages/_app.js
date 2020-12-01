@@ -165,7 +165,7 @@ const MywApp = props => {
 	const appGetLocs = appState?.getLocs
 	const getCoLocs = useCallback(async () => {
 		console.log('Get Co Locs')
-		if (typeof window !== undefined && isTruthy(appGetLocs)) {
+		if (typeof window !== 'undefined' && isTruthy(appGetLocs)) {
 			const locs = async () =>
 				appGetLocs()
 					.then(
@@ -207,7 +207,8 @@ const MywApp = props => {
 
 		// Add Amplify
 		const Amplify = require('aws-amplify').default
-		Amplify.configure(JSON.parse(process.env.AWSCONFIG))
+
+		Amplify.configure(JSON.parse(process.env.NEXT_PUBLIC_AWSCONFIG))
 		setAppState({
 			type: SETAMPLIFY,
 			payload: Amplify,

@@ -1,4 +1,4 @@
-import React, {useEffect, useCallback} from 'react'
+import React, {useEffect, useCallback, useState} from 'react'
 import {makeStyles} from '@material-ui/core/styles'
 import Hidden from '@material-ui/core/Hidden'
 import {
@@ -8,7 +8,6 @@ import {
 	transform,
 	useCycle,
 } from 'framer-motion'
-import useWindowSize from '@rehooks/window-size'
 import Box from '@material-ui/core/Box'
 
 const useStyles = makeStyles(theme => ({
@@ -42,16 +41,16 @@ const spring = {
 const FramerHeader = props => {
 	const classes = useStyles()
 
-	const windowSize = useWindowSize()
+	const windowSize = useWindowSize2()
 	const controls = useAnimation()
-	const {outerWidth, innerWidth} = windowSize
-	const translateX = useSpring(0, spring)
+	const {width, outerWidth} = windowSize
+	// Const translateX = useSpring(0, spring)
 
 	// Enhancement: pass in as props
 
 	const sequence = useCallback(async () => {
 		await controls.start({
-			x: Number(innerWidth),
+			x: Number(width),
 			opacity: 1,
 			transition: {
 				x: {duration: 7, yoyo: 3},
@@ -64,7 +63,7 @@ const FramerHeader = props => {
 				x: {...spring},
 			},
 		})
-	}, [controls, innerWidth])
+	}, [controls, width])
 
 	useEffect(() => {
 		sequence()
@@ -100,3 +99,29 @@ const FramerHeader = props => {
 }
 
 export default FramerHeader
+
+function getSize() {
+	return {
+		height: window.innerHeight,
+		width: window.innerWidth,
+		outerHeight: window.outerHeight,
+		outerWidth: window.outerWidth,
+	}
+}
+
+function useWindowSize2() {
+	const [windowSize, setWindowSize] = useState(getSize())
+
+	function handleResize() {
+		setWindowSize(getSize())
+	}
+
+	useEffect(() => {
+		window.addEventListener('resize', handleResize)
+		return () => {
+			window.removeEventListener('resize', handleResize)
+		}
+	}, [])
+
+	return windowSize
+}

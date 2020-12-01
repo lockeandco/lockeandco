@@ -16,7 +16,8 @@
   "babel": {
     "presets": [
       "next/babel",
-      "@babel/preset-flow"
+      "@babel/preset-flow",
+      "@babel/preset-react"
     ],
     "plugins": [
       "@babel/plugin-proposal-export-default-from"
@@ -181,9 +182,11 @@
   },
   "devDependencies": {
     "@apollo/react-testing": "^3.1.3",
+    "@babel/core": "^7.12.9",
     "@babel/plugin-proposal-export-default-from": "^7.2.0",
     "@babel/plugin-transform-flow-strip-types": "^7.4.4",
     "@babel/preset-flow": "^7.0.0",
+    "@babel/preset-react": "^7.12.7",
     "@graphql-codegen/cli": "^1.12.1",
     "@graphql-codegen/flow": "1.12.1",
     "@graphql-codegen/flow-operations": "1.12.1",
@@ -224,7 +227,7 @@
     "jest-junit-reporter": "^1.1.0",
     "json-server": "^0.14.0",
     "lint-staged": "^10.0.8",
-    "next-sitemap": "^1.3.8",
+    "next-sitemap": "^1.3.10",
     "npm-run-all": "^4.1.5",
     "patch-package": "^6.2.0",
     "postinstall-postinstall": "^2.0.0",
@@ -237,6 +240,7 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "export": "yarn run build && next export"
+    "export": "yarn run build && next export",
+    "postbuild": "next-sitemap"
   }
 }

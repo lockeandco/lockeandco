@@ -120,7 +120,7 @@
     "@mdx-js/loader": "^1.5.2",
     "@mdx-js/mdx": "^0.15.0",
     "@mdx-js/tag": "^0.15.0",
-    "@next/mdx": "^9.0.5",
+    "@next/mdx": "^10.0.3",
     "@rehooks/component-size": "^1.0.3",
     "@rehooks/window-size": "^1.0.2",
     "atob": "^2.1.2",
@@ -224,7 +224,7 @@
     "jest-junit-reporter": "^1.1.0",
     "json-server": "^0.14.0",
     "lint-staged": "^10.0.8",
-    "next-sitemap": "^1.2.2",
+    "next-sitemap": "^1.3.8",
     "npm-run-all": "^4.1.5",
     "patch-package": "^6.2.0",
     "postinstall-postinstall": "^2.0.0",
@@ -237,7 +237,6 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "export": "yarn run build && next export",
-    "postbuild": "next-sitemap"
+    "export": "yarn run build && next export"
   }
 }

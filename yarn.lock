@@ -1269,10 +1269,10 @@
     resolve-from "^5.0.0"
     resolve-global "^1.0.0"
 
-"@corex/deepmerge@^2.4.6":
-  version "2.4.6"
-  resolved "https://registry.yarnpkg.com/@corex/deepmerge/-/deepmerge-2.4.6.tgz#0dfc3973f41e88862825e8a2f1eb5f84ca5fe564"
-  integrity sha512-iSp8KAgtQBZpUrOnaKkn2oRMsSru50g5saizb4ZwGHccFylH7XrNvzuf86M94O/uqNkk9NxaCbkVC372ms2RPQ==
+"@corex/deepmerge@^2.4.24":
+  version "2.4.24"
+  resolved "https://registry.yarnpkg.com/@corex/deepmerge/-/deepmerge-2.4.24.tgz#d02aa2bf1a5c7f3847d4227d6700419450909f63"
+  integrity sha512-TBYXnhxYU9kqDhUXm/rgDRRAxHVpX8Y3ZX+zmTmQuhRF9p7orsrx+P/lVXS7PcPnOFFVE3ZvyE5MIYFipecy8g==
 
 "@emotion/hash@^0.8.0":
   version "0.8.0"
@@ -2083,10 +2083,10 @@
   resolved "https://registry.yarnpkg.com/@next/env/-/env-10.0.3.tgz#ef1077d78bf500855576f83090d6fb1ec96272f8"
   integrity sha512-xjJt2VXoSxAydskmt77nJuEtRL782E4ltaj5JtMzJ8YkNUMMu3d5ktpCR+Q3INKHF/RY6zHJ9QzyE3/s1ikbNg==
 
-"@next/mdx@^9.0.5":
-  version "9.4.2"
-  resolved "https://registry.yarnpkg.com/@next/mdx/-/mdx-9.4.2.tgz#860e5628d372c4e72e617aa62d34fdb66933591e"
-  integrity sha512-yI5nS0XxccVfMc3WpspZsL6Y22EKIsv+/uJRfPb8uVfLlG4Oz9IHaBXR9KRlQKjvJ8mSm+R3GSg0j+WP4TGADQ==
+"@next/mdx@^10.0.3":
+  version "10.0.3"
+  resolved "https://registry.yarnpkg.com/@next/mdx/-/mdx-10.0.3.tgz#91bbff794bb1f422b26170de6e5ac4f05f98dc19"
+  integrity sha512-KpvYJvp0s3h6p0GfMt2TJHqUsG1QaXXhmURgA4t7Ifz2W8gvTLzQGXYb4FvRHo5+pKwIofVfEi2sOQX2R0kU3g==
 
 "@next/polyfill-module@10.0.3":
   version "10.0.3"
@@ -11439,12 +11439,13 @@ next-runtime-dotenv@^1.0.1:
   dependencies:
     dotenv "^8.0.0"
 
-next-sitemap@^1.2.2:
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/next-sitemap/-/next-sitemap-1.2.2.tgz#dc90008c87e11633cd2eac74fde3bee5b11a2c93"
-  integrity sha512-X8Kt2ZgizM7KvmknPlqcYSs2akaFV6X90YYoYIwQc12J7X8Ow8f+hNt2rcG03d1JLvDgM9A/YfU6KrW1uefbKA==
+next-sitemap@^1.3.8:
+  version "1.3.8"
+  resolved "https://registry.yarnpkg.com/next-sitemap/-/next-sitemap-1.3.8.tgz#d9f2b845ba5e82e6198fd2ceb91708c8f131fde6"
+  integrity sha512-KQllwgjlUZjjHM734SnMZIYQGa3h+FLKzJEU+8+o+VLOxEhybx9sCrLyqotM/3b2AyzZDDI8K+zxaQDh9Znkog==
   dependencies:
-    "@corex/deepmerge" "^2.4.6"
+    "@corex/deepmerge" "^2.4.24"
+    minimist "^1.2.5"
 
 next-tick@~1.0.0:
   version "1.0.0"

@@ -7,7 +7,7 @@ const frontmatter = require('remark-frontmatter')
 const withMDX = require('@next/mdx')({
 	extension: /\.mdx$/,
 	options: {
-		mdPlugins: [frontmatter],
+		remarkPlugins: [frontmatter],
 	},
 })
 require('dotenv').config()

@@ -148,6 +148,7 @@
     "jss": "^9.8.7",
     "keycode": "^2.2.0",
     "mdi-material-ui": "^6.1.0",
+    "netlify-cli": "^2.69.0",
     "next": "^10.0.3",
     "next-runtime-dotenv": "^1.0.1",
     "primereact": "^3.0.0-rc.1",

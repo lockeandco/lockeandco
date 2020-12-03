@@ -287,7 +287,6 @@ const MywApp = props => {
 		allCookies: {isVerified, rememberMe},
 	}
 
-	// Console.log('APp State', appState)
 	return (
 		<>
 			<Head>

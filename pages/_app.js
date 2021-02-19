@@ -302,7 +302,7 @@ const MywApp = props => {
 
 			<ThemeProvider theme={theme}>
 				<CssBaseline />
-				{isVerified ? (
+				<div style={{visibility: isVerified ? 'visible' : 'hidden'}}>
 					<AnimatePresence exitBeforeEnter>
 						<Layout
 							{...pageProps}
@@ -319,7 +319,8 @@ const MywApp = props => {
 							/>
 						</Layout>
 					</AnimatePresence>
-				) : (
+				</div>
+				{isVerified ? null : (
 					<CheckAge
 						handleVerified={handleVerified}
 						handleRememberMe={handleRemember}

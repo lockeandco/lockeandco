@@ -293,7 +293,7 @@ class GMapDemo extends Component {
 					position: 'relative',
 					height: '100%',
 					width: '100%',
-					minHeight: '97vh',
+					minHeight: '100vh',
 				}}
 				onMapReady={this.onMapReady}
 				onOverlayClick={this.onOverlayClick}

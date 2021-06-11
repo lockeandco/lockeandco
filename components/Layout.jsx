@@ -34,9 +34,8 @@ const Layout = props => {
 	return (
 		<>
 			<div className={classes.background} />
-			<Menu {...other} />
+
 			{children}
-			<Bottom {...other} />
 		</>
 	)
 }

@@ -1,5 +1,4 @@
 import React, {useCallback, useReducer, useState, useEffect} from 'react'
-import App from 'next/app'
 import {ThemeProvider} from '@material-ui/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import NextRouter from 'next/router'
@@ -20,6 +19,17 @@ import theme from '../src/theme'
 import createPersistedState from 'use-persisted-state'
 import {AnimatePresence, motion} from 'framer-motion'
 import {registerServiceWorker} from '../lib/sw_helpers'
+import clsx from 'clsx'
+import makeStyles from '@material-ui/styles/makeStyles'
+
+const useStyles = makeStyles(theme => ({
+	show: {
+		visibility: 'visible',
+	},
+	hide: {
+		visibility: 'hidden',
+	},
+}))
 
 const Layout = dynamic(() => import('../components/Layout.jsx'), {
 	ssr: false,
@@ -286,6 +296,11 @@ const MywApp = props => {
 		rememberMe,
 		allCookies: {isVerified, rememberMe},
 	}
+	const classes = useStyles()
+	const mainStyles = clsx({
+		[classes.show]: verified,
+		[classes.hide]: !verified,
+	})
 
 	return (
 		<>
@@ -302,7 +317,7 @@ const MywApp = props => {
 
 			<ThemeProvider theme={theme}>
 				<CssBaseline />
-				<div style={{visibility: isVerified ? 'visible' : 'hidden'}}>
+				<div className={mainStyles}>
 					<AnimatePresence exitBeforeEnter>
 						<Layout
 							{...pageProps}
@@ -320,13 +335,6 @@ const MywApp = props => {
 						</Layout>
 					</AnimatePresence>
 				</div>
-				{isVerified ? null : (
-					<CheckAge
-						handleVerified={handleVerified}
-						handleRememberMe={handleRemember}
-						rememberMe={rememberMe}
-					/>
-				)}
 			</ThemeProvider>
 		</>
 	)

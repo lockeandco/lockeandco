@@ -45,7 +45,7 @@ const LeftDrawerList = props => {
 		},
 		...other
 	} = props
-	console.log('lop', lockeColocs)
+
 	return (
 		<div className={classes.root}>
 			{Array.isArray(lockeColocs.list) && lockeColocs.list.length < 2 ? (

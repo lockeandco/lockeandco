@@ -6,6 +6,25 @@ import flush from 'styled-jsx/server'
 import {createMuiTheme} from '@material-ui/core/styles'
 import theme from '../src/theme'
 import {GTM_ID} from '../utils/analytics'
+
+
+const structuredData = {
+"@context": "https://schema.org",
+"@type": "Organization",
+"name": "Locke + Co Distilling",
+"url": "https://lockeandcodistilling.com/",
+"logo": "https://lockeandcodistilling.com/",
+"alternateName": "Locke + Co",
+"sameAs": [
+"https://www.facebook.com/LockeCoDistilling/",
+
+"https://twitter.com/LockeCoDistill",
+
+"https://www.instagram.com/lockecodistilling/"
+
+]
+
+}
 class MyDocument extends Document {
 	render() {
 		const {pageContext} = this.props
@@ -44,6 +63,10 @@ class MyDocument extends Document {
 						crossOrigin="anonymous"
 					/>
 					<script src="https://unpkg.com/@google/markerclustererplus@4.0.1/dist/markerclustererplus.min.js" />
+			 <script
+    type="application/ld+json"
+    dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+  />
 				</Head>
 				<body>
 					{/* Google Tag Manager (noscript) */}

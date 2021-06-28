@@ -33,14 +33,20 @@ const renderInput = inputProps => {
 	return (
 		<TextField
 			{...fieldProps}
-			inputProps={{
-				style: {
-					background: 'rgba(226, 222, 213, 0.95)',
-					textTransform: 'uppercase',
-				},
-			}}
+			// InputProps={{
+			// 	style: {
+			// 		background: 'rgba(226, 222, 213, 0.95)',
+			// 		textTransform: 'uppercase',
+			// 	},
+			// }}
 			InputProps={{
 				inputRef: ref,
+				inputProps: {
+					style: {
+						background: 'rgba(226, 222, 213, 0.95)',
+						textTransform: 'uppercase',
+					},
+				},
 				classes: {
 					root: classes.inputRoot,
 					input: classes.inputInput,
@@ -57,14 +63,14 @@ const renderSuggestion = (
 	query
 ) => {
 	const isHighlighted = highlightedIndex === index
-	const isSelected = (selectedItem || '').includes(suggestion.label)
-	const matches = match(suggestion.label, query)
-	const parts = parse(suggestion.label, matches)
+	const isSelected = (selectedItem || '').includes(suggestion?.label)
+	const matches = match(suggestion?.label, query)
+	const parts = parse(suggestion?.label, matches)
 
 	return (
 		<MenuItem
 			{...itemProps}
-			key={suggestion.label.concat(String(index))}
+			key={suggestion?.label?.concat(String(index)) || Math.random()}
 			className={menuClasses}
 			selected={isHighlighted}
 			component="div"
@@ -150,7 +156,6 @@ const IntegrationDownshift = props => {
 		return inputLength === 0 ? items : fuseItems
 	}
 
-	// Console.log(items)
 	return (
 		<Downshift
 			// SelectedItem={initialSelectedItem || ''}
@@ -168,7 +173,6 @@ const IntegrationDownshift = props => {
 				selectedItem,
 				clearSelection,
 			}) => {
-				// Console.log('SelectedItem', selectedItem)
 				return (
 					<div className={classes.container}>
 						{renderInput({
@@ -203,12 +207,14 @@ const IntegrationDownshift = props => {
 						<div {...getMenuProps()}>
 							{isOpen ? (
 								<Paper square className={classes.paper}>
-									{getSuggestions(inputValue).map((suggestion, index) =>
+									{getSuggestions(inputValue).map(({item}, index) =>
 										renderSuggestion(
 											{
-												suggestion,
+												suggestion: item,
 												index,
-												itemProps: getItemProps({item: suggestion.label}),
+												itemProps: getItemProps({
+													item: item?.label || 'no',
+												}),
 												menuClasses,
 												highlightedIndex,
 												selectedItem,

@@ -281,9 +281,6 @@ const CityList = props => {
 											<ListItem
 												button
 												onClick={() => {
-													// Console.log(store)
-													// expandList(item.city)
-
 													setPositionAndZoom({
 														position: store.location,
 														zoom: 14,

@@ -10,10 +10,12 @@ export const Image = ({
 	const inverted = useInvertedScale()
 
 	const imagePath = recipeImage
-		? `https://staging.lockeandcodistilling.com/${recipeImage.concat(
+		? `${process.env.NEXT_PUBLIC_URL}/${recipeImage.concat(
 				'?nf_resize=smartcrop&w=800&h=430'
 		  )}`
-		: `https://staging.lockeandcodistilling.com/Bottle_Cheersing.jpg${'?nf_resize=fit&w=800&h=430'}`
+		: `${
+				process.env.NEXT_PUBLIC_URL
+		  }/Bottle_Cheersing.jpg${'?nf_resize=fit&w=800&h=430'}`
 
 	return (
 		<motion.div

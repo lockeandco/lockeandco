@@ -120,7 +120,7 @@ class GMapDemo extends Component {
 				})
 			})
 		})
-		console.log(this.props)
+
 		markerClusterer = new MarkerClusterer(gm, overlays, {
 			averageCenter: true,
 			imagePath:
@@ -133,7 +133,6 @@ class GMapDemo extends Component {
 		}
 
 		if (previous.zoom !== this.props.zoom) {
-			console.log('Setting Zoom')
 			gm.setZoom(this.props.zoom)
 		}
 
